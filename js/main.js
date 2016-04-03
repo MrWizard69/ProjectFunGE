@@ -9,11 +9,7 @@ $(document).ready(function () {
     var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d");
 	
-	var joystick	= new VirtualJoystick({
-				container	: document.getElementById('container'),
-				mouseSupport	: true,
-			});
-	
+	var joystick;
 	
 	$("#play").click(function(){
 		
@@ -44,7 +40,10 @@ $(document).ready(function () {
 		//----------------------End of full screen------------------------------------------//
 		
 		//----------------------this guys sets up the virtual joystick. Thank you virtualjoystick.js--------------------------------//
-		
+		joystick	= new VirtualJoystick({
+				container	: document.getElementById('container'),
+				mouseSupport	: true,
+			});
 		
 		
 		
