@@ -43,8 +43,8 @@ $(document).ready(function () {
 		joystick	= new VirtualJoystick({
 				container	: document.getElementById('container'),
 				mouseSupport	: true,
-				stickRadius: 50,
-				limitStickTravel: 50
+				limitStickTravel: true,
+				stickRadius: 50
 			});
 		
 		
