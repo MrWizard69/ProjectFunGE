@@ -47,14 +47,14 @@ $(document).ready(function () {
 		
 		
 		setInterval(function(){
-				var outputEl	= document.getElementById('result');
-				outputEl.innerHTML	= '<b>Result:</b> '
-					+ ' dx:'+joystick.deltaX()
-					+ ' dy:'+joystick.deltaY()
-					+ (joystick.right()	? ' right'	: '')
-					+ (joystick.up()	? ' up'		: '')
-					+ (joystick.left()	? ' left'	: '')
-					+ (joystick.down()	? ' down' 	: '')	
+				//var outputEl	= document.getElementById('result');
+				//outputEl.innerHTML	= '<b>Result:</b> '
+					//+ ' dx:'+joystick.deltaX()
+					//+ ' dy:'+joystick.deltaY()
+					//+ (joystick.right()	? ' right'	: '')
+					//+ (joystick.up()	? ' up'		: '')
+					//+ (joystick.left()	? ' left'	: '')
+					//+ (joystick.down()	? ' down' 	: '')	
 					
 					
 					if (joystick.up()) {
