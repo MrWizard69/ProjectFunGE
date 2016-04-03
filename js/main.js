@@ -45,7 +45,7 @@ $(document).ready(function () {
 				mouseSupport	: true,
 				limitStickTravel: true,
 				stationaryBase: true,
-                      baseX: (window.innerWidth) * .67,
+                      baseX: (window.innerWidth) * .90,
                       baseY: (window.innerHeight) * .69,
 				stickRadius: 25
 			});
