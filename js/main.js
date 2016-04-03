@@ -73,23 +73,23 @@ $(document).ready(function () {
 		
 		if (joystick.up()) {
                 if (velY > -speed) {
-                    velY-- *4;
+                    velY--;
                 }
             }
 
             if (joystick.down()) {
                 if (velY < speed) {
-                    velY++ *4;
+                    velY++;
                 }
             }
             if (joystick.right()) {
                 if (velX < speed) {
-                    velX++ *4;
+                    velX++;
                 }
             }
             if (joystick.left()) {
                 if (velX > -speed) {
-                    velX-- *4;
+                    velX--;
                 }
             }
 		
@@ -344,8 +344,8 @@ $(document).ready(function () {
             ctx.closePath();
 
 
-            setTimeout(update, 10); //refresh the screen and sets the main loop for movement with keyboard 
-			setTimeout(joystickUpdate, 5); //refresh the screen and sets the main loop for movement with the virtual joystick
+            setTimeout(update, 5); //refresh the screen and sets the main loop for movement with keyboard 
+			//setTimeout(joystickUpdate, 5); //refresh the screen and sets the main loop for movement with the virtual joystick
         }
 
         update();// sets the keyboard press loop into motion
