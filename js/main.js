@@ -55,6 +55,30 @@ $(document).ready(function () {
 					+ (joystick.up()	? ' up'		: '')
 					+ (joystick.left()	? ' left'	: '')
 					+ (joystick.down()	? ' down' 	: '')	
+					
+					
+					if (joystick.up()) {
+                if (velY > -speed) {
+                    velY--;
+                }
+            }
+
+            if (joystick.down()) {
+                if (velY < speed) {
+                    velY++;
+                }
+            }
+            if (joystick.right()) {
+                if (velX < speed) {
+                    velX++;
+                }
+            }
+            if (joystick.left()) {
+                if (velX > -speed) {
+                    velX--;
+                }
+            }
+					
 			}, 1/30 * 1000);
 		
 		
