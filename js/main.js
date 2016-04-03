@@ -73,23 +73,23 @@ $(document).ready(function () {
 		
 		if (joystick.up()) {
                 if (velY > -speed) {
-                    velY-- *2;
+                    velY-- *4;
                 }
             }
 
             if (joystick.down()) {
                 if (velY < speed) {
-                    velY++ *2;
+                    velY++ *4;
                 }
             }
             if (joystick.right()) {
                 if (velX < speed) {
-                    velX++ *2;
+                    velX++ *4;
                 }
             }
             if (joystick.left()) {
                 if (velX > -speed) {
-                    velX-- *2;
+                    velX-- *4;
                 }
             }
 		
