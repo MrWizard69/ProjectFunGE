@@ -9,7 +9,7 @@ $(document).ready(function () {
     var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d");
 	
-	var joystick = new VirtualJoystick();
+	var joystick;
 	
 	$("#play").click(function(){
 		
@@ -290,27 +290,6 @@ $(document).ready(function () {
                 }
             }
 			
-			if (joystick.up()) {
-                if (velY > -speed) {
-                    velY--;
-                }
-            }
-
-            if (joystick.down()) {
-                if (velY < speed) {
-                    velY++;
-                }
-            }
-            if (joystick.right()) {
-                if (velX < speed) {
-                    velX++;
-                }
-            }
-            if (joystick.left()) {
-                if (velX > -speed) {
-                    velX--;
-                }
-            }
 			
 			//-----------------player movement with keyboard end --------------------------------------------//
 			
