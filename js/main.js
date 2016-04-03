@@ -290,6 +290,28 @@ $(document).ready(function () {
                 }
             }
 			
+			if (joystick.up()) {
+                if (velY > -speed) {
+                    velY--;
+                }
+            }
+
+            if (joystick.down()) {
+                if (velY < speed) {
+                    velY++;
+                }
+            }
+            if (joystick.right()) {
+                if (velX < speed) {
+                    velX++;
+                }
+            }
+            if (joystick.left()) {
+                if (velX > -speed) {
+                    velX--;
+                }
+            }
+			
 			//-----------------player movement with keyboard end --------------------------------------------//
 			
 			
@@ -344,7 +366,7 @@ $(document).ready(function () {
 
 
             setTimeout(update, 10); //refresh the screen and sets the main loop for movement with keyboard 
-			setTimeout(joystickUpdate, 5); //refresh the screen and sets the main loop for movement with the virtual joystick
+			//setTimeout(joystickUpdate, 5); //refresh the screen and sets the main loop for movement with the virtual joystick
         }
 
         update();// sets the keyboard press loop into motion
