@@ -57,7 +57,18 @@ $(document).ready(function () {
 					//+ (joystick.down()	? ' down' 	: '')	
 					
 					
-					if (joystick.up()) {
+					
+					
+			}, 1/30 * 1000);
+		
+		
+		
+	});
+	
+	
+	function joystickUpdate(){
+		
+		if (joystick.up()) {
                 if (velY > -speed) {
                     velY--;
                 }
@@ -78,12 +89,9 @@ $(document).ready(function () {
                     velX--;
                 }
             }
-					
-			}, 1/30 * 1000);
 		
-		
-		
-	});
+	}
+	
 	//------------------------end of virtual joystick------------------------------------------//
 
 	// Start listening to resize events and
@@ -332,7 +340,8 @@ $(document).ready(function () {
             ctx.closePath();
 
 
-            setTimeout(update, 10); //refresh the screen and sets the main loop for movement with keyboard
+            setTimeout(update, 10); //refresh the screen and sets the main loop for movement with keyboard 
+			setTimeout(joystickUpdate, 10); //refresh the screen and sets the main loop for movement with the virtual joystick
         }
 
         update();// sets the keyboard press loop into motion
