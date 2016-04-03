@@ -48,27 +48,8 @@ $(document).ready(function () {
                       baseX: (window.innerWidth) * 1.4,
                       baseY: (window.innerHeight) * .30,
 				stickRadius: 25
-			});
-		
-		
-		
-		setInterval(function(){
-				//var outputEl	= document.getElementById('result');
-				//outputEl.innerHTML	= '<b>Result:</b> '
-					//+ ' dx:'+joystick.deltaX()
-					//+ ' dy:'+joystick.deltaY()
-					//+ (joystick.right()	? ' right'	: '')
-					//+ (joystick.up()	? ' up'		: '')
-					//+ (joystick.left()	? ' left'	: '')
-					//+ (joystick.down()	? ' down' 	: '')	
-					
-					
-					
-					
-			}, 1/30 * 1000);
-		
-		
-		
+			});		
+
 	});
 	
 	
