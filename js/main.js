@@ -26,17 +26,17 @@ $(document).ready(function () {
 				} else if (document.documentElement.webkitRequestFullscreen) {
 							document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
 				}
-		} else {
-			if (document.exitFullscreen) {
-					document.exitFullscreen();
-			} else if (document.msExitFullscreen) {
-					document.msExitFullscreen();
-			} else if (document.mozCancelFullScreen) {
-					document.mozCancelFullScreen();
-			} else if (document.webkitExitFullscreen) {
+		} //else {
+			//if (document.exitFullscreen) {
+					//document.exitFullscreen();
+			//} else if (document.msExitFullscreen) {
+					//document.msExitFullscreen();
+			//} else if (document.mozCancelFullScreen) {
+					//document.mozCancelFullScreen();
+			//} else if (document.webkitExitFullscreen) {
 					document.webkitExitFullscreen();
-			}
-		}
+			//}
+		//}
 		//----------------------End of full screen------------------------------------------//
 		
 		//----------------------this guys sets up the virtual joystick. Thank you virtualjoystick.js--------------------------------//
