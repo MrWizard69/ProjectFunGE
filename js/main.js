@@ -34,7 +34,7 @@ $(document).ready(function () {
 			//} else if (document.mozCancelFullScreen) {
 					//document.mozCancelFullScreen();
 			//} else if (document.webkitExitFullscreen) {
-					document.webkitExitFullscreen();
+					//document.webkitExitFullscreen();
 			//}
 		//}
 		//----------------------End of full screen------------------------------------------//
