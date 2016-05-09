@@ -10,6 +10,17 @@ $(document).ready(function () {
     ctx = canvas.getContext("2d");
 	
 	var joystick;
+	var playerSize = 0;
+	
+	var playerPositionX = 0;
+	var playerPositionY = 0;
+	var Xpercent = 0;
+	var YPercant = 0;
+	
+	var x = 0;
+	var y = 0;
+	
+	var playArea = 0;
 	
 	$("#play").click(function(){
 		
@@ -44,9 +55,9 @@ $(document).ready(function () {
 				container	: document.getElementById('container'),
 				mouseSupport	: true,
 				limitStickTravel: true,
-				stationaryBase: true,
-                      baseX: (window.innerWidth) * 1.4,
-                      baseY: (window.innerHeight) * .30,
+				stationaryBase: true, // to make the joystick appear anywhere, set to false and comment out BaseX and BaseY
+                      baseX: (window.innerWidth) * 1.4, // this size is only good for mobile not tablets
+                      baseY: (window.innerHeight) * .30, // this size is only good for mobile not tablets
 				stickRadius: 25
 			});		
 
@@ -82,8 +93,8 @@ $(document).ready(function () {
 	//------------------------end of virtual joystick------------------------------------------//
 
 	// Start listening to resize events and
-	// draw canvas.
-	initialize();
+	// draw canvas and character sizes.
+	initialize(); // this is the function that will look at the browser window size and will resize everything
 
 	function initialize() {
 	// Register an event listener to
@@ -98,19 +109,59 @@ $(document).ready(function () {
 		//ctx.strokeStyle = 'blue';
 		ctx.lineWidth = '.1';
 		ctx.strokeRect(0, 0, window.innerWidth, window.innerHeight);
+		
+		//Resize character sizes
+		var playersSizeW = canvas.width * .01;
+		var playerSizeH = canvas.height * .01;
+		
+		playerSize = (playersSizeW + playerSizeH); //playerSize is about 19.43999 px
+		
+		//this is an attempt to calculate the size of the screen as a percentage to dynamically move the player and objects at screen size change
+		//var widthMX = (canvas.width - x);
+		//var heightMY = (canvas.height - y);
+		
+		//Xpercent = (widthMX / canvas.width) * 100;
+		//YPercant = (heightMY / canvas.height) * 100;
+		
+		//playerPositionX = canvas.width * (Xpercent / 100); //* .50;
+		//playerPositionY = canvas.height * (YPercant / 100); //* .50;
+		
+		//when the screen size changes, the player will be redirected to the center of the screen
+		playerPositionX = canvas.width * .50;
+		playerPositionY = canvas.height * .50;
+		
+		//this will update the players position if the screen size changes
+		x = playerPositionX;
+        y = playerPositionY;
+		
 	}
 	// Runs each time the DOM window resize event fires.
 	// Resets the canvas dimensions to match window,
 	// then draws the new borders accordingly.
 	function resizeCanvas() {
+		
+		//This will dynamically resize the game play area		
 		canvas.width = (window.innerWidth) * .67;
 		canvas.height = (window.innerHeight) * .69;
+		
+		console.log("Canvas Width " + canvas.width);
+		
+		playArea = canvas.width * canvas.height; //find the area and multiply to reposition characters at screen change. Find a percentage of the x and y's positon relative to playArea		
+		
+		//console.log("Canvas Height " + canvas.height);		
+		
 		redraw();
 	}
-
-        var x = 150, //player 1 positioning and speed
-            y = 150,
-            velY = 0,
+		
+		//this is the players starting position. This is the center of the play area
+		playerPositionX = canvas.width * .50;
+		playerPositionY = canvas.height * .50;
+		
+		x = playerPositionX; //player 1 positioning
+		y = playerPositionY;
+		
+        // This is the players velocity, speed, friction and an array of keys that are being pressed    
+        var velY = 0,
             velX = 0,
             speed = 3,
             friction = 0.5, //0.98
@@ -251,26 +302,35 @@ $(document).ready(function () {
 		//------------------------Touch screen movement end---------------------------------------------//	
 
         function update() { //------------player movement with keyboard---------------------------------//
-
+			
+			//the update function does two things, draws the characters and tracks their movement positions
+			
+			//this will track what keys are pressed and will update the players position
+			
+			//this is for the arrow keys control
             if (keys[38]) {
                 if (velY > -speed) {
                     velY--;
+					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
 
             if (keys[40]) {
                 if (velY < speed) {
                     velY++;
+					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
             if (keys[39]) {
                 if (velX < speed) {
                     velX++;
+					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
             if (keys[37]) {
                 if (velX > -speed) {
                     velX--;
+					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
 			
@@ -278,52 +338,53 @@ $(document).ready(function () {
 			//-----------------player movement with keyboard end --------------------------------------------//
 			
 			
-            velY *= friction; //friction and positioning
+            velY *= friction; //friction and final positioning
             y += velY;
             velX *= friction;
             x += velX;
 			
 			
-			if (x >= canvas.width - 15) { // colision with game boarders x-axis
-                x = canvas.width - 15;
-            } else if (x <= 15) {
-                x = 15;
+			if (x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
+                x = canvas.width - playerSize;
+            } else if (x <= playerSize) {
+                x = playerSize;
             }
 			
-			if (y > canvas.height - 15) { // colision with game boarders y-axis
-                y = canvas.height - 15;
-            } else if (y <= 15) {
-                y = 15;
+			if (y > canvas.height - playerSize) { // colision with game boarders y-axis //original size 15, now playerSize is about 19.43999
+                y = canvas.height - playerSize;
+            } else if (y <= playerSize) {
+                y = playerSize;
             }
 			
-
-            if (x <= 100 && y >= 90 && y <= 100 && x >= 90) { // player colision with ai
-                x = 80;
-                y = 80;
-            } //else if (x <= 35) {
-              // x = 35;
-            //}
-
-            //if (y <= 100) {
-            //    y = 100;
-            //} else if (y <= 15) {
-            //    y = 15;
-            //}
-
-
-
+			//-----------This will detect colisions in the game--------------------//
+			
+			// if (object1.x < object2.x + object2.width  && object1.x + object1.width  > object2.x &&
+			// object1.y < object2.y + object2.height && object1.y + object1.height > object2.y) {
+			// 	// The objects are touching
+			// }
+			
+			//this is a colision with the test ai guy
+			if (x < 100 + playerSize  && x + playerSize  > 100 &&
+			y < 100 + playerSize && y + playerSize > 100) {
+				// The objects are touching
+				
+				velX *= friction - 10; //this will stop the player from moving
+				velY *= friction - 10;
+			}
+			
+			//this part will draw the characters
             
-            ctx.beginPath();
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath(); //this is the player
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // this will clear and redraw the canvas for new values and positions
             ctx.fillStyle = "blue";
-            ctx.arc(x, y, 15, 0, Math.PI * 2); // draw the player
+            ctx.arc(x, y, playerSize, 0, Math.PI * 2); // draw the player //original size 15, now playerSize is about 19.43999
             ctx.fill();
             ctx.closePath();
-
-            
-            ctx.beginPath();
+			
+			
+            ctx.beginPath(); // this is the ai
             ctx.fillStyle = "black";
-            ctx.arc(100, 100, 15, 0, Math.PI * 2); // draw the ai, ai has hard coded position
+            ctx.arc(100, 100, playerSize, 0, Math.PI * 2); // draws the ai. ai has hard coded position
             ctx.fill();
             ctx.closePath();
 
@@ -331,7 +392,7 @@ $(document).ready(function () {
             setTimeout(update, 5); //refresh the screen and sets the main loop for movement with keyboard 
 			setTimeout(joystickUpdate, 5); //refresh the screen and sets the main loop for movement with the virtual joystick
         }
-
+		
         update();// sets the keyboard press loop into motion
 
         document.body.addEventListener("keydown", function (e) { // these make the keyboard do
@@ -340,4 +401,7 @@ $(document).ready(function () {
         document.body.addEventListener("keyup", function (e) {
             keys[e.keyCode] = false;
         });
+		
+		
+		
     });
