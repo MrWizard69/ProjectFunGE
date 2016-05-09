@@ -1,10 +1,7 @@
 $(document).ready(function () {
 	
-	
-	
 	// Obtain a reference to the canvas element
 	// using its id.
-	
 	
     var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d");
@@ -144,9 +141,9 @@ $(document).ready(function () {
 		canvas.width = (window.innerWidth) * .67;
 		canvas.height = (window.innerHeight) * .69;
 		
-		console.log("Canvas Width " + canvas.width);
+		//console.log("Canvas Width " + canvas.width);
 		
-		playArea = canvas.width * canvas.height; //find the area and multiply to reposition characters at screen change. Find a percentage of the x and y's positon relative to playArea		
+		//playArea = canvas.width * canvas.height; //find the area and multiply to reposition characters at screen change. Find a percentage of the x and y's positon relative to playArea		
 		
 		//console.log("Canvas Height " + canvas.height);		
 		
@@ -364,8 +361,8 @@ $(document).ready(function () {
 			// }
 			
 			//this is a colision with the test ai guy
-			if (x < 100 + playerSize  && x + playerSize  > 100 &&
-			y < 100 + playerSize && y + playerSize > 100) {
+			if (x < target.Ex + playerSize  && x + playerSize  > target.Ex &&
+			y < target.Ey + playerSize && y + playerSize > target.Ey) {
 				// The objects are touching
 				
 				velX *= friction - 10; //this will stop the player from moving
@@ -381,10 +378,10 @@ $(document).ready(function () {
             ctx.fill();
             ctx.closePath();
 			
-			
+						
             ctx.beginPath(); // this is the ai
             ctx.fillStyle = "black";
-            ctx.arc(100, 100, playerSize, 0, Math.PI * 2); // draws the ai. ai has hard coded position
+            ctx.arc(target.Ex, target.Ey, playerSize, 0, Math.PI * 2); // draws the ai. ai has hard coded position
             ctx.fill();
             ctx.closePath();
 
@@ -392,6 +389,41 @@ $(document).ready(function () {
             setTimeout(update, 5); //refresh the screen and sets the main loop for movement with keyboard 
 			setTimeout(joystickUpdate, 5); //refresh the screen and sets the main loop for movement with the virtual joystick
         }
+		
+		
+		// //this will give the enemies random positions x and y
+		
+		var target = {
+             	Ex: Math.round(Math.random() * canvas.width + playerSize),
+       	     	Ey: Math.round(Math.random() * canvas.height + playerSize)
+         	};
+		
+		//this will hopefully make more enemies in random places, right?
+		
+		// function findNewTarget() {
+        // 	var target = {
+        //     	Ex: Math.round(Math.random() * 600),
+        //     	Ey: Math.round(Math.random() * 300)
+        // 	};
+
+        // 	return target;
+    	// }
+		
+		// function makeEnemyShip(x, y) {
+    	// 	var position = {
+        // 		Ex: x,
+        // 		Ey: y
+    	// };
+		
+		//  var entities = [];
+    	//  var numOfEnemyShips = 4;
+
+    	// function start() {
+
+        // 	for (var i = 0; i <= numOfEnemyShips; i++) {
+        //     	entities.push(makeEnemyShip(i * 10, i));
+        // 	}
+    	// }
 		
         update();// sets the keyboard press loop into motion
 
