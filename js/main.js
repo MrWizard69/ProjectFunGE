@@ -55,7 +55,8 @@ $(document).ready(function () {
 				stationaryBase: true, // to make the joystick appear anywhere, set to false and comment out BaseX and BaseY
                       baseX: (window.innerWidth) * 1.4, // this size is only good for mobile not tablets
                       baseY: (window.innerHeight) * .30, // this size is only good for mobile not tablets
-				stickRadius: 25
+				stickRadius: 25,
+				Position: "relative"
 			});		
 
 	});
