@@ -394,8 +394,8 @@ $(document).ready(function () {
 		// //this will give the enemies random positions x and y
 		
 		var target = {
-             	Ex: Math.round(Math.random() * (canvas.width - (playerSize * 3 ))),
-       	     	Ey: Math.round(Math.random() * (canvas.height - (playerSize * 3)))
+             	Ex: Math.round(Math.random() * (canvas.width - (playerSize * 4))),
+       	     	Ey: Math.round(Math.random() * (canvas.height - (playerSize * 4)))
          	};
 		
 		//this will hopefully make more enemies in random places, right?
