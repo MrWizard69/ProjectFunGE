@@ -19,6 +19,30 @@ $(document).ready(function () {
 	
 	var playArea = 0;
 	
+	var entities = [];
+	var numOfEnemyShips = 4;
+	
+	var newEnemy = new Object();
+	
+	var target = {
+    	Ex: Math.round(Math.random() * (canvas.width - (playerSize * 4))), // retest this to see if the enemies stay in the game area
+       	Ey: Math.round(Math.random() * (canvas.height - (playerSize * 4)))
+    };
+	
+	// var enemy = {
+	
+	// 	x = target.Ex,
+	// 	y = target.Ey,
+	// 	color = "black",
+		
+	// 	draw: function() {
+    // 		canvas.fillStyle = this.color;
+    // 		canvas.fillRect(this.x, this.y, this.width, this.height);
+  	// 	}			
+		
+	// };
+	
+	
 	$("#play").click(function(){
 		
 		//------------------------------this guys sets up full screen for the browsers--------------------------//
@@ -167,7 +191,7 @@ $(document).ready(function () {
 		var buttup = $("#UpButton");
 		var timeout;
 		
-		//---------------------------------touch screen movement-----------------------------------------------//
+		//---------------------------------button movements-----------------------------------------------//
 		
 		
 		
@@ -296,7 +320,7 @@ $(document).ready(function () {
 			
 		//});
 			
-		//------------------------Touch screen movement end---------------------------------------------//	
+		//------------------------button movements end---------------------------------------------//	
 
         function update() { //------------player movement with keyboard---------------------------------//
 			
@@ -355,77 +379,282 @@ $(document).ready(function () {
 			
 			//-----------This will detect colisions in the game--------------------//
 			
+			//this is a boiler plate colision test
 			// if (object1.x < object2.x + object2.width  && object1.x + object1.width  > object2.x &&
 			// object1.y < object2.y + object2.height && object1.y + object1.height > object2.y) {
 			// 	// The objects are touching
 			// }
 			
 			//this is a colision with the test ai guy
-			if (x < target.Ex + playerSize  && x + playerSize  > target.Ex &&
-			y < target.Ey + playerSize && y + playerSize > target.Ey) {
+			if (x < enemy.x + playerSize  && x + playerSize  > enemy.x &&
+			y < enemy.y + playerSize && y + playerSize > enemy.y) {
 				// The objects are touching
 				
 				velX *= friction - 10; //this will stop the player from moving
 				velY *= friction - 10;
 			}
 			
+			
+			
 			//this part will draw the characters
             
+			ctx.clearRect(0, 0, canvas.width, canvas.height); // this will clear and redraw the canvas for new values and positions
+			
             ctx.beginPath(); //this is the player
-            ctx.clearRect(0, 0, canvas.width, canvas.height); // this will clear and redraw the canvas for new values and positions
             ctx.fillStyle = "blue";
             ctx.arc(x, y, playerSize, 0, Math.PI * 2); // draw the player //original size 15, now playerSize is about 19.43999
             ctx.fill();
             ctx.closePath();
 			
 						
-            ctx.beginPath(); // this is the ai
-            ctx.fillStyle = "black";
-            ctx.arc(target.Ex, target.Ey, playerSize, 0, Math.PI * 2); // draws the ai. ai has hard coded position
-            ctx.fill();
-            ctx.closePath();
+            // ctx.beginPath(); // this is the ai guy
+            // ctx.fillStyle = "black";
+            // ctx.arc(target.Ex, target.Ey, playerSize, 0, Math.PI * 2); // draws the ai. ai has hard coded position
+            // ctx.fill();
+            // ctx.closePath();
 
 
             setTimeout(update, 5); //refresh the screen and sets the main loop for movement with keyboard 
 			setTimeout(joystickUpdate, 5); //refresh the screen and sets the main loop for movement with the virtual joystick
+			
+			//----------------------------------------------------------
+					
+
+			draw();	//this draws all the enemies in the game area	
+			
         }
 		
 		
-		// //this will give the enemies random positions x and y
 		
 		var target = {
-             	Ex: Math.round(Math.random() * (canvas.width - (playerSize * 4))),
-       	     	Ey: Math.round(Math.random() * (canvas.height - (playerSize * 4)))
-         	};
+        	Ex: Math.round(Math.random() * (canvas.width * .95)), // retest this to see if the enemies stay in the game area
+       	    Ey: Math.round(Math.random() * (canvas.height * .95))
+         };
 		
-		//this will hopefully make more enemies in random places, right?
 		
-		// function findNewTarget() {
-        // 	var target = {
-        //     	Ex: Math.round(Math.random() * 600),
-        //     	Ey: Math.round(Math.random() * 300)
-        // 	};
-
-        // 	return target;
-    	// }
+		
+		var enemy = {
+  			color: "black",
+  			x: Math.round(Math.random() * (canvas.width * .95)),
+  			y: Math.round(Math.random() * (canvas.height * .95)),
+			direction: randomDirection = Math.round(Math.random() * 7),
+ 			draw: function() {
+				ctx.beginPath(); // this is the ai guy
+    			ctx.fillStyle = this.color;
+    			ctx.arc(this.x, this.y, playerSize, 0, Math.PI * 2);
+				ctx.fill();
+            	ctx.closePath();
+ 			 },
+			 movement: function(){
+				 
+				 //this will make direct the enemy to move in a random location
+				 //console.log(this.direction);
+				 
+				 if(this.direction == 0){
+					 this.x -= 2;
+				 }
+				 if(this.direction == 1){
+					 this.x += 2;
+				 }
+				 if(this.direction == 2){
+					 this.y -= 2;
+				 }
+				 if(this.direction == 3){
+					 this.y += 2;
+				 }
+				 if(this.direction == 4){
+					 this.y += 2;
+					 this.x += 2;
+				 }
+				 if(this.direction == 5){
+					 this.y -= 2;
+					 this.x -= 2;
+				 }
+				 if(this.direction == 6){
+					 this.y += 2;
+					 this.x -= 2;
+				 }
+				 if(this.direction == 7){
+					 this.y -= 2;
+					 this.x += 2;
+				 }
+				 
+				 //when an enemy hits the wall, this will check the direction it was moving and make it move the revirse direction
+				if (this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
+                	this.x = canvas.width - playerSize;
+					this.direction = 0;
+            	}else if (this.x < playerSize) {
+                	this.x = playerSize;
+					this.direction = 1;
+            	}
+				if (this.y > canvas.height - playerSize) { // colision with game boarders y-axis //original size 15, now playerSize is about 19.43999
+                	this.y = canvas.height - playerSize;
+					this.direction = 2;
+            	} else if (this.y < playerSize) {
+                 	this.y = playerSize;
+				 	this.direction = 3;
+            	 }
+				 
+			 }
+			  
+		};
+		
+	
+		
+		
+		
+		function draw() {
+  			
+			
+			//enemy.draw();
+			//this will loop through the list of enemies
+			for(var i = 0; i < entities.length; i++){
+				
+				entities[i].draw(); //this will draw the enemies as they are created
+				entities[i].movement();//this will activate the enemies movement
+				
+				//this is a colision with the randomly spawning ai guys
+				if (x < entities[i].x + playerSize  && x + playerSize  > entities[i].x &&
+				y < entities[i].y + playerSize && y + playerSize > entities[i].y) {
+					// The objects are touching
+				
+					velX *= friction - 10; //this will stop the player from moving
+					velY *= friction - 10;
+					entities.splice(i, 1); //this will destroy the enemy on colision with the player
+				}
+				
+				
+				if (entities[i].x > canvas.width - playerSize) { // this will check and destroy if an enemy is touching the x-axis //original size 15, now playerSize is about 19.43999
+                	entities.splice(i, 1);
+            	} else if (entities[i].x < playerSize) {
+               		entities.splice(i, 1);
+            	}
+			
+				if (entities[i].y > canvas.height - playerSize) { // this will check and destroy if an enemy is touching the y-axis //original size 15, now playerSize is about 19.43999
+                	entities.splice(i, 1);
+            	} else if (entities[i].y < playerSize) {
+                	entities.splice(i, 1);
+            	}
+				
+			}
+			//console.log(newObject);
+			  //EnemyCreate();
+			 
+			//console.log(entities);  
+		}
+		
+		//this will create a new enemy every 3 seconds
+		setInterval(function(){
+					
+		    newEnemy = jQuery.extend(true, {}, enemy);
+			newEnemy.x = Math.round(Math.random() * (canvas.width * .95));
+			newEnemy.y = Math.round(Math.random() * (canvas.height * .95));
+			newEnemy.direction = Math.round(Math.random() * 7);
+					
+			entities.push(newEnemy);
+			//console.log(entities);
+		}, 3000);
+		
+		
+		// function createEnemies(){
+			
+			
+		// 	setInterval(function(){
+				
+		// 		var enemy = new Object();
+		// 		enemy.color = "black";
+		// 		enemy.x = Math.round(Math.random() * (canvas.width * .95));
+		// 		enemy.y = Math.round(Math.random() * (canvas.height * .95));
+		// 		enemy.size = playerSize;
+		// 		enemy.draw = function() {
+		// 			ctx.beginPath(); // this is the ai guy
+    	// 			ctx.fillStyle = this.color;
+    	// 			ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+		// 			ctx.fill();
+        //     		ctx.closePath();
+ 		// 	 }
+				
+		// 	entities.push(enemy);
+		// 	console.log(entities);	
+				
+		// 	}, 3000);
+			  
+		// 	  //enemy.draw();
+			
+		// }
+		
+		//createEnemies();
+		
+		
+		// var enemies = setInterval(function(){ 
+				
+		// 		//enemy.x = Math.round(Math.random() * (canvas.width - (playerSize * 4)));
+		// 		//enemy.y = Math.round(Math.random() * (canvas.height - (playerSize * 4)));
+		// 		//console.log(enemy);
+		// 		entities.push(enemy);
+		// 		//enemy.draw();
+				
+		// 		for(var i = 0; i < entities.length; i++){
+					
+		// 			console.log(entities[i]);
+		// 			entities[i].x = Math.round(Math.random() * (canvas.width - (playerSize * 4)));
+		// 			entities[i].y = Math.round(Math.random() * (canvas.width - (playerSize * 4)));
+		// 			entities[i];
+		// 		}
+				
+		// 		//entities[0].draw();
+		// 		//console.log(entities);
+		// 		console.log("enemy created");
+		// 		console.log(enemy.x + " " + enemy.y);
+				
+		// 	}, 3000);
+		
+		// //this will give the enemies random positions x and y
+		
+		
+		
 		
 		// function makeEnemyShip(x, y) {
-    	// 	var position = {
-        // 		Ex: x,
-        // 		Ey: y
-    	// };
+		// 	 target = {
+		// 			Ex: x,
+		// 			Ey: y
+		// 		}
+				
+				
+		// 	ctx.beginPath(); // this is the ai guy
+        //     ctx.fillStyle = "black";
+        //     ctx.arc(target.Ex, target.Ey, playerSize, 0, Math.PI * 2); // draws the ai. ai has hard coded position
+        //     ctx.fill();
+        //     ctx.closePath();
+		// 	};
+			
+			
+
+			// function start() {
+				
+				
+
+			// 	for (var i = 0; i <= numOfEnemyShips; i++) {
+					
+			// 		var Newtarget = {
+            //  			Ex: Math.round(Math.random() * (canvas.width - (playerSize * 4))), // retest this to see if the enemies stay in the game area
+       	    //  			Ey: Math.round(Math.random() * (canvas.height - (playerSize * 4)))
+         	// 		};
+					
+			// 		entities.push(enemy(Newtarget.Ex, Newtarget.Ey));
+					
+					
+			// 		console.log("EX: " + Newtarget.Ex);
+			// 		console.log("EY: " + Newtarget.Ey);
+			// 	}
+			// }		
 		
-		//  var entities = [];
-    	//  var numOfEnemyShips = 4;
-
-    	// function start() {
-
-        // 	for (var i = 0; i <= numOfEnemyShips; i++) {
-        //     	entities.push(makeEnemyShip(i * 10, i));
-        // 	}
-    	// }
 		
         update();// sets the keyboard press loop into motion
+		
+		
+		
+		//start();
 
         document.body.addEventListener("keydown", function (e) { // these make the keyboard do
             keys[e.keyCode] = true;
