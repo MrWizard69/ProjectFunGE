@@ -80,7 +80,20 @@ $(document).ready(function () {
                       baseX: (window.innerWidth) * 1.58, // this size is only good for mobile not tablets
                       baseY: (window.innerHeight) * .30, // this size is only good for mobile not tablets
 				stickRadius: 25
-			});		
+			});	
+			
+			
+		//this will create a new enemy every 3 seconds //known bug, if play button is hit more than once, everything seems to get duplicated
+		setInterval(function(){
+					
+		    newEnemy = jQuery.extend(true, {}, enemy);
+			newEnemy.x = Math.round(Math.random() * (canvas.width * .95));
+			newEnemy.y = Math.round(Math.random() * (canvas.height * .95));
+			newEnemy.direction = Math.round(Math.random() * 7);
+					
+			entities.push(newEnemy);
+			//console.log(entities);
+		}, 3000);	
 
 	});
 	
@@ -543,17 +556,7 @@ $(document).ready(function () {
 			//console.log(entities);  
 		}
 		
-		//this will create a new enemy every 3 seconds
-		setInterval(function(){
-					
-		    newEnemy = jQuery.extend(true, {}, enemy);
-			newEnemy.x = Math.round(Math.random() * (canvas.width * .95));
-			newEnemy.y = Math.round(Math.random() * (canvas.height * .95));
-			newEnemy.direction = Math.round(Math.random() * 7);
-					
-			entities.push(newEnemy);
-			//console.log(entities);
-		}, 3000);
+		
 		
 		
 		// function createEnemies(){
