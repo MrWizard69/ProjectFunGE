@@ -6,7 +6,7 @@ $(document).ready(function () {
     var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d");
 	
-	//var joystick;
+	var joystick;
 	
 	//----------------------this guys sets up the virtual joystick. Thank you virtualjoystick.js--------------------------------//
 		joystick = new VirtualJoystick({
@@ -18,6 +18,8 @@ $(document).ready(function () {
                       baseY: joyStickY, // this size is only good for mobile not tablets
 				stickRadius: 25
 			});	
+			
+			joystick.destroy();
 	
 	var playerSize = 0;
 	
@@ -56,6 +58,21 @@ $(document).ready(function () {
   	// 	}			
 		
 	// };
+	
+	// setInterval(function(){
+		
+	// 	//----------------------this guys sets up the virtual joystick. Thank you virtualjoystick.js--------------------------------//
+	// 	joystick = new VirtualJoystick({
+	// 			container: document.getElementById('container'),
+	// 			mouseSupport: true,
+	// 			limitStickTravel: true,
+	// 			stationaryBase: true, // to make the joystick appear anywhere, set to false and comment out BaseX and BaseY
+    //                   baseX: joyStickX, // this size is only good for mobile not tablets
+    //                   baseY: joyStickY, // this size is only good for mobile not tablets
+	// 			stickRadius: 25
+	// 		});	
+		
+	// },3000);
 	
 	
 	$("#play").click(function(){
@@ -103,6 +120,22 @@ $(document).ready(function () {
 
 	});
 	
+	setInterval(function(){
+		
+		joystixx = new VirtualJoystick({
+				container: document.getElementById('container'),
+				mouseSupport: true,
+				limitStickTravel: true,
+				stationaryBase: true, // to make the joystick appear anywhere, set to false and comment out BaseX and BaseY
+                      baseX: joyStickX, // this size is only good for mobile not tablets
+                      baseY: joyStickY, // this size is only good for mobile not tablets
+				stickRadius: 25
+			});	
+			
+			//joystixx.destroy();
+		
+	}, 1000)
+	
 	
 	function joystickUpdate(){
 		
@@ -141,6 +174,9 @@ $(document).ready(function () {
 	// call the resizeCanvas() function each time
 	// the window is resized.
 		window.addEventListener('resize', resizeCanvas, false);
+		
+		
+		
 	// Draw canvas border for the first time.
 		resizeCanvas();
 	}
@@ -174,6 +210,8 @@ $(document).ready(function () {
 		x = playerPositionX;
         y = playerPositionY;
 		
+		
+		
 	}
 	// Runs each time the DOM window resize event fires.
 	// Resets the canvas dimensions to match window,
@@ -185,7 +223,7 @@ $(document).ready(function () {
 		canvas.height = (window.innerHeight) * .69;
 		
 		//console.log("Canvas Width " + canvas.width);
-		$("#result").html(canvas.width);
+		//$("#result").html(canvas.width);
 		
 		// if(canvas.width > 1000){
 			
@@ -199,8 +237,23 @@ $(document).ready(function () {
 		
 		if(canvas.width >= 428){
 			
+			//joystick.destroy();
+			
+			
 			joyStickX = (window.innerWidth) * 1.58;
 			joyStickY = (window.innerHeight) * .30;
+			
+			// joystick.baseX = joyStickX;
+			// joystick.baseY = joyStickY;
+			
+			//canvas.clearRect(0, 0, canvas.width, canvas.height);
+			
+			//joystick._buildJoystickBase;
+			//joystick._buildJoystickStick;
+			
+			
+			
+			console.log(joyStickX);
 			
 		}
 		
