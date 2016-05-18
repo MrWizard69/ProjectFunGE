@@ -6,7 +6,19 @@ $(document).ready(function () {
     var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d");
 	
-	var joystick;
+	//var joystick;
+	
+	//----------------------this guys sets up the virtual joystick. Thank you virtualjoystick.js--------------------------------//
+		joystick = new VirtualJoystick({
+				container: document.getElementById('container'),
+				mouseSupport: true,
+				limitStickTravel: true,
+				stationaryBase: true, // to make the joystick appear anywhere, set to false and comment out BaseX and BaseY
+                      baseX: joyStickX, // this size is only good for mobile not tablets
+                      baseY: joyStickY, // this size is only good for mobile not tablets
+				stickRadius: 25
+			});	
+	
 	var playerSize = 0;
 	
 	var playerPositionX = 0;
@@ -28,6 +40,9 @@ $(document).ready(function () {
     	Ex: Math.round(Math.random() * (canvas.width - (playerSize * 4))), // retest this to see if the enemies stay in the game area
        	Ey: Math.round(Math.random() * (canvas.height - (playerSize * 4)))
     };
+	
+	var joyStickX = 0;
+	var joyStickY = 0;
 	
 	// var enemy = {
 	
@@ -71,16 +86,7 @@ $(document).ready(function () {
 		//}
 		//----------------------End of full screen------------------------------------------//
 		
-		//----------------------this guys sets up the virtual joystick. Thank you virtualjoystick.js--------------------------------//
-		joystick = new VirtualJoystick({
-				container: document.getElementById('container'),
-				mouseSupport: true,
-				limitStickTravel: true,
-				stationaryBase: true, // to make the joystick appear anywhere, set to false and comment out BaseX and BaseY
-                      baseX: (window.innerWidth) * 1.58, // this size is only good for mobile not tablets
-                      baseY: (window.innerHeight) * .30, // this size is only good for mobile not tablets
-				stickRadius: 25
-			});	
+		
 			
 			
 		//this will create a new enemy every 3 seconds //known bug, if play button is hit more than once, everything seems to get duplicated
@@ -180,6 +186,30 @@ $(document).ready(function () {
 		
 		//console.log("Canvas Width " + canvas.width);
 		$("#result").html(canvas.width);
+		
+		// if(canvas.width > 1000){
+			
+		// 	$("#container").hide();
+		// }
+		
+		// if(canvas.width < 999){
+			
+		// 	$("#container").show();
+		// }
+		
+		if(canvas.width >= 428){
+			
+			joyStickX = (window.innerWidth) * 1.58;
+			joyStickY = (window.innerHeight) * .30;
+			
+		}
+		
+		if(canvas.width >= 241){
+			
+			joyStickX = (window.innerWidth) * .89;
+			joyStickY = (window.innerHeight) * .30;	
+			
+		}
 		//playArea = canvas.width * canvas.height; //find the area and multiply to reposition characters at screen change. Find a percentage of the x and y's positon relative to playArea		
 		
 		//console.log("Canvas Height " + canvas.height);		
@@ -372,6 +402,29 @@ $(document).ready(function () {
 			//-----------------player movement with keyboard end --------------------------------------------//
 			
 			
+			if (joystick.up()) {
+                if (velY > -speed) {
+                    velY--;
+                }
+            }
+
+            if (joystick.down()) {
+                if (velY < speed) {
+                    velY++;
+                }
+            }
+            if (joystick.right()) {
+                if (velX < speed) {
+                    velX++;
+                }
+            }
+            if (joystick.left()) {
+                if (velX > -speed) {
+                    velX--;
+                }
+            }
+			
+			
             velY *= friction; //friction and final positioning
             y += velY;
             velX *= friction;
@@ -428,7 +481,7 @@ $(document).ready(function () {
 
 
             setTimeout(update, 5); //refresh the screen and sets the main loop for movement with keyboard 
-			setTimeout(joystickUpdate, 5); //refresh the screen and sets the main loop for movement with the virtual joystick
+			//setTimeout(joystickUpdate, 5); //refresh the screen and sets the main loop for movement with the virtual joystick
 			
 			//----------------------------------------------------------
 					
