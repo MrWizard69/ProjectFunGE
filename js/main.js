@@ -72,9 +72,9 @@ $(document).ready(function () {
 		//----------------------End of full screen------------------------------------------//
 		
 		//----------------------this guys sets up the virtual joystick. Thank you virtualjoystick.js--------------------------------//
-		joystick	= new VirtualJoystick({
-				container	: document.getElementById('container'),
-				mouseSupport	: true,
+		joystick = new VirtualJoystick({
+				container: document.getElementById('container'),
+				mouseSupport: true,
 				limitStickTravel: true,
 				stationaryBase: true, // to make the joystick appear anywhere, set to false and comment out BaseX and BaseY
                       baseX: (window.innerWidth) * 1.58, // this size is only good for mobile not tablets
@@ -179,7 +179,7 @@ $(document).ready(function () {
 		canvas.height = (window.innerHeight) * .69;
 		
 		//console.log("Canvas Width " + canvas.width);
-		
+		$("#result").html(canvas.width);
 		//playArea = canvas.width * canvas.height; //find the area and multiply to reposition characters at screen change. Find a percentage of the x and y's positon relative to playArea		
 		
 		//console.log("Canvas Height " + canvas.height);		
