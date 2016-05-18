@@ -59,20 +59,20 @@ $(document).ready(function () {
 		
 	// };
 	
-	// setInterval(function(){
+	var joyTest = setInterval(function(){
 		
-	// 	//----------------------this guys sets up the virtual joystick. Thank you virtualjoystick.js--------------------------------//
-	// 	joystick = new VirtualJoystick({
-	// 			container: document.getElementById('container'),
-	// 			mouseSupport: true,
-	// 			limitStickTravel: true,
-	// 			stationaryBase: true, // to make the joystick appear anywhere, set to false and comment out BaseX and BaseY
-    //                   baseX: joyStickX, // this size is only good for mobile not tablets
-    //                   baseY: joyStickY, // this size is only good for mobile not tablets
-	// 			stickRadius: 25
-	// 		});	
+	 	//----------------------this guys sets up the virtual joystick. Thank you virtualjoystick.js--------------------------------//
+		joystick = new VirtualJoystick({
+				container: document.getElementById('container'),
+				mouseSupport: true,
+				limitStickTravel: true,
+				stationaryBase: true, // to make the joystick appear anywhere, set to false and comment out BaseX and BaseY
+                      baseX: joyStickX, // this size is only good for mobile not tablets
+                      baseY: joyStickY, // this size is only good for mobile not tablets
+				stickRadius: 25
+			});	
 		
-	// },3000);
+	},3000);
 	
 	
 	$("#play").click(function(){
@@ -120,21 +120,6 @@ $(document).ready(function () {
 
 	});
 	
-	setInterval(function(){
-		
-		joystixx = new VirtualJoystick({
-				container: document.getElementById('container'),
-				mouseSupport: true,
-				limitStickTravel: true,
-				stationaryBase: true, // to make the joystick appear anywhere, set to false and comment out BaseX and BaseY
-                      baseX: joyStickX, // this size is only good for mobile not tablets
-                      baseY: joyStickY, // this size is only good for mobile not tablets
-				stickRadius: 25
-			});	
-			
-			//joystixx.destroy();
-		
-	}, 1000)
 	
 	
 	function joystickUpdate(){
@@ -242,6 +227,10 @@ $(document).ready(function () {
 			
 			joyStickX = (window.innerWidth) * 1.58;
 			joyStickY = (window.innerHeight) * .30;
+			
+			setInterval(function(){
+				clearInterval(joyTest);
+			},3001)
 			
 			// joystick.baseX = joyStickX;
 			// joystick.baseY = joyStickY;
