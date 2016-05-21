@@ -6,10 +6,10 @@ $(document).ready(function () {
     var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d");
 	
-	var joystick;
+	//var joystick;
 	
 	//----------------------this guys sets up the virtual joystick. Thank you virtualjoystick.js--------------------------------//
-		joystick = new VirtualJoystick({
+		var joystick = new VirtualJoystick({
 				container: document.getElementById('container'),
 				mouseSupport: true,
 				limitStickTravel: true,
@@ -59,20 +59,20 @@ $(document).ready(function () {
 		
 	// };
 	
-	var joyTest = setInterval(function(){
+	// var joyTest = setInterval(function(){// i feel like this is too slowwww
 		
-	 	//----------------------this guys sets up the virtual joystick. Thank you virtualjoystick.js--------------------------------//
-		joystick = new VirtualJoystick({
-				container: document.getElementById('container'),
-				mouseSupport: true,
-				limitStickTravel: true,
-				stationaryBase: true, // to make the joystick appear anywhere, set to false and comment out BaseX and BaseY
-                      baseX: joyStickX, // this size is only good for mobile not tablets
-                      baseY: joyStickY, // this size is only good for mobile not tablets
-				stickRadius: 25
-			});	
+	//  	//----------------------this guys sets up the virtual joystick. Thank you virtualjoystick.js--------------------------------//
+	// 	joystick = new VirtualJoystick({
+	// 			container: document.getElementById('container'),
+	// 			mouseSupport: true,
+	// 			limitStickTravel: true,
+	// 			stationaryBase: true, // to make the joystick appear anywhere, set to false and comment out BaseX and BaseY
+    //                   baseX: joyStickX, // this size is only good for mobile not tablets
+    //                   baseY: joyStickY, // this size is only good for mobile not tablets
+	// 			stickRadius: 25
+	// 		});	
 		
-	},3000);
+	// },3000);
 	
 	
 	$("#play").click(function(){
@@ -103,7 +103,15 @@ $(document).ready(function () {
 		//}
 		//----------------------End of full screen------------------------------------------//
 		
-		
+		 joystick = new VirtualJoystick({
+				container: document.getElementById('container'),
+				mouseSupport: true,
+				limitStickTravel: true,
+				stationaryBase: true, // to make the joystick appear anywhere, set to false and comment out BaseX and BaseY
+                      baseX: joyStickX, // this size is only good for mobile not tablets
+                      baseY: joyStickY, // this size is only good for mobile not tablets
+				stickRadius: 25
+			});	
 			
 			
 		//this will create a new enemy every 3 seconds //known bug, if play button is hit more than once, everything seems to get duplicated
@@ -120,33 +128,33 @@ $(document).ready(function () {
 
 	});
 	
+	//old method
 	
-	
-	function joystickUpdate(){
+	// function joystickUpdate(){
 		
-		if (joystick.up()) {
-                if (velY > -speed) {
-                    velY--;
-                }
-            }
+	// 	if (joystick.up()) {
+    //             if (velY > -speed) {
+    //                 velY--;
+    //             }
+    //         }
 
-            if (joystick.down()) {
-                if (velY < speed) {
-                    velY++;
-                }
-            }
-            if (joystick.right()) {
-                if (velX < speed) {
-                    velX++;
-                }
-            }
-            if (joystick.left()) {
-                if (velX > -speed) {
-                    velX--;
-                }
-            }
+    //         if (joystick.down()) {
+    //             if (velY < speed) {
+    //                 velY++;
+    //             }
+    //         }
+    //         if (joystick.right()) {
+    //             if (velX < speed) {
+    //                 velX++;
+    //             }
+    //         }
+    //         if (joystick.left()) {
+    //             if (velX > -speed) {
+    //                 velX--;
+    //             }
+    //         }
 		
-	}
+	// }
 	
 	//------------------------end of virtual joystick------------------------------------------//
 
@@ -228,9 +236,9 @@ $(document).ready(function () {
 			joyStickX = (window.innerWidth) * 1.58;
 			joyStickY = (window.innerHeight) * .30;
 			
-			setInterval(function(){
-				clearInterval(joyTest);
-			},3001)
+			// setInterval(function(){
+			// 	clearInterval(joyTest);
+			// },3001);
 			
 			// joystick.baseX = joyStickX;
 			// joystick.baseY = joyStickY;
