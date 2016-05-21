@@ -132,7 +132,9 @@ $(document).ready(function () {
 	
 	function joystickUpdate(){
 		
-		for(var i = 0; i <= 1; i++){
+		setInterval(function(){
+			
+			for(var i = 0; i <= 1; i++){
 		
 		if (joystick.up()) {
                 if (velY > -speed) {
@@ -157,6 +159,10 @@ $(document).ready(function () {
             }
 			
 		}
+			
+		}, 1000);
+		
+		
 		
 	}
 	
@@ -564,7 +570,7 @@ $(document).ready(function () {
 					
 
 			draw();	//this draws all the enemies in the game area	
-			joystickUpdate();
+			//joystickUpdate();
         }
 		
 		
@@ -782,7 +788,7 @@ $(document).ready(function () {
 			// 	}
 			// }		
 		
-		
+		joystickUpdate();
         update();// sets the keyboard press loop into motion
 		
 		
