@@ -134,33 +134,33 @@ $(document).ready(function () {
 		
 		setInterval(function(){
 			
-		for(var i = 0; i <= 4; i++){
-		
-			if (joystick.up()) {
-					if (velY > -speed) {
-						velY--;
-					}
-				}
-
-				if (joystick.down()) {
-					if (velY < speed) {
-						velY++;
-					}
-				}
-				if (joystick.right()) {
-					if (velX < speed) {
-						velX++;
-					}
-				}
-				if (joystick.left()) {
-					if (velX > -speed) {
-						velX--;
-					}
-				}
-				
-			}
+			for(var i = 0; i <= 4; i++){
 			
-		}, 10);
+				if (joystick.up()) {
+						if (velY > -speed) {
+							velY--;
+						}
+					}
+
+					if (joystick.down()) {
+						if (velY < speed) {
+							velY++;
+						}
+					}
+					if (joystick.right()) {
+						if (velX < speed) {
+							velX++;
+						}
+					}
+					if (joystick.left()) {
+						if (velX > -speed) {
+							velX--;
+						}
+					}
+					
+				}
+			
+		}, 100);
 		
 		
 		
