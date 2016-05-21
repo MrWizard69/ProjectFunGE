@@ -455,25 +455,25 @@ $(document).ready(function () {
 			
 			//-----------------player movement with keyboard end --------------------------------------------//
 			
-			for(var i = 0; i < 1; i++){
+			for(var i = 0; i <= 4; i++){
 			
-			if (joystick.up()) {
+			if (i == 1 && joystick.up()) {
                 if (velY > -speed) {
                     velY--;
                 }
             }
 
-            if (joystick.down()) {
+            if (i == 2 && joystick.down()) {
                 if (velY < speed) {
                     velY++;
                 }
             }
-            if (joystick.right()) {
+            if (i == 3 && joystick.right()) {
                 if (velX < speed) {
                     velX++;
                 }
             }
-            if (joystick.left()) {
+            if (i == 4 && joystick.left()) {
                 if (velX > -speed) {
                     velX--;
                 }
