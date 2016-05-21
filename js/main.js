@@ -216,7 +216,7 @@ $(document).ready(function () {
 		canvas.height = (window.innerHeight) * .69;
 		
 		//console.log("Canvas Width " + canvas.width);
-		//$("#result").html(canvas.width);
+		$("#result").html(canvas.width);
 		
 		// if(canvas.width > 1000){
 			
