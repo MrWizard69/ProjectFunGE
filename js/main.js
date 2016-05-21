@@ -132,7 +132,7 @@ $(document).ready(function () {
 	
 	function joystickUpdate(){
 		
-		for(var i = 0; i <= 1; i++){
+		for(var i = 0; i < 1; i++){
 		
 		if (joystick.up()) {
                 if (velY > -speed) {
@@ -534,7 +534,7 @@ $(document).ready(function () {
             // ctx.closePath();
 
 
-            setTimeout(update, 3); //refresh the screen and sets the main loop for movement with keyboard 5
+            setTimeout(update, 5); //refresh the screen and sets the main loop for movement with keyboard 5
 			//setTimeout(joystickUpdate, 5); //refresh the screen and sets the main loop for movement with the virtual joystick
 			
 			//----------------------------------------------------------
