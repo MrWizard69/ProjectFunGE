@@ -134,31 +134,31 @@ $(document).ready(function () {
 		
 		setInterval(function(){
 			
-			//for(var i = 0; i <= 1; i++){
+		for(var i = 0; i <= 4; i++){
 		
-		if (joystick.up()) {
-                if (velY > -speed) {
-                    velY--;
-                }
-            }
+			if (i == 1 && joystick.up()) {
+					if (velY > -speed) {
+						velY--;
+					}
+				}
 
-            if (joystick.down()) {
-                if (velY < speed) {
-                    velY++;
-                }
-            }
-            if (joystick.right()) {
-                if (velX < speed) {
-                    velX++;
-                }
-            }
-            if (joystick.left()) {
-                if (velX > -speed) {
-                    velX--;
-                }
-            }
-			
-		//}
+				if (i == 2 && joystick.down()) {
+					if (velY < speed) {
+						velY++;
+					}
+				}
+				if (i == 3 && joystick.right()) {
+					if (velX < speed) {
+						velX++;
+					}
+				}
+				if (i == 4 && joystick.left()) {
+					if (velX > -speed) {
+						velX--;
+					}
+				}
+				
+			}
 			
 		}, 10);
 		
