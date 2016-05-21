@@ -132,7 +132,7 @@ $(document).ready(function () {
 	
 	function joystickUpdate(){
 		
-		for(var i = 0; i < 4; i++){
+		for(var i = 0; i <= 4; i++){
 		
 		if (i == 1 && joystick.up()) {
                 if (velY > -speed) {
