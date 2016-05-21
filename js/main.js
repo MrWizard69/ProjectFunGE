@@ -281,7 +281,7 @@ $(document).ready(function () {
         // This is the players velocity, speed, friction and an array of keys that are being pressed    
         var velY = 0,
             velX = 0,
-            speed = 3,
+            speed = 2,
             friction = 0.5, //0.98
             keys = [];
 			
