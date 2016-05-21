@@ -130,35 +130,35 @@ $(document).ready(function () {
 	
 	//old method with new approach
 	
-	// function joystickUpdate(){
+	function joystickUpdate(){
 		
-	// 	for(var i = 0; i < 1; i++){
+		for(var i = 0; i < 1; i++){
 		
-	// 	if (joystick.up()) {
-    //             if (velY > -speed) {
-    //                 velY--;
-    //             }
-    //         }
+		if (joystick.up()) {
+                if (velY > -speed) {
+                    velY--;
+                }
+            }
 
-    //         if (joystick.down()) {
-    //             if (velY < speed) {
-    //                 velY++;
-    //             }
-    //         }
-    //         if (joystick.right()) {
-    //             if (velX < speed) {
-    //                 velX++;
-    //             }
-    //         }
-    //         if (joystick.left()) {
-    //             if (velX > -speed) {
-    //                 velX--;
-    //             }
-    //         }
+            if (joystick.down()) {
+                if (velY < speed) {
+                    velY++;
+                }
+            }
+            if (joystick.right()) {
+                if (velX < speed) {
+                    velX++;
+                }
+            }
+            if (joystick.left()) {
+                if (velX > -speed) {
+                    velX--;
+                }
+            }
 			
-	// 	}
+		}
 		
-	// }
+	}
 	
 	//------------------------end of virtual joystick------------------------------------------//
 
@@ -480,27 +480,27 @@ $(document).ready(function () {
             // }
 			// }
 			
-			if (joystick.up()) {
-                if (velY > -speed) {
-                    velY--;
-                }
-            }
+			// if (joystick.up()) {
+            //     if (velY > -speed) {
+            //         velY--;
+            //     }
+            // }
 
-            if (joystick.down()) {
-                if (velY < speed) {
-                    velY++;
-                }
-            }
-            if (joystick.right()) {
-                if (velX < speed) {
-                    velX++;
-                }
-            }
-            if (joystick.left()) {
-                if (velX > -speed) {
-                    velX--;
-                }
-            }
+            // if (joystick.down()) {
+            //     if (velY < speed) {
+            //         velY++;
+            //     }
+            // }
+            // if (joystick.right()) {
+            //     if (velX < speed) {
+            //         velX++;
+            //     }
+            // }
+            // if (joystick.left()) {
+            //     if (velX > -speed) {
+            //         velX--;
+            //     }
+            // }
 			
             velY *= friction; //friction and final positioning
             y += velY;
@@ -529,13 +529,13 @@ $(document).ready(function () {
 			// }
 			
 			//this is a colision with the test ai guy
-			if (x < enemy.x + playerSize  && x + playerSize  > enemy.x &&
-			y < enemy.y + playerSize && y + playerSize > enemy.y) {
-				// The objects are touching
+			// if (x < enemy.x + playerSize  && x + playerSize  > enemy.x &&
+			// y < enemy.y + playerSize && y + playerSize > enemy.y) {
+			// 	// The objects are touching
 				
-				velX *= friction - 10; //this will stop the player from moving
-				velY *= friction - 10;
-			}
+			// 	velX *= friction - 10; //this will stop the player from moving
+			// 	velY *= friction - 10;
+			// }
 			
 			
 			
@@ -564,7 +564,7 @@ $(document).ready(function () {
 					
 
 			draw();	//this draws all the enemies in the game area	
-			//joystickUpdate();
+			joystickUpdate();
         }
 		
 		
