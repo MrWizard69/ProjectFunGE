@@ -136,23 +136,23 @@ $(document).ready(function () {
 			
 		for(var i = 0; i <= 4; i++){
 		
-			if (i == 1 && joystick.up()) {
+			if (joystick.up()) {
 					if (velY > -speed) {
 						velY--;
 					}
 				}
 
-				if (i == 2 && joystick.down()) {
+				if (joystick.down()) {
 					if (velY < speed) {
 						velY++;
 					}
 				}
-				if (i == 3 && joystick.right()) {
+				if (joystick.right()) {
 					if (velX < speed) {
 						velX++;
 					}
 				}
-				if (i == 4 && joystick.left()) {
+				if (joystick.left()) {
 					if (velX > -speed) {
 						velX--;
 					}
