@@ -564,7 +564,7 @@ $(document).ready(function () {
 
 
             setTimeout(update, 3); //refresh the screen and sets the main loop for movement with keyboard 5
-			setTimeout(joystickUpdate, 5); //refresh the screen and sets the main loop for movement with the virtual joystick
+			setTimeout(joystickUpdate, 2); //refresh the screen and sets the main loop for movement with the virtual joystick
 			
 			//----------------------------------------------------------
 					
