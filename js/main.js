@@ -128,29 +128,29 @@ $(document).ready(function () {
 
 	});
 	
-	//old method
+	//old method with new approach
 	
 	function joystickUpdate(){
 		
-		for(var i = 0; i < 1; i++){
+		for(var i = 0; i < 4; i++){
 		
-		if (joystick.up()) {
+		if (i == 1 && joystick.up()) {
                 if (velY > -speed) {
                     velY--;
                 }
             }
 
-            if (joystick.down()) {
+            if (i == 2 && joystick.down()) {
                 if (velY < speed) {
                     velY++;
                 }
             }
-            if (joystick.right()) {
+            if (i == 3 && joystick.right()) {
                 if (velX < speed) {
                     velX++;
                 }
             }
-            if (joystick.left()) {
+            if (i == 4 && joystick.left()) {
                 if (velX > -speed) {
                     velX--;
                 }
@@ -220,7 +220,7 @@ $(document).ready(function () {
 		canvas.height = (window.innerHeight) * .69;
 		
 		//console.log("Canvas Width " + canvas.width);
-		$("#result").html(canvas.width);
+		//$("#result").html(canvas.width); //display the screen size
 		
 		// if(canvas.width > 1000){
 			
@@ -571,32 +571,32 @@ $(document).ready(function () {
 				 //console.log(this.direction);
 				 
 				 if(this.direction == 0){
-					 this.x -= 2;
+					 this.x -= 1;
 				 }
 				 if(this.direction == 1){
-					 this.x += 2;
+					 this.x += 1;
 				 }
 				 if(this.direction == 2){
-					 this.y -= 2;
+					 this.y -= 1;
 				 }
 				 if(this.direction == 3){
-					 this.y += 2;
+					 this.y += 1;
 				 }
 				 if(this.direction == 4){
-					 this.y += 2;
-					 this.x += 2;
+					 this.y += 1;
+					 this.x += 1;
 				 }
 				 if(this.direction == 5){
-					 this.y -= 2;
-					 this.x -= 2;
+					 this.y -= 1;
+					 this.x -= 1;
 				 }
 				 if(this.direction == 6){
-					 this.y += 2;
-					 this.x -= 2;
+					 this.y += 1;
+					 this.x -= 1;
 				 }
 				 if(this.direction == 7){
-					 this.y -= 2;
-					 this.x += 2;
+					 this.y -= 1;
+					 this.x += 1;
 				 }
 				 
 				 //when an enemy hits the wall, this will check the direction it was moving and make it move the revirse direction
