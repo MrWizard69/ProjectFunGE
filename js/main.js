@@ -530,7 +530,7 @@ $(document).ready(function () {
             // ctx.closePath();
 
 
-            setTimeout(update, 5); //refresh the screen and sets the main loop for movement with keyboard 
+            setTimeout(update, 3); //refresh the screen and sets the main loop for movement with keyboard 5
 			//setTimeout(joystickUpdate, 5); //refresh the screen and sets the main loop for movement with the virtual joystick
 			
 			//----------------------------------------------------------
