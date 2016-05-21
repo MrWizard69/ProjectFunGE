@@ -134,7 +134,7 @@ $(document).ready(function () {
 		
 		setInterval(function(){
 			
-			for(var i = 0; i <= 1; i++){
+			//for(var i = 0; i <= 1; i++){
 		
 		if (joystick.up()) {
                 if (velY > -speed) {
@@ -158,7 +158,7 @@ $(document).ready(function () {
                 }
             }
 			
-		}
+		//}
 			
 		}, 10);
 		
