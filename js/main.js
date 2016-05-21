@@ -132,7 +132,7 @@ $(document).ready(function () {
 	
 	function joystickUpdate(){
 		
-		setInterval(function(){
+		//setInterval(function(){
 			
 			for(var i = 0; i <= 4; i++){
 			
@@ -160,7 +160,7 @@ $(document).ready(function () {
 					
 				}
 			
-		}, 100);
+		//}, 10);
 		
 		
 		
@@ -564,7 +564,7 @@ $(document).ready(function () {
 
 
             setTimeout(update, 3); //refresh the screen and sets the main loop for movement with keyboard 5
-			//setTimeout(joystickUpdate, 5); //refresh the screen and sets the main loop for movement with the virtual joystick
+			setTimeout(joystickUpdate, 3); //refresh the screen and sets the main loop for movement with the virtual joystick
 			
 			//----------------------------------------------------------
 					
