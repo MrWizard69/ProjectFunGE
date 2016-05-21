@@ -132,6 +132,8 @@ $(document).ready(function () {
 	
 	function joystickUpdate(){
 		
+		for(var i = 0; i < 1; i++){
+		
 		if (joystick.up()) {
                 if (velY > -speed) {
                     velY--;
@@ -153,6 +155,8 @@ $(document).ready(function () {
                     velX--;
                 }
             }
+			
+		}
 		
 	}
 	
