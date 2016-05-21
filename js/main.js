@@ -788,9 +788,9 @@ $(document).ready(function () {
 			// 	}
 			// }		
 		
-		joystickUpdate();
-        update();// sets the keyboard press loop into motion
 		
+        update();// sets the keyboard press loop into motion
+		joystickUpdate();
 		
 		
 		//start();
