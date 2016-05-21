@@ -130,41 +130,41 @@ $(document).ready(function () {
 	
 	//old method with new approach
 	
-	function joystickUpdate(){
+	// function joystickUpdate(){
 		
-		//setInterval(function(){
+	// 	//setInterval(function(){
 			
-			for(var i = 0; i <= 4; i++){
+	// 		for(var i = 0; i <= 4; i++){
 			
-				if (joystick.up()) {
-						if (velY > -speed) {
-							velY--;
-						}
-					}
+	// 			if (joystick.up()) {
+	// 					if (velY > -speed) {
+	// 						velY--;
+	// 					}
+	// 				}
 
-					if (joystick.down()) {
-						if (velY < speed) {
-							velY++;
-						}
-					}
-					if (joystick.right()) {
-						if (velX < speed) {
-							velX++;
-						}
-					}
-					if (joystick.left()) {
-						if (velX > -speed) {
-							velX--;
-						}
-					}
+	// 				if (joystick.down()) {
+	// 					if (velY < speed) {
+	// 						velY++;
+	// 					}
+	// 				}
+	// 				if (joystick.right()) {
+	// 					if (velX < speed) {
+	// 						velX++;
+	// 					}
+	// 				}
+	// 				if (joystick.left()) {
+	// 					if (velX > -speed) {
+	// 						velX--;
+	// 					}
+	// 				}
 					
-				}
+	// 			}
 			
-		//}, 10);
+	// 	//}, 10);
 		
 		
 		
-	}
+	// }
 	
 	//------------------------end of virtual joystick------------------------------------------//
 
@@ -461,30 +461,30 @@ $(document).ready(function () {
 			
 			//-----------------player movement with keyboard end --------------------------------------------//
 			
-			// for(var i = 0; i <= 4; i++){
+			for(var i = 0; i <= 4; i++){
 			
-			// if (i == 1 && joystick.up()) {
-            //     if (velY > -speed) {
-            //         velY--;
-            //     }
-            // }
+			if (joystick.up()) {
+                if (velY > -speed) {
+                    velY--;
+                }
+            }
 
-            // if (i == 2 && joystick.down()) {
-            //     if (velY < speed) {
-            //         velY++;
-            //     }
-            // }
-            // if (i == 3 && joystick.right()) {
-            //     if (velX < speed) {
-            //         velX++;
-            //     }
-            // }
-            // if (i == 4 && joystick.left()) {
-            //     if (velX > -speed) {
-            //         velX--;
-            //     }
-            // }
-			// }
+            if (joystick.down()) {
+                if (velY < speed) {
+                    velY++;
+                }
+            }
+            if (joystick.right()) {
+                if (velX < speed) {
+                    velX++;
+                }
+            }
+            if (joystick.left()) {
+                if (velX > -speed) {
+                    velX--;
+                }
+            }
+			}
 			
 			// if (joystick.up()) {
             //     if (velY > -speed) {
@@ -564,7 +564,7 @@ $(document).ready(function () {
 
 
             setTimeout(update, 3); //refresh the screen and sets the main loop for movement with keyboard 5
-			setTimeout(joystickUpdate, 3); //refresh the screen and sets the main loop for movement with the virtual joystick
+			//setTimeout(joystickUpdate, 3); //refresh the screen and sets the main loop for movement with the virtual joystick
 			
 			//----------------------------------------------------------
 					
@@ -788,7 +788,7 @@ $(document).ready(function () {
 			// 	}
 			// }		
 		
-		joystickUpdate();
+		//joystickUpdate();
         update();// sets the keyboard press loop into motion
 		
 		
