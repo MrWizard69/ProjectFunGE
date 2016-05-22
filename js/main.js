@@ -51,16 +51,14 @@ $(document).ready(function () {
 	
 	
 	$("#container").on("vmouseup",function(){
-						
-						
+									
 		joyDirX = "";
 		joyDirY = "";
+		
 	});
 	
 		$("#container").on("vmousedown",function(){
-				
-				var joyloop = setInterval(function(){
-					
+									
 					if (joystick.up()) {
 						// if (velY > -speed) {
 						// 	velY--;
@@ -143,8 +141,91 @@ $(document).ready(function () {
 						}
 					}
 					
+				var joyloop = setInterval(function(){
 					
-				},1000);		
+						if (joystick.up()) {
+						// if (velY > -speed) {
+						// 	velY--;
+						// }
+						joyDirY = "up";
+						joyDirX = "";
+						
+						if (joystick.right()) {
+						// if (velX < speed) {
+						// 	velX++;
+						// }
+						joyDirX = "right";
+						//joyDirY = "";
+						}
+						
+						if (joystick.left()) {
+						// if (velX > -speed) {
+						// 	velX--;
+						// }
+						joyDirX = "left";
+						//joyDirY = "";
+						}
+					}
+
+					if (joystick.down()) {
+						// if (velY < speed) {
+						// 	velY++;
+						// }
+						joyDirY = "down";
+						joyDirX = "";
+						
+						if (joystick.right()) {
+						// if (velX < speed) {
+						// 	velX++;
+						// }
+						joyDirX = "right";
+						//joyDirY = "";
+					}
+					if (joystick.left()) {
+						// if (velX > -speed) {
+						// 	velX--;
+						// }
+						joyDirX = "left";
+						//joyDirY = "";
+						}
+					}
+					
+					
+					if (joystick.right()) {
+						// if (velX < speed) {
+						// 	velX++;
+						// }
+						joyDirX = "right";
+						joyDirY = "";
+						
+						if(joystick.up()){
+							
+							joyDirY = "up";
+						}
+						if(joystick.down()){
+							
+							joyDirY = "down";
+						}
+						
+					}
+					if (joystick.left()) {
+						// if (velX > -speed) {
+						// 	velX--;
+						// }
+						joyDirX = "left";
+						joyDirY = "";
+						
+						if(joystick.up()){
+							
+							joyDirY = "up";
+						}
+						if(joystick.down()){
+							
+							joyDirY = "down";
+						}
+					}
+					
+				},500);		
 					
 					//console.log(joyDirX);
 					//console.log(joyDirY);
