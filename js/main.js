@@ -137,7 +137,7 @@ $(document).ready(function () {
 		
 		setInterval(function(){
 			
-			for(var i = 0; i <= 7; i++){
+			for(var i = 0; i <= 3; i++){
 				
 				if (joystick.up()) {
 						if (velY > -speed) {
