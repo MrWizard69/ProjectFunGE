@@ -46,6 +46,16 @@ $(document).ready(function () {
 	
 	var joyStickX = 0;
 	var joyStickY = 0;
+	var joyDirX = "";
+	var joyDirY = "";
+	
+	
+	$("#container").on("vmouseup",function(){
+						
+						
+		joyDirX = "";
+		joyDirY = "";
+	});
 	
 	// var enemy = {
 	
@@ -207,32 +217,130 @@ $(document).ready(function () {
 	setInterval(function(){
 		
 					if (joystick.up()) {
-						if (velY > -speed) {
-							velY--;
+						// if (velY > -speed) {
+						// 	velY--;
+						// }
+						joyDirY = "up";
+						joyDirX = "";
+						
+						if (joystick.right()) {
+						// if (velX < speed) {
+						// 	velX++;
+						// }
+						joyDirX = "right";
+						//joyDirY = "";
+						}
+						
+						if (joystick.left()) {
+						// if (velX > -speed) {
+						// 	velX--;
+						// }
+						joyDirX = "left";
+						//joyDirY = "";
 						}
 					}
 
 					if (joystick.down()) {
-						if (velY < speed) {
-							velY++;
-						}
-					}
-					if (joystick.right()) {
-						if (velX < speed) {
-							velX++;
-						}
+						// if (velY < speed) {
+						// 	velY++;
+						// }
+						joyDirY = "down";
+						joyDirX = "";
+						
+						if (joystick.right()) {
+						// if (velX < speed) {
+						// 	velX++;
+						// }
+						joyDirX = "right";
+						//joyDirY = "";
 					}
 					if (joystick.left()) {
-						if (velX > -speed) {
-							velX--;
+						// if (velX > -speed) {
+						// 	velX--;
+						// }
+						joyDirX = "left";
+						//joyDirY = "";
 						}
 					}
-					else{
-							velX;
-							velY;
+					
+					
+					if (joystick.right()) {
+						// if (velX < speed) {
+						// 	velX++;
+						// }
+						joyDirX = "right";
+						joyDirY = "";
+						
+						if(joystick.up()){
+							
+							joyDirY = "up";
 						}
+						if(joystick.down()){
+							
+							joyDirY = "down";
+						}
+						
+					}
+					if (joystick.left()) {
+						// if (velX > -speed) {
+						// 	velX--;
+						// }
+						joyDirX = "left";
+						joyDirY = "";
+						
+						if(joystick.up()){
+							
+							joyDirY = "up";
+						}
+						if(joystick.down()){
+							
+							joyDirY = "down";
+						}
+					}
+					
+					
+					// if(joystick._onDown()){
+						
+					// 	joyDirX = "";
+					// 	joyDirY = "";
+						
+					// }
+					
+					
+					// if (joystick.up() == false) {
+					// 	// if (velY > -speed) {
+					// 	// 	velY--;
+					// 	// }
+					// 	joyDirY = "";
+					// }
+
+					// if (joystick.down() == false) {
+					// 	// if (velY < speed) {
+					// 	// 	velY++;
+					// 	// }
+					// 	joyDirY = "";
+					// }
+					// if (joystick.right() == false) {
+					// 	// if (velX < speed) {
+					// 	// 	velX++;
+					// 	// }
+					// 	joyDirX = "";
+					// }
+					// if (joystick.left() == false) {
+					// 	// if (velX > -speed) {
+					// 	// 	velX--;
+					// 	// }
+					// 	joyDirX = "";
+					// }
+					// else{
+					// 		velX;
+					// 		velY;
+					// 	}
+						
+						console.log(joyDirX);
+						console.log(joyDirY);
 		
-	}, 3);
+	}, 500);
 	
 	//------------------------end of virtual joystick------------------------------------------//
 
@@ -575,6 +683,35 @@ $(document).ready(function () {
             //         velX--;
             //     }
             // }
+			
+			if(joyDirX == "left"){
+				
+				if (velX > -speed) {
+                     velX--;
+                }
+				
+			}
+			if(joyDirX == "right"){
+				
+				if (velX < speed) {
+                     velX++;
+                }
+				
+			}
+			if(joyDirY == "up"){
+				
+				if (velY > -speed) {
+                    velY--;
+                }
+				
+			}
+			if(joyDirY == "down"){
+				
+				if (velY < speed) {
+                     velY++;
+                }
+				
+			}
 			
             velY *= friction; //friction and final positioning
             y += velY;
