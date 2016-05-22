@@ -212,17 +212,17 @@ $(document).ready(function () {
 						}
 					}
 
-					else if (joystick.down()) {
+					if (joystick.down()) {
 						if (velY < speed) {
 							velY++;
 						}
 					}
-					else if (joystick.right()) {
+					if (joystick.right()) {
 						if (velX < speed) {
 							velX++;
 						}
 					}
-					else if (joystick.left()) {
+					if (joystick.left()) {
 						if (velX > -speed) {
 							velX--;
 						}
@@ -232,7 +232,7 @@ $(document).ready(function () {
 							velY;
 						}
 		
-	}, 13);
+	}, 3);
 	
 	//------------------------end of virtual joystick------------------------------------------//
 
