@@ -782,8 +782,45 @@ $(document).ready(function () {
 							joyDirY = "down";
 						}
 					}
+					//console.log(joyDirX);
+					//console.log(joyDirY);
+					
+		  if(joyDirX == "left" && joyDirY == "up"){
+				
+				//if (velX > -speed && velY > -speed) {
+                     velX--;
+					 velY--;
+                //}
+				
+			}
+			else if(joyDirX == "left" && joyDirY == "down" ){
+				
+				//if (velY < speed && velY > -speed) {
+                     velY++;
+					 velX--;
+               // }
+				
+			}
+			else if(joyDirY == "up" && joyDirX == "right"){
+				
+				//if (velY > -speed && velX < speed) {
+                    velY--;
+					velX++;
+                //}
+				
+			}
+			else if(joyDirY == "down" && joyDirX == "right"){
+				
+				//if (velY < speed && velX < speed) {
+                     velY++;
+					 velX++;
+                //}
+				
+			}
+
+					
 			
-			if(joyDirX == "left"){
+			else if(joyDirX == "left"){
 				
 				if (velX > -speed) {
                      velX--;
@@ -811,6 +848,9 @@ $(document).ready(function () {
                 }
 				
 			}
+			
+
+			
 			
             velY *= friction; //friction and final positioning
             y += velY;
