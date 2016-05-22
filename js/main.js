@@ -20,6 +20,7 @@ $(document).ready(function () {
 			});	
 			
 			joystick.destroy();
+			
 	
 	var playerSize = 0;
 	
@@ -132,10 +133,12 @@ $(document).ready(function () {
 	
 	function joystickUpdate(){
 		
+			
+		
 		setInterval(function(){
 			
-			for(var i = 0; i <= 1; i++){
-			
+			for(var i = 0; i <= 4; i++){
+				
 				if (joystick.up()) {
 						if (velY > -speed) {
 							velY--;
@@ -786,9 +789,12 @@ $(document).ready(function () {
 			// 		console.log("EX: " + Newtarget.Ex);
 			// 		console.log("EY: " + Newtarget.Ey);
 			// 	}
-			// }		
+			// }
+			
+			
 		
-		joystickUpdate();
+		//joystickUpdate();
+		setTimeout(joystickUpdate, 3);
         update();// sets the keyboard press loop into motion
 		
 		
