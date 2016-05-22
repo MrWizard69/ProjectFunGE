@@ -227,8 +227,12 @@ $(document).ready(function () {
 							velX--;
 						}
 					}
+					else{
+							velX;
+							velY;
+						}
 		
-	}, 3);
+	}, 13);
 	
 	//------------------------end of virtual joystick------------------------------------------//
 
