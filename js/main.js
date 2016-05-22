@@ -188,7 +188,7 @@ $(document).ready(function () {
 							velX;
 							velY;
 						}
-			setTimeout(joystickUpdate, 3);
+			setTimeout(joystickUpdate, 13);
 		// setInterval(function(){
 			
 		// 	//for(var i = 0; i <= 3; i++){
