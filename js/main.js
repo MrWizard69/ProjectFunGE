@@ -48,12 +48,14 @@ $(document).ready(function () {
 	var joyStickY = 0;
 	var joyDirX = "";
 	var joyDirY = "";
+	var joyTouch = false;
 	
 	
 	$("#container").on("vmouseup",function(){
 									
 		joyDirX = "";
 		joyDirY = "";
+		joyTouch = false;
 		
 	});
 	
@@ -140,6 +142,7 @@ $(document).ready(function () {
 							joyDirY = "down";
 						}
 					}
+					joyTouch = true;
 					
 				//var joyloop = setInterval(function(){
 					
@@ -701,6 +704,8 @@ $(document).ready(function () {
             //     }
             // }
 			
+			if(joyTouch == true){
+			
 			if (joystick.up()) {
 						// if (velY > -speed) {
 						// 	velY--;
@@ -849,7 +854,7 @@ $(document).ready(function () {
 				
 			}
 			
-
+			}
 			
 			
             velY *= friction; //friction and final positioning
