@@ -140,50 +140,50 @@ $(document).ready(function () {
 						}
 					}
 
-					if (joystick.down()) {
+					else if (joystick.down()) {
 						if (velY < speed) {
 							velY++;
 						}
 					}
-					if (joystick.right()) {
+					else if (joystick.right()) {
 						if (velX < speed) {
 							velX++;
 						}
 					}
-					if (joystick.left()) {
+					else if (joystick.left()) {
 						if (velX > -speed) {
 							velX--;
 						}
 					}
 					
-					if (joystick.up() && joystick.right()) {
+					else if (joystick.up() && joystick.right()) {
 						if (velY > -speed && velX < speed) {
 							velY--;
 							velX++;
 						}
 					}
 					
-					if (joystick.up() && joystick.left()) {
+					else if (joystick.up() && joystick.left()) {
 						if (velY > -speed && velX > -speed) {
 							velY--;
 							velX--;
 						}
 					}
 					
-					if (joystick.down() && joystick.right()) {
+					else if (joystick.down() && joystick.right()) {
 						if (velY < speed && velX < speed) {
 							velY++;
 							velX++;
 						}
 					}
 					
-					if (joystick.down() && joystick.left()) {
+					else if (joystick.down() && joystick.left()) {
 						if (velY < speed && velX > -speed) {
 							velY++;
 							velX--;
 						}
 					}
-			//setTimeout(joystickUpdate, 3);
+			setTimeout(joystickUpdate, 3);
 		// setInterval(function(){
 			
 		// 	//for(var i = 0; i <= 3; i++){
@@ -597,7 +597,7 @@ $(document).ready(function () {
 
 
             setTimeout(update, 3); //refresh the screen and sets the main loop for movement with keyboard 5
-			setTimeout(joystickUpdate, 3); //refresh the screen and sets the main loop for movement with the virtual joystick
+			//setTimeout(joystickUpdate, 3); //refresh the screen and sets the main loop for movement with the virtual joystick
 			
 			//----------------------------------------------------------
 					
