@@ -827,30 +827,30 @@ $(document).ready(function () {
 			
 			else if(joyDirX == "left"){
 				
-				if (velX > -speed) {
-                     velX--;
-                }
+				//if (velX > -speed) {
+                     velX -= 5;
+                //}
 				
 			}
 			else if(joyDirX == "right"){
 				
-				if (velX < speed) {
-                     velX++;
-                }
+				//if (velX < speed) {
+                     velX += 5;
+                //}
 				
 			}
 			else if(joyDirY == "up"){
 				
-				if (velY > -speed) {
-                    velY--;
-                }
+				//if (velY > -speed) {
+                    velY -= 5;
+                //}
 				
 			}
 			else if(joyDirY == "down"){
 				
-				if (velY < speed) {
-                     velY++;
-                }
+				//if (velY < speed) {
+                     velY += 5;
+                //}
 				
 			}
 			
@@ -912,7 +912,7 @@ $(document).ready(function () {
             // ctx.closePath();
 
 
-            setTimeout(update, 3); //refresh the screen and sets the main loop for movement with keyboard 5
+            setTimeout(update, 50); //refresh the screen and sets the main loop for movement with keyboard 5
 			//setTimeout(joystickUpdate, 3); //refresh the screen and sets the main loop for movement with the virtual joystick
 			
 			//----------------------------------------------------------
