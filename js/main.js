@@ -183,7 +183,7 @@ $(document).ready(function () {
 							velX--;
 						}
 					}
-			setTimeout(joystickUpdate, 3);
+			//setTimeout(joystickUpdate, 3);
 		// setInterval(function(){
 			
 		// 	//for(var i = 0; i <= 3; i++){
@@ -597,7 +597,7 @@ $(document).ready(function () {
 
 
             setTimeout(update, 3); //refresh the screen and sets the main loop for movement with keyboard 5
-			//setTimeout(joystickUpdate, 3); //refresh the screen and sets the main loop for movement with the virtual joystick
+			setTimeout(joystickUpdate, 3); //refresh the screen and sets the main loop for movement with the virtual joystick
 			
 			//----------------------------------------------------------
 					
