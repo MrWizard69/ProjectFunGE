@@ -131,9 +131,81 @@ $(document).ready(function () {
 	
 	//old method with new approach
 	
-	function joystickUpdate(){
+	// function joystickUpdate(){
 		
 
+	// 				if (joystick.up()) {
+	// 					if (velY > -speed) {
+	// 						velY--;
+	// 					}
+	// 				}
+
+	// 				else if (joystick.down()) {
+	// 					if (velY < speed) {
+	// 						velY++;
+	// 					}
+	// 				}
+	// 				else if (joystick.right()) {
+	// 					if (velX < speed) {
+	// 						velX++;
+	// 					}
+	// 				}
+	// 				else if (joystick.left()) {
+	// 					if (velX > -speed) {
+	// 						velX--;
+	// 					}
+	// 				}
+					
+	// 				else if (joystick.up() && joystick.right()) {
+	// 					if (velY > -speed && velX < speed) {
+	// 						velY--;
+	// 						velX++;
+	// 					}
+	// 				}
+					
+	// 				else if (joystick.up() && joystick.left()) {
+	// 					if (velY > -speed && velX > -speed) {
+	// 						velY--;
+	// 						velX--;
+	// 					}
+	// 				}
+					
+	// 				else if (joystick.down() && joystick.right()) {
+	// 					if (velY < speed && velX < speed) {
+	// 						velY++;
+	// 						velX++;
+	// 					}
+	// 				}
+					
+	// 				else if(joystick.down() && joystick.left()) {
+	// 					if (velY < speed && velX > -speed) {
+	// 						velY++;
+	// 						velX--;
+	// 					}
+						
+	// 				}
+	// 				else{
+	// 						velX;
+	// 						velY;
+	// 					}
+	// 		setTimeout(joystickUpdate, 3);
+	// 	// setInterval(function(){
+			
+	// 	// 	//for(var i = 0; i <= 3; i++){
+				
+
+	// 	// 			//console.log("loop");
+					
+	// 	// 		//}
+			
+	// 	// }, 10);
+		
+		
+		
+	// }
+	
+	setInterval(function(){
+		
 					if (joystick.up()) {
 						if (velY > -speed) {
 							velY--;
@@ -155,54 +227,8 @@ $(document).ready(function () {
 							velX--;
 						}
 					}
-					
-					// else if (joystick.up() || joystick.right()) {
-					// 	if (velY > -speed && velX < speed) {
-					// 		velY--;
-					// 		velX++;
-					// 	}
-					// }
-					
-					// else if (joystick.up() || joystick.left()) {
-					// 	if (velY > -speed && velX > -speed) {
-					// 		velY--;
-					// 		velX--;
-					// 	}
-					// }
-					
-					// else if (joystick.down() || joystick.right()) {
-					// 	if (velY < speed && velX < speed) {
-					// 		velY++;
-					// 		velX++;
-					// 	}
-					// }
-					
-					// else if(joystick.down() || joystick.left()) {
-					// 	if (velY < speed && velX > -speed) {
-					// 		velY++;
-					// 		velX--;
-					// 	}
-						
-					// }
-					else{
-							velX;
-							velY;
-						}
-			setTimeout(joystickUpdate, 13);
-		// setInterval(function(){
-			
-		// 	//for(var i = 0; i <= 3; i++){
-				
-
-		// 			//console.log("loop");
-					
-		// 		//}
-			
-		// }, 10);
 		
-		
-		
-	}
+	}, 3);
 	
 	//------------------------end of virtual joystick------------------------------------------//
 
@@ -828,7 +854,7 @@ $(document).ready(function () {
 			
 			
 		
-		joystickUpdate();
+		//joystickUpdate();
 		
         update();// sets the keyboard press loop into motion
 		
