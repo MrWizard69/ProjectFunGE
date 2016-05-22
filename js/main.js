@@ -156,33 +156,38 @@ $(document).ready(function () {
 						}
 					}
 					
-					else if (joystick.up() && joystick.right()) {
-						if (velY > -speed && velX < speed) {
-							velY--;
-							velX++;
-						}
-					}
+					// else if (joystick.up() || joystick.right()) {
+					// 	if (velY > -speed && velX < speed) {
+					// 		velY--;
+					// 		velX++;
+					// 	}
+					// }
 					
-					else if (joystick.up() && joystick.left()) {
-						if (velY > -speed && velX > -speed) {
-							velY--;
-							velX--;
-						}
-					}
+					// else if (joystick.up() || joystick.left()) {
+					// 	if (velY > -speed && velX > -speed) {
+					// 		velY--;
+					// 		velX--;
+					// 	}
+					// }
 					
-					else if (joystick.down() && joystick.right()) {
-						if (velY < speed && velX < speed) {
-							velY++;
-							velX++;
-						}
-					}
+					// else if (joystick.down() || joystick.right()) {
+					// 	if (velY < speed && velX < speed) {
+					// 		velY++;
+					// 		velX++;
+					// 	}
+					// }
 					
-					else if (joystick.down() && joystick.left()) {
-						if (velY < speed && velX > -speed) {
-							velY++;
-							velX--;
+					// else if(joystick.down() || joystick.left()) {
+					// 	if (velY < speed && velX > -speed) {
+					// 		velY++;
+					// 		velX--;
+					// 	}
+						
+					// }
+					else{
+							velX;
+							velY;
 						}
-					}
 			setTimeout(joystickUpdate, 3);
 		// setInterval(function(){
 			
