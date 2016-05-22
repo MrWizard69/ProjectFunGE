@@ -59,7 +59,7 @@ $(document).ready(function () {
 	
 		$("#container").on("vmousedown",function(){
 				
-				setInterval(function(){
+				var joyloop = setInterval(function(){
 					
 					if (joystick.up()) {
 						// if (velY > -speed) {
@@ -143,21 +143,14 @@ $(document).ready(function () {
 						}
 					}
 					
-				},500);		
-						
-		
 					
-					console.log(joyDirX);
-					console.log(joyDirY);
+				},300);		
+					
+					//console.log(joyDirX);
+					//console.log(joyDirY);
 					
 
 					
-	});
-	
-	$("#container").change(function(){
-		
-		console.log("change");
-		
 	});
 	
 	// var enemy = {
