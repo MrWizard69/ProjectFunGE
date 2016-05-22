@@ -161,9 +161,45 @@ $(document).ready(function () {
 						}
 					}
 					
+					if (joystick.up() && joystick.right()) {
+						if (velY > -speed) {
+							velY--;
+						}
+						if (velX < speed) {
+							velX++;
+						}
+					}
+					
+					if (joystick.up() && joystick.left()) {
+						if (velY > -speed) {
+							velY--;
+						}
+						if (velX > -speed) {
+							velX--;
+						}
+					}
+					
+					if (joystick.down() && joystick.right()) {
+						if (velY < speed) {
+							velY++;
+						}
+						if (velX < speed) {
+							velX++;
+						}
+					}
+					
+					if (joystick.down() && joystick.left()) {
+						if (velY < speed) {
+							velY++;
+						}
+						if (velX > -speed) {
+							velX--;
+						}
+					}
+					
 				}
 			
-		}, 20);
+		}, 10);
 		
 		
 		
