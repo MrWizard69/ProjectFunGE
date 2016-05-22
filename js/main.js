@@ -162,37 +162,29 @@ $(document).ready(function () {
 					}
 					
 					if (joystick.up() && joystick.right()) {
-						if (velY > -speed) {
+						if (velY > -speed && velX < speed) {
 							velY--;
-						}
-						if (velX < speed) {
 							velX++;
 						}
 					}
 					
 					if (joystick.up() && joystick.left()) {
-						if (velY > -speed) {
+						if (velY > -speed && velX > -speed) {
 							velY--;
-						}
-						if (velX > -speed) {
 							velX--;
 						}
 					}
 					
 					if (joystick.down() && joystick.right()) {
-						if (velY < speed) {
+						if (velY < speed && velX < speed) {
 							velY++;
-						}
-						if (velX < speed) {
 							velX++;
 						}
 					}
 					
 					if (joystick.down() && joystick.left()) {
-						if (velY < speed) {
+						if (velY < speed && velX > -speed) {
 							velY++;
-						}
-						if (velX > -speed) {
 							velX--;
 						}
 					}
