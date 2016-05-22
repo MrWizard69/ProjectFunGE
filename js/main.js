@@ -912,7 +912,7 @@ $(document).ready(function () {
             // ctx.closePath();
 
 
-            setTimeout(update, 50); //refresh the screen and sets the main loop for movement with keyboard 5
+            setTimeout(update, 30); //refresh the screen and sets the main loop for movement with keyboard 5
 			//setTimeout(joystickUpdate, 3); //refresh the screen and sets the main loop for movement with the virtual joystick
 			
 			//----------------------------------------------------------
