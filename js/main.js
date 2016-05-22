@@ -225,7 +225,7 @@ $(document).ready(function () {
 						}
 					}
 					
-				},500);		
+				},700);		
 					
 					//console.log(joyDirX);
 					//console.log(joyDirY);
