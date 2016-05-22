@@ -788,21 +788,21 @@ $(document).ready(function () {
                 }
 				
 			}
-			if(joyDirX == "right"){
+			else if(joyDirX == "right"){
 				
 				if (velX < speed) {
                      velX++;
                 }
 				
 			}
-			if(joyDirY == "up"){
+			else if(joyDirY == "up"){
 				
 				if (velY > -speed) {
                     velY--;
                 }
 				
 			}
-			if(joyDirY == "down"){
+			else if(joyDirY == "down"){
 				
 				if (velY < speed) {
                      velY++;
