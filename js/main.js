@@ -133,13 +133,8 @@ $(document).ready(function () {
 	
 	function joystickUpdate(){
 		
-			
-		
-		setInterval(function(){
-			
-			//for(var i = 0; i <= 3; i++){
-				
-				if (joystick.up()) {
+
+					if (joystick.up()) {
 						if (velY > -speed) {
 							velY--;
 						}
@@ -188,11 +183,17 @@ $(document).ready(function () {
 							velX--;
 						}
 					}
-					//console.log("loop");
-					
-				//}
+			setTimeout(joystickUpdate, 3);
+		// setInterval(function(){
 			
-		}, 10);
+		// 	//for(var i = 0; i <= 3; i++){
+				
+
+		// 			//console.log("loop");
+					
+		// 		//}
+			
+		// }, 10);
 		
 		
 		
@@ -822,8 +823,8 @@ $(document).ready(function () {
 			
 			
 		
-		//joystickUpdate();
-		setTimeout(joystickUpdate, 3);
+		joystickUpdate();
+		
         update();// sets the keyboard press loop into motion
 		
 		
