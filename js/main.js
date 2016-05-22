@@ -144,7 +144,7 @@ $(document).ready(function () {
 					}
 					
 					
-				},300);		
+				},1000);		
 					
 					//console.log(joyDirX);
 					//console.log(joyDirY);
