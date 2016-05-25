@@ -50,6 +50,18 @@ $(document).ready(function () {
 	var joyDirY = "";
 	var joyTouch = false;
 	
+	var addtohome = addToHomescreen({
+    	autostart: false
+	});
+	
+	$("#dwnload").click(function(){
+		
+		addtohome.show();
+		
+	});
+	
+	
+	
 	
 	$("#RG").click(function(){
 		
@@ -58,6 +70,7 @@ $(document).ready(function () {
 	});
 	
 	$("#RG").closest('.ui-btn').hide();
+	$("#dwnload").closest('.ui-btn').hide();
 	
 	$("#container").on("vmouseup",function(){
 									
@@ -486,6 +499,7 @@ $(document).ready(function () {
 		if(canvas.width <= 241){
 			
 			$("#play").closest('.ui-btn').hide();
+			$("#dwnload").closest('.ui-btn').show();
 			$("#rotWar").show();
 			
 		}
