@@ -51,6 +51,14 @@ $(document).ready(function () {
 	var joyTouch = false;
 	
 	
+	$("#RG").click(function(){
+		
+		window.location.reload();
+		
+	});
+	
+	$("#RG").closest('.ui-btn').hide();
+	
 	$("#container").on("vmouseup",function(){
 									
 		joyDirX = "";
@@ -214,6 +222,9 @@ $(document).ready(function () {
 		//}
 		//----------------------End of full screen------------------------------------------//
 		
+		$("#RG").closest('.ui-btn').show();
+		
+		
 		 joystick = new VirtualJoystick({
 				container: document.getElementById('container'),
 				mouseSupport: true,
@@ -236,6 +247,9 @@ $(document).ready(function () {
 			entities.push(newEnemy);
 			//console.log(entities);
 		}, 3000);	
+		
+		$("#play").closest('.ui-btn').css("margin-top", "90%");
+		$("h2").hide();
 
 	});
 	
@@ -314,7 +328,7 @@ $(document).ready(function () {
 		
 	// }
 	
-	setInterval(function(){
+	//setInterval(function(){
 		
 					
 					
@@ -360,7 +374,7 @@ $(document).ready(function () {
 						//console.log(joyDirX);
 						//console.log(joyDirY);
 		
-	}, 500);
+	//}, 500);
 	
 	//------------------------end of virtual joystick------------------------------------------//
 
@@ -434,18 +448,18 @@ $(document).ready(function () {
 		// 	$("#container").show();
 		// }
 		
-		if(canvas.width >= 428){
+		if(canvas.width <= 428){
 			
 			//joystick.destroy();
 			
 			
-			joyStickX = (window.innerWidth) * 1.58;
+			joyStickX = (window.innerWidth) * .68;
 			joyStickY = (window.innerHeight) * .30;
 			
 			// setInterval(function(){
 			// 	clearInterval(joyTest);
 			// },3001);
-			
+			//console.log("in the 428");
 			// joystick.baseX = joyStickX;
 			// joystick.baseY = joyStickY;
 			
@@ -454,9 +468,9 @@ $(document).ready(function () {
 			//joystick._buildJoystickBase;
 			//joystick._buildJoystickStick;
 			
+			//$("#play").closest('.ui-btn').hide();
 			
-			
-			console.log(joyStickX);
+			//console.log(joyStickX);
 			
 		}
 		
@@ -465,7 +479,20 @@ $(document).ready(function () {
 			joyStickX = (window.innerWidth) * .89;
 			joyStickY = (window.innerHeight) * .30;	
 			
+			//$("#play").closest('.ui-btn').show();
+			
 		}
+		
+		if(canvas.width <= 241){
+			
+			$("#play").closest('.ui-btn').hide();
+			
+		}
+		
+		 if(canvas.width > 400){
+			
+		 	$("#play").closest('.ui-btn').show();
+		 }
 		//playArea = canvas.width * canvas.height; //find the area and multiply to reposition characters at screen change. Find a percentage of the x and y's positon relative to playArea		
 		
 		//console.log("Canvas Height " + canvas.height);		
@@ -630,26 +657,26 @@ $(document).ready(function () {
 			//this is for the arrow keys control
             if (keys[38]) {
                 if (velY > -speed) {
-                    velY -= 4;
+                    velY -= 1;
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
 
             if (keys[40]) {
                 if (velY < speed) {
-                    velY += 4;
+                    velY += 1;
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
             if (keys[39]) {
                 if (velX < speed) {
-                    velX += 4;
+                    velX += 1;
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
             if (keys[37]) {
                 if (velX > -speed) {
-                    velX -= 4;
+                    velX -= 1;
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
@@ -793,32 +820,32 @@ $(document).ready(function () {
 		  if(joyDirX == "left" && joyDirY == "up"){
 				
 				//if (velX > -speed && velY > -speed) {
-                     velX -= 4;
-					 velY -= 4;
+                     velX -= 5;
+					 velY -= 5;
                 //}
 				
 			}
 			else if(joyDirX == "left" && joyDirY == "down" ){
 				
 				//if (velY < speed && velY > -speed) {
-                     velY += 4;
-					 velX -= 4;
+                     velY += 5;
+					 velX -= 5;
                // }
 				
 			}
 			else if(joyDirY == "up" && joyDirX == "right"){
 				
 				//if (velY > -speed && velX < speed) {
-                    velY -= 4;
-					velX += 4;
+                    velY -= 5;
+					velX += 5;
                 //}
 				
 			}
 			else if(joyDirY == "down" && joyDirX == "right"){
 				
 				//if (velY < speed && velX < speed) {
-                     velY += 4;
-					 velX += 4;
+                     velY += 5;
+					 velX += 5;
                 //}
 				
 			}
@@ -828,28 +855,28 @@ $(document).ready(function () {
 			else if(joyDirX == "left"){
 				
 				//if (velX > -speed) {
-                     velX -= 4;
+                     velX -= 5;
                 //}
 				
 			}
 			else if(joyDirX == "right"){
 				
 				//if (velX < speed) {
-                     velX += 4;
+                     velX += 5;
                 //}
 				
 			}
 			else if(joyDirY == "up"){
 				
 				//if (velY > -speed) {
-                    velY -= 4;
+                    velY -= 5;
                 //}
 				
 			}
 			else if(joyDirY == "down"){
 				
 				//if (velY < speed) {
-                     velY += 4;
+                     velY += 5;
                 //}
 				
 			}
@@ -912,7 +939,7 @@ $(document).ready(function () {
             // ctx.closePath();
 
 
-            setTimeout(update, 30); //refresh the screen and sets the main loop for movement with keyboard 5
+            setTimeout(update, 35); //refresh the screen and sets the main loop for movement with keyboard 5
 			//setTimeout(joystickUpdate, 3); //refresh the screen and sets the main loop for movement with the virtual joystick
 			
 			//----------------------------------------------------------
@@ -949,32 +976,32 @@ $(document).ready(function () {
 				 //console.log(this.direction);
 				 
 				 if(this.direction == 0){
-					 this.x -= 4;
+					 this.x -= 5;
 				 }
 				 if(this.direction == 1){
-					 this.x += 4;
+					 this.x += 5;
 				 }
 				 if(this.direction == 2){
-					 this.y -= 4;
+					 this.y -= 5;
 				 }
 				 if(this.direction == 3){
-					 this.y += 4;
+					 this.y += 5;
 				 }
 				 if(this.direction == 4){
-					 this.y += 4;
-					 this.x += 4;
+					 this.y += 5;
+					 this.x += 5;
 				 }
 				 if(this.direction == 5){
-					 this.y -= 4;
-					 this.x -= 4;
+					 this.y -= 5;
+					 this.x -= 5;
 				 }
 				 if(this.direction == 6){
-					 this.y += 4;
-					 this.x -= 4;
+					 this.y += 5;
+					 this.x -= 5;
 				 }
 				 if(this.direction == 7){
-					 this.y -= 4;
-					 this.x += 4;
+					 this.y -= 5;
+					 this.x += 5;
 				 }
 				 
 				 //when an enemy hits the wall, this will check the direction it was moving and make it move the revirse direction
@@ -1016,8 +1043,8 @@ $(document).ready(function () {
 				y < entities[i].y + playerSize && y + playerSize > entities[i].y) {
 					// The objects are touching
 				
-					velX *= friction - 5; //this will stop the player from moving
-					velY *= friction - 5;
+					velX *= friction - 4; //this will stop the player from moving
+					velY *= friction - 4;
 					entities.splice(i, 1); //this will destroy the enemy on colision with the player
 				}
 				

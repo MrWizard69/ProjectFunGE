@@ -11,7 +11,7 @@ h2{
 
 html, body {
     /*margin-bottom: 100%;*/
-	width:  100%;
+	width: 100%;
 	height: 100%;
 	margin: 0px;
 	display:inline;
@@ -72,4 +72,17 @@ html, body {
 	height: 10%;
 	display:none;
 	
+}
+
+#rest{
+	
+	width: 10%;
+	
+}
+
+#pDiv{
+	
+	margin-top: -19%;
+	width: 50%;
+	margin-left: 20%;
 }
