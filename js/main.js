@@ -477,7 +477,7 @@ $(document).ready(function () {
 		if(canvas.width >= 241){
 			
 			joyStickX = (window.innerWidth) * .89;
-			joyStickY = (window.innerHeight) * .35;	
+			joyStickY = (window.innerHeight) * .20;	
 			
 			//$("#play").closest('.ui-btn').show();
 			
