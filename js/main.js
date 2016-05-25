@@ -51,7 +51,8 @@ $(document).ready(function () {
 	var joyTouch = false;
 	
 	var addtohome = addToHomescreen({
-    	autostart: false
+    	autostart: false,
+		maxDisplayCount: 0
 	});
 	
 	$("#dwnload").click(function(){
