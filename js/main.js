@@ -486,12 +486,14 @@ $(document).ready(function () {
 		if(canvas.width <= 241){
 			
 			$("#play").closest('.ui-btn').hide();
+			$("#rotWar").show();
 			
 		}
 		
 		 if(canvas.width > 400){
 			
 		 	$("#play").closest('.ui-btn').show();
+			 $("#rotWar").hide();
 		 }
 		//playArea = canvas.width * canvas.height; //find the area and multiply to reposition characters at screen change. Find a percentage of the x and y's positon relative to playArea		
 		
