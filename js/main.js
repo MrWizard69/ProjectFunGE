@@ -53,7 +53,8 @@ $(document).ready(function () {
 	var addtohome = addToHomescreen({
 		maxDisplayCount: 0,
     	autostart: false,
-		startDelay: 5
+		startDelay: 1,
+		displayPace: 10
 	});
 	
 	$("#dwnload").click(function(){
