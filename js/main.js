@@ -54,7 +54,7 @@ $(document).ready(function () {
 		maxDisplayCount: 0,
     	autostart: false,
 		startDelay: 1,
-		displayPace: 10
+		displayPace: .1
 	});
 	
 	$("#dwnload").click(function(){
