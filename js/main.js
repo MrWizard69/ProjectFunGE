@@ -68,7 +68,20 @@ $(document).ready(function () {
 	
 	$("#RG").click(function(){
 		
-		window.location.reload();
+		if(canvas.width >= 1000){
+			
+			window.location.reload();
+		}
+		else if(canvas.width <= 400 && canvas.width >= 150){
+			
+			alert("Please rotate your device and tap this button again to properly quit.");
+		}
+		else{
+			
+			window.location.reload();
+		}
+		
+		
 		
 	});
 	
@@ -504,7 +517,6 @@ $(document).ready(function () {
 			$("#play").closest('.ui-btn').hide();
 			$("#dwnload").closest('.ui-btn').show();
 			$("#rotWar").show();
-			window.location.reload();
 			
 		}
 		
