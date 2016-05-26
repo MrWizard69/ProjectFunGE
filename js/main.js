@@ -72,7 +72,7 @@ $(document).ready(function () {
 			
 			window.location.reload();
 		}
-		else if(canvas.width <= 400 && canvas.width >= 150){
+		else if(canvas.width < 400){
 			
 			alert("Please rotate your device and tap this button again to properly quit.");
 		}
