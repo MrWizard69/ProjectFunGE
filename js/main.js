@@ -70,8 +70,8 @@ $(document).ready(function () {
 		
 		if(canvas.width > 500){
 			
-			//window.location.reload();
-			alert("reload");
+			window.location.reload();
+			//alert("reload");
 		}
 		else if(canvas.width <= 450){
 			
@@ -84,12 +84,6 @@ $(document).ready(function () {
 			}
 			
 		}
-		// else{
-			
-		// 	
-		// }
-		
-		
 		
 	});
 	
@@ -525,7 +519,7 @@ $(document).ready(function () {
 			$("#play").closest('.ui-btn').hide();
 			$("#dwnload").closest('.ui-btn').show();
 			$("#rotWar").show();
-			$("#RG").closest('.ui-btn').css("width","50%");
+			$("#RG").closest('.ui-btn').css("width","100%");
 			
 		}
 		
