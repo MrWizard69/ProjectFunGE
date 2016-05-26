@@ -877,32 +877,32 @@ $(document).ready(function () {
 		  if(joyDirX == "left" && joyDirY == "up"){
 				
 				//if (velX > -speed && velY > -speed) {
-                     velX -= 5;
-					 velY -= 5;
+                     velX -= 4;
+					 velY -= 4;
                 //}
 				
 			}
 			else if(joyDirX == "left" && joyDirY == "down" ){
 				
 				//if (velY < speed && velY > -speed) {
-                     velY += 5;
-					 velX -= 5;
+                     velY += 4;
+					 velX -= 4;
                // }
 				
 			}
 			else if(joyDirY == "up" && joyDirX == "right"){
 				
 				//if (velY > -speed && velX < speed) {
-                    velY -= 5;
-					velX += 5;
+                    velY -= 4;
+					velX += 4;
                 //}
 				
 			}
 			else if(joyDirY == "down" && joyDirX == "right"){
 				
 				//if (velY < speed && velX < speed) {
-                     velY += 5;
-					 velX += 5;
+                     velY += 4;
+					 velX += 4;
                 //}
 				
 			}
@@ -912,28 +912,28 @@ $(document).ready(function () {
 			else if(joyDirX == "left"){
 				
 				//if (velX > -speed) {
-                     velX -= 5;
+                     velX -= 4;
                 //}
 				
 			}
 			else if(joyDirX == "right"){
 				
 				//if (velX < speed) {
-                     velX += 5;
+                     velX += 4;
                 //}
 				
 			}
 			else if(joyDirY == "up"){
 				
 				//if (velY > -speed) {
-                    velY -= 5;
+                    velY -= 4;
                 //}
 				
 			}
 			else if(joyDirY == "down"){
 				
 				//if (velY < speed) {
-                     velY += 5;
+                     velY += 4;
                 //}
 				
 			}
@@ -996,7 +996,7 @@ $(document).ready(function () {
             // ctx.closePath();
 
 
-            setTimeout(update, 35); //refresh the screen and sets the main loop for movement with keyboard 5
+            setTimeout(update, 30); //refresh the screen and sets the main loop for movement with keyboard 35
 			//setTimeout(joystickUpdate, 3); //refresh the screen and sets the main loop for movement with the virtual joystick
 			
 			//----------------------------------------------------------
