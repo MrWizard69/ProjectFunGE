@@ -1,6 +1,17 @@
 canvas {
     border:1px solid #000;
 	margin-left: 11%;
+	
+	-webkit-transform: translateZ(0); 
+	-moz-transform: translateZ(0); 
+	-ms-transform: translateZ(0); 
+	-o-transform: translateZ(0); 
+	transform: translateZ(0); 
+	
+	-moz-transition: all 1s; 
+	-webkit-transition: all 1s; 
+	-o-transition: all 1s; 
+	transition: all 1s ;  
 }
 
 h2{

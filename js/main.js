@@ -70,12 +70,34 @@ $(document).ready(function () {
 		
 		if(canvas.width > 500){
 			
+			if (document.exitFullscreen) {
+					document.exitFullscreen();
+			} else if (document.msExitFullscreen) {
+					document.msExitFullscreen();
+			} else if (document.mozCancelFullScreen) {
+					document.mozCancelFullScreen();
+			} else if (document.webkitExitFullscreen) {
+					document.webkitExitFullscreen();
+			}
+			
+			
 			window.location.reload();
 			//alert("reload");
 		}
 		else if(canvas.width <= 450){
 			
 			if(canvas.width <= 250){
+				
+				if (document.exitFullscreen) {
+					document.exitFullscreen();
+				} else if (document.msExitFullscreen) {
+					document.msExitFullscreen();
+				} else if (document.mozCancelFullScreen) {
+					document.mozCancelFullScreen();
+				} else if (document.webkitExitFullscreen) {
+					document.webkitExitFullscreen();
+				}
+				
 				
 				window.location.reload();
 			}
