@@ -519,7 +519,6 @@ $(document).ready(function () {
 			$("#play").closest('.ui-btn').hide();
 			$("#dwnload").closest('.ui-btn').show();
 			$("#rotWar").show();
-			$("#rest").css("width","100%");
 			
 		}
 		
