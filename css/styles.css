@@ -85,6 +85,7 @@ html, body {
 	
 }
 
+
 #pDiv{
 	
 	margin-top: -19%;
@@ -96,4 +97,12 @@ html, body {
 	
 	color: darkred;
 	text-align: center;
+}
+
+@media screen and (max-width: 300px) {
+    #rest{
+	
+	width: 100%;
+	
+}
 }
