@@ -75,11 +75,18 @@ $(document).ready(function () {
 		}
 		else if(canvas.width <= 450){
 			
-			alert("Please rotate your device and tap this button again to properly quit.");
+			if(canvas.width <= 250){
+				
+				window.location.reload();
+			}
+			else{
+				alert("Please rotate your device and tap this button again to properly quit.");
+			}
+			
 		}
 		// else{
 			
-		// 	window.location.reload();
+		// 	
 		// }
 		
 		
@@ -518,6 +525,7 @@ $(document).ready(function () {
 			$("#play").closest('.ui-btn').hide();
 			$("#dwnload").closest('.ui-btn').show();
 			$("#rotWar").show();
+			$("#RG").closest('.ui-btn').css("width","50%");
 			
 		}
 		
