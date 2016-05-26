@@ -68,12 +68,12 @@ $(document).ready(function () {
 	
 	$("#RG").click(function(){
 		
-		if(canvas.width > 400){
+		if(canvas.width > 500){
 			
 			//window.location.reload();
 			alert("reload");
 		}
-		else if(canvas.width <= 400){
+		else if(canvas.width <= 450){
 			
 			alert("Please rotate your device and tap this button again to properly quit.");
 		}
