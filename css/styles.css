@@ -81,7 +81,7 @@ html, body {
 
 #rest{
 	
-	width: 10%;
+	width: 100%;
 	
 }
 
@@ -99,10 +99,10 @@ html, body {
 	text-align: center;
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (min-width: 480px) {
     #rest{
 	
-	width: 100%;
+	width: 10%;
 	
 }
 }
