@@ -68,18 +68,19 @@ $(document).ready(function () {
 	
 	$("#RG").click(function(){
 		
-		if(canvas.width >= 1000){
+		if(canvas.width > 400){
 			
-			window.location.reload();
+			//window.location.reload();
+			alert("reload");
 		}
-		else if(canvas.width < 400){
+		else if(canvas.width <= 400){
 			
 			alert("Please rotate your device and tap this button again to properly quit.");
 		}
-		else{
+		// else{
 			
-			window.location.reload();
-		}
+		// 	window.location.reload();
+		// }
 		
 		
 		
