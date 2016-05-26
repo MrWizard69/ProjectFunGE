@@ -504,6 +504,7 @@ $(document).ready(function () {
 			$("#play").closest('.ui-btn').hide();
 			$("#dwnload").closest('.ui-btn').show();
 			$("#rotWar").show();
+			window.location.reload();
 			
 		}
 		
