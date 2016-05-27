@@ -289,6 +289,7 @@ $(document).ready(function () {
 			});	
 			
 			
+			
 		//this will create a new enemy every 3 seconds //known bug, if play button is hit more than once, everything seems to get duplicated
 		setInterval(function(){
 					
@@ -995,7 +996,7 @@ $(document).ready(function () {
             // ctx.fill();
             // ctx.closePath();
 
-
+			$("canvas:nth-child(2)").hide();
             setTimeout(update, 30); //refresh the screen and sets the main loop for movement with keyboard 35
 			//setTimeout(joystickUpdate, 3); //refresh the screen and sets the main loop for movement with the virtual joystick
 			
