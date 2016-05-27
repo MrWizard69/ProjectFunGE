@@ -14,6 +14,19 @@
 	transition: all 1s ;  
 }
 
+canvas {
+	-webkit-transform: translateZ(0); 
+	-moz-transform: translateZ(0); 
+	-ms-transform: translateZ(0); 
+	-o-transform: translateZ(0); 
+	transform: translateZ(0); 
+	
+	-moz-transition: all .5s; 
+	-webkit-transition: all .5s; 
+	-o-transition: all .5s; 
+	transition: all .5s;  
+}
+
 h2{
 	text-align: center;
 	margin-bottom: -.1%;
