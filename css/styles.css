@@ -1,6 +1,7 @@
 #canvas {
     border:1px solid #000;
 	margin-left: 11%;
+	margin-top: -0.7%;
 	
 	-webkit-transform: translateZ(0); 
 	-moz-transform: translateZ(0); 
@@ -21,17 +22,17 @@ canvas {
 	-o-transform: translateZ(0); 
 	transform: translateZ(0); 
 	
-	-moz-transition: all .3s; 
-	-webkit-transition: all .3s; 
-	-o-transition: all .3s; 
-	transition: all .3s;  
+	-moz-transition: all .1s; 
+	-webkit-transition: all .1s; 
+	-o-transition: all .1s; 
+	transition: all .1s;  
 }
 
 h2{
 	text-align: center;
 	margin-bottom: -.1%;
 	margin-top: -.1%;
-	margin-bottom: -1%;
+	
 }
 
 h5{
