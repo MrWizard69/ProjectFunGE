@@ -300,7 +300,7 @@ $(document).ready(function () {
 					
 			entities.push(newEnemy);
 			//console.log(entities);
-		}, 3000);	
+		}, 2000);	
 		
 		$("#play").closest('.ui-btn').css("margin-top", "90%");
 		$("h2").hide();
