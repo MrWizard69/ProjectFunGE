@@ -300,7 +300,7 @@ $(document).ready(function () {
 					
 			entities.push(newEnemy);
 			//console.log(entities);
-		}, 3000);	
+		}, 1000);	
 		
 		$("#play").closest('.ui-btn').css("margin-top", "90%");
 		$("h2").hide();
@@ -489,7 +489,7 @@ $(document).ready(function () {
 		canvas.width = (window.innerWidth) * .67;
 		canvas.height = (window.innerHeight) * .69;
 		
-		//console.log("Canvas Width " + canvas.width);
+		console.log("Canvas Width " + canvas.width);
 		//$("#result").html(canvas.width); //display the screen size
 		
 		// if(canvas.width > 1000){
@@ -1063,20 +1063,38 @@ $(document).ready(function () {
 				 }
 				 
 				 //when an enemy hits the wall, this will check the direction it was moving and make it move the revirse direction
-				if (this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
-                	this.x = canvas.width - playerSize;
-					this.direction = 0;
-            	}else if (this.x < playerSize) {
-                	this.x = playerSize;
-					this.direction = 1;
-            	}
+				// if (this.direction == 1 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
+                // 	this.x = canvas.width - playerSize;
+				// 	this.direction = 0;
+            	// }
+				// else if (this.direction == 4 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
+                // 	this.x = canvas.width - playerSize;
+				// 	this.direction = 6;
+            	// }
+				// else if (this.direction == 7 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
+                // 	this.x = canvas.width - playerSize;
+				// 	this.direction = 5;
+            	// }
+				// else if (this.direction == 0 && this.x < playerSize) {
+                // 	this.x = playerSize;
+				// 	this.direction = 1;
+            	// }
+				// else if (this.direction == 5 && this.x < playerSize) {
+                // 	this.x = playerSize;
+				// 	this.direction = 7;
+            	// }
+				// else if (this.direction == 6 && this.x < playerSize) {
+                // 	this.x = playerSize;
+				// 	this.direction = 4;
+            	// }
 				if (this.y > canvas.height - playerSize) { // colision with game boarders y-axis //original size 15, now playerSize is about 19.43999
                 	this.y = canvas.height - playerSize;
 					this.direction = 2;
-            	} else if (this.y < playerSize) {
-                 	this.y = playerSize;
-				 	this.direction = 3;
-            	 }
+            	} 
+				// else if (this.y < playerSize) {
+                //  	this.y = playerSize;
+				//  	this.direction = 3;
+            	//  }
 				 
 			 }
 			  
