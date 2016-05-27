@@ -545,7 +545,7 @@ $(document).ready(function () {
 			
 		}
 		
-		 if(canvas.width > 400){
+		 if(canvas.width > 399){
 			
 		 	$("#play").closest('.ui-btn').show();
 			 $("#dwnload").closest('.ui-btn').hide();
