@@ -22,10 +22,10 @@ canvas {
 	-o-transform: translateZ(0); 
 	transform: translateZ(0); 
 	
-	-moz-transition: all .1s; 
-	-webkit-transition: all .1s; 
-	-o-transition: all .1s; 
-	transition: all .1s;  
+	-moz-transition: all .05s; 
+	-webkit-transition: all .05s; 
+	-o-transition: all .05s; 
+	transition: all .05s;  
 }
 
 h2{
