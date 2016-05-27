@@ -1,4 +1,4 @@
-canvas {
+#canvas {
     border:1px solid #000;
 	margin-left: 11%;
 	
@@ -18,10 +18,12 @@ h2{
 	text-align: center;
 	margin-bottom: -.1%;
 	margin-top: -.1%;
+	margin-bottom: -1%;
 }
 
 h5{
 	text-align: center;
+	margin-top: -1%;
 }
 
 
