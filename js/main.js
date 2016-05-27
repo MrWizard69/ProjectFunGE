@@ -300,7 +300,7 @@ $(document).ready(function () {
 					
 			entities.push(newEnemy);
 			//console.log(entities);
-		}, 1000);	
+		}, 3000);	
 		
 		$("#play").closest('.ui-btn').css("margin-top", "90%");
 		$("h2").hide();
@@ -1063,38 +1063,55 @@ $(document).ready(function () {
 				 }
 				 
 				 //when an enemy hits the wall, this will check the direction it was moving and make it move the revirse direction
-				// if (this.direction == 1 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
-                // 	this.x = canvas.width - playerSize;
-				// 	this.direction = 0;
-            	// }
-				// else if (this.direction == 4 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
-                // 	this.x = canvas.width - playerSize;
-				// 	this.direction = 6;
-            	// }
-				// else if (this.direction == 7 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
-                // 	this.x = canvas.width - playerSize;
-				// 	this.direction = 5;
-            	// }
-				// else if (this.direction == 0 && this.x < playerSize) {
-                // 	this.x = playerSize;
-				// 	this.direction = 1;
-            	// }
-				// else if (this.direction == 5 && this.x < playerSize) {
-                // 	this.x = playerSize;
-				// 	this.direction = 7;
-            	// }
-				// else if (this.direction == 6 && this.x < playerSize) {
-                // 	this.x = playerSize;
-				// 	this.direction = 4;
-            	// }
-				if (this.y > canvas.height - playerSize) { // colision with game boarders y-axis //original size 15, now playerSize is about 19.43999
+				if (this.direction == 1 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
+                	this.x = canvas.width - playerSize;
+					this.direction = 0;
+            	}
+				else if (this.direction == 4 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
+                	this.x = canvas.width - playerSize;
+					this.direction = 6;
+            	}
+				else if (this.direction == 7 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
+                	this.x = canvas.width - playerSize;
+					this.direction = 5;
+            	}
+				else if (this.direction == 0 && this.x < playerSize) {
+                	this.x = playerSize;
+					this.direction = 1;
+            	}
+				else if (this.direction == 5 && this.x < playerSize) {
+                	this.x = playerSize;
+					this.direction = 7;
+            	}
+				else if (this.direction == 6 && this.x < playerSize) {
+                	this.x = playerSize;
+					this.direction = 4;
+            	}
+				else if (this.direction == 3 && this.y > canvas.height - playerSize) { // colision with game boarders y-axis //original size 15, now playerSize is about 19.43999
                 	this.y = canvas.height - playerSize;
 					this.direction = 2;
-            	} 
-				// else if (this.y < playerSize) {
-                //  	this.y = playerSize;
-				//  	this.direction = 3;
-            	//  }
+            	}
+				else if (this.direction == 4 && this.y > canvas.height - playerSize) { // colision with game boarders y-axis //original size 15, now playerSize is about 19.43999
+                	this.y = canvas.height - playerSize;
+					this.direction = 7;
+            	}
+				else if (this.direction == 6 && this.y > canvas.height - playerSize) { // colision with game boarders y-axis //original size 15, now playerSize is about 19.43999
+                	this.y = canvas.height - playerSize;
+					this.direction = 5;
+            	}    
+				else if (this.direction == 2 && this.y < playerSize) {
+                 	this.y = playerSize;
+				 	this.direction = 3;
+            	 }
+				 else if (this.direction == 5 && this.y < playerSize) {
+                 	this.y = playerSize;
+				 	this.direction = 6;
+            	 }
+				  else if (this.direction == 7 && this.y < playerSize) {
+                 	this.y = playerSize;
+				 	this.direction = 4;
+					
+            	 }
 				 
 			 }
 			  
