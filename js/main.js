@@ -878,32 +878,32 @@ $(document).ready(function () {
 		  if(joyDirX == "left" && joyDirY == "up"){
 				
 				//if (velX > -speed && velY > -speed) {
-                     velX -= 4;
-					 velY -= 4;
+                     velX -= 3;
+					 velY -= 3;
                 //}
 				
 			}
 			else if(joyDirX == "left" && joyDirY == "down" ){
 				
 				//if (velY < speed && velY > -speed) {
-                     velY += 4;
-					 velX -= 4;
+                     velY += 3;
+					 velX -= 3;
                // }
 				
 			}
 			else if(joyDirY == "up" && joyDirX == "right"){
 				
 				//if (velY > -speed && velX < speed) {
-                    velY -= 4;
-					velX += 4;
+                    velY -= 3;
+					velX += 3;
                 //}
 				
 			}
 			else if(joyDirY == "down" && joyDirX == "right"){
 				
 				//if (velY < speed && velX < speed) {
-                     velY += 4;
-					 velX += 4;
+                     velY += 3;
+					 velX += 3;
                 //}
 				
 			}
@@ -913,28 +913,28 @@ $(document).ready(function () {
 			else if(joyDirX == "left"){
 				
 				//if (velX > -speed) {
-                     velX -= 4;
+                     velX -= 3;
                 //}
 				
 			}
 			else if(joyDirX == "right"){
 				
 				//if (velX < speed) {
-                     velX += 4;
+                     velX += 3;
                 //}
 				
 			}
 			else if(joyDirY == "up"){
 				
 				//if (velY > -speed) {
-                    velY -= 4;
+                    velY -= 3;
                 //}
 				
 			}
 			else if(joyDirY == "down"){
 				
 				//if (velY < speed) {
-                     velY += 4;
+                     velY += 3;
                 //}
 				
 			}
@@ -1034,32 +1034,32 @@ $(document).ready(function () {
 				 //console.log(this.direction);
 				 
 				 if(this.direction == 0){
-					 this.x -= 5;
+					 this.x -= 4;
 				 }
 				 if(this.direction == 1){
-					 this.x += 5;
+					 this.x += 4;
 				 }
 				 if(this.direction == 2){
-					 this.y -= 5;
+					 this.y -= 4;
 				 }
 				 if(this.direction == 3){
-					 this.y += 5;
+					 this.y += 4;
 				 }
 				 if(this.direction == 4){
-					 this.y += 5;
-					 this.x += 5;
+					 this.y += 4;
+					 this.x += 4;
 				 }
 				 if(this.direction == 5){
-					 this.y -= 5;
-					 this.x -= 5;
+					 this.y -= 4;
+					 this.x -= 4;
 				 }
 				 if(this.direction == 6){
-					 this.y += 5;
-					 this.x -= 5;
+					 this.y += 4;
+					 this.x -= 4;
 				 }
 				 if(this.direction == 7){
-					 this.y -= 5;
-					 this.x += 5;
+					 this.y -= 4;
+					 this.x += 4;
 				 }
 				 
 				 //when an enemy hits the wall, this will check the direction it was moving and make it move the revirse direction
