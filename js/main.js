@@ -490,7 +490,7 @@ $(document).ready(function () {
 		canvas.height = (window.innerHeight) * .69;
 		
 		//console.log("Canvas Width " + canvas.width);
-		$("#result").html(canvas.width); //display the screen size
+		//$("#result").html(canvas.width); //display the screen size
 		
 		// if(canvas.width > 1000){
 			
