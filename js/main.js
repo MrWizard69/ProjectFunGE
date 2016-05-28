@@ -248,7 +248,7 @@ $(document).ready(function () {
 			
 		}
 		
-		if(canvas.width <= 241){
+		if(canvas.width <= 251){
 			
 			$("#play").closest('.ui-btn').hide();
 			$("#dwnload").closest('.ui-btn').show();

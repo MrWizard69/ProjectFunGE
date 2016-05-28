@@ -121,7 +121,7 @@ html, body {
 
 #pDiv{
 	
-	margin-top: -19%;
+	margin-top: -21.8%;
 	width: 50%;
 	margin-left: 20%;
 }
@@ -130,6 +130,10 @@ html, body {
 	
 	color: darkred;
 	text-align: center;
+}
+
+#DL{
+	margin-top: -0.5%;
 }
 
 /*@media screen and (min-width: 480px) {
