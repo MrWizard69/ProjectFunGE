@@ -1,7 +1,13 @@
+ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper{ /*.this is the jquery mobile wrapper over the body*/
+	
+	background-color: lightblue;
+	
+}
 #canvas {
     border:1px solid #000;
 	margin-left: 11%;
 	margin-top: -0.7%;
+	background-color: darkblue;
 	/*This is the game stage*/
 	/*--------------This is what activates GPU graphic rendering------------------*/
 	-webkit-transform: translateZ(0); 

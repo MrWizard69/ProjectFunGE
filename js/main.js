@@ -664,7 +664,7 @@ $(document).ready(function () {
 		
 		
 		var RandomShip = {
-  			color: "black",
+  			color: "green",
   			x: Math.round(Math.random() * (canvas.width * .90)),
   			y: Math.round(Math.random() * (canvas.height * .90)),
 			direction: randomDirection = Math.round(Math.random() * 7),
