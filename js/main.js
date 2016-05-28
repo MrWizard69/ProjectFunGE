@@ -680,32 +680,32 @@ $(document).ready(function () {
 				 //this will make direct the enemy to move in a random location
 				 
 				 if(this.direction == 0){
-					 this.x -= 4;
+					 this.x -= 3;
 				 }
 				 if(this.direction == 1){
-					 this.x += 4;
+					 this.x += 3;
 				 }
 				 if(this.direction == 2){
-					 this.y -= 4;
+					 this.y -= 3;
 				 }
 				 if(this.direction == 3){
-					 this.y += 4;
+					 this.y += 3;
 				 }
 				 if(this.direction == 4){
-					 this.y += 4;
-					 this.x += 4;
+					 this.y += 3;
+					 this.x += 3;
 				 }
 				 if(this.direction == 5){
-					 this.y -= 4;
-					 this.x -= 4;
+					 this.y -= 3;
+					 this.x -= 3;
 				 }
 				 if(this.direction == 6){
-					 this.y += 4;
-					 this.x -= 4;
+					 this.y += 3;
+					 this.x -= 3;
 				 }
 				 if(this.direction == 7){
-					 this.y -= 4;
-					 this.x += 4;
+					 this.y -= 3;
+					 this.x += 3;
 				 }				 
 				 //when an enemy hits the wall, this will check the direction it was moving and make it move the revirse direction
 				if (this.direction == 1 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
@@ -779,19 +779,19 @@ $(document).ready(function () {
 				 //this will make direct the enemy move in the direction of the player
 				 if(this.x < x){
 					 
-					 this.x += 3;
+					 this.x += 2.5;
 				 }
 				 if(this.x > x){
 					 
-					 this.x -= 3;
+					 this.x -= 2.5;
 				 }
 				 if(this.y < y){
 					 
-					 this.y += 3;
+					 this.y += 2.5;
 				 }
 				 if(this.y > y){
 					 
-					 this.y -= 3;
+					 this.y -= 2.5;
 				 }
 				 
 				 
@@ -816,39 +816,39 @@ $(document).ready(function () {
 				 //this will make direct the enemy move in the direction of the player at varying speeds and times
 				  if(this.x < x && this.y < y){
 					 
-					 this.x += 3;
-					 this.y += 3;
+					 this.x += 1;
+					 this.y += 1;
 				 }
 				 if(this.x > x && this.y > y){
 					 
-					 this.x -= 3;
-					 this.y -= 3;
+					 this.x -= 1;
+					 this.y -= 1;
 				 }
 				 if(this.x > x && this.y < y){
 					 
-					 this.x -= 3;
-					 this.y += 3;
+					 this.x -= 1;
+					 this.y += 1;
 				 }
 				 if(this.x > x && this.y < y){
 					 
-					 this.x -= 3;
-					 this.y += 3;
+					 this.x -= 1;
+					 this.y += 1;
 				 }
 				 if(this.x < x){
 					 
-					 this.x += 3.2;
+					 this.x += 2.5;
 				 }
 				 if(this.y > y){
 					 
-					 this.y -= 3.2;
+					 this.y -= 2.5;
 				 }
 				 if(this.x > x){
 					 
-					 this.x -= 3.2;
+					 this.x -= 2.5;
 				 }
 				 if(this.y < y){
 					 
-					 this.y += 3.2;
+					 this.y += 2.5;
 				 } 
 				 		 
 			 }
