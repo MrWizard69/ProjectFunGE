@@ -633,7 +633,7 @@ $(document).ready(function () {
 			ctx.clearRect(0, 0, canvas.width, canvas.height); // this will clear and redraw the canvas for new values and positions
 			
             ctx.beginPath(); //this is the player
-            ctx.fillStyle = "blue";
+            ctx.fillStyle = "#A23BEC";
             ctx.arc(x, y, playerSize, 0, Math.PI * 2); // draw the player playerSize is about 19.43999
             ctx.fill();
             ctx.closePath();
