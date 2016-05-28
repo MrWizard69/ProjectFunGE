@@ -39,6 +39,7 @@ $(document).ready(function () {
 	
 	var Enemy1 = new Object();
 	var Enemy2 = new Object();
+	var Enemy3 = new Object();
 	
 	var joyStickX = 0;
 	var joyStickY = 0;
@@ -166,17 +167,37 @@ $(document).ready(function () {
 			
 			
 			
-		//this will create a new enemy every 2 seconds //known bug, if play button is hit more than once, everything seems to get duplicated
+		//this will create new enemies
 		setInterval(function(){
 					
-		    Enemy1 = jQuery.extend(true, {}, enemy);
+		    Enemy1 = jQuery.extend(true, {}, RandomShip);
 			Enemy1.x = Math.round(Math.random() * (canvas.width * .95));
 			Enemy1.y = Math.round(Math.random() * (canvas.height * .95));
 			Enemy1.direction = Math.round(Math.random() * 7);
 					
 			entities.push(Enemy1);
 			//console.log(entities);
-		}, 2000);	
+		}, 3000);
+		
+		setInterval(function(){
+					
+		    Enemy2 = jQuery.extend(true, {}, Hunter);
+			Enemy2.x = Math.round(Math.random() * (canvas.width * .95));
+			Enemy2.y = Math.round(Math.random() * (canvas.height * .95));
+					
+			entities.push(Enemy2);
+			//console.log(entities);
+		}, 5000);	
+		
+		setInterval(function(){
+					
+		    Enemy3 = jQuery.extend(true, {}, Stalker);
+			Enemy3.x = Math.round(Math.random() * (canvas.width * .95));
+			Enemy3.y = Math.round(Math.random() * (canvas.height * .95));
+					
+			entities.push(Enemy3);
+			//console.log(entities);
+		}, 7000);	
 		
 		$("#play").closest('.ui-btn').css("margin-top", "90%");
 		$("h2").hide();
@@ -576,16 +597,16 @@ $(document).ready(function () {
             x += velX;
 			
 			
-			if (x >= canvas.width - playerSize) { // colision with game boarders x-axis playerSize is about 19.43999
+			if (x > canvas.width - playerSize) { // colision with game boarders x-axis playerSize is about 19.43999
                 x = canvas.width - playerSize;
-            } else if (x <= playerSize) {
-                x = playerSize;
+            } else if (x < playerSize) {
+                x = playerSize + 2;
             }
 			
 			if (y > canvas.height - playerSize) { // colision with game boarders y-axis playerSize is about 19.43999
                 y = canvas.height - playerSize;
-            } else if (y <= playerSize) {
-                y = playerSize;
+            } else if (y < playerSize) {
+                y = playerSize + 2;
             }
 			
 			//-----------This will detect colisions in the game--------------------//
@@ -642,7 +663,7 @@ $(document).ready(function () {
 		
 		
 		
-		var enemy = {
+		var RandomShip = {
   			color: "black",
   			x: Math.round(Math.random() * (canvas.width * .90)),
   			y: Math.round(Math.random() * (canvas.height * .90)),
@@ -739,7 +760,100 @@ $(document).ready(function () {
 				 
 			 }
 			  
-		};		
+		};
+		
+		var Hunter = {
+  			color: "orange",
+  			x: Math.round(Math.random() * (canvas.width * .90)),
+  			y: Math.round(Math.random() * (canvas.height * .90)),
+			//direction: randomDirection = Math.round(Math.random() * 7),
+ 			draw: function() {
+				ctx.beginPath(); // this is the ai guy
+    			ctx.fillStyle = this.color;
+    			ctx.arc(this.x, this.y, playerSize, 0, Math.PI * 2);
+				ctx.fill();
+            	ctx.closePath();
+ 			 },
+			 movement: function(){
+				 
+				 //this will make direct the enemy move in the direction of the player
+				 if(this.x < x){
+					 
+					 this.x += 3;
+				 }
+				 if(this.x > x){
+					 
+					 this.x -= 3;
+				 }
+				 if(this.y < y){
+					 
+					 this.y += 3;
+				 }
+				 if(this.y > y){
+					 
+					 this.y -= 3;
+				 }
+				 
+				 
+			 }
+			  
+		};
+		
+		var Stalker = {
+  			color: "red",
+  			x: Math.round(Math.random() * (canvas.width * .90)),
+  			y: Math.round(Math.random() * (canvas.height * .90)),
+			//direction: randomDirection = Math.round(Math.random() * 7),
+ 			draw: function() {
+				ctx.beginPath(); // this is the ai guy
+    			ctx.fillStyle = this.color;
+    			ctx.arc(this.x, this.y, playerSize, 0, Math.PI * 2);
+				ctx.fill();
+            	ctx.closePath();
+ 			 },
+			 movement: function(){
+				 
+				 //this will make direct the enemy move in the direction of the player at varying speeds and times
+				  if(this.x < x && this.y < y){
+					 
+					 this.x += 3;
+					 this.y += 3;
+				 }
+				 if(this.x > x && this.y > y){
+					 
+					 this.x -= 3;
+					 this.y -= 3;
+				 }
+				 if(this.x > x && this.y < y){
+					 
+					 this.x -= 3;
+					 this.y += 3;
+				 }
+				 if(this.x > x && this.y < y){
+					 
+					 this.x -= 3;
+					 this.y += 3;
+				 }
+				 if(this.x < x){
+					 
+					 this.x += 3.2;
+				 }
+				 if(this.y > y){
+					 
+					 this.y -= 3.2;
+				 }
+				 if(this.x > x){
+					 
+					 this.x -= 3.2;
+				 }
+				 if(this.y < y){
+					 
+					 this.y += 3.2;
+				 } 
+				 		 
+			 }
+			  
+		};								
 		
 		function draw() {
   			
@@ -762,15 +876,15 @@ $(document).ready(function () {
 				}
 				
 				
-				if (entities[i].x > canvas.width - playerSize) { // this will check and destroy if an enemy is touching the x-axis //original size 15, now playerSize is about 19.43999
+				if (entities[i].x > canvas.width - playerSize + 1) { // this will check and destroy if an enemy is touching the x-axis //original size 15, now playerSize is about 19.43999
                 	entities.splice(i, 1);
-            	} else if (entities[i].x < playerSize) {
+            	} else if (entities[i].x < playerSize - 1) {
                		entities.splice(i, 1);
             	}
 			
-				if (entities[i].y > canvas.height - playerSize) { // this will check and destroy if an enemy is touching the y-axis //original size 15, now playerSize is about 19.43999
+				if (entities[i].y > canvas.height - playerSize + 1) { // this will check and destroy if an enemy is touching the y-axis //original size 15, now playerSize is about 19.43999
                 	entities.splice(i, 1);
-            	} else if (entities[i].y < playerSize) {
+            	} else if (entities[i].y < playerSize - 1) {
                 	entities.splice(i, 1);
             	}
 				
