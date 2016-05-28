@@ -97,7 +97,7 @@ $(document).ready(function () {
 		}
 		else if(canvas.width <= 450){
 			
-			if(canvas.width <= 271){
+			if(canvas.width < 271){
 				
 				if (document.exitFullscreen) {
 					document.exitFullscreen();
@@ -112,12 +112,13 @@ $(document).ready(function () {
 				
 				window.location.reload();
 			}
-			alert("Please rotate your device and tap this button again to properly quit.");
-			//else{
-				
-			//}
+			else{
+				alert("Please rotate your device and tap this button again to properly quit.");
+			}
+			//alert("hit the button");
 			
 		}
+		
 		
 	});
 	
