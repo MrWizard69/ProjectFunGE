@@ -545,46 +545,46 @@ $(document).ready(function () {
 					
 				if(joyDirX == "left" && joyDirY == "up"){
 						
-							velX -= 3;
-							velY -= 3;
+							velX -= 2;
+							velY -= 2;
 						
 					}
 					else if(joyDirX == "left" && joyDirY == "down" ){
 						
-							velY += 3;
-							velX -= 3;
+							velY += 2;
+							velX -= 2;
 						
 					}
 					else if(joyDirY == "up" && joyDirX == "right"){
 						
-							velY -= 3;
-							velX += 3;
+							velY -= 2;
+							velX += 2;
 						
 					}
 					else if(joyDirY == "down" && joyDirX == "right"){
 						
-							velY += 3;
-							velX += 3;
+							velY += 2;
+							velX += 2;
 						
 					}
 					else if(joyDirX == "left"){
 						
-							velX -= 3;
+							velX -= 2;
 						
 					}
 					else if(joyDirX == "right"){
 						
-							velX += 3;
+							velX += 2;
 						
 					}
 					else if(joyDirY == "up"){
 						
-							velY -= 3;
+							velY -= 2;
 						
 					}
 					else if(joyDirY == "down"){
 						
-							velY += 3;
+							velY += 2;
 						
 					}
 			
@@ -680,32 +680,32 @@ $(document).ready(function () {
 				 //this will make direct the enemy to move in a random location
 				 
 				 if(this.direction == 0){
-					 this.x -= 3;
+					 this.x -= 1.5;
 				 }
 				 if(this.direction == 1){
-					 this.x += 3;
+					 this.x += 1.5;
 				 }
 				 if(this.direction == 2){
-					 this.y -= 3;
+					 this.y -= 1.5;
 				 }
 				 if(this.direction == 3){
-					 this.y += 3;
+					 this.y += 1.5;
 				 }
 				 if(this.direction == 4){
-					 this.y += 3;
-					 this.x += 3;
+					 this.y += 1.5;
+					 this.x += 1.5;
 				 }
 				 if(this.direction == 5){
-					 this.y -= 3;
-					 this.x -= 3;
+					 this.y -= 1.5;
+					 this.x -= 1.5;
 				 }
 				 if(this.direction == 6){
-					 this.y += 3;
-					 this.x -= 3;
+					 this.y += 1.5;
+					 this.x -= 1.5;
 				 }
 				 if(this.direction == 7){
-					 this.y -= 3;
-					 this.x += 3;
+					 this.y -= 1.5;
+					 this.x += 1.5;
 				 }				 
 				 //when an enemy hits the wall, this will check the direction it was moving and make it move the revirse direction
 				if (this.direction == 1 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
@@ -779,19 +779,19 @@ $(document).ready(function () {
 				 //this will make direct the enemy move in the direction of the player
 				 if(this.x < x){
 					 
-					 this.x += 2.5;
+					 this.x += 1.6;
 				 }
 				 if(this.x > x){
 					 
-					 this.x -= 2.5;
+					 this.x -= 1.6;
 				 }
 				 if(this.y < y){
 					 
-					 this.y += 2.5;
+					 this.y += 1.6;
 				 }
 				 if(this.y > y){
 					 
-					 this.y -= 2.5;
+					 this.y -= 1.6;
 				 }
 				 
 				 
@@ -836,19 +836,19 @@ $(document).ready(function () {
 				 }
 				 if(this.x < x){
 					 
-					 this.x += 2.5;
+					 this.x += 1.1;
 				 }
 				 if(this.y > y){
 					 
-					 this.y -= 2.5;
+					 this.y -= 1.1;
 				 }
 				 if(this.x > x){
 					 
-					 this.x -= 2.5;
+					 this.x -= 1.1;
 				 }
 				 if(this.y < y){
 					 
-					 this.y += 2.5;
+					 this.y += 1.1;
 				 } 
 				 		 
 			 }
