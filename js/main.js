@@ -97,7 +97,7 @@ $(document).ready(function () {
 		}
 		else if(canvas.width <= 450){
 			
-			if(canvas.width <= 261){
+			if(canvas.width <= 251){
 				
 				if (document.exitFullscreen) {
 					document.exitFullscreen();
