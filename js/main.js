@@ -38,11 +38,7 @@ $(document).ready(function () {
 	var numOfEnemyShips = 4;
 	
 	var Enemy1 = new Object();
-	
-	var target = {
-    	Ex: Math.round(Math.random() * (canvas.width - (playerSize * 4))), // retest this to see if the enemies stay in the game area
-       	Ey: Math.round(Math.random() * (canvas.height - (playerSize * 4)))
-    };
+	var Enemy2 = new Object();
 	
 	var joyStickX = 0;
 	var joyStickY = 0;
@@ -53,7 +49,7 @@ $(document).ready(function () {
 	var addtohome = addToHomescreen({
 		maxDisplayCount: 0,
     	autostart: false,
-		startDelay: 1,
+		startDelay: .5,
 		displayPace: .1
 	});
 	
@@ -231,7 +227,7 @@ $(document).ready(function () {
 		
 		//This will dynamically resize the game play area		
 		canvas.width = (window.innerWidth) * .67;
-		canvas.height = (window.innerHeight) * .69;
+		canvas.height = (window.innerHeight) * .80;
 		
 		//console.log("Canvas Width " + canvas.width);
 		//$("#result").html(canvas.width); //display the screen size
@@ -422,7 +418,7 @@ $(document).ready(function () {
 
         function update() { //------------player movement with keyboard---------------------------------//
 			
-			//the update function does two things, draws the characters and tracks their movement positions
+			//the update function does two things, draws the characters and enemies and tracks their movement positions
 			
 			//this will track what keys are pressed and will update the players position
 			
@@ -580,13 +576,13 @@ $(document).ready(function () {
             x += velX;
 			
 			
-			if (x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
+			if (x >= canvas.width - playerSize) { // colision with game boarders x-axis playerSize is about 19.43999
                 x = canvas.width - playerSize;
             } else if (x <= playerSize) {
                 x = playerSize;
             }
 			
-			if (y > canvas.height - playerSize) { // colision with game boarders y-axis //original size 15, now playerSize is about 19.43999
+			if (y > canvas.height - playerSize) { // colision with game boarders y-axis playerSize is about 19.43999
                 y = canvas.height - playerSize;
             } else if (y <= playerSize) {
                 y = playerSize;
@@ -617,7 +613,7 @@ $(document).ready(function () {
 			
             ctx.beginPath(); //this is the player
             ctx.fillStyle = "blue";
-            ctx.arc(x, y, playerSize, 0, Math.PI * 2); // draw the player //original size 15, now playerSize is about 19.43999
+            ctx.arc(x, y, playerSize, 0, Math.PI * 2); // draw the player playerSize is about 19.43999
             ctx.fill();
             ctx.closePath();
 			
@@ -629,29 +625,27 @@ $(document).ready(function () {
             // ctx.closePath();
 
 			$("canvas:nth-child(2)").hide();
-            setTimeout(update, 30); //refresh the screen and sets the main loop for movement with keyboard 35
-			//setTimeout(joystickUpdate, 3); //refresh the screen and sets the main loop for movement with the virtual joystick
+            setTimeout(update, 30); //refresh the screen to update positions
 			
 			//----------------------------------------------------------
-					
-
+		
 			draw();	//this draws all the enemies in the game area	
-			//joystickUpdate();
+
         }
 		
 		
 		
 		var target = {
-        	Ex: Math.round(Math.random() * (canvas.width * .95)), // retest this to see if the enemies stay in the game area
-       	    Ey: Math.round(Math.random() * (canvas.height * .95))
+        	Ex: Math.round(Math.random() * (canvas.width * .90)),
+       	    Ey: Math.round(Math.random() * (canvas.height * .90))
          };
 		
 		
 		
 		var enemy = {
   			color: "black",
-  			x: Math.round(Math.random() * (canvas.width * .95)),
-  			y: Math.round(Math.random() * (canvas.height * .95)),
+  			x: Math.round(Math.random() * (canvas.width * .90)),
+  			y: Math.round(Math.random() * (canvas.height * .90)),
 			direction: randomDirection = Math.round(Math.random() * 7),
  			draw: function() {
 				ctx.beginPath(); // this is the ai guy
