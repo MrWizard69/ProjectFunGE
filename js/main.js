@@ -270,7 +270,7 @@ $(document).ready(function () {
 	function resizeCanvas() {
 		
 		//This will dynamically resize the game play area		
-		canvas.width = (window.innerWidth) * .67;
+		canvas.width = (window.innerWidth) * .72;
 		canvas.height = (window.innerHeight) * .80;
 		
 		//console.log("Canvas Width " + canvas.width);
