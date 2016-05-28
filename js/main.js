@@ -35,6 +35,7 @@ $(document).ready(function () {
 			
 	
 	var playerSize = 0;
+	var bulletSize = 0;
 	
 	var playerPositionX = 0;
 	var playerPositionY = 0;
@@ -47,7 +48,10 @@ $(document).ready(function () {
 	var playArea = 0;
 	
 	var entities = [];
+	var bulletClip = [];
 	var numOfEnemyShips = 4;
+	
+	var bullet = new Object();
 	
 	var Enemy1 = new Object();
 	var Enemy2 = new Object();
@@ -192,6 +196,18 @@ $(document).ready(function () {
 			});
 			
 			
+			setInterval(function(){
+					
+		    bullet = jQuery.extend(true, {}, PlayerBullet);
+			//Enemy1.x = Math.round(Math.random() * (canvas.width * .95));
+			//Enemy1.y = Math.round(Math.random() * (canvas.height * .95));
+			//Enemy1.direction = Math.round(Math.random() * 7);
+					
+			bulletClip.push(bullet);
+			//console.log(entities);
+		}, 500);
+			
+			
 		//this will create new enemies
 		setInterval(function(){
 					
@@ -253,7 +269,12 @@ $(document).ready(function () {
 		var playersSizeW = canvas.width * .01;
 		var playerSizeH = canvas.height * .01;
 		
+		var bulletSizeW = canvas.width * .001;
+		var bulletSizeH = canvas.width * .001;
+		
 		playerSize = (playersSizeW + playerSizeH); //playerSize is about 19.43999 px
+		bulletSize = (bulletSizeW + bulletSizeH);
+		
 		
 		//when the screen size changes, the player will be redirected to the center of the screen
 		playerPositionX = canvas.width * .50;
@@ -276,7 +297,7 @@ $(document).ready(function () {
 		canvas.height = (window.innerHeight) * .80;
 		
 		//console.log("Canvas Width " + canvas.width);
-		//$("#result").html(canvas.width); //display the screen size
+		$("#result").html(canvas.width); //display the screen size
 		
 		// if(canvas.width <= 428){		
 			
@@ -688,6 +709,44 @@ $(document).ready(function () {
         	Ex: Math.round(Math.random() * (canvas.width * .90)),
        	    Ey: Math.round(Math.random() * (canvas.height * .90))
          };
+		 
+		 
+		 var PlayerBullet = {
+  			color: "yellow",
+  			x: x,
+  			y: y,
+ 			draw: function() {
+				ctx.beginPath(); // this is the ai guy
+    			ctx.fillStyle = this.color;
+    			ctx.arc(this.x, this.y, bulletSize, 0, Math.PI * 2);
+				ctx.fill();
+            	ctx.closePath();
+ 			 },
+			 movement: function(){
+				 
+				 //this will make direct the enemy move in the direction of the player
+				 if(shootStick.up()){
+					 
+					 
+					 this.y += 5;
+				 }
+				 if(shootStick.down()){
+					 
+					 this.y -= 5;
+				 }
+				 if(shootStick.left()){
+					 
+					 this.x += 5;
+				 }
+				 if(shootStick.right()){
+					 
+					 this.x -= 5;
+				 }
+				 
+				 
+			 }
+			  
+		};
 		
 		
 		
