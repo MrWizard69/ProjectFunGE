@@ -295,7 +295,7 @@ $(document).ready(function () {
 			
 		}
 		
-		if(canvas.width <= 241){
+		if(canvas.width <= 261){
 			
 			$("#play").closest('.ui-btn').hide();
 			$("#dwnload").closest('.ui-btn').show();
@@ -303,7 +303,7 @@ $(document).ready(function () {
 			
 		}
 		
-		 if(canvas.width > 401){
+		 else if(canvas.width >= 399){
 			
 		 	$("#play").closest('.ui-btn').show();
 			 $("#dwnload").closest('.ui-btn').hide();
