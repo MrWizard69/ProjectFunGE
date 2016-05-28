@@ -21,6 +21,18 @@ $(document).ready(function () {
 			
 			joystick.destroy();
 			
+		var shootStick = new VirtualJoystick({
+				container: document.getElementById('shootStick'),
+				mouseSupport: true,
+				limitStickTravel: true,
+				stationaryBase: true, // to make the joystick appear anywhere, set to false and comment out BaseX and BaseY
+                      baseX: shootStickX, // this size is only good for mobile not tablets
+                      baseY: shootStickY, // this size is only good for mobile not tablets
+				stickRadius: 25
+			});
+			
+			shootStick.destroy();	
+			
 	
 	var playerSize = 0;
 	
@@ -43,6 +55,8 @@ $(document).ready(function () {
 	
 	var joyStickX = 0;
 	var joyStickY = 0;
+	var shootStickX = 0;
+	var shootStickY = 0;
 	var joyDirX = "";
 	var joyDirY = "";
 	var joyTouch = false;
@@ -165,6 +179,15 @@ $(document).ready(function () {
 				stickRadius: 25
 			});	
 			
+		 shootStick = new VirtualJoystick({
+				container: document.getElementById('shootStick'),
+				mouseSupport: true,
+				limitStickTravel: true,
+				stationaryBase: true, // to make the joystick appear anywhere, set to false and comment out BaseX and BaseY
+                      baseX: shootStickX, // this size is only good for mobile not tablets
+                      baseY: shootStickY, // this size is only good for mobile not tablets
+				stickRadius: 25
+			});
 			
 			
 		//this will create new enemies
@@ -253,17 +276,20 @@ $(document).ready(function () {
 		//console.log("Canvas Width " + canvas.width);
 		//$("#result").html(canvas.width); //display the screen size
 		
-		if(canvas.width <= 428){		
+		// if(canvas.width <= 428){		
 			
-			joyStickX = (window.innerWidth) * .68;
-			joyStickY = (window.innerHeight) * .30;
+		// 	joyStickX = (window.innerWidth) * .68;
+		// 	joyStickY = (window.innerHeight) * .30;
 			
-		}
+		// }
 		
 		if(canvas.width >= 241){
 			
 			joyStickX = (window.innerWidth) * .89;
 			joyStickY = (window.innerHeight) * .60;	
+			
+			shootStickX = (window.innerWidth) * .05;
+			shootStickY = (window.innerHeight) * -0.30;
 			
 			//$("#play").closest('.ui-btn').show();
 			
