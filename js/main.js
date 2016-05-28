@@ -112,9 +112,10 @@ $(document).ready(function () {
 				
 				window.location.reload();
 			}
-			else{
-				alert("Please rotate your device and tap this button again to properly quit.");
-			}
+			alert("Please rotate your device and tap this button again to properly quit.");
+			//else{
+				
+			//}
 			
 		}
 		
