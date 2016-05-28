@@ -2,7 +2,8 @@
     border:1px solid #000;
 	margin-left: 11%;
 	margin-top: -0.7%;
-	
+	/*This is the game stage*/
+	/*--------------This is what activates GPU graphic rendering------------------*/
 	-webkit-transform: translateZ(0); 
 	-moz-transform: translateZ(0); 
 	-ms-transform: translateZ(0); 
@@ -13,9 +14,12 @@
 	-webkit-transition: all 1s; 
 	-o-transition: all 1s; 
 	transition: all 1s ;  
+	/*--------------This is what activates GPU graphic rendering End------------------*/
 }
 
 canvas {
+	/*This is the joystick*/
+	/*--------------This is what activates GPU graphic rendering------------------*/
 	-webkit-transform: translateZ(0); 
 	-moz-transform: translateZ(0); 
 	-ms-transform: translateZ(0); 
@@ -26,6 +30,7 @@ canvas {
 	-webkit-transition: all 1s; 
 	-o-transition: all 1s; 
 	transition: all 1s;  
+	/*--------------This is what activates GPU graphic rendering End------------------*/
 }
 
 h2{

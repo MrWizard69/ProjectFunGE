@@ -37,7 +37,7 @@ $(document).ready(function () {
 	var entities = [];
 	var numOfEnemyShips = 4;
 	
-	var newEnemy = new Object();
+	var Enemy1 = new Object();
 	
 	var target = {
     	Ex: Math.round(Math.random() * (canvas.width - (playerSize * 4))), // retest this to see if the enemies stay in the game area
@@ -65,7 +65,7 @@ $(document).ready(function () {
 	
 	
 	
-	
+	//when the game is quit, the screen goes back to normal and the page is reloaded or a message appears
 	$("#RG").click(function(){
 		
 		if(canvas.width > 500){
@@ -122,131 +122,11 @@ $(document).ready(function () {
 	
 		$("#container").on("vmousedown",function(){
 									
-					if (joystick.up()) {
-						// if (velY > -speed) {
-						// 	velY--;
-						// }
-						joyDirY = "up";
-						joyDirX = "";
-						
-						if (joystick.right()) {
-						// if (velX < speed) {
-						// 	velX++;
-						// }
-						joyDirX = "right";
-						//joyDirY = "";
-						}
-						
-						if (joystick.left()) {
-						// if (velX > -speed) {
-						// 	velX--;
-						// }
-						joyDirX = "left";
-						//joyDirY = "";
-						}
-					}
-
-					if (joystick.down()) {
-						// if (velY < speed) {
-						// 	velY++;
-						// }
-						joyDirY = "down";
-						joyDirX = "";
-						
-						if (joystick.right()) {
-						// if (velX < speed) {
-						// 	velX++;
-						// }
-						joyDirX = "right";
-						//joyDirY = "";
-					}
-					if (joystick.left()) {
-						// if (velX > -speed) {
-						// 	velX--;
-						// }
-						joyDirX = "left";
-						//joyDirY = "";
-						}
-					}
-					
-					
-					if (joystick.right()) {
-						// if (velX < speed) {
-						// 	velX++;
-						// }
-						joyDirX = "right";
-						joyDirY = "";
-						
-						if(joystick.up()){
-							
-							joyDirY = "up";
-						}
-						if(joystick.down()){
-							
-							joyDirY = "down";
-						}
-						
-					}
-					if (joystick.left()) {
-						// if (velX > -speed) {
-						// 	velX--;
-						// }
-						joyDirX = "left";
-						joyDirY = "";
-						
-						if(joystick.up()){
-							
-							joyDirY = "up";
-						}
-						if(joystick.down()){
-							
-							joyDirY = "down";
-						}
-					}
-					joyTouch = true;
-					
-				//var joyloop = setInterval(function(){
-					
-						
-					
-				//},700);		
-					
-					//console.log(joyDirX);
-					//console.log(joyDirY);
-					
-
-					
-	});
+			joyTouch = true; // the joystick was touched and now in the Update function it will be checking the direction of the joystick
+			
+		});
 	
-	// var enemy = {
-	
-	// 	x = target.Ex,
-	// 	y = target.Ey,
-	// 	color = "black",
-		
-	// 	draw: function() {
-    // 		canvas.fillStyle = this.color;
-    // 		canvas.fillRect(this.x, this.y, this.width, this.height);
-  	// 	}			
-		
-	// };
-	
-	// var joyTest = setInterval(function(){// i feel like this is too slowwww
-		
-	//  	//----------------------this guys sets up the virtual joystick. Thank you virtualjoystick.js--------------------------------//
-	// 	joystick = new VirtualJoystick({
-	// 			container: document.getElementById('container'),
-	// 			mouseSupport: true,
-	// 			limitStickTravel: true,
-	// 			stationaryBase: true, // to make the joystick appear anywhere, set to false and comment out BaseX and BaseY
-    //                   baseX: joyStickX, // this size is only good for mobile not tablets
-    //                   baseY: joyStickY, // this size is only good for mobile not tablets
-	// 			stickRadius: 25
-	// 		});	
-		
-	// },3000);
-	
-	
+	//when the play button is pressed the full screen is started, the joystick is set up and the enemy interval is started
 	$("#play").click(function(){
 		
 		//------------------------------this guys sets up full screen for the browsers--------------------------//
@@ -277,28 +157,28 @@ $(document).ready(function () {
 		
 		$("#RG").closest('.ui-btn').show();
 		
-		
+		//this makes the joystick
 		 joystick = new VirtualJoystick({
 				container: document.getElementById('container'),
 				mouseSupport: true,
 				limitStickTravel: true,
 				stationaryBase: true, // to make the joystick appear anywhere, set to false and comment out BaseX and BaseY
-                      baseX: joyStickX, // this size is only good for mobile not tablets
-                      baseY: joyStickY, // this size is only good for mobile not tablets
+                      baseX: joyStickX, // this size is only good for mobile maybe not tablets
+                      baseY: joyStickY, // this size is only good for mobile maybe not tablets
 				stickRadius: 25
 			});	
 			
 			
 			
-		//this will create a new enemy every 3 seconds //known bug, if play button is hit more than once, everything seems to get duplicated
+		//this will create a new enemy every 2 seconds //known bug, if play button is hit more than once, everything seems to get duplicated
 		setInterval(function(){
 					
-		    newEnemy = jQuery.extend(true, {}, enemy);
-			newEnemy.x = Math.round(Math.random() * (canvas.width * .95));
-			newEnemy.y = Math.round(Math.random() * (canvas.height * .95));
-			newEnemy.direction = Math.round(Math.random() * 7);
+		    Enemy1 = jQuery.extend(true, {}, enemy);
+			Enemy1.x = Math.round(Math.random() * (canvas.width * .95));
+			Enemy1.y = Math.round(Math.random() * (canvas.height * .95));
+			Enemy1.direction = Math.round(Math.random() * 7);
 					
-			entities.push(newEnemy);
+			entities.push(Enemy1);
 			//console.log(entities);
 		}, 2000);	
 		
@@ -306,131 +186,6 @@ $(document).ready(function () {
 		$("h2").hide();
 
 	});
-	
-	//old method with new approach
-	
-	// function joystickUpdate(){
-		
-
-	// 				if (joystick.up()) {
-	// 					if (velY > -speed) {
-	// 						velY--;
-	// 					}
-	// 				}
-
-	// 				else if (joystick.down()) {
-	// 					if (velY < speed) {
-	// 						velY++;
-	// 					}
-	// 				}
-	// 				else if (joystick.right()) {
-	// 					if (velX < speed) {
-	// 						velX++;
-	// 					}
-	// 				}
-	// 				else if (joystick.left()) {
-	// 					if (velX > -speed) {
-	// 						velX--;
-	// 					}
-	// 				}
-					
-	// 				else if (joystick.up() && joystick.right()) {
-	// 					if (velY > -speed && velX < speed) {
-	// 						velY--;
-	// 						velX++;
-	// 					}
-	// 				}
-					
-	// 				else if (joystick.up() && joystick.left()) {
-	// 					if (velY > -speed && velX > -speed) {
-	// 						velY--;
-	// 						velX--;
-	// 					}
-	// 				}
-					
-	// 				else if (joystick.down() && joystick.right()) {
-	// 					if (velY < speed && velX < speed) {
-	// 						velY++;
-	// 						velX++;
-	// 					}
-	// 				}
-					
-	// 				else if(joystick.down() && joystick.left()) {
-	// 					if (velY < speed && velX > -speed) {
-	// 						velY++;
-	// 						velX--;
-	// 					}
-						
-	// 				}
-	// 				else{
-	// 						velX;
-	// 						velY;
-	// 					}
-	// 		setTimeout(joystickUpdate, 3);
-	// 	// setInterval(function(){
-			
-	// 	// 	//for(var i = 0; i <= 3; i++){
-				
-
-	// 	// 			//console.log("loop");
-					
-	// 	// 		//}
-			
-	// 	// }, 10);
-		
-		
-		
-	// }
-	
-	//setInterval(function(){
-		
-					
-					
-					
-					// if(joystick._onDown()){
-						
-					// 	joyDirX = "";
-					// 	joyDirY = "";
-						
-					// }
-					
-					
-					// if (joystick.up() == false) {
-					// 	// if (velY > -speed) {
-					// 	// 	velY--;
-					// 	// }
-					// 	joyDirY = "";
-					// }
-
-					// if (joystick.down() == false) {
-					// 	// if (velY < speed) {
-					// 	// 	velY++;
-					// 	// }
-					// 	joyDirY = "";
-					// }
-					// if (joystick.right() == false) {
-					// 	// if (velX < speed) {
-					// 	// 	velX++;
-					// 	// }
-					// 	joyDirX = "";
-					// }
-					// if (joystick.left() == false) {
-					// 	// if (velX > -speed) {
-					// 	// 	velX--;
-					// 	// }
-					// 	joyDirX = "";
-					// }
-					// else{
-					// 		velX;
-					// 		velY;
-					// 	}
-						
-						//console.log(joyDirX);
-						//console.log(joyDirY);
-		
-	//}, 500);
-	
-	//------------------------end of virtual joystick------------------------------------------//
 
 	// Start listening to resize events and
 	// draw canvas and character sizes.
@@ -442,11 +197,10 @@ $(document).ready(function () {
 	// the window is resized.
 		window.addEventListener('resize', resizeCanvas, false);
 		
-		
-		
 	// Draw canvas border for the first time.
 		resizeCanvas();
 	}
+	
 	// Display custom canvas.
 	function redraw() {
 		//ctx.strokeStyle = 'blue';
@@ -458,16 +212,6 @@ $(document).ready(function () {
 		var playerSizeH = canvas.height * .01;
 		
 		playerSize = (playersSizeW + playerSizeH); //playerSize is about 19.43999 px
-		
-		//this is an attempt to calculate the size of the screen as a percentage to dynamically move the player and objects at screen size change
-		//var widthMX = (canvas.width - x);
-		//var heightMY = (canvas.height - y);
-		
-		//Xpercent = (widthMX / canvas.width) * 100;
-		//YPercant = (heightMY / canvas.height) * 100;
-		
-		//playerPositionX = canvas.width * (Xpercent / 100); //* .50;
-		//playerPositionY = canvas.height * (YPercant / 100); //* .50;
 		
 		//when the screen size changes, the player will be redirected to the center of the screen
 		playerPositionX = canvas.width * .50;
@@ -492,39 +236,10 @@ $(document).ready(function () {
 		//console.log("Canvas Width " + canvas.width);
 		//$("#result").html(canvas.width); //display the screen size
 		
-		// if(canvas.width > 1000){
-			
-		// 	$("#container").hide();
-		// }
-		
-		// if(canvas.width < 999){
-			
-		// 	$("#container").show();
-		// }
-		
-		if(canvas.width <= 428){
-			
-			//joystick.destroy();
-			
+		if(canvas.width <= 428){		
 			
 			joyStickX = (window.innerWidth) * .68;
 			joyStickY = (window.innerHeight) * .30;
-			
-			// setInterval(function(){
-			// 	clearInterval(joyTest);
-			// },3001);
-			//console.log("in the 428");
-			// joystick.baseX = joyStickX;
-			// joystick.baseY = joyStickY;
-			
-			//canvas.clearRect(0, 0, canvas.width, canvas.height);
-			
-			//joystick._buildJoystickBase;
-			//joystick._buildJoystickStick;
-			
-			//$("#play").closest('.ui-btn').hide();
-			
-			//console.log(joyStickX);
 			
 		}
 		
@@ -550,8 +265,7 @@ $(document).ready(function () {
 		 	$("#play").closest('.ui-btn').show();
 			 $("#dwnload").closest('.ui-btn').hide();
 			 $("#rotWar").hide();
-		 }
-		//playArea = canvas.width * canvas.height; //find the area and multiply to reposition characters at screen change. Find a percentage of the x and y's positon relative to playArea		
+		 }	
 		
 		//console.log("Canvas Height " + canvas.height);		
 		
@@ -742,204 +456,122 @@ $(document).ready(function () {
 			
 			//-----------------player movement with keyboard end --------------------------------------------//
 			
-			// for(var i = 0; i <= 1; i++){
+			//-----------------player movement with VirtualJoyStick.js Thank You!-------------------------------//
 			
-			// if (joystick.up()) {
-            //     if (velY > -speed) {
-            //         velY--;
-            //     }
-            // }
-
-            // if (joystick.down()) {
-            //     if (velY < speed) {
-            //         velY++;
-            //     }
-            // }
-            // if (joystick.right()) {
-            //     if (velX < speed) {
-            //         velX++;
-            //     }
-            // }
-            // if (joystick.left()) {
-            //     if (velX > -speed) {
-            //         velX--;
-            //     }
-            // }
-			// }
-			
-			// if (joystick.up()) {
-            //     if (velY > -speed) {
-            //         velY--;
-            //     }
-            // }
-
-            // if (joystick.down()) {
-            //     if (velY < speed) {
-            //         velY++;
-            //     }
-            // }
-            // if (joystick.right()) {
-            //     if (velX < speed) {
-            //         velX++;
-            //     }
-            // }
-            // if (joystick.left()) {
-            //     if (velX > -speed) {
-            //         velX--;
-            //     }
-            // }
-			
-			if(joyTouch == true){
+		if(joyTouch == true){
 			
 			if (joystick.up()) {
-						// if (velY > -speed) {
-						// 	velY--;
-						// }
-						joyDirY = "up";
-						joyDirX = "";
+	
+				joyDirY = "up";
+				joyDirX = "";
 						
-						if (joystick.right()) {
-						// if (velX < speed) {
-						// 	velX++;
-						// }
-						joyDirX = "right";
-						//joyDirY = "";
-						}
+				if (joystick.right()) {
 						
-						if (joystick.left()) {
-						// if (velX > -speed) {
-						// 	velX--;
-						// }
-						joyDirX = "left";
-						//joyDirY = "";
-						}
-					}
+					joyDirX = "right";
 
-					if (joystick.down()) {
-						// if (velY < speed) {
-						// 	velY++;
-						// }
-						joyDirY = "down";
-						joyDirX = "";
+					}
 						
-						if (joystick.right()) {
-						// if (velX < speed) {
-						// 	velX++;
-						// }
-						joyDirX = "right";
-						//joyDirY = "";
-					}
 					if (joystick.left()) {
-						// if (velX > -speed) {
-						// 	velX--;
-						// }
+
 						joyDirX = "left";
-						//joyDirY = "";
-						}
+
 					}
-					
-					
+				}
+
+				if (joystick.down()) {
+
+					joyDirY = "down";
+					joyDirX = "";
+						
 					if (joystick.right()) {
-						// if (velX < speed) {
-						// 	velX++;
-						// }
+
 						joyDirX = "right";
-						joyDirY = "";
-						
-						if(joystick.up()){
-							
-							joyDirY = "up";
-						}
-						if(joystick.down()){
-							
-							joyDirY = "down";
-						}
-						
 					}
 					if (joystick.left()) {
-						// if (velX > -speed) {
-						// 	velX--;
-						// }
-						joyDirX = "left";
-						joyDirY = "";
 						
-						if(joystick.up()){
-							
-							joyDirY = "up";
-						}
-						if(joystick.down()){
-							
-							joyDirY = "down";
-						}
+						joyDirX = "left";
 					}
+				}
+					
+					
+				if (joystick.right()) {
+
+					joyDirX = "right";
+					joyDirY = "";
+						
+					if(joystick.up()){
+							
+						joyDirY = "up";
+					}
+					if(joystick.down()){
+							
+						joyDirY = "down";
+					}
+						
+				}
+				if (joystick.left()) {
+
+					joyDirX = "left";
+					joyDirY = "";
+						
+					if(joystick.up()){
+							
+						joyDirY = "up";
+					}
+					if(joystick.down()){
+							
+						joyDirY = "down";
+					}
+				}
 					//console.log(joyDirX);
 					//console.log(joyDirY);
 					
-		  if(joyDirX == "left" && joyDirY == "up"){
-				
-				//if (velX > -speed && velY > -speed) {
-                     velX -= 3;
-					 velY -= 3;
-                //}
-				
-			}
-			else if(joyDirX == "left" && joyDirY == "down" ){
-				
-				//if (velY < speed && velY > -speed) {
-                     velY += 3;
-					 velX -= 3;
-               // }
-				
-			}
-			else if(joyDirY == "up" && joyDirX == "right"){
-				
-				//if (velY > -speed && velX < speed) {
-                    velY -= 3;
-					velX += 3;
-                //}
-				
-			}
-			else if(joyDirY == "down" && joyDirX == "right"){
-				
-				//if (velY < speed && velX < speed) {
-                     velY += 3;
-					 velX += 3;
-                //}
-				
-			}
-
-					
+				if(joyDirX == "left" && joyDirY == "up"){
+						
+							velX -= 3;
+							velY -= 3;
+						
+					}
+					else if(joyDirX == "left" && joyDirY == "down" ){
+						
+							velY += 3;
+							velX -= 3;
+						
+					}
+					else if(joyDirY == "up" && joyDirX == "right"){
+						
+							velY -= 3;
+							velX += 3;
+						
+					}
+					else if(joyDirY == "down" && joyDirX == "right"){
+						
+							velY += 3;
+							velX += 3;
+						
+					}
+					else if(joyDirX == "left"){
+						
+							velX -= 3;
+						
+					}
+					else if(joyDirX == "right"){
+						
+							velX += 3;
+						
+					}
+					else if(joyDirY == "up"){
+						
+							velY -= 3;
+						
+					}
+					else if(joyDirY == "down"){
+						
+							velY += 3;
+						
+					}
 			
-			else if(joyDirX == "left"){
-				
-				//if (velX > -speed) {
-                     velX -= 3;
-                //}
-				
-			}
-			else if(joyDirX == "right"){
-				
-				//if (velX < speed) {
-                     velX += 3;
-                //}
-				
-			}
-			else if(joyDirY == "up"){
-				
-				//if (velY > -speed) {
-                    velY -= 3;
-                //}
-				
-			}
-			else if(joyDirY == "down"){
-				
-				//if (velY < speed) {
-                     velY += 3;
-                //}
-				
-			}
-			
-			}
+		}
 			
 			
             velY *= friction; //friction and final positioning
@@ -1031,7 +663,6 @@ $(document).ready(function () {
 			 movement: function(){
 				 
 				 //this will make direct the enemy to move in a random location
-				 //console.log(this.direction);
 				 
 				 if(this.direction == 0){
 					 this.x -= 4;
@@ -1060,8 +691,7 @@ $(document).ready(function () {
 				 if(this.direction == 7){
 					 this.y -= 4;
 					 this.x += 4;
-				 }
-				 
+				 }				 
 				 //when an enemy hits the wall, this will check the direction it was moving and make it move the revirse direction
 				if (this.direction == 1 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
                 	this.x = canvas.width - playerSize;
@@ -1115,11 +745,7 @@ $(document).ready(function () {
 				 
 			 }
 			  
-		};
-		
-	
-		
-		
+		};		
 		
 		function draw() {
   			
@@ -1155,118 +781,13 @@ $(document).ready(function () {
             	}
 				
 			}
-			//console.log(newObject);
-			  //EnemyCreate();
 			 
 			//console.log(entities);  
 		}
 		
 		
+        update();// sets the main loop into motion
 		
-		
-		// function createEnemies(){
-			
-			
-		// 	setInterval(function(){
-				
-		// 		var enemy = new Object();
-		// 		enemy.color = "black";
-		// 		enemy.x = Math.round(Math.random() * (canvas.width * .95));
-		// 		enemy.y = Math.round(Math.random() * (canvas.height * .95));
-		// 		enemy.size = playerSize;
-		// 		enemy.draw = function() {
-		// 			ctx.beginPath(); // this is the ai guy
-    	// 			ctx.fillStyle = this.color;
-    	// 			ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-		// 			ctx.fill();
-        //     		ctx.closePath();
- 		// 	 }
-				
-		// 	entities.push(enemy);
-		// 	console.log(entities);	
-				
-		// 	}, 3000);
-			  
-		// 	  //enemy.draw();
-			
-		// }
-		
-		//createEnemies();
-		
-		
-		// var enemies = setInterval(function(){ 
-				
-		// 		//enemy.x = Math.round(Math.random() * (canvas.width - (playerSize * 4)));
-		// 		//enemy.y = Math.round(Math.random() * (canvas.height - (playerSize * 4)));
-		// 		//console.log(enemy);
-		// 		entities.push(enemy);
-		// 		//enemy.draw();
-				
-		// 		for(var i = 0; i < entities.length; i++){
-					
-		// 			console.log(entities[i]);
-		// 			entities[i].x = Math.round(Math.random() * (canvas.width - (playerSize * 4)));
-		// 			entities[i].y = Math.round(Math.random() * (canvas.width - (playerSize * 4)));
-		// 			entities[i];
-		// 		}
-				
-		// 		//entities[0].draw();
-		// 		//console.log(entities);
-		// 		console.log("enemy created");
-		// 		console.log(enemy.x + " " + enemy.y);
-				
-		// 	}, 3000);
-		
-		// //this will give the enemies random positions x and y
-		
-		
-		
-		
-		// function makeEnemyShip(x, y) {
-		// 	 target = {
-		// 			Ex: x,
-		// 			Ey: y
-		// 		}
-				
-				
-		// 	ctx.beginPath(); // this is the ai guy
-        //     ctx.fillStyle = "black";
-        //     ctx.arc(target.Ex, target.Ey, playerSize, 0, Math.PI * 2); // draws the ai. ai has hard coded position
-        //     ctx.fill();
-        //     ctx.closePath();
-		// 	};
-			
-			
-
-			// function start() {
-				
-				
-
-			// 	for (var i = 0; i <= numOfEnemyShips; i++) {
-					
-			// 		var Newtarget = {
-            //  			Ex: Math.round(Math.random() * (canvas.width - (playerSize * 4))), // retest this to see if the enemies stay in the game area
-       	    //  			Ey: Math.round(Math.random() * (canvas.height - (playerSize * 4)))
-         	// 		};
-					
-			// 		entities.push(enemy(Newtarget.Ex, Newtarget.Ey));
-					
-					
-			// 		console.log("EX: " + Newtarget.Ex);
-			// 		console.log("EY: " + Newtarget.Ey);
-			// 	}
-			// }
-			
-			
-		
-		//joystickUpdate();
-		
-        update();// sets the keyboard press loop into motion
-		
-		
-		
-		//start();
-
         document.body.addEventListener("keydown", function (e) { // these make the keyboard do
             keys[e.keyCode] = true;
         });
