@@ -79,6 +79,8 @@ $(document).ready(function () {
 	//when the game is quit, the screen goes back to normal and the page is reloaded or a message appears
 	$("#RG").click(function(){
 		
+		
+		
 		if(canvas.width > 500){
 			
 			if (document.exitFullscreen) {
@@ -95,9 +97,8 @@ $(document).ready(function () {
 			window.location.reload();
 			//alert("reload");
 		}
-		else if(canvas.width <= 450){
-			
-			if(canvas.width < 271){
+		else if(canvas.width < 499){
+			if(canvas.width < 261){
 				
 				if (document.exitFullscreen) {
 					document.exitFullscreen();
@@ -116,10 +117,9 @@ $(document).ready(function () {
 				alert("Please rotate your device and tap this button again to properly quit.");
 			}
 			//alert("hit the button");
-			
 		}
 		
-		
+	
 	});
 	
 	$("#RG").closest('.ui-btn').hide();
