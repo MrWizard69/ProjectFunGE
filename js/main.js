@@ -766,7 +766,6 @@ $(document).ready(function () {
   			color: "orange",
   			x: Math.round(Math.random() * (canvas.width * .90)),
   			y: Math.round(Math.random() * (canvas.height * .90)),
-			//direction: randomDirection = Math.round(Math.random() * 7),
  			draw: function() {
 				ctx.beginPath(); // this is the ai guy
     			ctx.fillStyle = this.color;
@@ -803,7 +802,6 @@ $(document).ready(function () {
   			color: "red",
   			x: Math.round(Math.random() * (canvas.width * .90)),
   			y: Math.round(Math.random() * (canvas.height * .90)),
-			//direction: randomDirection = Math.round(Math.random() * 7),
  			draw: function() {
 				ctx.beginPath(); // this is the ai guy
     			ctx.fillStyle = this.color;
