@@ -545,46 +545,46 @@ $(document).ready(function () {
 					
 				if(joyDirX == "left" && joyDirY == "up"){
 						
-							velX -= 2;
-							velY -= 2;
+							velX -= 3;
+							velY -= 3;
 						
 					}
 					else if(joyDirX == "left" && joyDirY == "down" ){
 						
-							velY += 2;
-							velX -= 2;
+							velY += 3;
+							velX -= 3;
 						
 					}
 					else if(joyDirY == "up" && joyDirX == "right"){
 						
-							velY -= 2;
-							velX += 2;
+							velY -= 3;
+							velX += 3;
 						
 					}
 					else if(joyDirY == "down" && joyDirX == "right"){
 						
-							velY += 2;
-							velX += 2;
+							velY += 3;
+							velX += 3;
 						
 					}
 					else if(joyDirX == "left"){
 						
-							velX -= 2;
+							velX -= 3;
 						
 					}
 					else if(joyDirX == "right"){
 						
-							velX += 2;
+							velX += 3;
 						
 					}
 					else if(joyDirY == "up"){
 						
-							velY -= 2;
+							velY -= 3;
 						
 					}
 					else if(joyDirY == "down"){
 						
-							velY += 2;
+							velY += 3;
 						
 					}
 			
@@ -680,32 +680,32 @@ $(document).ready(function () {
 				 //this will make direct the enemy to move in a random location
 				 
 				 if(this.direction == 0){
-					 this.x -= 1.5;
+					 this.x -= 1.7;
 				 }
 				 if(this.direction == 1){
-					 this.x += 1.5;
+					 this.x += 1.7;
 				 }
 				 if(this.direction == 2){
-					 this.y -= 1.5;
+					 this.y -= 1.7;
 				 }
 				 if(this.direction == 3){
-					 this.y += 1.5;
+					 this.y += 1.7;
 				 }
 				 if(this.direction == 4){
-					 this.y += 1.5;
-					 this.x += 1.5;
+					 this.y += 1.7;
+					 this.x += 1.7;
 				 }
 				 if(this.direction == 5){
-					 this.y -= 1.5;
-					 this.x -= 1.5;
+					 this.y -= 1.7;
+					 this.x -= 1.7;
 				 }
 				 if(this.direction == 6){
-					 this.y += 1.5;
-					 this.x -= 1.5;
+					 this.y += 1.7;
+					 this.x -= 1.7;
 				 }
 				 if(this.direction == 7){
-					 this.y -= 1.5;
-					 this.x += 1.5;
+					 this.y -= 1.7;
+					 this.x += 1.7;
 				 }				 
 				 //when an enemy hits the wall, this will check the direction it was moving and make it move the revirse direction
 				if (this.direction == 1 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
@@ -868,8 +868,8 @@ $(document).ready(function () {
 				y < entities[i].y + playerSize && y + playerSize > entities[i].y) {
 					// The objects are touching
 				
-					velX *= friction - 4; //this will stop the player from moving
-					velY *= friction - 4;
+					velX *= friction - 2; //this will stop the player from moving
+					velY *= friction - 2;
 					entities.splice(i, 1); //this will destroy the enemy on colision with the player
 				}
 				
