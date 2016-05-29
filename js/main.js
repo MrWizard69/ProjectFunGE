@@ -339,7 +339,7 @@ $(document).ready(function () {
 			joyStickY = (window.innerHeight) * .60;	
 			
 			shootStickX = (window.innerWidth) * .05;
-			shootStickY = (window.innerHeight) * 0.70;
+			shootStickY = (window.innerHeight) * 0.75;
 			
 			//$("#play").closest('.ui-btn').show();
 			
@@ -551,7 +551,7 @@ $(document).ready(function () {
 			
 			//-----------------player movement with VirtualJoyStick.js Thank You!-------------------------------//
 			
-		if(joyTouch == true){
+		//if(joyTouch == true){
 			
 			if (joystick.up()) {
 	
@@ -664,7 +664,7 @@ $(document).ready(function () {
 						
 					}
 			
-		}
+		//}
 			
 			
             velY *= friction; //friction and final positioning
@@ -687,7 +687,7 @@ $(document).ready(function () {
 			
 			
 			//------------------This is how the left joystick shoots ---------------------//
-		if(shootStickTouch == true){
+		//if(shootStickTouch == true){
 			
 			
 			if (shootStick.up()) {
@@ -753,7 +753,7 @@ $(document).ready(function () {
 						shootStickDirY = "down";
 					}
 				}
-		}		
+		//}		
 			console.log(shootStickDirX);
 			console.log(shootStickDirY);
 			
@@ -834,46 +834,46 @@ $(document).ready(function () {
 				 //this will make make the bullet move to the direction of the joystick
 				if(this.directionX == "left" && this.directionY == "up"){
 						
-							this.x -= 10;
-							this.y -= 10;
+							this.x -= 7;
+							this.y -= 7;
 						
 					}
 					else if(this.directionX == "left" && this.directionY == "down" ){
 						
-							this.y += 10;
-							this.x -= 10;
+							this.y += 7;
+							this.x -= 7;
 						
 					}
 					else if(this.directionX == "right" && this.directionY == "up"){
 						
-							this.y -= 10;
-							this.x += 10;
+							this.y -= 7;
+							this.x += 7;
 						
 					}
 					else if(this.directionX == "right" && this.directionY == "down"){
 						
-							this.y += 10;
-							this.x += 10;
+							this.y += 7;
+							this.x += 7;
 						
 					}
 					else if(this.directionX == "left"){
 						
-							this.x -= 10;
+							this.x -= 7;
 						
 					}
 					else if(this.directionX == "right"){
 						
-							this.x += 10;
+							this.x += 7;
 						
 					}
 					else if(this.directionY == "up"){
 						
-							this.y -= 10;
+							this.y -= 7;
 						
 					}
 					else if(this.directionY == "down"){
 						
-							this.y += 10;
+							this.y += 7;
 						
 					}
 				 
