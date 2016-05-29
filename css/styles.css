@@ -6,7 +6,19 @@ ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper{ /*.this is t
 
 #shootStick{
 	
-	width: 10%;
+	/*--------------This is what activates GPU graphic rendering------------------*/
+	-webkit-transform: translateZ(0); 
+	-moz-transform: translateZ(0); 
+	-ms-transform: translateZ(0); 
+	-o-transform: translateZ(0); 
+	transform: translateZ(0); 
+	
+	-moz-transition: all 1s; 
+	-webkit-transition: all 1s; 
+	-o-transition: all 1s; 
+	transition: all 1s ;  
+	/*--------------This is what activates GPU graphic rendering End------------------*/
+	
 }
 
 #canvas {
