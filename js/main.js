@@ -834,36 +834,36 @@ $(document).ready(function () {
 				 //this will make make the bullet move to the direction of the joystick
 				if(this.directionX == "left" && this.directionY == "up"){
 						
-							this.x -= 7;
-							this.y -= 7;
+							this.x += 7;
+							this.y += 7;
 						
 					}
 					else if(this.directionX == "left" && this.directionY == "down" ){
 						
-							this.y += 7;
-							this.x -= 7;
-						
-					}
-					else if(this.directionX == "right" && this.directionY == "up"){
-						
 							this.y -= 7;
 							this.x += 7;
 						
 					}
-					else if(this.directionX == "right" && this.directionY == "down"){
+					else if(this.directionX == "right" && this.directionY == "up"){
 						
 							this.y += 7;
-							this.x += 7;
+							this.x -= 7;
+						
+					}
+					else if(this.directionX == "right" && this.directionY == "down"){
+						
+							this.y -= 7;
+							this.x -= 7;
 						
 					}
 					else if(this.directionX == "left"){
 						
-							this.x -= 7;
+							this.x += 7;
 						
 					}
 					else if(this.directionX == "right"){
 						
-							this.x += 7;
+							this.x -= 7;
 						
 					}
 					else if(this.directionY == "up"){
