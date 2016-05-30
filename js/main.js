@@ -244,7 +244,7 @@ $(document).ready(function () {
 			Enemy1.direction = Math.round(Math.random() * 7);
 					
 			entities.push(Enemy1);
-			$("#result").html(entities.length);
+			//$("#result").html(entities.length);
 			//console.log(entities);
 		}, 3000);
 		
