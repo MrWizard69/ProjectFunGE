@@ -161,7 +161,7 @@ $(document).ready(function () {
 			//Enemy1.direction = Math.round(Math.random() * 7);
 				
 			bulletClip.push(bullet);
-			console.log(bulletClip);
+			//console.log(bulletClip);
 				
 		}, 250);
 			shootStickTouch = true;
@@ -244,6 +244,7 @@ $(document).ready(function () {
 			Enemy1.direction = Math.round(Math.random() * 7);
 					
 			entities.push(Enemy1);
+			$("#result").html(entities.length);
 			//console.log(entities);
 		}, 3000);
 		
@@ -754,8 +755,8 @@ $(document).ready(function () {
 					}
 				}
 		//}		
-			console.log(shootStickDirX);
-			console.log(shootStickDirY);
+			//console.log(shootStickDirX);
+			//console.log(shootStickDirY);
 			
 			
 			
@@ -1075,14 +1076,39 @@ $(document).ready(function () {
 		};								
 		
 		function draw() {
-  			
+									
 			
+			//draws the bullets and makes them move
+			for(var j = 0; j < bulletClip.length; j++){
+					
+						bulletClip[j].draw();
+						bulletClip[j].movement();
+					
+				if (bulletClip[j].x > canvas.width - playerSize) { // colision with game boarders x-axis playerSize is about 19.43999
+					
+					bulletClip.splice(j, 1);
+				} else if (bulletClip[j].x < playerSize) {
+					
+					bulletClip.splice(j, 1);
+				}
+				
+				if (bulletClip[j].y > canvas.height - playerSize) { // colision with game boarders y-axis playerSize is about 19.43999
+					
+					bulletClip.splice(j, 1);
+				} else if (bulletClip[j].y < playerSize) {
+					
+					bulletClip.splice(j, 1);
+				}
+					
+			}			
+				 						
 			//enemy.draw();
 			//this will loop through the list of enemies
 			for(var i = 0; i < entities.length; i++){
 				
 				entities[i].draw(); //this will draw the enemies as they are created
 				entities[i].movement();//this will activate the enemies movement
+				
 				
 				//this is a colision with the randomly spawning ai guys
 				if (x < entities[i].x + playerSize  && x + playerSize  > entities[i].x &&
@@ -1094,66 +1120,60 @@ $(document).ready(function () {
 					entities.splice(i, 1); //this will destroy the enemy on colision with the player
 				}
 				
-				if (entities[i].x > canvas.width - playerSize) { // colision with game boarders x-axis playerSize is about 19.43999
+				if (entities[i].x > canvas.width - playerSize + 1) { // colision with game boarders x-axis playerSize is about 19.43999
 				
 					entities.splice(i, 1);
-            	} else if (entities[i].x < playerSize) {
+            	} else if (entities[i].x < playerSize - 1) {
 				
 					entities.splice(i, 1);
             	}
 			
-				if (entities[i].y > canvas.height - playerSize) { // colision with game boarders y-axis playerSize is about 19.43999
+				if (entities[i].y > canvas.height - playerSize + 1) { // colision with game boarders y-axis playerSize is about 19.43999
 				
 					entities.splice(i, 1);
-            	} else if (entities[i].y < playerSize) {
+            	} else if (entities[i].y < playerSize - 1) {
 				
 					entities.splice(i, 1);
             	}
-
+				
+				
+				// for(var j = 0; j < bulletClip.length; j++){
+					
+				// 	if (bulletClip[j].x < entities[i].x + bulletSize  && bulletClip[j].x + bulletSize  > entities[i].x &&
+				// 	bulletClip[i].y < entities[i].y + bulletSize && bulletClip[j].y + playerSize > entities[i].y) {
+				// 	// The objects are touching
+				
+				// 		entities.splice(i, 1); //this will destroy the enemy on colision with the bullet
+				// 		bulletClip.splice(j,1);
+				// 	 }
+					
+				// }
 						
 				
 			}
 			
-		//draws the bullets and makes them move
-		for(var j = 0; j < bulletClip.length; j++){
-				
-					bulletClip[j].draw();
-					bulletClip[j].movement();
-				
-			if (bulletClip[j].x > canvas.width - playerSize) { // colision with game boarders x-axis playerSize is about 19.43999
-				
-				bulletClip.splice(j, 1);
-            } else if (bulletClip[j].x < playerSize) {
-				
-				bulletClip.splice(j, 1);
-            }
 			
-			if (bulletClip[j].y > canvas.height - playerSize) { // colision with game boarders y-axis playerSize is about 19.43999
-				
-				bulletClip.splice(j, 1);
-            } else if (bulletClip[j].y < playerSize) {
-				
-				bulletClip.splice(j, 1);
-            }
-				
-		}
-			
-	//this is what detects colisions for bullets and enemys
+		// 	//this is what detects colisions for bullets and enemys // can detect 12 enemies cleanly
 		for(var j = 0; j < bulletClip.length; j++){
+			
+			bulletClip[j].draw();
+			//bulletClip[j].movement();
 			
 			for(var i = 0; i < entities.length; i++){
 					
+				entities[i].draw(); //this will draw the enemies as they are created
+				//entities[i].movement();//this will activate the enemies movement
 				
 					if (bulletClip[j].x < entities[i].x + bulletSize  && bulletClip[j].x + bulletSize  > entities[i].x &&
 					bulletClip[i].y < entities[i].y + bulletSize && bulletClip[j].y + playerSize > entities[i].y) {
 					// The objects are touching
 				
 						entities.splice(i, 1); //this will destroy the enemy on colision with the bullet
-						bulletClip.splice(j,1);
+						bulletClip.splice(j, 1);
 					 }
 					}
 			
-		}		
+		}	
 			 
 			//console.log(entities);  
 		}
