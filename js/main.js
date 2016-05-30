@@ -132,7 +132,7 @@ $(document).ready(function () {
 	$("#RG").closest('.ui-btn').hide();
 	$("#dwnload").closest('.ui-btn').hide();
 	
-	$("#container").on("vmouseup",function(){
+	$("#container").on("touchend",function(){
 									
 		joyDirX = "";
 		joyDirY = "";
@@ -140,13 +140,15 @@ $(document).ready(function () {
 		
 	});
 	
-		$("#container").on("vmousedown",function(){
+		$("#container").on("touchstart",function(){
 									
 			joyTouch = true; // the joystick was touched and now in the Update function it will be checking the direction of the joystick
 			
 		});
 
-		$("#shootStick").on("vmousedown",function(){	
+		$("#shootStick").on("touchstart",function(){
+			
+			console.log("shoot stick");	
 			
 		var bulletLoop = setInterval(function(){
 					
@@ -166,7 +168,7 @@ $(document).ready(function () {
 		}, 250);
 			shootStickTouch = true;
 			
-			$("#shootStick").on("vmouseup",function(){
+			$("#shootStick").on("touchend",function(){
 									
 			shootStickDirX = "";
 			shootStickDirY = "";
@@ -552,7 +554,7 @@ $(document).ready(function () {
 			
 			//-----------------player movement with VirtualJoyStick.js Thank You!-------------------------------//
 			
-		//if(joyTouch == true){
+		if(joyTouch == true){
 			
 			if (joystick.up()) {
 	
@@ -617,6 +619,7 @@ $(document).ready(function () {
 						joyDirY = "down";
 					}
 				}
+				
 					//console.log(joyDirX);
 					//console.log(joyDirY);
 					
@@ -665,30 +668,11 @@ $(document).ready(function () {
 						
 					}
 			
-		//}
-			
-			
-            velY *= friction; //friction and final positioning
-            y += velY;
-            velX *= friction;
-            x += velX;
-			
-			
-			if (x > canvas.width - playerSize) { // colision with game boarders x-axis playerSize is about 19.43999
-                x = canvas.width - playerSize;
-            } else if (x < playerSize) {
-                x = playerSize + 2;
-            }
-			
-			if (y > canvas.height - playerSize) { // colision with game boarders y-axis playerSize is about 19.43999
-                y = canvas.height - playerSize;
-            } else if (y < playerSize) {
-                y = playerSize + 2;
-            }
+			}
 			
 			
 			//------------------This is how the left joystick shoots ---------------------//
-		//if(shootStickTouch == true){
+		if(shootStickTouch == true){
 			
 			
 			if (shootStick.up()) {
@@ -754,9 +738,31 @@ $(document).ready(function () {
 						shootStickDirY = "down";
 					}
 				}
-		//}		
+			}		
 			//console.log(shootStickDirX);
 			//console.log(shootStickDirY);
+			
+			
+            velY *= friction; //friction and final positioning
+            y += velY;
+            velX *= friction;
+            x += velX;
+			
+			
+			if (x > canvas.width - playerSize) { // colision with game boarders x-axis playerSize is about 19.43999
+                x = canvas.width - playerSize;
+            } else if (x < playerSize) {
+                x = playerSize + 2;
+            }
+			
+			if (y > canvas.height - playerSize) { // colision with game boarders y-axis playerSize is about 19.43999
+                y = canvas.height - playerSize;
+            } else if (y < playerSize) {
+                y = playerSize + 2;
+            }
+			
+			
+			
 			
 			
 			
@@ -1075,32 +1081,7 @@ $(document).ready(function () {
 			  
 		};								
 		
-		function draw() {
-									
-			
-			//draws the bullets and makes them move
-			for(var j = 0; j < bulletClip.length; j++){
-					
-						bulletClip[j].draw();
-						bulletClip[j].movement();
-					
-				if (bulletClip[j].x > canvas.width - playerSize) { // colision with game boarders x-axis playerSize is about 19.43999
-					
-					bulletClip.splice(j, 1);
-				} else if (bulletClip[j].x < playerSize) {
-					
-					bulletClip.splice(j, 1);
-				}
-				
-				if (bulletClip[j].y > canvas.height - playerSize) { // colision with game boarders y-axis playerSize is about 19.43999
-					
-					bulletClip.splice(j, 1);
-				} else if (bulletClip[j].y < playerSize) {
-					
-					bulletClip.splice(j, 1);
-				}
-					
-			}			
+		function draw() {									
 				 						
 			//enemy.draw();
 			//this will loop through the list of enemies
@@ -1108,8 +1089,7 @@ $(document).ready(function () {
 				
 				entities[i].draw(); //this will draw the enemies as they are created
 				entities[i].movement();//this will activate the enemies movement
-				
-				
+								
 				//this is a colision with the randomly spawning ai guys
 				if (x < entities[i].x + playerSize  && x + playerSize  > entities[i].x &&
 				y < entities[i].y + playerSize && y + playerSize > entities[i].y) {
@@ -1137,43 +1117,54 @@ $(document).ready(function () {
             	}
 				
 				
-				// for(var j = 0; j < bulletClip.length; j++){
-					
-				// 	if (bulletClip[j].x < entities[i].x + bulletSize  && bulletClip[j].x + bulletSize  > entities[i].x &&
-				// 	bulletClip[i].y < entities[i].y + bulletSize && bulletClip[j].y + playerSize > entities[i].y) {
-				// 	// The objects are touching
-				
-				// 		entities.splice(i, 1); //this will destroy the enemy on colision with the bullet
-				// 		bulletClip.splice(j,1);
-				// 	 }
-					
-				// }
+
 						
 				
 			}
 			
-			
-		// 	//this is what detects colisions for bullets and enemys // can detect 12 enemies cleanly
-		for(var j = 0; j < bulletClip.length; j++){
-			
-			bulletClip[j].draw();
-			//bulletClip[j].movement();
-			
-			for(var i = 0; i < entities.length; i++){
+			//draws the bullets and makes them move
+			for(var j = 0; j < bulletClip.length; j++){
 					
-				entities[i].draw(); //this will draw the enemies as they are created
-				//entities[i].movement();//this will activate the enemies movement
+					bulletClip[j].draw();
+					bulletClip[j].movement();					
+					
+				if (bulletClip[j].x > canvas.width - playerSize) { // colision with game boarders x-axis playerSize is about 19.43999
+					
+					bulletClip.splice(j, 1);
+				} else if (bulletClip[j].x < playerSize) {
+					
+					bulletClip.splice(j, 1);
+				}
+				
+				if (bulletClip[j].y > canvas.height - playerSize) { // colision with game boarders y-axis playerSize is about 19.43999
+					
+					bulletClip.splice(j, 1);
+				} else if (bulletClip[j].y < playerSize) {
+					
+					bulletClip.splice(j, 1);
+				}
+					
+			}			
+			
+			//this is what detects colisions for bullets and enemys // can detect 12 enemies somewhat cleanly
+			for(var j = 0; j < bulletClip.length; j++){
+			
+				bulletClip[j].draw(); // this will add a cool blur to the bullet
+			
+				for(var i = 0; i < entities.length; i++){
+					
+					//entities[i].draw(); //this will add a cool blur to the enemys
 				
 					if (bulletClip[j].x < entities[i].x + bulletSize  && bulletClip[j].x + bulletSize  > entities[i].x &&
-					bulletClip[i].y < entities[i].y + bulletSize && bulletClip[j].y + playerSize > entities[i].y) {
-					// The objects are touching
+					bulletClip[j].y < entities[i].y + bulletSize && bulletClip[j].y + playerSize > entities[i].y) {
+						// The objects are touching
 				
 						entities.splice(i, 1); //this will destroy the enemy on colision with the bullet
 						bulletClip.splice(j, 1);
 					 }
-					}
+				}
 			
-		}	
+			}	
 			 
 			//console.log(entities);  
 		}
