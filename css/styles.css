@@ -4,6 +4,11 @@ ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper{ /*.this is t
 	
 }
 
+#score{
+	
+	text-align: center;
+}
+
 #shootStick{
 	
 	/*--------------This is what activates GPU graphic rendering------------------*/
@@ -140,6 +145,8 @@ html, body {
 #rest{
 	
 	width: 17%;
+	margin-bottom: -2%;
+	margin-top: 2%;
 	
 }
 
