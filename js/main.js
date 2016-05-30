@@ -1149,7 +1149,7 @@ $(document).ready(function () {
 			//this is what detects colisions for bullets and enemys // can detect 12 enemies somewhat cleanly
 			for(var j = 0; j < bulletClip.length; j++){
 			
-				bulletClip[j].draw(); // this will add a cool blur to the bullet
+				//bulletClip[j].draw(); // this will add a cool blur to the bullet
 			
 				for(var i = 0; i < entities.length; i++){
 					
