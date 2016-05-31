@@ -333,7 +333,7 @@ $(document).ready(function () {
 		
 		//This will dynamically resize the game play area		
 		canvas.width = (window.innerWidth) * .72;
-		canvas.height = (window.innerHeight) * .78; //.80
+		canvas.height = (window.innerHeight) * .77; //.80
 		
 		//console.log("Canvas Width " + canvas.width);
 		//$("#result").html(canvas.width); //display the screen size/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
