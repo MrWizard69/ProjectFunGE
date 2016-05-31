@@ -30,7 +30,7 @@ ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper{ /*.this is t
     border:1px solid #000;
 	border-radius: 5px;
 	margin-left: 11%;
-	margin-top: -0.5%;
+	margin-top: -0.6%;
 	background-color: #151B54;
 	/*This is the game stage*/
 	/*--------------This is what activates GPU graphic rendering------------------*/
@@ -160,7 +160,7 @@ html, body {
 	color: darkred;
 	text-align: center;
 	margin-bottom: -.5%;
-	margin-top: -3%;
+	margin-top: -4%;
 }
 
 #DL{
