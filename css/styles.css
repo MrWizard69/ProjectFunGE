@@ -145,6 +145,7 @@ html, body {
 	
 	width: 17%;
 	
+	
 }
 
 
@@ -167,10 +168,14 @@ html, body {
 	margin-top: -0.5%;
 }
 
-/*@media screen and (min-width: 480px) {
+@media screen and (max-width: 1000px) {
     #rest{
 	
-	width: 10%;
+	margin-bottom: -6%;
 	
 }
-}*/
+h2{
+	margin-top: 6%;
+}
+
+}
