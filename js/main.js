@@ -249,8 +249,8 @@ $(document).ready(function () {
 		setInterval(function(){
 					
 		    Enemy1 = jQuery.extend(true, {}, RandomShip);
-			Enemy1.x = Math.round(Math.random() * (canvas.width * .95));
-			Enemy1.y = Math.round(Math.random() * (canvas.height * .95));
+			Enemy1.x = Math.round(Math.random() * (canvas.width * .90));
+			Enemy1.y = Math.round(Math.random() * (canvas.height * .90));
 			Enemy1.direction = Math.round(Math.random() * 7);
 					
 			RandomShipFleet.push(Enemy1);
@@ -261,8 +261,8 @@ $(document).ready(function () {
 		setInterval(function(){
 					
 		    Enemy2 = jQuery.extend(true, {}, Hunter);
-			Enemy2.x = Math.round(Math.random() * (canvas.width * .95));
-			Enemy2.y = Math.round(Math.random() * (canvas.height * .95));
+			Enemy2.x = Math.round(Math.random() * (canvas.width * .90));
+			Enemy2.y = Math.round(Math.random() * (canvas.height * .90));
 					
 			HunterFleet.push(Enemy2);
 			//console.log(entities);
@@ -271,8 +271,8 @@ $(document).ready(function () {
 		setInterval(function(){
 					
 		    Enemy3 = jQuery.extend(true, {}, Stalker);
-			Enemy3.x = Math.round(Math.random() * (canvas.width * .95));
-			Enemy3.y = Math.round(Math.random() * (canvas.height * .95));
+			Enemy3.x = Math.round(Math.random() * (canvas.width * .90));
+			Enemy3.y = Math.round(Math.random() * (canvas.height * .90));
 					
 			StalkerFleet.push(Enemy3);
 			//console.log(entities);
@@ -1143,21 +1143,21 @@ $(document).ready(function () {
 					HunterFleet.splice(i, 1); //this will destroy the enemy on colision with the player
 				}
 				
-				if (HunterFleet[i].x > canvas.width - playerSize + 1) { // colision with game boarders x-axis playerSize is about 19.43999
+				// if (HunterFleet[i].x > canvas.width) { // colision with game boarders x-axis playerSize is about 19.43999
 				
-					HunterFleet.splice(i, 1);
-            	} else if (HunterFleet[i].x < playerSize - 1) {
+				// 	HunterFleet.splice(i, 1);
+            	// } else if (HunterFleet[i].x < playerSize) {
 				
-					HunterFleet.splice(i, 1);
-            	}
+				// 	HunterFleet.splice(i, 1);
+            	// }
 			
-				if (HunterFleet[i].y > canvas.height - playerSize + 1) { // colision with game boarders y-axis playerSize is about 19.43999
+				// if (HunterFleet[i].y > canvas.height) { // colision with game boarders y-axis playerSize is about 19.43999
 				
-					HunterFleet.splice(i, 1);
-            	} else if (HunterFleet[i].y < playerSize - 1) {
+				// 	HunterFleet.splice(i, 1);
+            	// } else if (HunterFleet[i].y < playerSize) {
 				
-					HunterFleet.splice(i, 1);
-            	}
+				// 	HunterFleet.splice(i, 1);
+            	// }
 				
 			}
 			
@@ -1177,21 +1177,21 @@ $(document).ready(function () {
 					StalkerFleet.splice(i, 1); //this will destroy the enemy on colision with the player
 				}
 				
-				if (StalkerFleet[i].x > canvas.width - playerSize + 1) { // colision with game boarders x-axis playerSize is about 19.43999
+				// if (StalkerFleet[i].x > canvas.width - playerSize + 1) { // colision with game boarders x-axis playerSize is about 19.43999
 				
-					StalkerFleet.splice(i, 1);
-            	} else if (StalkerFleet[i].x < playerSize - 1) {
+				// 	StalkerFleet.splice(i, 1);
+            	// } else if (StalkerFleet[i].x < playerSize - 1) {
 				
-					StalkerFleet.splice(i, 1);
-            	}
+				// 	StalkerFleet.splice(i, 1);
+            	// }
 			
-				if (StalkerFleet[i].y > canvas.height - playerSize + 1) { // colision with game boarders y-axis playerSize is about 19.43999
+				// if (StalkerFleet[i].y > canvas.height - playerSize + 1) { // colision with game boarders y-axis playerSize is about 19.43999
 				
-					StalkerFleet.splice(i, 1);
-            	} else if (StalkerFleet[i].y < playerSize - 1) {
+				// 	StalkerFleet.splice(i, 1);
+            	// } else if (StalkerFleet[i].y < playerSize - 1) {
 				
-					StalkerFleet.splice(i, 1);
-            	}
+				// 	StalkerFleet.splice(i, 1);
+            	// }
 				
 			}
 			
@@ -1228,8 +1228,8 @@ $(document).ready(function () {
 					
 					//RandomShipFleet[i].draw(); //this will add a cool blur to the enemys
 				
-					if (bulletClip[j].x < RandomShipFleet[i].x + bulletSize  && bulletClip[j].x + bulletSize  > RandomShipFleet[i].x &&
-					bulletClip[j].y < RandomShipFleet[i].y + bulletSize && bulletClip[j].y + playerSize > RandomShipFleet[i].y) {
+					if (bulletClip[j].x < RandomShipFleet[i].x + bulletSize + 2.5  && bulletClip[j].x + bulletSize + 2.5  > RandomShipFleet[i].x &&
+					bulletClip[j].y < RandomShipFleet[i].y + bulletSize + 2.5 && bulletClip[j].y + playerSize > RandomShipFleet[i].y) {
 						// The objects are touching
 						
 						score += 1;
@@ -1251,8 +1251,8 @@ $(document).ready(function () {
 					
 					//RandomShipFleet[i].draw(); //this will add a cool blur to the enemys
 				
-					if (bulletClip[j].x < HunterFleet[i].x + bulletSize  && bulletClip[j].x + bulletSize  > HunterFleet[i].x &&
-					bulletClip[j].y < HunterFleet[i].y + bulletSize && bulletClip[j].y + playerSize > HunterFleet[i].y) {
+					if (bulletClip[j].x < HunterFleet[i].x + bulletSize + 2.5  && bulletClip[j].x + bulletSize + 2.5  > HunterFleet[i].x &&
+					bulletClip[j].y < HunterFleet[i].y + bulletSize + 2.5 && bulletClip[j].y + playerSize > HunterFleet[i].y) {
 						// The objects are touching
 						
 						score += 2;
@@ -1274,8 +1274,8 @@ $(document).ready(function () {
 					
 					//RandomShipFleet[i].draw(); //this will add a cool blur to the enemys
 				
-					if (bulletClip[j].x < StalkerFleet[i].x + bulletSize  && bulletClip[j].x + bulletSize  > StalkerFleet[i].x &&
-					bulletClip[j].y < StalkerFleet[i].y + bulletSize && bulletClip[j].y + playerSize > StalkerFleet[i].y) {
+					if (bulletClip[j].x < StalkerFleet[i].x + bulletSize + 2.5  && bulletClip[j].x + bulletSize + 2.5  > StalkerFleet[i].x &&
+					bulletClip[j].y < StalkerFleet[i].y + bulletSize + 2.5 && bulletClip[j].y + playerSize > StalkerFleet[i].y) {
 						// The objects are touching
 						
 						score += 3;
