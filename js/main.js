@@ -1228,8 +1228,8 @@ $(document).ready(function () {
 					
 					//RandomShipFleet[i].draw(); //this will add a cool blur to the enemys
 				
-					if (bulletClip[j].x < RandomShipFleet[i].x + bulletSize + 2.5  && bulletClip[j].x + bulletSize + 2.5  > RandomShipFleet[i].x &&
-					bulletClip[j].y < RandomShipFleet[i].y + bulletSize + 2.5 && bulletClip[j].y + playerSize > RandomShipFleet[i].y) {
+					if (bulletClip[j].x < RandomShipFleet[i].x + (bulletSize * 3)  && bulletClip[j].x + (bulletSize * 3)  > RandomShipFleet[i].x &&
+					bulletClip[j].y < RandomShipFleet[i].y + (bulletSize * 3) && bulletClip[j].y + playerSize > RandomShipFleet[i].y) {
 						// The objects are touching
 						
 						score += 1;
@@ -1251,8 +1251,8 @@ $(document).ready(function () {
 					
 					//RandomShipFleet[i].draw(); //this will add a cool blur to the enemys
 				
-					if (bulletClip[j].x < HunterFleet[i].x + bulletSize + 2.5  && bulletClip[j].x + bulletSize + 2.5  > HunterFleet[i].x &&
-					bulletClip[j].y < HunterFleet[i].y + bulletSize + 2.5 && bulletClip[j].y + playerSize > HunterFleet[i].y) {
+					if (bulletClip[j].x < HunterFleet[i].x + (bulletSize * 3)  && bulletClip[j].x + (bulletSize * 3)  > HunterFleet[i].x &&
+					bulletClip[j].y < HunterFleet[i].y + (bulletSize * 3) && bulletClip[j].y + playerSize > HunterFleet[i].y) {
 						// The objects are touching
 						
 						score += 2;
@@ -1274,8 +1274,8 @@ $(document).ready(function () {
 					
 					//RandomShipFleet[i].draw(); //this will add a cool blur to the enemys
 				
-					if (bulletClip[j].x < StalkerFleet[i].x + bulletSize + 2.5  && bulletClip[j].x + bulletSize + 2.5  > StalkerFleet[i].x &&
-					bulletClip[j].y < StalkerFleet[i].y + bulletSize + 2.5 && bulletClip[j].y + playerSize > StalkerFleet[i].y) {
+					if (bulletClip[j].x < StalkerFleet[i].x + (bulletSize * 3)  && bulletClip[j].x + (bulletSize * 3)  > StalkerFleet[i].x &&
+					bulletClip[j].y < StalkerFleet[i].y + (bulletSize * 3) && bulletClip[j].y + playerSize > StalkerFleet[i].y) {
 						// The objects are touching
 						
 						score += 3;
