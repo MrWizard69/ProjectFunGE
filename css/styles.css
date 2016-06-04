@@ -195,12 +195,12 @@ html, body {
 
 }
 
-/*@media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
 
 	#restartDiv{
 		
-		/*margin-top: -70%;*/
-		display: none;
+		margin-top: -70%;
+
 	}
 	
-}*/
+}

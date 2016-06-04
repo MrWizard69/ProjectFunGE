@@ -524,8 +524,12 @@ canvas1.height = canvas.height;
 			
 		 	$("#play").closest('.ui-btn').show();
 			 $("#dwnload").closest('.ui-btn').hide();
-			 $("#restartBtn").closest('.ui-btn').show();
-			 $("#restartDiv").show();
+			 
+			 if(exitReload == 1){
+			 
+			 	$("#restartBtn").closest('.ui-btn').show();
+				 $("#restartDiv").show();
+			 }
 			 $("#rotWar").hide();
 			 //exitReload = 0;
 		 }	
@@ -1535,6 +1539,7 @@ canvas1.height = canvas.height;
 				x = canvas.width * 0.50;
 				y = canvas.height * 0.50;
 				menu = true;
+				$("#restartBtn").closest('.ui-btn').show();
 				$("#restartDiv").show();
 				
 				
