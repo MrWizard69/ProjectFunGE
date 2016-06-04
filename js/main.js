@@ -160,7 +160,7 @@ canvas1.height = canvas.height;
 	});
 	
 	$("#score").hide();
-	$("#restartDiv").hide();
+	$("#restartBtn").hide();
 	
 	$("#dwnload").click(function(){
 		
@@ -216,7 +216,7 @@ canvas1.height = canvas.height;
 	
 	});
 	
-	$("#restartDiv").click(function(){
+	$("#restartBtn").click(function(){
 		
 		exitReload = 0;
 		score = 0;
@@ -226,7 +226,7 @@ canvas1.height = canvas.height;
 		HunterFleet = [];
 		StalkerFleet = [];
 		$("#score").html("Score: " + score + " : Lives: " + lives);
-		$("#restartDiv").hide();
+		$("#restartBtn").closest('.ui-btn').hide();
 		
 	});
 	
@@ -521,6 +521,7 @@ canvas1.height = canvas.height;
 			
 		 	$("#play").closest('.ui-btn').show();
 			 $("#dwnload").closest('.ui-btn').hide();
+			 $("#restartBtn").closest('.ui-btn').show();
 			 $("#rotWar").hide();
 			 //exitReload = 0;
 		 }	
