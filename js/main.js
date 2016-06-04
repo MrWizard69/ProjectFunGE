@@ -226,6 +226,7 @@ canvas1.height = canvas.height;
 		RandomShipFleet = [];
 		HunterFleet = [];
 		StalkerFleet = [];
+		bulletClip = [];
 		$("#score").html("Score: " + score + " : Lives: " + lives);
 		$("#restartBtn").closest('.ui-btn').hide();
 		$("#restartDiv").hide();
@@ -514,8 +515,8 @@ canvas1.height = canvas.height;
 			
 			$("#play").closest('.ui-btn').hide();
 			$("#dwnload").closest('.ui-btn').show();
-			$("#restartBtn").closest('.ui-btn').hide();
-			$("#restartDiv").hide();
+			// $("#restartBtn").closest('.ui-btn').hide();
+			// $("#restartDiv").hide();
 			$("#rotWar").show();
 			
 		}
@@ -843,7 +844,7 @@ canvas1.height = canvas.height;
 			
 			
 			//------------------This is how the left joystick shoots ---------------------//
-		if(shootStickTouch == true){
+		if(shootStickTouch == true && exitReload == 0){
 			
 			
 			if (shootStick.up()) {
