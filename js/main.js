@@ -225,8 +225,6 @@ canvas1.height = canvas.height;
 		RandomShipFleet = [];
 		HunterFleet = [];
 		StalkerFleet = [];
-		//$("#pDiv").show();
-		$("#restartDiv").hide();
 		
 	});
 	
@@ -1263,7 +1261,7 @@ canvas1.height = canvas.height;
 			
 			if(exitReload == 0){
 			
-			console.log(exitReload);
+			//console.log(exitReload);
 			
 			if(menu == false){
 			
