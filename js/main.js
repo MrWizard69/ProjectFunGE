@@ -847,13 +847,15 @@ canvas1.height = canvas.height;
 			//this part will draw the characters
             
 			ctx.clearRect(0, 0, canvas.width, canvas.height); // this will clear and redraw the canvas for new values and positions
+
+			if(menu == false){
 			
-            ctx.beginPath(); //this is the player
-            ctx.fillStyle = "#A23BEC";
-            ctx.arc(x, y, playerSize, 0, Math.PI * 2); // draw the player playerSize is about 19.43999
-            ctx.fill();
-            ctx.closePath();
-			
+				ctx.beginPath(); //this is the player
+				ctx.fillStyle = "#A23BEC";
+				ctx.arc(x, y, playerSize, 0, Math.PI * 2); // draw the player playerSize is about 19.43999
+				ctx.fill();
+				ctx.closePath();
+			}
 						
             // ctx.beginPath(); // this is the ai guy
             // ctx.fillStyle = "black";
@@ -1523,7 +1525,7 @@ Particle.prototype.draw = function() {
 // create particle group/explosion
 function createParticles( x, y ) {
 	// increase the particle count for a bigger explosion, beware of the canvas performance hit with the increased particles though
-	var particleCount = 15;//125
+	var particleCount = 10;//125
 	while( particleCount-- ) {
 		particles.push( new Particle( x, y ) );
 	}
