@@ -1,7 +1,7 @@
 
 //this is all the variables for the star background
 var stars = [];
-var numStars = 20; //250; <- that is good for desktop screen size//2000
+var numStars = 60; //250; <- that is good for desktop screen size//2000
 
 $(document).ready(function () {
 	
@@ -923,14 +923,14 @@ canvas1.height = canvas.height;
 			
 			
 
-			if(menu == false){
+			// if(menu == false){
 			
-				ctx.beginPath(); //this is the player
-				ctx.fillStyle = "#A23BEC";
-				ctx.arc(x, y, playerSize, 0, Math.PI * 2); // draw the player playerSize is about 19.43999
-				ctx.fill();
-				ctx.closePath();
-			}
+			// 	ctx.beginPath(); //this is the player
+			// 	ctx.fillStyle = "#A23BEC";
+			// 	ctx.arc(x, y, playerSize, 0, Math.PI * 2); // draw the player playerSize is about 19.43999
+			// 	ctx.fill();
+			// 	ctx.closePath();
+			// }
 						
             // ctx.beginPath(); // this is the ai guy
             // ctx.fillStyle = "black";
@@ -1241,6 +1241,17 @@ canvas1.height = canvas.height;
 		function draw() {	
 			
 			animateStar();
+			
+			
+			if(menu == false){
+			
+				ctx.beginPath(); //this is the player
+				ctx.fillStyle = "#A23BEC";
+				ctx.arc(x, y, playerSize, 0, Math.PI * 2); // draw the player playerSize is about 19.43999
+				ctx.fill();
+				ctx.closePath();
+			}
+			
 															 						
 			//enemy.draw();
 			//this will loop through the list of RandomShip enemies
