@@ -1525,7 +1525,7 @@ Particle.prototype.draw = function() {
 // create particle group/explosion
 function createParticles( x, y ) {
 	// increase the particle count for a bigger explosion, beware of the canvas performance hit with the increased particles though
-	var particleCount = 10;//125
+	var particleCount = 5;//125
 	while( particleCount-- ) {
 		particles.push( new Particle( x, y ) );
 	}
