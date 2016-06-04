@@ -1,10 +1,15 @@
+
+//this is all the variables for the star background
+var stars = [];
+var numStars = 25; //250; <- that is good for desktop screen size//2000
+
 $(document).ready(function () {
 	
 	// Obtain a reference to the canvas element
 	// using its id.
 	
-    var canvas = document.getElementById("canvas"),
-    ctx = canvas.getContext("2d");
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
 	
 	
 	window.requestAnimFrame = (function() {
@@ -16,11 +21,36 @@ $(document).ready(function () {
 				};
 })();
 
-// starting hue
-hue = 120;
+// starting hue for the explosion
+var hue = 120;
 
 var menu = true;
 var mousePos;
+
+var canvas2 = document.getElementById("canvas"),
+   	ctx2 = canvas2.getContext("2d");
+	   
+	   
+// Create all the stars
+		for(var i = 0; i < numStars; i++) {
+			var x = Math.round(Math.random() * canvas.width);
+			var y = Math.round(Math.random() * canvas.height);
+			var length = 1 + Math.random() * 2;
+			var opacity = Math.random();
+		
+			// Create a new star and draw
+			var star = new Star(x, y, length, opacity);
+		
+		// Add the the stars array
+		stars.push(star);
+		
+		
+	}
+	   
+	   
+
+//setInterval(animateStar, 1000 / fps);
+
 	
 	// now we will setup our basic variables for the demo
  var canvas1 = document.getElementById("canvas"),
@@ -39,11 +69,11 @@ var mousePos;
 		// this will time the auto launches of fireworks, one launch per 80 loop ticks
 		timerTotal = 60, //75
 		timerTick = 0,
-		mousedown = false,
+		mousedown = false;
 		// mouse x coordinate,
-		mx,
+		//mx,
 		// mouse y coordinate
-		my;
+		//my;
 		
 // // set canvas dimensions
 canvas1.width = canvas.width;
@@ -85,8 +115,6 @@ canvas1.height = canvas.height;
 	
 	var playerPositionX = 0;
 	var playerPositionY = 0;
-	var Xpercent = 0;
-	var YPercant = 0;
 	
 	var x = 0;
 	var y = 0;
@@ -394,6 +422,7 @@ canvas1.height = canvas.height;
 		
 		canvas1.width = canvas.width;
 		canvas1.height = canvas.height;
+					
 		
 	}
 	// Runs each time the DOM window resize event fires.
@@ -407,6 +436,28 @@ canvas1.height = canvas.height;
 		
 		//console.log("Canvas Width " + canvas.width);
 		//$("#result").html(canvas.width); //display the screen size/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		
+		
+		
+		// Create all the stars
+		for(var i = 0; i < numStars; i++) {
+			var x = Math.round(Math.random() * canvas.width);
+			var y = Math.round(Math.random() * canvas.height);
+			var length = 1 + Math.random() * 2;
+			var opacity = Math.random();
+		
+			// Create a new star and draw
+			var star = new Star(x, y, length, opacity);
+		
+		// Add the the stars array
+		stars.push(star);
+		
+		
+	}
+		
+		
+		
 		
 		// if(canvas.width <= 428){		
 			
@@ -869,6 +920,8 @@ canvas1.height = canvas.height;
 			//this part will draw the characters
             
 			ctx.clearRect(0, 0, canvas.width, canvas.height); // this will clear and redraw the canvas for new values and positions
+			
+			
 
 			if(menu == false){
 			
@@ -1185,8 +1238,10 @@ canvas1.height = canvas.height;
 			  
 		};								
 		
-		function draw() {									
-				 						
+		function draw() {	
+			
+			animateStar();
+															 						
 			//enemy.draw();
 			//this will loop through the list of RandomShip enemies
 			for(var i = 0; i < RandomShipFleet.length; i++){
@@ -1294,8 +1349,7 @@ canvas1.height = canvas.height;
 			for(var j = 0; j < bulletClip.length; j++){
 					
 					bulletClip[j].draw();
-					bulletClip[j].movement();
-					//bulletClip[j].movementPC();					
+					bulletClip[j].movement();					
 					
 				if (bulletClip[j].x > canvas.width - playerSize) { // colision with game boarders x-axis playerSize is about 19.43999
 					
@@ -1305,7 +1359,7 @@ canvas1.height = canvas.height;
 					bulletClip.splice(j, 1);
 				}
 				
-				if (bulletClip[j].y > canvas.height - playerSize) { // colision with game boarders y-axis playerSize is about 19.43999
+				else if (bulletClip[j].y > canvas.height - playerSize) { // colision with game boarders y-axis playerSize is about 19.43999
 					
 					bulletClip.splice(j, 1);
 				} else if (bulletClip[j].y < playerSize) {
@@ -1391,7 +1445,15 @@ canvas1.height = canvas.height;
 					 }
 				}
 			
-			}	
+			}
+			
+			
+			
+			
+			
+			
+			
+			//animateStar();	
 			 
 			//console.log(entities);  
 		}
@@ -1669,7 +1731,81 @@ function loop() {
 // once the window loads, we are ready for some fireworks!
 
 //fireworks.push( new Firework( cw / 2, ch, random( 0, cw ), random( 0, ch / 2 ) ) );
+
+
+//-------------------------This is where the star background begins, Thank you WillemCrnlssn for the inspiration----------------------------------//
+
+function animateStar() {
+	//ctx.clearRect(0, 0, canvas.width, canvas.height);
+	$.each(stars, function() {
+		this.draw(ctx2);
+	})
+}
+
+function Star(x, y, length, opacity) {
+	this.x = parseInt(x);
+	this.y = parseInt(y);
+	this.length = parseInt(length);
+	this.opacity = opacity;
+	this.factor = 1;
+	this.increment = Math.random() * .03;
+}
+
+/**
+ * Draw a star
+ * 
+ * This function draws a start.
+ * You need to give the contaxt as a parameter 
+ * 
+ * @param context
+ */
+Star.prototype.draw = function() {
+	ctx2.rotate((Math.PI * 1 / 10));
+	
+	// Save the context
+	ctx2.save();
+	
+	// move into the middle of the canvas, just to make room
+	ctx2.translate(this.x, this.y);
+	
+	// Change the opacity
+	if(this.opacity > 1) {
+		this.factor = -1;
+	}
+	else if(this.opacity <= 0) {
+		this.factor = 1;
+		
+		this.x = Math.round(Math.random() * canvas.width);
+		this.y = Math.round(Math.random() * canvas.height);
+	}
+		
+	this.opacity += this.increment * this.factor;
+	
+	ctx2.beginPath()
+	for (var i = 5; i--;) {
+		ctx2.lineTo(0, this.length);
+		ctx2.translate(0, this.length);
+		ctx2.rotate((Math.PI * 2 / 10));
+		ctx2.lineTo(0, - this.length);
+		ctx2.translate(0, - this.length);
+		ctx2.rotate(-(Math.PI * 6 / 10));
+	}
+	ctx2.lineTo(0, this.length);
+	ctx2.closePath();
+	ctx2.fillStyle = "rgba(255, 255, 200, " + this.opacity + ")";
+	ctx2.shadowBlur = 5;
+	ctx2.shadowColor = '#ffff33';
+	ctx2.fill();
+	
+	ctx2.restore();
+}
+
+
+
 		
 	loop();
-	update();// sets the main loop into motion	
+	update();// sets the main loop into motion
+	
+		
     });
+	
