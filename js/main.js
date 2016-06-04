@@ -489,7 +489,7 @@ canvas1.height = canvas.height;
 			
 			if(exitReload == 0){
 				
-				window.location.reload();
+				//window.location.reload();
 				exitReload = 1;
 			}
 			
