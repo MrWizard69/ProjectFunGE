@@ -3,6 +3,8 @@
 var stars = [];
 var numStars = 40; //<- 40 is good for mobile //250; <- that is good for desktop screen size//2000
 
+var exitReload = 0;
+
 $(document).ready(function () {
 	
 	// Obtain a reference to the canvas element
@@ -485,6 +487,12 @@ canvas1.height = canvas.height;
 			$("#dwnload").closest('.ui-btn').show();
 			$("#rotWar").show();
 			
+			if(exitReload == 0){
+				
+				window.location.reload();
+				exitReload = 1;
+			}
+			
 		}
 		
 		 else if(canvas.width >= 399){
@@ -492,6 +500,7 @@ canvas1.height = canvas.height;
 		 	$("#play").closest('.ui-btn').show();
 			 $("#dwnload").closest('.ui-btn').hide();
 			 $("#rotWar").hide();
+			 exitReload = 0;
 		 }	
 		
 		//console.log("Canvas Height " + canvas.height);		
