@@ -173,44 +173,44 @@ canvas1.height = canvas.height;
 	$("#RG").click(function(){
 		
 		
-		window.location.reload();
-		// if(canvas.width > 500){
+		//window.location.reload();
+		if(canvas.width > 500){
 			
-		// 	if (document.exitFullscreen) {
-		// 			document.exitFullscreen();
-		// 	} else if (document.msExitFullscreen) {
-		// 			document.msExitFullscreen();
-		// 	} else if (document.mozCancelFullScreen) {
-		// 			document.mozCancelFullScreen();
-		// 	} else if (document.webkitExitFullscreen) {
-		// 			document.webkitExitFullscreen();
-		// 	}
+			if (document.exitFullscreen) {
+					document.exitFullscreen();
+			} else if (document.msExitFullscreen) {
+					document.msExitFullscreen();
+			} else if (document.mozCancelFullScreen) {
+					document.mozCancelFullScreen();
+			} else if (document.webkitExitFullscreen) {
+					document.webkitExitFullscreen();
+			}
 			
 			
-		// 	window.location.reload();
-		// 	//alert("reload");
-		// }
-		// else if(canvas.width < 499){
-		// 	if(canvas.width < 261){
+			window.location.reload();
+			//alert("reload");
+		}
+		else if(canvas.width < 499){
+			if(canvas.width < 261){
 				
-		// 		if (document.exitFullscreen) {
-		// 			document.exitFullscreen();
-		// 		} else if (document.msExitFullscreen) {
-		// 			document.msExitFullscreen();
-		// 		} else if (document.mozCancelFullScreen) {
-		// 			document.mozCancelFullScreen();
-		// 		} else if (document.webkitExitFullscreen) {
-		// 			document.webkitExitFullscreen();
-		// 		}
+				if (document.exitFullscreen) {
+					document.exitFullscreen();
+				} else if (document.msExitFullscreen) {
+					document.msExitFullscreen();
+				} else if (document.mozCancelFullScreen) {
+					document.mozCancelFullScreen();
+				} else if (document.webkitExitFullscreen) {
+					document.webkitExitFullscreen();
+				}
 				
 				
-		// 		window.location.reload();
-		// 	}
-		// 	else{
-		// 		alert("Please rotate your device and tap this button again to properly quit.");
-		// 	}
-		// 	//alert("hit the button");
-		// }
+				window.location.reload();
+			}
+			else{
+				alert("Please rotate your device and tap this button again to properly quit.");
+			}
+			//alert("hit the button");
+		}
 		
 	
 	});
@@ -486,12 +486,6 @@ canvas1.height = canvas.height;
 			$("#play").closest('.ui-btn').hide();
 			$("#dwnload").closest('.ui-btn').show();
 			$("#rotWar").show();
-			
-			if(exitReload == 0){
-				
-				//window.location.reload();
-				exitReload = 1;
-			}
 			
 		}
 		
@@ -1252,6 +1246,9 @@ canvas1.height = canvas.height;
 			
 			animateStar();
 			
+			if(exitReload == 0){
+			
+			console.log(exitReload);
 			
 			if(menu == false){
 			
@@ -1279,6 +1276,12 @@ canvas1.height = canvas.height;
 					velY *= friction - 2;
 					lives -= 1;
 					$("#score").html("Score: " + score + " : Lives: " + lives);
+					
+					if(lives == 0){
+							
+							exitReload = 1;
+						}
+					
 					RandomShipFleet.splice(i, 1); //this will destroy the enemy on colision with the player
 				}
 				
@@ -1315,6 +1318,12 @@ canvas1.height = canvas.height;
 					velY *= friction - 2;
 					lives -= 1;
 					$("#score").html("Score: " + score + " : Lives: " + lives);
+					
+					if(lives == 0){
+							
+							exitReload = 1;
+						}
+					
 					HunterFleet.splice(i, 1); //this will destroy the enemy on colision with the player
 				}
 				
@@ -1351,6 +1360,12 @@ canvas1.height = canvas.height;
 					velY *= friction - 2;
 					lives -= 1;
 					$("#score").html("Score: " + score + " : Lives: " + lives);
+					
+					if(lives == 0){
+							
+							exitReload = 1;
+						}
+					
 					StalkerFleet.splice(i, 1); //this will destroy the enemy on colision with the player
 				}
 				
@@ -1417,6 +1432,7 @@ canvas1.height = canvas.height;
 				
 						RandomShipFleet.splice(i, 1); //this will destroy the enemy on colision with the bullet
 						bulletClip.splice(j, 1);
+						
 					 }
 				}
 			
@@ -1443,6 +1459,7 @@ canvas1.height = canvas.height;
 				
 						HunterFleet.splice(i, 1); //this will destroy the enemy on colision with the bullet
 						bulletClip.splice(j, 1);
+						
 					 }
 				}
 			
@@ -1469,6 +1486,7 @@ canvas1.height = canvas.height;
 				
 						StalkerFleet.splice(i, 1); //this will destroy the enemy on colision with the bullet
 						bulletClip.splice(j, 1);
+						
 					 }
 				}
 			
@@ -1476,7 +1494,14 @@ canvas1.height = canvas.height;
 			
 			
 			
+			}
 			
+			else{
+				
+				x = canvas.width * 0.50;
+				y = canvas.height * 0.50;
+				
+			}
 			
 			
 			
