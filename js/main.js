@@ -160,6 +160,7 @@ canvas1.height = canvas.height;
 	});
 	
 	$("#score").hide();
+	$("#restartDiv").hide();
 	
 	$("#dwnload").click(function(){
 		
@@ -213,6 +214,20 @@ canvas1.height = canvas.height;
 		}
 		
 	
+	});
+	
+	$("#restartDiv").click(function(){
+		
+		exitReload = 0;
+		score = 0;
+		lives = 3;
+		menu = false;
+		RandomShipFleet = [];
+		HunterFleet = [];
+		StalkerFleet = [];
+		//$("#pDiv").show();
+		$("#restartDiv").hide();
+		
 	});
 	
 	$("#RG").closest('.ui-btn').hide();
@@ -1498,8 +1513,12 @@ canvas1.height = canvas.height;
 			
 			else{
 				
+				$("#pDiv").css("margin-top", "90%");
 				x = canvas.width * 0.50;
 				y = canvas.height * 0.50;
+				menu = true;
+				$("#restartDiv").show();
+				
 				
 			}
 			
