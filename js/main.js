@@ -7,14 +7,26 @@ $(document).ready(function () {
     ctx = canvas.getContext("2d");
 	
 	
-	
+	window.requestAnimFrame = (function() {
+	return window.requestAnimationFrame ||
+				window.webkitRequestAnimationFrame ||
+				window.mozRequestAnimationFrame ||
+				function(callback) {
+					window.setTimeout( callback, 1000 / 60 );
+				};
+})();
+
+// starting hue
+hue = 120;
+
+var menu = true;
 	
 	// now we will setup our basic variables for the demo
  var canvas1 = document.getElementById("canvas"),
-    ctx1 = canvas1.getContext("2d"),
-		// full screen dimensions
-		cw = canvas.width,
-		ch = canvas.height,
+   	ctx1 = canvas1.getContext("2d"),
+		//full screen dimensions
+		//cw = canvas1.width,
+		//ch = canvas1.height,
 		// firework collection
 		fireworks = [],
 		// particle collection
@@ -32,7 +44,7 @@ $(document).ready(function () {
 		// mouse y coordinate
 		my;
 		
-// set canvas dimensions
+// // set canvas dimensions
 canvas1.width = canvas.width;
 canvas1.height = canvas.height;
 	
@@ -253,6 +265,8 @@ canvas1.height = canvas.height;
 			//}
 		//}
 		//----------------------End of full screen------------------------------------------//
+		
+		menu = false;
 		
 		$("#RG").closest('.ui-btn').show();
 		
@@ -1268,7 +1282,7 @@ canvas1.height = canvas.height;
 						
 						score += 1;
 						//loop();
-						fireworks.push( new Firework( cw / 2, ch, RandomShipFleet[i].x, RandomShipFleet[i].y ) );
+						fireworks.push( new Firework( canvas.width / 2, canvas.height, RandomShipFleet[i].x, RandomShipFleet[i].y ) );
 						timerTick = 0;
 						$("#score").html("Score: " + score);
 				
@@ -1294,7 +1308,7 @@ canvas1.height = canvas.height;
 						
 						score += 2;
 						//loop();
-						fireworks.push( new Firework( cw / 2, ch, HunterFleet[i].x, HunterFleet[i].y ) );
+						fireworks.push( new Firework( canvas.width / 2, canvas.height, HunterFleet[i].x, HunterFleet[i].y ) );
 						timerTick = 0;
 						$("#score").html("Score: " + score);
 				
@@ -1320,7 +1334,7 @@ canvas1.height = canvas.height;
 						
 						score += 3;
 						
-						fireworks.push( new Firework( cw / 2, ch, StalkerFleet[i].x, StalkerFleet[i].y ) );
+						fireworks.push( new Firework( canvas.width / 2, canvas.height, StalkerFleet[i].x, StalkerFleet[i].y ) );
 						timerTick = 0;
 						$("#score").html("Score: " + score);
 				
@@ -1350,8 +1364,7 @@ canvas1.height = canvas.height;
 		//----------------------------------Explosion-----------------------------------//
 		
 		
-		// starting hue
-var hue = 120;
+
 
 
 
@@ -1359,7 +1372,7 @@ var hue = 120;
 
 // now we are going to setup our function placeholders for the entire demo
 
-// get a random number within a range
+//get a random number within a range
 function random( min, max ) {
 	return Math.random() * ( max - min ) + min;
 }
@@ -1527,13 +1540,13 @@ function loop() {
 	// normally, clearRect() would be used to clear the canvas
 	// we want to create a trailing effect though
 	// setting the composite operation to destination-out will allow us to clear the canvas at a specific opacity, rather than wiping it entirely
-	ctx1.globalCompositeOperation = 'destination-out';
+	//ctx1.globalCompositeOperation = 'destination-out';
 	// decrease the alpha property to create more prominent trails
-	ctx1.fillStyle = 'rgba(0, 0, 0, 0)';
-	ctx1.fillRect( 0, 0, cw, ch );
+	//ctx1.fillStyle = 'rgba(0, 0, 0, 0)';
+	//ctx1.fillRect( 0, 0, canvas.width, canvas.height );
 	// change the composite operation back to our main mode
 	// lighter creates bright highlight points as the fireworks and particles overlap each other
-	ctx1.globalCompositeOperation = 'lighter';
+	//ctx1.globalCompositeOperation = 'lighter';
 	
 	// loop over each firework, draw it, update it
 	var i = fireworks.length;
@@ -1550,15 +1563,18 @@ function loop() {
 	}
 	
 	// launch fireworks automatically to random coordinates, when the mouse isn't down
-	// if( timerTick >= timerTotal ) {
-	// 	if( !mousedown ) {
-	// 		// start the firework at the bottom middle of the screen, then set the random target coordinates, the random y coordinates will be set within the range of the top half of the screen
-	// 		fireworks.push( new Firework( cw / 2, ch, random( 0, cw ), random( 0, ch / 2 ) ) );
-	// 		timerTick = 0;
-	// 	}
-	// } else {
-	// 	timerTick++;
-	// }
+	if(menu == true){
+	
+	if( timerTick >= timerTotal ) {
+		if( !mousedown ) {
+			// start the firework at the bottom middle of the screen, then set the random target coordinates, the random y coordinates will be set within the range of the top half of the screen
+			fireworks.push( new Firework( canvas.width / 2, canvas.height, random( 0, canvas.width ), random( 0, canvas.height / 2 ) ) );
+			timerTick = 0;
+		}
+	} else {
+		timerTick++;
+	}
+	}
 	
 	// // limit the rate at which fireworks get launched when mouse is down
 	// if( limiterTick >= limiterTotal ) {
