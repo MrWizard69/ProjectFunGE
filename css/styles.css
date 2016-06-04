@@ -1,6 +1,6 @@
 ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper{ /*.this is the jquery mobile wrapper over the body*/
 	
-	background-color: lightblue;
+	background-color: #6c6c6c;
 	
 }
 
@@ -67,12 +67,14 @@ canvas {
 h2{
 	text-align: center;
 	margin-top: -.1%;
+	color: black;
 	
 }
 
 h3{
 	text-align: center;
 	margin-top: -3%;
+	color: black;
 	/*margin-top: -3%;*/
 }
 

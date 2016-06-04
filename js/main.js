@@ -20,6 +20,7 @@ $(document).ready(function () {
 hue = 120;
 
 var menu = true;
+var mousePos;
 	
 	// now we will setup our basic variables for the demo
  var canvas1 = document.getElementById("canvas"),
@@ -36,7 +37,7 @@ var menu = true;
 		limiterTotal = 5,
 		limiterTick = 0,
 		// this will time the auto launches of fireworks, one launch per 80 loop ticks
-		timerTotal = 75,
+		timerTotal = 60, //75
 		timerTick = 0,
 		mousedown = false,
 		// mouse x coordinate,
@@ -103,6 +104,7 @@ canvas1.height = canvas.height;
 	//var numOfEnemyShips = 4;
 	
 	var bullet = new Object();
+	var bulletPC = new Object();
 	
 	var Enemy1 = new Object();
 	var Enemy2 = new Object();
@@ -201,7 +203,7 @@ canvas1.height = canvas.height;
 
 		$("#shootStick").on("touchstart",function(){
 			
-			console.log("shoot stick");	
+			//console.log("shoot stick");	
 			
 		var bulletLoop = setInterval(function(){
 					
@@ -330,6 +332,26 @@ canvas1.height = canvas.height;
 		$("#score").show();
 
 	});
+	
+	
+	//going to be used to shoot using the mouse
+	$("#canvas").click(function(evt){
+		
+		mousePos = getMousePos(canvas, evt);
+        var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+		//console.log(message);
+		
+		if(menu == false){
+			//bullet = jQuery.extend(true, {}, PlayerBullet);
+			//bullet.directionX = mousePos.x;
+			//bullet.directionY = mousePos.y;
+			//bullet.x = x;
+			//bullet.y = y;
+				
+			//bulletClip.push(bullet);
+		}
+	});
+	
 
 	// Start listening to resize events and
 	// draw canvas and character sizes.
@@ -435,8 +457,8 @@ canvas1.height = canvas.height;
         // This is the players velocity, speed, friction and an array of keys that are being pressed    
         var velY = 0,
             velX = 0,
-            speed = 2,
-            friction = 0.5, //0.98
+            speed = 6,
+            friction = 0.3, //0.98
             keys = [];
 			
 		var buttup = $("#UpButton");
@@ -582,26 +604,26 @@ canvas1.height = canvas.height;
 			//this is for the arrow keys control
             if (keys[38]) {
                 if (velY > -speed) {
-                    velY -= 1;
+                    velY -= 6;
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
 
             if (keys[40]) {
                 if (velY < speed) {
-                    velY += 1;
+                    velY += 6;
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
             if (keys[39]) {
                 if (velX < speed) {
-                    velX += 1;
+                    velX += 6;
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
             if (keys[37]) {
                 if (velX > -speed) {
-                    velX -= 1;
+                    velX -= 6;
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
@@ -682,46 +704,46 @@ canvas1.height = canvas.height;
 					
 				if(joyDirX == "left" && joyDirY == "up"){
 						
-							velX -= 3;
-							velY -= 3;
+							velX -= 6;
+							velY -= 6;
 						
 					}
 					else if(joyDirX == "left" && joyDirY == "down" ){
 						
-							velY += 3;
-							velX -= 3;
+							velY += 6;
+							velX -= 6;
 						
 					}
 					else if(joyDirY == "up" && joyDirX == "right"){
 						
-							velY -= 3;
-							velX += 3;
+							velY -= 6;
+							velX += 6;
 						
 					}
 					else if(joyDirY == "down" && joyDirX == "right"){
 						
-							velY += 3;
-							velX += 3;
+							velY += 6;
+							velX += 6;
 						
 					}
 					else if(joyDirX == "left"){
 						
-							velX -= 3;
+							velX -= 6;
 						
 					}
 					else if(joyDirX == "right"){
 						
-							velX += 3;
+							velX += 6;
 						
 					}
 					else if(joyDirY == "up"){
 						
-							velY -= 3;
+							velY -= 6;
 						
 					}
 					else if(joyDirY == "down"){
 						
-							velY += 3;
+							velY += 6;
 						
 					}
 			
@@ -944,7 +966,30 @@ canvas1.height = canvas.height;
 					}
 				 
 				 
-			 }
+			 },
+			//  movementPC: function(){
+				 
+			// 	 console.log(mousePos.x)
+			// 	 //this will make direct the enemy move in the direction of the player
+			// 	 if(this.x < mousePos.x){
+					 
+			// 		 this.x += 7;
+			// 	 }
+			// 	 if(this.x >= mousePos.x){
+					 
+			// 		 this.x -= 7;
+			// 	 }
+			// 	 if(this.y <= mousePos.y){
+					 
+			// 		 this.y += 7;
+			// 	 }
+			// 	 if(this.y >= mousePos.y){
+					 
+			// 		 this.y -= 7;
+			// 	 }
+				 
+				 
+			//  }
 			  
 		};
 		
@@ -1249,7 +1294,8 @@ canvas1.height = canvas.height;
 			for(var j = 0; j < bulletClip.length; j++){
 					
 					bulletClip[j].draw();
-					bulletClip[j].movement();					
+					bulletClip[j].movement();
+					//bulletClip[j].movementPC();					
 					
 				if (bulletClip[j].x > canvas.width - playerSize) { // colision with game boarders x-axis playerSize is about 19.43999
 					
@@ -1345,10 +1391,19 @@ canvas1.height = canvas.height;
 					 }
 				}
 			
-			}				
+			}	
 			 
 			//console.log(entities);  
 		}
+		
+	//gets the mouse position
+	function getMousePos(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: evt.clientX - rect.left,
+          y: evt.clientY - rect.top
+        };
+      }
 		
 		
         
