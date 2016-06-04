@@ -160,7 +160,8 @@ canvas1.height = canvas.height;
 	});
 	
 	$("#score").hide();
-	$("#restartBtn").hide();
+	$("#restartBtn").closest('.ui-btn').hide();
+	$("#restartDiv").hide();
 	
 	$("#dwnload").click(function(){
 		
@@ -227,6 +228,7 @@ canvas1.height = canvas.height;
 		StalkerFleet = [];
 		$("#score").html("Score: " + score + " : Lives: " + lives);
 		$("#restartBtn").closest('.ui-btn').hide();
+		$("#restartDiv").hide();
 		
 	});
 	
@@ -513,6 +515,7 @@ canvas1.height = canvas.height;
 			$("#play").closest('.ui-btn').hide();
 			$("#dwnload").closest('.ui-btn').show();
 			$("#restartBtn").closest('.ui-btn').hide();
+			$("#restartDiv").hide();
 			$("#rotWar").show();
 			
 		}
@@ -522,6 +525,7 @@ canvas1.height = canvas.height;
 		 	$("#play").closest('.ui-btn').show();
 			 $("#dwnload").closest('.ui-btn').hide();
 			 $("#restartBtn").closest('.ui-btn').show();
+			 $("#restartDiv").show();
 			 $("#rotWar").hide();
 			 //exitReload = 0;
 		 }	
