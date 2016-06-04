@@ -726,7 +726,7 @@ canvas1.height = canvas.height;
 			
 			//-----------------player movement with VirtualJoyStick.js Thank You!-------------------------------//
 			
-		if(joyTouch == true){
+		if(joyTouch == true && exitReload == 0){
 			
 			if (joystick.up()) {
 	
