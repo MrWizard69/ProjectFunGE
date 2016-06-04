@@ -1,7 +1,7 @@
 
 //this is all the variables for the star background
 var stars = [];
-var numStars = 40; //250; <- that is good for desktop screen size//2000
+var numStars = 40; //<- 40 is good for mobile //250; <- that is good for desktop screen size//2000
 
 $(document).ready(function () {
 	
@@ -127,6 +127,7 @@ canvas1.height = canvas.height;
 	var StalkerFleet = [];
 	
 	var score = 0;
+	var lives = 3;
 	
 	var bulletClip = [];
 	//var numOfEnemyShips = 4;
@@ -170,44 +171,44 @@ canvas1.height = canvas.height;
 	$("#RG").click(function(){
 		
 		
-		
-		if(canvas.width > 500){
+		window.location.reload();
+		// if(canvas.width > 500){
 			
-			if (document.exitFullscreen) {
-					document.exitFullscreen();
-			} else if (document.msExitFullscreen) {
-					document.msExitFullscreen();
-			} else if (document.mozCancelFullScreen) {
-					document.mozCancelFullScreen();
-			} else if (document.webkitExitFullscreen) {
-					document.webkitExitFullscreen();
-			}
+		// 	if (document.exitFullscreen) {
+		// 			document.exitFullscreen();
+		// 	} else if (document.msExitFullscreen) {
+		// 			document.msExitFullscreen();
+		// 	} else if (document.mozCancelFullScreen) {
+		// 			document.mozCancelFullScreen();
+		// 	} else if (document.webkitExitFullscreen) {
+		// 			document.webkitExitFullscreen();
+		// 	}
 			
 			
-			window.location.reload();
-			//alert("reload");
-		}
-		else if(canvas.width < 499){
-			if(canvas.width < 261){
+		// 	window.location.reload();
+		// 	//alert("reload");
+		// }
+		// else if(canvas.width < 499){
+		// 	if(canvas.width < 261){
 				
-				if (document.exitFullscreen) {
-					document.exitFullscreen();
-				} else if (document.msExitFullscreen) {
-					document.msExitFullscreen();
-				} else if (document.mozCancelFullScreen) {
-					document.mozCancelFullScreen();
-				} else if (document.webkitExitFullscreen) {
-					document.webkitExitFullscreen();
-				}
+		// 		if (document.exitFullscreen) {
+		// 			document.exitFullscreen();
+		// 		} else if (document.msExitFullscreen) {
+		// 			document.msExitFullscreen();
+		// 		} else if (document.mozCancelFullScreen) {
+		// 			document.mozCancelFullScreen();
+		// 		} else if (document.webkitExitFullscreen) {
+		// 			document.webkitExitFullscreen();
+		// 		}
 				
 				
-				window.location.reload();
-			}
-			else{
-				alert("Please rotate your device and tap this button again to properly quit.");
-			}
-			//alert("hit the button");
-		}
+		// 		window.location.reload();
+		// 	}
+		// 	else{
+		// 		alert("Please rotate your device and tap this button again to properly quit.");
+		// 	}
+		// 	//alert("hit the button");
+		// }
 		
 	
 	});
@@ -1267,6 +1268,8 @@ canvas1.height = canvas.height;
 				
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
+					lives -= 1;
+					$("#score").html("Score: " + score + " : Lives: " + lives);
 					RandomShipFleet.splice(i, 1); //this will destroy the enemy on colision with the player
 				}
 				
@@ -1301,6 +1304,8 @@ canvas1.height = canvas.height;
 				
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
+					lives -= 1;
+					$("#score").html("Score: " + score + " : Lives: " + lives);
 					HunterFleet.splice(i, 1); //this will destroy the enemy on colision with the player
 				}
 				
@@ -1335,6 +1340,8 @@ canvas1.height = canvas.height;
 				
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
+					lives -= 1;
+					$("#score").html("Score: " + score + " : Lives: " + lives);
 					StalkerFleet.splice(i, 1); //this will destroy the enemy on colision with the player
 				}
 				
@@ -1397,7 +1404,7 @@ canvas1.height = canvas.height;
 						//loop();
 						fireworks.push( new Firework( canvas.width / 2, canvas.height, RandomShipFleet[i].x, RandomShipFleet[i].y ) );
 						timerTick = 0;
-						$("#score").html("Score: " + score);
+						$("#score").html("Score: " + score + " : Lives: " + lives);
 				
 						RandomShipFleet.splice(i, 1); //this will destroy the enemy on colision with the bullet
 						bulletClip.splice(j, 1);
@@ -1423,7 +1430,7 @@ canvas1.height = canvas.height;
 						//loop();
 						fireworks.push( new Firework( canvas.width / 2, canvas.height, HunterFleet[i].x, HunterFleet[i].y ) );
 						timerTick = 0;
-						$("#score").html("Score: " + score);
+						$("#score").html("Score: " + score + " : Lives: " + lives);
 				
 						HunterFleet.splice(i, 1); //this will destroy the enemy on colision with the bullet
 						bulletClip.splice(j, 1);
@@ -1449,7 +1456,7 @@ canvas1.height = canvas.height;
 						
 						fireworks.push( new Firework( canvas.width / 2, canvas.height, StalkerFleet[i].x, StalkerFleet[i].y ) );
 						timerTick = 0;
-						$("#score").html("Score: " + score);
+						$("#score").html("Score: " + score + " : Lives: " + lives);
 				
 						StalkerFleet.splice(i, 1); //this will destroy the enemy on colision with the bullet
 						bulletClip.splice(j, 1);
@@ -1810,6 +1817,10 @@ Star.prototype.draw = function() {
 	
 	ctx2.restore();
 }
+
+
+//---------------An attempt of engine thrust-------------------//
+
 
 
 
