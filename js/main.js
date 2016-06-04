@@ -500,7 +500,7 @@ canvas1.height = canvas.height;
 		 	$("#play").closest('.ui-btn').show();
 			 $("#dwnload").closest('.ui-btn').hide();
 			 $("#rotWar").hide();
-			 exitReload = 0;
+			 //exitReload = 0;
 		 }	
 		
 		//console.log("Canvas Height " + canvas.height);		
