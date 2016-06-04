@@ -225,6 +225,8 @@ canvas1.height = canvas.height;
 		RandomShipFleet = [];
 		HunterFleet = [];
 		StalkerFleet = [];
+		$("#score").html("Score: " + score + " : Lives: " + lives);
+		$("#restartDiv").hide();
 		
 	});
 	
@@ -345,8 +347,12 @@ canvas1.height = canvas.height;
 			Enemy1.x = Math.round(Math.random() * (canvas.width * .90));
 			Enemy1.y = Math.round(Math.random() * (canvas.height * .90));
 			Enemy1.direction = Math.round(Math.random() * 7);
+			
+			if(exitReload == 0){
 					
-			RandomShipFleet.push(Enemy1);
+				RandomShipFleet.push(Enemy1);
+			
+			}
 			//$("#result").html(entities.length);
 			//console.log(entities);
 		}, 3000);
@@ -356,8 +362,13 @@ canvas1.height = canvas.height;
 		    Enemy2 = jQuery.extend(true, {}, Hunter);
 			Enemy2.x = Math.round(Math.random() * (canvas.width * .90));
 			Enemy2.y = Math.round(Math.random() * (canvas.height * .90));
-					
-			HunterFleet.push(Enemy2);
+			
+			if(exitReload == 0){
+				
+				HunterFleet.push(Enemy2);
+			}
+				
+			
 			//console.log(entities);
 		}, 5000);	
 		
@@ -366,8 +377,11 @@ canvas1.height = canvas.height;
 		    Enemy3 = jQuery.extend(true, {}, Stalker);
 			Enemy3.x = Math.round(Math.random() * (canvas.width * .90));
 			Enemy3.y = Math.round(Math.random() * (canvas.height * .90));
+			
+			if(exitReload == 0){
 					
-			StalkerFleet.push(Enemy3);
+				StalkerFleet.push(Enemy3);
+			}
 			//console.log(entities);
 		}, 7000);	
 		
@@ -498,6 +512,7 @@ canvas1.height = canvas.height;
 			
 			$("#play").closest('.ui-btn').hide();
 			$("#dwnload").closest('.ui-btn').show();
+			$("#restartBtn").closest('.ui-btn').hide();
 			$("#rotWar").show();
 			
 		}
