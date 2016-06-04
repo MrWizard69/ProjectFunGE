@@ -1,8 +1,12 @@
-ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper{ /*.this is the jquery mobile wrapper over the body*/
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper{ /*.this is the jquery mobile wrapper over the body*/
 	
 	background-color: #6c6c6c;
+	text-shadow:0 0 0;
+	font-family: 'Droid Sans', sans-serif;
 	
 }
+
+
 
 #score{
 	
