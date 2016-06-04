@@ -1,7 +1,7 @@
 
 //this is all the variables for the star background
 var stars = [];
-var numStars = 25; //250; <- that is good for desktop screen size//2000
+var numStars = 20; //250; <- that is good for desktop screen size//2000
 
 $(document).ready(function () {
 	
