@@ -517,8 +517,8 @@ canvas1.height = canvas.height;
 		var playersSizeW = canvas.width * .01;
 		var playerSizeH = canvas.height * .01;
 		
-		var bulletSizeW = canvas.width * .003;
-		var bulletSizeH = canvas.height * .003;
+		var bulletSizeW = canvas.width * .004;
+		var bulletSizeH = canvas.height * .004;
 		
 		playerSize = (playersSizeW + playerSizeH); //playerSize is about 19.43999 px
 		bulletSize = (bulletSizeW + bulletSizeH);
@@ -1439,7 +1439,7 @@ canvas1.height = canvas.height;
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
 					lives -= 1;
-					bulletPower = 0;
+					bulletPower -= 1;
 					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
 					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 					
@@ -1486,7 +1486,7 @@ canvas1.height = canvas.height;
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
 					lives -= 1;
-					bulletPower = 0;
+					bulletPower -= 1;
 					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
 					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 					
@@ -1533,7 +1533,7 @@ canvas1.height = canvas.height;
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
 					lives -= 1;
-					bulletPower = 0;
+					bulletPower -= 1;
 					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
 					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 					
