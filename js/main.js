@@ -1,7 +1,7 @@
 
 //this is all the variables for the star background
 var stars = [];
-var numStars = 40; //<- 40 is good for mobile //250; <- that is good for desktop screen size//2000
+var numStars = 20; //<- 40 maybe good for mobile //250; <- that is good for desktop screen size//2000
 
 var exitReload = 0;
 
@@ -132,6 +132,7 @@ canvas1.height = canvas.height;
 	var lives = 3;
 	
 	var bulletClip = [];
+	var LifePowerPack = [];
 	//var numOfEnemyShips = 4;
 	
 	var bullet = new Object();
@@ -140,6 +141,8 @@ canvas1.height = canvas.height;
 	var Enemy1 = new Object();
 	var Enemy2 = new Object();
 	var Enemy3 = new Object();
+	
+	var LifePup = new Object();
 	
 	var joyStickX = 0;
 	var joyStickY = 0;
@@ -227,6 +230,7 @@ canvas1.height = canvas.height;
 		HunterFleet = [];
 		StalkerFleet = [];
 		bulletClip = [];
+		LifePowerPack = [];
 		$("#score").html("Score: " + score + " : Lives: " + lives);
 		$("#restartBtn").closest('.ui-btn').hide();
 		$("#restartDiv").hide();
@@ -254,32 +258,32 @@ canvas1.height = canvas.height;
 			
 			//console.log("shoot stick");	
 			
-		var bulletLoop = setInterval(function(){
+			var bulletLoop = setInterval(function(){
 					
-		    bullet = jQuery.extend(true, {}, PlayerBullet);
-			bullet.directionX = shootStickDirX;
-			bullet.directionY = shootStickDirY;
-			bullet.x = x;
-			bullet.y = y;
+		    	bullet = jQuery.extend(true, {}, PlayerBullet);
+				bullet.directionX = shootStickDirX;
+				bullet.directionY = shootStickDirY;
+				bullet.x = x;
+				bullet.y = y;
 				
-			//Enemy1.x = Math.round(Math.random() * (canvas.width * .95));
-			//Enemy1.y = Math.round(Math.random() * (canvas.height * .95));
-			//Enemy1.direction = Math.round(Math.random() * 7);
+				//Enemy1.x = Math.round(Math.random() * (canvas.width * .95));
+				//Enemy1.y = Math.round(Math.random() * (canvas.height * .95));
+				//Enemy1.direction = Math.round(Math.random() * 7);
 				
-			bulletClip.push(bullet);
-			//console.log(bulletClip);
+				bulletClip.push(bullet);
+				//console.log(bulletClip);
 				
-		}, 250);
-			shootStickTouch = true;
+			}, 250);
+				shootStickTouch = true;
 			
-			$("#shootStick").on("touchend",function(){
+				$("#shootStick").on("touchend",function(){
 									
-			shootStickDirX = "";
-			shootStickDirY = "";
-			clearInterval(bulletLoop);
-			shootStickTouch = false;
+				shootStickDirX = "";
+				shootStickDirY = "";
+				clearInterval(bulletLoop);
+				shootStickTouch = false;
 		
-		});
+			});
 
 			
 		});
@@ -387,6 +391,23 @@ canvas1.height = canvas.height;
 			}
 			//console.log(entities);
 		}, 7000);	
+		
+		
+		setInterval(function(){
+					
+		    LifePup = jQuery.extend(true, {}, LifePowerUp);
+			LifePup.x = Math.round(Math.random() * (canvas.width * .90));
+			LifePup.y = Math.round(Math.random() * (canvas.height * .90));
+			
+			if(exitReload == 0){
+					
+				LifePowerPack.push(LifePup);
+			}
+			//console.log(entities);
+		}, 20000);	
+		
+		
+		
 		
 		$("#play").closest('.ui-btn').css("margin-top", "90%");
 		$("h2").hide();
@@ -1278,6 +1299,19 @@ canvas1.height = canvas.height;
 				 		 
 			 }
 			  
+		};
+		
+		var LifePowerUp = {
+  			color: "blue",
+  			x: Math.round(Math.random() * (canvas.width * .90)),
+  			y: Math.round(Math.random() * (canvas.height * .90)),
+ 			draw: function() {
+				ctx.beginPath(); // this is the ai guy
+    			ctx.fillStyle = this.color;
+    			ctx.arc(this.x, this.y, bulletSize, 0, Math.PI * 2);
+				ctx.fill();
+            	ctx.closePath();
+ 			 }						  
 		};								
 		
 		function draw() {	
@@ -1315,7 +1349,7 @@ canvas1.height = canvas.height;
 					lives -= 1;
 					$("#score").html("Score: " + score + " : Lives: " + lives);
 					
-					if(lives == 0){
+					if(lives <= 0){
 							
 							exitReload = 1;
 						}
@@ -1357,7 +1391,7 @@ canvas1.height = canvas.height;
 					lives -= 1;
 					$("#score").html("Score: " + score + " : Lives: " + lives);
 					
-					if(lives == 0){
+					if(lives <= 0){
 							
 							exitReload = 1;
 						}
@@ -1399,7 +1433,7 @@ canvas1.height = canvas.height;
 					lives -= 1;
 					$("#score").html("Score: " + score + " : Lives: " + lives);
 					
-					if(lives == 0){
+					if(lives <= 0){
 							
 							exitReload = 1;
 						}
@@ -1447,8 +1481,8 @@ canvas1.height = canvas.height;
 					bulletClip.splice(j, 1);
 				}
 					
-			}			
-			
+			}
+									
 			//this is what detects colisions for bullets and RandomShip enemys
 			for(var j = 0; j < bulletClip.length; j++){
 			
@@ -1529,6 +1563,50 @@ canvas1.height = canvas.height;
 				}
 			
 			}
+			
+			
+			//this will loop through the list of lives power ups
+			for(var i = 0; i < LifePowerPack.length; i++){
+				
+				LifePowerPack[i].draw(); //this will draw the life power up as they are created
+								
+				//this is a colision with the player and the power up
+				if (x < LifePowerPack[i].x + playerSize  && x + playerSize  > LifePowerPack[i].x &&
+				y < LifePowerPack[i].y + playerSize && y + playerSize > LifePowerPack[i].y) {
+					// The objects are touching
+				
+					//velX *= friction - 2; //this will stop the player from moving
+					//velY *= friction - 2;
+					lives += (Math.round( 0.5 * 10 ) / 10);
+					score += 10;
+					//lives.toFixed(1);
+					$("#score").html("Score: " + score + " : Lives: " + lives);
+					
+					// if(lives == 0){
+							
+					// 		exitReload = 1;
+					// 	}
+					
+					LifePowerPack.splice(i, 1); //this will destroy the enemy on colision with the player
+				}
+				
+			// 	if (LifePowerPack[j].x > canvas.width - bulletSize) { // colision with game boarders x-axis playerSize is about 19.43999
+					
+			// 		LifePowerPack.splice(j, 1);
+			// 	} else if (LifePowerPack[j].x < bulletSize) {
+					
+			// 		LifePowerPack.splice(j, 1);
+			// 	}
+				
+			// 	else if (LifePowerPack[j].y > canvas.height - bulletSize) { // colision with game boarders y-axis playerSize is about 19.43999
+					
+			// 		LifePowerPack.splice(j, 1);
+			// 	} else if (LifePowerPack[j].y < bulletSize) {
+					
+			// 		LifePowerPack.splice(j, 1);
+			// 	}
+				
+			 }
 			
 			
 			
