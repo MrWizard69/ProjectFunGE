@@ -4,7 +4,7 @@ var stars = [];
 var numStars = 20; //<- 40 maybe good for mobile //250; <- that is good for desktop screen size//2000
 
 var exitReload = 0;
-var bulletPower = false;
+var bulletPower = 0;
 var bulletLoop;
 
 $(document).ready(function () {
@@ -230,12 +230,14 @@ canvas1.height = canvas.height;
 		exitReload = 0;
 		score = 0;
 		lives = 3;
+		bulletSpeed = 0;
 		menu = false;
 		RandomShipFleet = [];
 		HunterFleet = [];
 		StalkerFleet = [];
 		bulletClip = [];
 		LifePowerPack = [];
+		BulletPowerPack = [];
 		$("#score").html("Score: " + score + " : Lives: " + lives);
 		$("#restartBtn").closest('.ui-btn').hide();
 		$("#restartDiv").hide();
@@ -265,14 +267,29 @@ canvas1.height = canvas.height;
 			var bulletSpeed = 0;
 			
 			
-			if(bulletPower == true){
+			
+			if(bulletPower >= 3){
 				
 				bulletSpeed = 200;
+				//console.log(bulletSpeed);
 				
 			}
-			if(bulletPower == false){
+			if(bulletPower == 2){
+				
+				bulletSpeed = 300;
+				//console.log(bulletSpeed);
+				
+			}
+			if(bulletPower == 1){
 				
 				bulletSpeed = 400;
+				//console.log(bulletSpeed);
+				
+			}
+			if(bulletPower == 0){
+				
+				bulletSpeed = 500;
+				//console.log(bulletSpeed);
 			} 
 				
 			bulletLoop = setInterval(function(){
@@ -379,7 +396,7 @@ canvas1.height = canvas.height;
 			}
 			//$("#result").html(entities.length);
 			//console.log(entities);
-		}, 3000);
+		}, 2000);
 		
 		setInterval(function(){
 					
@@ -394,7 +411,7 @@ canvas1.height = canvas.height;
 				
 			
 			//console.log(entities);
-		}, 5000);	
+		}, 4000);	
 		
 		setInterval(function(){
 					
@@ -407,7 +424,7 @@ canvas1.height = canvas.height;
 				StalkerFleet.push(Enemy3);
 			}
 			//console.log(entities);
-		}, 7000);	
+		}, 6000);	
 		
 		
 		setInterval(function(){
@@ -421,7 +438,7 @@ canvas1.height = canvas.height;
 				LifePowerPack.push(LifePup);
 			}
 			//console.log(entities);
-		}, 30000);
+		}, 60000);
 		
 		setInterval(function(){
 					
@@ -434,7 +451,7 @@ canvas1.height = canvas.height;
 				BulletPowerPack.push(BulletPup);
 			}
 			//console.log(entities);
-		}, 20000);		
+		}, 40000);		
 		
 		
 		
@@ -1345,7 +1362,7 @@ canvas1.height = canvas.height;
 				ctx.beginPath(); // this is the ai guy
 				//ctx.moveTo(15, 15);
     			ctx.fillStyle = this.color;
-    			ctx.arc(this.x, this.y, bulletSize, 0, Math.PI * 2);
+    			ctx.arc(this.x, this.y, bulletSize * 2, 0, Math.PI * 2);
 				ctx.fill();
 				ctx.stroke();
 				
@@ -1366,7 +1383,7 @@ canvas1.height = canvas.height;
 				ctx.beginPath(); // this is the ai guy
 				//ctx.moveTo(15, 15);
     			ctx.fillStyle = this.color;
-    			ctx.arc(this.x, this.y, bulletSize, 0, Math.PI * 2);
+    			ctx.arc(this.x, this.y, bulletSize * 2, 0, Math.PI * 2);
 				ctx.fill();
 				ctx.stroke();
 				
@@ -1411,7 +1428,7 @@ canvas1.height = canvas.height;
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
 					lives -= 1;
-					bulletPower = false;
+					bulletPower = 0;
 					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
 					$("#score").html("Score: " + score + " : Lives: " + lives);
 					
@@ -1457,7 +1474,7 @@ canvas1.height = canvas.height;
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
 					lives -= 1;
-					bulletPower = false;
+					bulletPower = 0;
 					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
 					$("#score").html("Score: " + score + " : Lives: " + lives);
 					
@@ -1503,7 +1520,7 @@ canvas1.height = canvas.height;
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
 					lives -= 1;
-					bulletPower = false;
+					bulletPower = 0;
 					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
 					$("#score").html("Score: " + score + " : Lives: " + lives);
 					
@@ -1700,7 +1717,7 @@ canvas1.height = canvas.height;
 				
 					//velX *= friction - 2; //this will stop the player from moving
 					//velY *= friction - 2;
-					bulletPower = true;
+					bulletPower += 1;
 					clearInterval(bulletLoop);
 					score += 10;
 					//lives.toFixed(1);
