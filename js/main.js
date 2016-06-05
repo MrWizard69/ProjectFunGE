@@ -269,37 +269,37 @@ canvas1.height = canvas.height;
 			
 			if(bulletPower >= 5){
 				
-				bulletSpeed = 200;
+				bulletSpeed = 175;
 				//console.log(bulletSpeed);
 				
 			}
 			if(bulletPower == 4){
 				
-				bulletSpeed = 250;
+				bulletSpeed = 200;
 				//console.log(bulletSpeed);
 				
 			}
 			if(bulletPower == 3){
 				
-				bulletSpeed = 300;
+				bulletSpeed = 250;
 				//console.log(bulletSpeed);
 				
 			}
 			if(bulletPower == 2){
 				
-				bulletSpeed = 350;
+				bulletSpeed = 300;
 				//console.log(bulletSpeed);
 				
 			}
 			if(bulletPower == 1){
 				
-				bulletSpeed = 400;
+				bulletSpeed = 350;
 				//console.log(bulletSpeed);
 				
 			}
 			if(bulletPower == 0){
 				
-				bulletSpeed = 500;
+				bulletSpeed = 400;
 				//console.log(bulletSpeed);
 			} 
 				
