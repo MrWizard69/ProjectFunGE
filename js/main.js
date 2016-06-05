@@ -1438,8 +1438,20 @@ canvas1.height = canvas.height;
 				
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
+					
+					clearInterval(bulletLoop);
+					
 					lives -= 1;
-					bulletPower -= 1;
+					
+					if(bulletPower > 0){
+						
+						bulletPower -= 1;
+					}
+					else{
+						bulletPower = 0;
+					}
+					
+					
 					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
 					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 					
@@ -1486,7 +1498,17 @@ canvas1.height = canvas.height;
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
 					lives -= 1;
-					bulletPower -= 1;
+					clearInterval(bulletLoop);
+					
+					if(bulletPower > 0){
+						
+						bulletPower -= 1;
+					}
+					else{
+						bulletPower = 0;
+					}
+					
+
 					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
 					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 					
@@ -1494,7 +1516,6 @@ canvas1.height = canvas.height;
 							
 							exitReload = 1;
 							lives = 0;
-							clearInterval(bulletLoop);
 							$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 						}
 					
@@ -1533,7 +1554,16 @@ canvas1.height = canvas.height;
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
 					lives -= 1;
-					bulletPower -= 1;
+					clearInterval(bulletLoop);
+					
+					if(bulletPower > 0){
+						
+						bulletPower -= 1;
+					}
+					else{
+						bulletPower = 0;
+					}
+					
 					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
 					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 					
@@ -1541,7 +1571,6 @@ canvas1.height = canvas.height;
 							
 							exitReload = 1;
 							lives = 0;
-							clearInterval(bulletLoop);
 							$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 						}
 					
