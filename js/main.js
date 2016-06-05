@@ -267,16 +267,27 @@ canvas1.height = canvas.height;
 			var bulletSpeed = 0;
 			
 			
-			
-			if(bulletPower >= 3){
+			if(bulletPower >= 5){
 				
 				bulletSpeed = 200;
 				//console.log(bulletSpeed);
 				
 			}
-			if(bulletPower == 2){
+			if(bulletPower == 4){
+				
+				bulletSpeed = 250;
+				//console.log(bulletSpeed);
+				
+			}
+			if(bulletPower == 3){
 				
 				bulletSpeed = 300;
+				//console.log(bulletSpeed);
+				
+			}
+			if(bulletPower == 2){
+				
+				bulletSpeed = 350;
 				//console.log(bulletSpeed);
 				
 			}
@@ -411,7 +422,7 @@ canvas1.height = canvas.height;
 				
 			
 			//console.log(entities);
-		}, 4000);	
+		}, 4500);	
 		
 		setInterval(function(){
 					
@@ -424,7 +435,7 @@ canvas1.height = canvas.height;
 				StalkerFleet.push(Enemy3);
 			}
 			//console.log(entities);
-		}, 6000);	
+		}, 8000);	
 		
 		
 		setInterval(function(){
@@ -451,7 +462,7 @@ canvas1.height = canvas.height;
 				BulletPowerPack.push(BulletPup);
 			}
 			//console.log(entities);
-		}, 40000);		
+		}, 30000);		
 		
 		
 		
@@ -1362,7 +1373,7 @@ canvas1.height = canvas.height;
 				ctx.beginPath(); // this is the ai guy
 				//ctx.moveTo(15, 15);
     			ctx.fillStyle = this.color;
-    			ctx.arc(this.x, this.y, bulletSize * 2, 0, Math.PI * 2);
+    			ctx.arc(this.x, this.y, bulletSize * 2.5, 0, Math.PI * 2);
 				ctx.fill();
 				ctx.stroke();
 				
@@ -1383,7 +1394,7 @@ canvas1.height = canvas.height;
 				ctx.beginPath(); // this is the ai guy
 				//ctx.moveTo(15, 15);
     			ctx.fillStyle = this.color;
-    			ctx.arc(this.x, this.y, bulletSize * 2, 0, Math.PI * 2);
+    			ctx.arc(this.x, this.y, bulletSize * 2.5, 0, Math.PI * 2);
 				ctx.fill();
 				ctx.stroke();
 				
@@ -1430,13 +1441,14 @@ canvas1.height = canvas.height;
 					lives -= 1;
 					bulletPower = 0;
 					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
-					$("#score").html("Score: " + score + " : Lives: " + lives);
+					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 					
 					if(lives < 1){
 							
 							exitReload = 1;
 							lives = 0;
-							$("#score").html("Score: " + score + " : Lives: " + lives);
+							clearInterval(bulletLoop);
+							$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 						}
 					
 					RandomShipFleet.splice(i, 1); //this will destroy the enemy on colision with the player
@@ -1476,13 +1488,14 @@ canvas1.height = canvas.height;
 					lives -= 1;
 					bulletPower = 0;
 					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
-					$("#score").html("Score: " + score + " : Lives: " + lives);
+					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 					
 					if(lives < 1){
 							
 							exitReload = 1;
 							lives = 0;
-							$("#score").html("Score: " + score + " : Lives: " + lives);
+							clearInterval(bulletLoop);
+							$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 						}
 					
 					HunterFleet.splice(i, 1); //this will destroy the enemy on colision with the player
@@ -1522,13 +1535,14 @@ canvas1.height = canvas.height;
 					lives -= 1;
 					bulletPower = 0;
 					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
-					$("#score").html("Score: " + score + " : Lives: " + lives);
+					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 					
 					if(lives < 1){
 							
 							exitReload = 1;
 							lives = 0;
-							$("#score").html("Score: " + score + " : Lives: " + lives);
+							clearInterval(bulletLoop);
+							$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 						}
 					
 					StalkerFleet.splice(i, 1); //this will destroy the enemy on colision with the player
@@ -1597,7 +1611,7 @@ canvas1.height = canvas.height;
 						//loop();
 						fireworks.push( new Firework( canvas.width / 2, canvas.height, RandomShipFleet[i].x, RandomShipFleet[i].y ) );
 						timerTick = 0;
-						$("#score").html("Score: " + score + " : Lives: " + lives);
+						$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 				
 						RandomShipFleet.splice(i, 1); //this will destroy the enemy on colision with the bullet
 						bulletClip.splice(j, 1);
@@ -1624,7 +1638,7 @@ canvas1.height = canvas.height;
 						//loop();
 						fireworks.push( new Firework( canvas.width / 2, canvas.height, HunterFleet[i].x, HunterFleet[i].y ) );
 						timerTick = 0;
-						$("#score").html("Score: " + score + " : Lives: " + lives);
+						$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 				
 						HunterFleet.splice(i, 1); //this will destroy the enemy on colision with the bullet
 						bulletClip.splice(j, 1);
@@ -1651,7 +1665,7 @@ canvas1.height = canvas.height;
 						
 						fireworks.push( new Firework( canvas.width / 2, canvas.height, StalkerFleet[i].x, StalkerFleet[i].y ) );
 						timerTick = 0;
-						$("#score").html("Score: " + score + " : Lives: " + lives);
+						$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 				
 						StalkerFleet.splice(i, 1); //this will destroy the enemy on colision with the bullet
 						bulletClip.splice(j, 1);
@@ -1677,7 +1691,7 @@ canvas1.height = canvas.height;
 					lives += (Math.round( 0.5 * 10 ) / 10);
 					score += 10;
 					//lives.toFixed(1);
-					$("#score").html("Score: " + score + " : Lives: " + lives);
+					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 					
 					// if(lives == 0){
 							
@@ -1721,7 +1735,7 @@ canvas1.height = canvas.height;
 					clearInterval(bulletLoop);
 					score += 10;
 					//lives.toFixed(1);
-					$("#score").html("Score: " + score + " : Lives: " + lives);
+					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 					
 					// if(lives == 0){
 							
