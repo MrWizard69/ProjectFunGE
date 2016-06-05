@@ -238,7 +238,7 @@ canvas1.height = canvas.height;
 		bulletClip = [];
 		LifePowerPack = [];
 		BulletPowerPack = [];
-		$("#score").html("Score: " + score + " : Lives: " + lives);
+		$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 		$("#restartBtn").closest('.ui-btn').hide();
 		$("#restartDiv").hide();
 		
@@ -407,7 +407,7 @@ canvas1.height = canvas.height;
 			}
 			//$("#result").html(entities.length);
 			//console.log(entities);
-		}, 2000);
+		}, 2500);
 		
 		setInterval(function(){
 					
