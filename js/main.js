@@ -1306,11 +1306,37 @@ canvas1.height = canvas.height;
   			x: Math.round(Math.random() * (canvas.width * .90)),
   			y: Math.round(Math.random() * (canvas.height * .90)),
  			draw: function() {
+				 
 				ctx.beginPath(); // this is the ai guy
+				//ctx.moveTo(15, 15);
     			ctx.fillStyle = this.color;
     			ctx.arc(this.x, this.y, bulletSize, 0, Math.PI * 2);
 				ctx.fill();
+				ctx.stroke();
+				
+				//ctx.moveTo(0, 0);
+				ctx.fillStyle = "Green";
+				ctx.stroke();
+				
             	ctx.closePath();
+				
+				
+				// ctx.beginPath(); // this is the ai guy
+				// ctx.arc(this.x, this.y, bulletSize, 0, Math.PI * 2);
+				// ctx.moveTo(0, 0);
+				// //ctx.lineTo(0, 200);
+				// ctx.fill = this.color;
+				// ctx.stroke();
+
+				// // To make the line bold and red
+				// ctx.moveTo(0, 0);
+				// //ctx.lineTo(0, 200);
+				// ctx.fill = "Green";
+				// //ctx.lineWidth = 5;
+				// ctx.stroke();
+				
+				// //ctx.fill();
+            	// ctx.closePath();
  			 }						  
 		};								
 		
@@ -1349,7 +1375,7 @@ canvas1.height = canvas.height;
 					lives -= 1;
 					$("#score").html("Score: " + score + " : Lives: " + lives);
 					
-					if(lives <= 0){
+					if(lives < 1){
 							
 							exitReload = 1;
 						}
@@ -1391,7 +1417,7 @@ canvas1.height = canvas.height;
 					lives -= 1;
 					$("#score").html("Score: " + score + " : Lives: " + lives);
 					
-					if(lives <= 0){
+					if(lives < 1){
 							
 							exitReload = 1;
 						}
@@ -1433,7 +1459,7 @@ canvas1.height = canvas.height;
 					lives -= 1;
 					$("#score").html("Score: " + score + " : Lives: " + lives);
 					
-					if(lives <= 0){
+					if(lives < 1){
 							
 							exitReload = 1;
 						}
@@ -1828,6 +1854,9 @@ function loop() {
 	
 	// increase the hue to get different colored fireworks over time
 	hue += 0.3;
+	
+	//new explosion style, thicker particles
+	ctx.lineWidth = 3;
 	
 	// normally, clearRect() would be used to clear the canvas
 	// we want to create a trailing effect though
