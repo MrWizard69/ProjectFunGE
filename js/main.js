@@ -4,6 +4,8 @@ var stars = [];
 var numStars = 20; //<- 40 maybe good for mobile //250; <- that is good for desktop screen size//2000
 
 var exitReload = 0;
+var bulletPower = false;
+var bulletLoop;
 
 $(document).ready(function () {
 	
@@ -131,8 +133,10 @@ canvas1.height = canvas.height;
 	var score = 0;
 	var lives = 3;
 	
+	
 	var bulletClip = [];
 	var LifePowerPack = [];
+	var BulletPowerPack = [];
 	//var numOfEnemyShips = 4;
 	
 	var bullet = new Object();
@@ -143,6 +147,7 @@ canvas1.height = canvas.height;
 	var Enemy3 = new Object();
 	
 	var LifePup = new Object();
+	var BulletPup = new Object();
 	
 	var joyStickX = 0;
 	var joyStickY = 0;
@@ -256,9 +261,21 @@ canvas1.height = canvas.height;
 
 		$("#shootStick").on("touchstart",function(){
 			
-			//console.log("shoot stick");	
+			//console.log("shoot stick");
+			var bulletSpeed = 0;
 			
-			var bulletLoop = setInterval(function(){
+			
+			if(bulletPower == true){
+				
+				bulletSpeed = 200;
+				
+			}
+			if(bulletPower == false){
+				
+				bulletSpeed = 400;
+			} 
+				
+			bulletLoop = setInterval(function(){
 					
 		    	bullet = jQuery.extend(true, {}, PlayerBullet);
 				bullet.directionX = shootStickDirX;
@@ -273,7 +290,7 @@ canvas1.height = canvas.height;
 				bulletClip.push(bullet);
 				//console.log(bulletClip);
 				
-			}, 250);
+			}, bulletSpeed);
 				shootStickTouch = true;
 			
 				$("#shootStick").on("touchend",function(){
@@ -404,7 +421,20 @@ canvas1.height = canvas.height;
 				LifePowerPack.push(LifePup);
 			}
 			//console.log(entities);
-		}, 20000);	
+		}, 30000);
+		
+		setInterval(function(){
+					
+		    BulletPup = jQuery.extend(true, {}, BulletPowerUp);
+			BulletPup.x = Math.round(Math.random() * (canvas.width * .90));
+			BulletPup.y = Math.round(Math.random() * (canvas.height * .90));
+			
+			if(exitReload == 0){
+					
+				BulletPowerPack.push(BulletPup);
+			}
+			//console.log(entities);
+		}, 20000);		
 		
 		
 		
@@ -460,7 +490,7 @@ canvas1.height = canvas.height;
 		var playerSizeH = canvas.height * .01;
 		
 		var bulletSizeW = canvas.width * .003;
-		var bulletSizeH = canvas.width * .003;
+		var bulletSizeH = canvas.height * .003;
 		
 		playerSize = (playersSizeW + playerSizeH); //playerSize is about 19.43999 px
 		bulletSize = (bulletSizeW + bulletSizeH);
@@ -744,6 +774,11 @@ canvas1.height = canvas.height;
 			
 			
 			//-----------------player movement with keyboard end --------------------------------------------//
+			
+			
+		
+			
+			
 			
 			//-----------------player movement with VirtualJoyStick.js Thank You!-------------------------------//
 			
@@ -1319,26 +1354,29 @@ canvas1.height = canvas.height;
 				ctx.stroke();
 				
             	ctx.closePath();
-				
-				
-				// ctx.beginPath(); // this is the ai guy
-				// ctx.arc(this.x, this.y, bulletSize, 0, Math.PI * 2);
-				// ctx.moveTo(0, 0);
-				// //ctx.lineTo(0, 200);
-				// ctx.fill = this.color;
-				// ctx.stroke();
-
-				// // To make the line bold and red
-				// ctx.moveTo(0, 0);
-				// //ctx.lineTo(0, 200);
-				// ctx.fill = "Green";
-				// //ctx.lineWidth = 5;
-				// ctx.stroke();
-				
-				// //ctx.fill();
-            	// ctx.closePath();
  			 }						  
-		};								
+		};
+		
+		var BulletPowerUp = {
+  			color: "purple",
+  			x: Math.round(Math.random() * (canvas.width * .90)),
+  			y: Math.round(Math.random() * (canvas.height * .90)),
+ 			draw: function() {
+				 
+				ctx.beginPath(); // this is the ai guy
+				//ctx.moveTo(15, 15);
+    			ctx.fillStyle = this.color;
+    			ctx.arc(this.x, this.y, bulletSize, 0, Math.PI * 2);
+				ctx.fill();
+				ctx.stroke();
+				
+				//ctx.moveTo(0, 0);
+				ctx.fillStyle = "yellow";
+				ctx.stroke();
+				
+            	ctx.closePath();
+ 			 }						  
+		};												
 		
 		function draw() {	
 			
@@ -1373,11 +1411,15 @@ canvas1.height = canvas.height;
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
 					lives -= 1;
+					bulletPower = false;
+					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
 					$("#score").html("Score: " + score + " : Lives: " + lives);
 					
 					if(lives < 1){
 							
 							exitReload = 1;
+							lives = 0;
+							$("#score").html("Score: " + score + " : Lives: " + lives);
 						}
 					
 					RandomShipFleet.splice(i, 1); //this will destroy the enemy on colision with the player
@@ -1415,11 +1457,15 @@ canvas1.height = canvas.height;
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
 					lives -= 1;
+					bulletPower = false;
+					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
 					$("#score").html("Score: " + score + " : Lives: " + lives);
 					
 					if(lives < 1){
 							
 							exitReload = 1;
+							lives = 0;
+							$("#score").html("Score: " + score + " : Lives: " + lives);
 						}
 					
 					HunterFleet.splice(i, 1); //this will destroy the enemy on colision with the player
@@ -1457,11 +1503,15 @@ canvas1.height = canvas.height;
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
 					lives -= 1;
+					bulletPower = false;
+					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
 					$("#score").html("Score: " + score + " : Lives: " + lives);
 					
 					if(lives < 1){
 							
 							exitReload = 1;
+							lives = 0;
+							$("#score").html("Score: " + score + " : Lives: " + lives);
 						}
 					
 					StalkerFleet.splice(i, 1); //this will destroy the enemy on colision with the player
@@ -1493,17 +1543,21 @@ canvas1.height = canvas.height;
 					
 				if (bulletClip[j].x > canvas.width - playerSize) { // colision with game boarders x-axis playerSize is about 19.43999
 					
+					fireworks.push( new Firework( canvas.width / 2, canvas.height, bulletClip[j].x, bulletClip[j].y ) );
 					bulletClip.splice(j, 1);
 				} else if (bulletClip[j].x < playerSize) {
 					
+					fireworks.push( new Firework( canvas.width / 2, canvas.height, bulletClip[j].x, bulletClip[j].y ) );
 					bulletClip.splice(j, 1);
 				}
 				
 				else if (bulletClip[j].y > canvas.height - playerSize) { // colision with game boarders y-axis playerSize is about 19.43999
 					
+					fireworks.push( new Firework( canvas.width / 2, canvas.height, bulletClip[j].x, bulletClip[j].y ) );
 					bulletClip.splice(j, 1);
 				} else if (bulletClip[j].y < playerSize) {
 					
+					fireworks.push( new Firework( canvas.width / 2, canvas.height, bulletClip[j].x, bulletClip[j].y ) );
 					bulletClip.splice(j, 1);
 				}
 					
@@ -1614,6 +1668,50 @@ canvas1.height = canvas.height;
 					// 	}
 					
 					LifePowerPack.splice(i, 1); //this will destroy the enemy on colision with the player
+				}
+				
+			// 	if (LifePowerPack[j].x > canvas.width - bulletSize) { // colision with game boarders x-axis playerSize is about 19.43999
+					
+			// 		LifePowerPack.splice(j, 1);
+			// 	} else if (LifePowerPack[j].x < bulletSize) {
+					
+			// 		LifePowerPack.splice(j, 1);
+			// 	}
+				
+			// 	else if (LifePowerPack[j].y > canvas.height - bulletSize) { // colision with game boarders y-axis playerSize is about 19.43999
+					
+			// 		LifePowerPack.splice(j, 1);
+			// 	} else if (LifePowerPack[j].y < bulletSize) {
+					
+			// 		LifePowerPack.splice(j, 1);
+			// 	}
+				
+			 }
+			 
+			 			//this will loop through the list of lives power ups
+			for(var i = 0; i < BulletPowerPack.length; i++){
+				
+				BulletPowerPack[i].draw(); //this will draw the life power up as they are created
+								
+				//this is a colision with the player and the power up
+				if (x < BulletPowerPack[i].x + playerSize  && x + playerSize  > BulletPowerPack[i].x &&
+				y < BulletPowerPack[i].y + playerSize && y + playerSize > BulletPowerPack[i].y) {
+					// The objects are touching
+				
+					//velX *= friction - 2; //this will stop the player from moving
+					//velY *= friction - 2;
+					bulletPower = true;
+					clearInterval(bulletLoop);
+					score += 10;
+					//lives.toFixed(1);
+					$("#score").html("Score: " + score + " : Lives: " + lives);
+					
+					// if(lives == 0){
+							
+					// 		exitReload = 1;
+					// 	}
+					
+					BulletPowerPack.splice(i, 1); //this will destroy the enemy on colision with the player
 				}
 				
 			// 	if (LifePowerPack[j].x > canvas.width - bulletSize) { // colision with game boarders x-axis playerSize is about 19.43999
