@@ -1437,11 +1437,14 @@ canvas1.height = canvas.height;
 					if(bulletPower > 0){
 						
 						bulletPower -= 1;
+						$("#shootStick").trigger('touchend');
+						$("#shootStick").trigger('touchstart');
 					}
 					else{
 						bulletPower = 0;
+						$("#shootStick").trigger('touchend');
+						$("#shootStick").trigger('touchstart');
 					}
-					
 					
 					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
 					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
@@ -1492,12 +1495,19 @@ canvas1.height = canvas.height;
 					if(bulletPower > 0){
 						
 						bulletPower -= 1;
+						$("#shootStick").trigger('touchend');
+						$("#shootStick").trigger('touchstart');
 					}
 					else{
 						bulletPower = 0;
+						$("#shootStick").trigger('touchend');
+						$("#shootStick").trigger('touchstart');
 					}
 					
-
+					
+					//$("#shootStick").trigger('touchend');
+					//$("#shootStick").trigger('touchstart');
+					
 					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
 					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 					
@@ -1547,10 +1557,17 @@ canvas1.height = canvas.height;
 					if(bulletPower > 0){
 						
 						bulletPower -= 1;
+						$("#shootStick").trigger('touchend');
+						$("#shootStick").trigger('touchstart');
 					}
 					else{
 						bulletPower = 0;
+						$("#shootStick").trigger('touchend');
+						$("#shootStick").trigger('touchstart');
 					}
+					
+					//$("#shootStick").trigger('touchend');
+					//$("#shootStick").trigger('touchstart');
 					
 					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
 					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
@@ -1750,7 +1767,8 @@ canvas1.height = canvas.height;
 					//velY *= friction - 2;
 					bulletPower += 1;
 					score += 10;
-					$("shootStick").trigger('touchend');
+					$("#shootStick").trigger('touchend');
+					$("#shootStick").trigger('touchstart');
 					//clearInterval(bulletLoop);
 					//lives.toFixed(1);
 					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
@@ -1826,7 +1844,6 @@ canvas1.height = canvas.height;
 				//Enemy1.x = Math.round(Math.random() * (canvas.width * .95));
 				//Enemy1.y = Math.round(Math.random() * (canvas.height * .95));
 				//Enemy1.direction = Math.round(Math.random() * 7);
-				
 				bulletClip.push(bullet);
 				//console.log(bulletClip);
 				
