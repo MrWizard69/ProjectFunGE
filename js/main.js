@@ -458,7 +458,7 @@ canvas1.height = canvas.height;
 				BulletPowerPack.push(BulletPup);
 			}
 			//console.log(entities);
-		}, 10000);		
+		}, 30000);		
 		
 		
 		
