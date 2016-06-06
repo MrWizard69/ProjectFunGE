@@ -306,7 +306,7 @@ canvas1.height = canvas.height;
 			
 			BulletsFire();
 			
-			console.log(bulletSpeed);
+			//console.log(bulletSpeed);
 			shootStickTouch = true;
 			
 				
