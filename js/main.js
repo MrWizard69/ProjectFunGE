@@ -7,6 +7,7 @@ var exitReload = 0;
 var bulletPower = 0;
 var bulletLoop;
 var bulletSpeed = 0;
+var shootStickTouch = false;
 
 $(document).ready(function () {
 	
@@ -159,7 +160,7 @@ canvas1.height = canvas.height;
 	var shootStickDirX = "";
 	var shootStickDirY = "";
 	var joyTouch = false;
-	var shootStickTouch = false;
+	
 	
 	var addtohome = addToHomescreen({
 		maxDisplayCount: 0,
@@ -315,11 +316,13 @@ canvas1.height = canvas.height;
 		});
 		
 		$("#shootStick").on("touchend",function(){
-									
+				
+				shootStickTouch = false;
+				console.log(shootStickTouch);					
 				shootStickDirX = "";
 				shootStickDirY = "";
 				clearInterval(bulletLoop);
-				shootStickTouch = false;
+				
 		
 			});
 		
@@ -455,7 +458,7 @@ canvas1.height = canvas.height;
 				BulletPowerPack.push(BulletPup);
 			}
 			//console.log(entities);
-		}, 30000);		
+		}, 10000);		
 		
 		
 		
@@ -1437,11 +1440,16 @@ canvas1.height = canvas.height;
 					if(bulletPower > 0){
 						
 						bulletPower -= 1;
-						$("#shootStick").trigger('touchend');
-						$("#shootStick").trigger('touchstart');
 					}
 					else{
 						bulletPower = 0;
+					}
+					
+					if(shootStickTouch == false){
+						
+						$("#shootStick").trigger('touchend');
+					}
+					else{
 						$("#shootStick").trigger('touchend');
 						$("#shootStick").trigger('touchstart');
 					}
@@ -1495,11 +1503,16 @@ canvas1.height = canvas.height;
 					if(bulletPower > 0){
 						
 						bulletPower -= 1;
-						$("#shootStick").trigger('touchend');
-						$("#shootStick").trigger('touchstart');
 					}
 					else{
 						bulletPower = 0;
+					}
+					
+					if(shootStickTouch == false){
+						
+						$("#shootStick").trigger('touchend');
+					}
+					else{
 						$("#shootStick").trigger('touchend');
 						$("#shootStick").trigger('touchstart');
 					}
@@ -1557,11 +1570,16 @@ canvas1.height = canvas.height;
 					if(bulletPower > 0){
 						
 						bulletPower -= 1;
-						$("#shootStick").trigger('touchend');
-						$("#shootStick").trigger('touchstart');
 					}
 					else{
 						bulletPower = 0;
+					}
+					
+					if(shootStickTouch == false){
+						
+						$("#shootStick").trigger('touchend');
+					}
+					else{
 						$("#shootStick").trigger('touchend');
 						$("#shootStick").trigger('touchstart');
 					}
@@ -1716,8 +1734,8 @@ canvas1.height = canvas.height;
 				LifePowerPack[i].draw(); //this will draw the life power up as they are created
 								
 				//this is a colision with the player and the power up
-				if (x < LifePowerPack[i].x + playerSize  && x + playerSize  > LifePowerPack[i].x &&
-				y < LifePowerPack[i].y + playerSize && y + playerSize > LifePowerPack[i].y) {
+				if (x < LifePowerPack[i].x + (bulletSize * 4)  && x + (bulletSize * 4)  > LifePowerPack[i].x &&
+				y < LifePowerPack[i].y + (bulletSize * 4) && y + (bulletSize * 4) > LifePowerPack[i].y) {
 					// The objects are touching
 				
 					//velX *= friction - 2; //this will stop the player from moving
@@ -1759,16 +1777,26 @@ canvas1.height = canvas.height;
 				BulletPowerPack[i].draw(); //this will draw the life power up as they are created
 								
 				//this is a colision with the player and the power up
-				if (x < BulletPowerPack[i].x + playerSize  && x + playerSize  > BulletPowerPack[i].x &&
-				y < BulletPowerPack[i].y + playerSize && y + playerSize > BulletPowerPack[i].y) {
+				if (x < BulletPowerPack[i].x + (bulletSize * 4)  && x + (bulletSize * 4)  > BulletPowerPack[i].x &&
+				y < BulletPowerPack[i].y + (bulletSize * 4) && y + (bulletSize * 4) > BulletPowerPack[i].y) {
 					// The objects are touching
 				
 					//velX *= friction - 2; //this will stop the player from moving
 					//velY *= friction - 2;
 					bulletPower += 1;
 					score += 10;
-					$("#shootStick").trigger('touchend');
-					$("#shootStick").trigger('touchstart');
+					if(shootStickTouch == false){
+						
+						$("#shootStick").trigger('touchend');
+					}
+					else{
+						$("#shootStick").trigger('touchend');
+						$("#shootStick").trigger('touchstart');
+					}
+					
+					//console.log(shootStickTouch);
+					
+					
 					//clearInterval(bulletLoop);
 					//lives.toFixed(1);
 					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
