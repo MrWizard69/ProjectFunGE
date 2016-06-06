@@ -6,6 +6,7 @@ var numStars = 20; //<- 40 maybe good for mobile //250; <- that is good for desk
 var exitReload = 0;
 var bulletPower = 0;
 var bulletLoop;
+var bulletSpeed = 0;
 
 $(document).ready(function () {
 	
@@ -231,6 +232,7 @@ canvas1.height = canvas.height;
 		score = 0;
 		lives = 3;
 		bulletSpeed = 0;
+		bulletPower = 0;
 		menu = false;
 		RandomShipFleet = [];
 		HunterFleet = [];
@@ -264,7 +266,6 @@ canvas1.height = canvas.height;
 		$("#shootStick").on("touchstart",function(){
 			
 			//console.log("shoot stick");
-			var bulletSpeed = 0;
 			
 			
 			if(bulletPower >= 5){
@@ -302,26 +303,18 @@ canvas1.height = canvas.height;
 				bulletSpeed = 400;
 				//console.log(bulletSpeed);
 			} 
-				
-			bulletLoop = setInterval(function(){
-					
-		    	bullet = jQuery.extend(true, {}, PlayerBullet);
-				bullet.directionX = shootStickDirX;
-				bullet.directionY = shootStickDirY;
-				bullet.x = x;
-				bullet.y = y;
-				
-				//Enemy1.x = Math.round(Math.random() * (canvas.width * .95));
-				//Enemy1.y = Math.round(Math.random() * (canvas.height * .95));
-				//Enemy1.direction = Math.round(Math.random() * 7);
-				
-				bulletClip.push(bullet);
-				//console.log(bulletClip);
-				
-			}, bulletSpeed);
-				shootStickTouch = true;
 			
-				$("#shootStick").on("touchend",function(){
+			BulletsFire();
+			
+			console.log(bulletSpeed);
+			shootStickTouch = true;
+			
+				
+
+			
+		});
+		
+		$("#shootStick").on("touchend",function(){
 									
 				shootStickDirX = "";
 				shootStickDirY = "";
@@ -329,9 +322,9 @@ canvas1.height = canvas.height;
 				shootStickTouch = false;
 		
 			});
-
-			
-		});
+		
+		
+		
 		
 		
 				//console.log(shootStickDirX);
@@ -1439,8 +1432,6 @@ canvas1.height = canvas.height;
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
 					
-					clearInterval(bulletLoop);
-					
 					lives -= 1;
 					
 					if(bulletPower > 0){
@@ -1459,7 +1450,6 @@ canvas1.height = canvas.height;
 							
 							exitReload = 1;
 							lives = 0;
-							clearInterval(bulletLoop);
 							$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 						}
 					
@@ -1498,7 +1488,6 @@ canvas1.height = canvas.height;
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
 					lives -= 1;
-					clearInterval(bulletLoop);
 					
 					if(bulletPower > 0){
 						
@@ -1554,7 +1543,6 @@ canvas1.height = canvas.height;
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
 					lives -= 1;
-					clearInterval(bulletLoop);
 					
 					if(bulletPower > 0){
 						
@@ -1761,8 +1749,9 @@ canvas1.height = canvas.height;
 					//velX *= friction - 2; //this will stop the player from moving
 					//velY *= friction - 2;
 					bulletPower += 1;
-					clearInterval(bulletLoop);
 					score += 10;
+					$("shootStick").trigger('touchend');
+					//clearInterval(bulletLoop);
 					//lives.toFixed(1);
 					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 					
@@ -1823,6 +1812,27 @@ canvas1.height = canvas.height;
           y: evt.clientY - rect.top
         };
       }
+	  
+	  function BulletsFire(){
+			
+			bulletLoop = setInterval(function(){
+					
+		    	bullet = jQuery.extend(true, {}, PlayerBullet);
+				bullet.directionX = shootStickDirX;
+				bullet.directionY = shootStickDirY;
+				bullet.x = x;
+				bullet.y = y;
+				
+				//Enemy1.x = Math.round(Math.random() * (canvas.width * .95));
+				//Enemy1.y = Math.round(Math.random() * (canvas.height * .95));
+				//Enemy1.direction = Math.round(Math.random() * 7);
+				
+				bulletClip.push(bullet);
+				//console.log(bulletClip);
+				
+			}, bulletSpeed);
+			
+		}
 		
 		
         
