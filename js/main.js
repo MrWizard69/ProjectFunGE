@@ -8,6 +8,10 @@ var bulletPower = 0;
 var bulletLoop;
 var bulletSpeed = 0;
 var shootStickTouch = false;
+var playersSizeW;
+var playerSizeH;
+var bulletSizeW;
+var bulletSizeH;
 
 $(document).ready(function () {
 	
@@ -271,13 +275,13 @@ canvas1.height = canvas.height;
 			
 			if(bulletPower >= 5){
 				
-				bulletSpeed = 175;
+				bulletSpeed = 200;
 				//console.log(bulletSpeed);
 				
 			}
 			if(bulletPower == 4){
 				
-				bulletSpeed = 200;
+				bulletSpeed = 225;
 				//console.log(bulletSpeed);
 				
 			}
@@ -295,13 +299,13 @@ canvas1.height = canvas.height;
 			}
 			if(bulletPower == 1){
 				
-				bulletSpeed = 350;
+				bulletSpeed = 325;
 				//console.log(bulletSpeed);
 				
 			}
 			if(bulletPower == 0){
 				
-				bulletSpeed = 400;
+				bulletSpeed = 350;
 				//console.log(bulletSpeed);
 			} 
 			
@@ -445,7 +449,7 @@ canvas1.height = canvas.height;
 				LifePowerPack.push(LifePup);
 			}
 			//console.log(entities);
-		}, 60000);
+		}, 40000); //60000
 		
 		setInterval(function(){
 					
@@ -458,7 +462,7 @@ canvas1.height = canvas.height;
 				BulletPowerPack.push(BulletPup);
 			}
 			//console.log(entities);
-		}, 30000);		
+		}, 30000);	//30000	
 		
 		
 		
@@ -510,11 +514,11 @@ canvas1.height = canvas.height;
 		ctx.strokeRect(0, 0, window.innerWidth, window.innerHeight);
 		
 		//Resize character sizes
-		var playersSizeW = canvas.width * .01;
-		var playerSizeH = canvas.height * .01;
+		playersSizeW = canvas.width * .01;
+		playerSizeH = canvas.height * .01;
 		
-		var bulletSizeW = canvas.width * .004;
-		var bulletSizeH = canvas.height * .004;
+		bulletSizeW = canvas.width * .004;
+		bulletSizeH = canvas.height * .004;
 		
 		playerSize = (playersSizeW + playerSizeH); //playerSize is about 19.43999 px
 		bulletSize = (bulletSizeW + bulletSizeH);
@@ -576,7 +580,7 @@ canvas1.height = canvas.height;
 		
 		if(canvas.width >= 241){
 			
-			joyStickX = (window.innerWidth) * .93;
+			joyStickX = (window.innerWidth) * .92;
 			joyStickY = (window.innerHeight) * .60;	
 			
 			shootStickX = (window.innerWidth) * .05;
@@ -1361,44 +1365,52 @@ canvas1.height = canvas.height;
 		};
 		
 		var LifePowerUp = {
-  			color: "blue",
+  			color: "DarkGreen",
   			x: Math.round(Math.random() * (canvas.width * .90)),
   			y: Math.round(Math.random() * (canvas.height * .90)),
  			draw: function() {
 				 
+				ctx.fillStyle = this.color;
 				ctx.beginPath(); // this is the ai guy
 				//ctx.moveTo(15, 15);
-    			ctx.fillStyle = this.color;
     			ctx.arc(this.x, this.y, bulletSize * 2.5, 0, Math.PI * 2);
+				ctx.closePath();
 				ctx.fill();
-				ctx.stroke();
-				
+				//ctx.stroke();
+				ctx.font = "25px serif";
+				ctx.textAlign = "center";
+				ctx.fillStyle = "rgba(255, 255, 200, 1)";
+				ctx.fillText("H",this.x,this.y + (0.63 * 10));
 				//ctx.moveTo(0, 0);
-				ctx.fillStyle = "Green";
-				ctx.stroke();
-				
-            	ctx.closePath();
+				//ctx.fillStyle = "green";
+				//ctx.stroke();
  			 }						  
 		};
 		
 		var BulletPowerUp = {
-  			color: "purple",
+  			color: "DarkSlateGray",
   			x: Math.round(Math.random() * (canvas.width * .90)),
   			y: Math.round(Math.random() * (canvas.height * .90)),
  			draw: function() {
 				 
+				ctx.fillStyle = this.color;
 				ctx.beginPath(); // this is the ai guy
 				//ctx.moveTo(15, 15);
-    			ctx.fillStyle = this.color;
     			ctx.arc(this.x, this.y, bulletSize * 2.5, 0, Math.PI * 2);
+				ctx.closePath();
 				ctx.fill();
-				ctx.stroke();
-				
+				ctx.beginPath();
+				//ctx.stroke();
+				ctx.font = "25px serif";
+				ctx.textAlign = "center";
+				ctx.fillStyle = "rgba(255, 255, 200, 1)";
+				ctx.fillText("BP",this.x,this.y + (0.60 * 10));
 				//ctx.moveTo(0, 0);
-				ctx.fillStyle = "yellow";
-				ctx.stroke();
-				
+				//ctx.fillStyle = "yellow";
+				//ctx.stroke();
             	ctx.closePath();
+				
+				
  			 }						  
 		};												
 		
@@ -1626,21 +1638,21 @@ canvas1.height = canvas.height;
 					
 				if (bulletClip[j].x > canvas.width - playerSize) { // colision with game boarders x-axis playerSize is about 19.43999
 					
-					fireworks.push( new Firework( canvas.width / 2, canvas.height, bulletClip[j].x, bulletClip[j].y ) );
+					fireworks.push( new WCFirework( canvas.width / 2, canvas.height, bulletClip[j].x, bulletClip[j].y ) );
 					bulletClip.splice(j, 1);
 				} else if (bulletClip[j].x < playerSize) {
 					
-					fireworks.push( new Firework( canvas.width / 2, canvas.height, bulletClip[j].x, bulletClip[j].y ) );
+					fireworks.push( new WCFirework( canvas.width / 2, canvas.height, bulletClip[j].x, bulletClip[j].y ) );
 					bulletClip.splice(j, 1);
 				}
 				
 				else if (bulletClip[j].y > canvas.height - playerSize) { // colision with game boarders y-axis playerSize is about 19.43999
 					
-					fireworks.push( new Firework( canvas.width / 2, canvas.height, bulletClip[j].x, bulletClip[j].y ) );
+					fireworks.push( new WCFirework( canvas.width / 2, canvas.height, bulletClip[j].x, bulletClip[j].y ) );
 					bulletClip.splice(j, 1);
 				} else if (bulletClip[j].y < playerSize) {
 					
-					fireworks.push( new Firework( canvas.width / 2, canvas.height, bulletClip[j].x, bulletClip[j].y ) );
+					fireworks.push( new WCFirework( canvas.width / 2, canvas.height, bulletClip[j].x, bulletClip[j].y ) );
 					bulletClip.splice(j, 1);
 				}
 					
@@ -1944,6 +1956,64 @@ function Firework( sx, sy, tx, ty ) {
 	this.targetRadius = 30; //1
 }
 
+// create firework
+function WCFirework( sx, sy, tx, ty ) {
+	// actual coordinates
+	this.x = sx;
+	this.y = sy;
+	// starting coordinates
+	this.sx = sx;
+	this.sy = sy;
+	// target coordinates
+	this.tx = tx;
+	this.ty = ty;
+	// distance from starting point to target
+	this.distanceToTarget = calculateDistance( sx, sy, tx, ty );
+	this.distanceTraveled = 0;
+	// track the past coordinates of each firework to create a trail effect, increase the coordinate count to create more prominent trails
+	this.coordinates = [];
+	this.coordinateCount = 2;//5
+	// populate initial coordinate collection with the current coordinates
+	while( this.coordinateCount-- ) {
+		this.coordinates.push( [ this.x, this.y ] );
+	}
+	this.angle = Math.atan2( ty - sy, tx - sx );
+	this.speed = 5;//5
+	this.acceleration = 500;//500
+	this.brightness = random( 50, 99 );//random( 50, 70 );
+	// circle target indicator radius
+	this.targetRadius = 10; //1
+}
+
+// create firework
+function TitleFirework( sx, sy, tx, ty ) {
+	// actual coordinates
+	this.x = sx;
+	this.y = sy;
+	// starting coordinates
+	this.sx = sx;
+	this.sy = sy;
+	// target coordinates
+	this.tx = tx;
+	this.ty = ty;
+	// distance from starting point to target
+	this.distanceToTarget = calculateDistance( sx, sy, tx, ty );
+	this.distanceTraveled = 0;
+	// track the past coordinates of each firework to create a trail effect, increase the coordinate count to create more prominent trails
+	this.coordinates = [];
+	this.coordinateCount = 2;//5
+	// populate initial coordinate collection with the current coordinates
+	while( this.coordinateCount-- ) {
+		this.coordinates.push( [ this.x, this.y ] );
+	}
+	this.angle = Math.atan2( ty - sy, tx - sx );
+	this.speed = 5;//5
+	this.acceleration = 500;//500
+	this.brightness = random( 50, 99 );//random( 50, 70 );
+	// circle target indicator radius
+	this.targetRadius = 45; //1
+}
+
 
 
 // update firework
@@ -1981,8 +2051,108 @@ Firework.prototype.update = function( index ) {
 	}
 }
 
+// update firework
+TitleFirework.prototype.update = function( index ) {
+	// remove last item in coordinates array
+	this.coordinates.pop();
+	// add current coordinates to the start of the array
+	this.coordinates.unshift( [ this.x, this.y ] );
+	
+	// cycle the circle target indicator radius
+	if( this.targetRadius < 8 ) {
+		this.targetRadius += 0.3;
+	} else {
+		this.targetRadius = 1;
+	}
+	
+	// speed up the firework
+	this.speed *= this.acceleration;
+	
+	// get the current velocities based on angle and speed
+	var vx = Math.cos( this.angle ) * this.speed,
+			vy = Math.sin( this.angle ) * this.speed;
+	// how far will the firework have traveled with velocities applied?
+	this.distanceTraveled = calculateDistance( this.sx, this.sy, this.x + vx, this.y + vy );
+	
+	// if the distance traveled, including velocities, is greater than the initial distance to the target, then the target has been reached
+	if( this.distanceTraveled >= this.distanceToTarget ) {
+		createTitleParticles( this.tx, this.ty );
+		// remove the firework, use the index passed into the update function to determine which to remove
+		fireworks.splice( index, 1 );
+	} else {
+		// target not reached, keep traveling
+		this.x += vx;
+		this.y += vy;
+	}
+}
+
+// update firework
+WCFirework.prototype.update = function( index ) {
+	// remove last item in coordinates array
+	this.coordinates.pop();
+	// add current coordinates to the start of the array
+	this.coordinates.unshift( [ this.x, this.y ] );
+	
+	// cycle the circle target indicator radius
+	if( this.targetRadius < 8 ) {
+		this.targetRadius += 0.3;
+	} else {
+		this.targetRadius = 1;
+	}
+	
+	// speed up the firework
+	this.speed *= this.acceleration;
+	
+	// get the current velocities based on angle and speed
+	var vx = Math.cos( this.angle ) * this.speed,
+			vy = Math.sin( this.angle ) * this.speed;
+	// how far will the firework have traveled with velocities applied?
+	this.distanceTraveled = calculateDistance( this.sx, this.sy, this.x + vx, this.y + vy );
+	
+	// if the distance traveled, including velocities, is greater than the initial distance to the target, then the target has been reached
+	if( this.distanceTraveled >= this.distanceToTarget ) {
+		createParticles( this.tx, this.ty );
+		// remove the firework, use the index passed into the update function to determine which to remove
+		fireworks.splice( index, 1 );
+	} else {
+		// target not reached, keep traveling
+		this.x += vx;
+		this.y += vy;
+	}
+}
+
 // draw firework
 Firework.prototype.draw = function() {
+	ctx1.beginPath();
+	// move to the last tracked coordinate in the set, then draw a line to the current x and y
+	ctx1.moveTo( this.coordinates[ this.coordinates.length - 1][ 0 ], this.coordinates[ this.coordinates.length - 1][ 1 ] );
+	ctx1.lineTo( this.x, this.y );
+	ctx1.strokeStyle = 'hsl(' + hue + ', 100%, ' + this.brightness + '%)';
+	ctx1.stroke();
+	
+	ctx1.beginPath();
+	// draw the target for this firework with a pulsing circle
+	ctx1.arc( this.tx, this.ty, this.targetRadius, 0, Math.PI * 2 );
+	ctx1.stroke();
+}
+
+// draw firework
+WCFirework.prototype.draw = function() {
+	ctx1.beginPath();
+	// move to the last tracked coordinate in the set, then draw a line to the current x and y
+	ctx1.moveTo( this.coordinates[ this.coordinates.length - 1][ 0 ], this.coordinates[ this.coordinates.length - 1][ 1 ] );
+	ctx1.lineTo( this.x, this.y );
+	ctx1.strokeStyle = 'hsl(' + hue + ', 100%, ' + this.brightness + '%)';
+	ctx1.stroke();
+	
+	ctx1.beginPath();
+	// draw the target for this firework with a pulsing circle
+	ctx1.arc( this.tx, this.ty, this.targetRadius, 0, Math.PI * 2 );
+	ctx1.stroke();
+}
+
+// draw firework
+TitleFirework.prototype.draw = function() {
 	ctx1.beginPath();
 	// move to the last tracked coordinate in the set, then draw a line to the current x and y
 	ctx1.moveTo( this.coordinates[ this.coordinates.length - 1][ 0 ], this.coordinates[ this.coordinates.length - 1][ 1 ] );
@@ -2060,6 +2230,15 @@ function createParticles( x, y ) {
 	}
 }
 
+// create particle group/explosion
+function createTitleParticles( x, y ) {
+	// increase the particle count for a bigger explosion, beware of the canvas performance hit with the increased particles though
+	var particleCount = 10;//7
+	while( particleCount-- ) {
+		particles.push( new Particle( x, y ) );
+	}
+}
+
 // main demo loop
 function loop() {
 	// this function will run endlessly with requestAnimationFrame
@@ -2102,7 +2281,7 @@ function loop() {
 	if( timerTick >= timerTotal ) {
 		if( !mousedown ) {
 			// start the firework at the bottom middle of the screen, then set the random target coordinates, the random y coordinates will be set within the range of the top half of the screen
-			fireworks.push( new Firework( canvas.width / 2, canvas.height, random( 0, canvas.width ), random( 0, canvas.height / 2 ) ) );
+			fireworks.push( new TitleFirework( canvas.width / 2, canvas.height, random( 0, canvas.width ), random( 0, canvas.height / 2 ) ) );
 			timerTick = 0;
 		}
 	} else {
