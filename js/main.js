@@ -322,7 +322,7 @@ canvas1.height = canvas.height;
 		$("#shootStick").on("touchend",function(){
 				
 				shootStickTouch = false;
-				console.log(shootStickTouch);					
+				//console.log(shootStickTouch);					
 				shootStickDirX = "";
 				shootStickDirY = "";
 				clearInterval(bulletLoop);
@@ -400,7 +400,8 @@ canvas1.height = canvas.height;
 			Enemy1.y = Math.round(Math.random() * (canvas.height * .90));
 			Enemy1.direction = Math.round(Math.random() * 7);
 			
-			if(exitReload == 0){
+			if (exitReload == 0 || !x < Enemy1.x + (playerSize * 4)  && !x + (playerSize * 4)  > Enemy1.x &&
+				!y < Enemy1.y + (playerSize * 4) && !y + (playerSize * 4) > Enemy1.y) {
 					
 				RandomShipFleet.push(Enemy1);
 			
@@ -415,7 +416,8 @@ canvas1.height = canvas.height;
 			Enemy2.x = Math.round(Math.random() * (canvas.width * .90));
 			Enemy2.y = Math.round(Math.random() * (canvas.height * .90));
 			
-			if(exitReload == 0){
+			if (exitReload == 0 || !x < Enemy2.x + (playerSize * 4)  && !x + (playerSize * 4)  > Enemy2.x &&
+				!y < Enemy2.y + (playerSize * 4) && !y + (playerSize * 4) > Enemy2.y) {
 				
 				HunterFleet.push(Enemy2);
 			}
@@ -430,7 +432,8 @@ canvas1.height = canvas.height;
 			Enemy3.x = Math.round(Math.random() * (canvas.width * .90));
 			Enemy3.y = Math.round(Math.random() * (canvas.height * .90));
 			
-			if(exitReload == 0){
+			if (exitReload == 0 || !x < Enemy3.x + (playerSize * 4)  && !x + (playerSize * 4)  > Enemy3.x &&
+				!y < Enemy3.y + (playerSize * 4) && !y + (playerSize * 4) > Enemy3.y) {
 					
 				StalkerFleet.push(Enemy3);
 			}
@@ -2111,7 +2114,7 @@ WCFirework.prototype.update = function( index ) {
 	
 	// if the distance traveled, including velocities, is greater than the initial distance to the target, then the target has been reached
 	if( this.distanceTraveled >= this.distanceToTarget ) {
-		createParticles( this.tx, this.ty );
+		createWCParticles( this.tx, this.ty );
 		// remove the firework, use the index passed into the update function to determine which to remove
 		fireworks.splice( index, 1 );
 	} else {
@@ -2225,6 +2228,15 @@ Particle.prototype.draw = function() {
 function createParticles( x, y ) {
 	// increase the particle count for a bigger explosion, beware of the canvas performance hit with the increased particles though
 	var particleCount = 5;//125
+	while( particleCount-- ) {
+		particles.push( new Particle( x, y ) );
+	}
+}
+
+// create particle group/explosion
+function createWCParticles( x, y ) {
+	// increase the particle count for a bigger explosion, beware of the canvas performance hit with the increased particles though
+	var particleCount = 3;//125
 	while( particleCount-- ) {
 		particles.push( new Particle( x, y ) );
 	}
