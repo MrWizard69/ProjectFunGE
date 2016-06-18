@@ -781,7 +781,7 @@ canvas1.height = canvas.height;
             if (keys[38]) { // up arrow key
                 if (velY > -speed) {
                     //velY -= 6;
-					velY -= (canvas.height) * 0.0065;
+					velY -= (canvas.height) * 0.0085;
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
@@ -789,21 +789,21 @@ canvas1.height = canvas.height;
             if (keys[40]) { // down arrow key
                 if (velY < speed) {
                     //velY += 6;
-					velY += (canvas.height) * 0.0065;
+					velY += (canvas.height) * 0.0085;
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
             if (keys[39]) { // right arrow key
                 if (velX < speed) {
                     //velX += 6;
-					velX += (canvas.width) * 0.0065;
+					velX += (canvas.width) * 0.0085;
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
             if (keys[37]) { // left arrow key
                 if (velX > -speed) {
                     //velX -= 6;
-					velX -= (canvas.width) * 0.0065;
+					velX -= (canvas.width) * 0.0085;
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
@@ -891,56 +891,56 @@ canvas1.height = canvas.height;
 						
 							//velX -= 6;
 							//velY -= 6;
-							velX -= (canvas.width) * 0.0065;
-							velY -= (canvas.height) * 0.0065;
+							velX -= (canvas.width) * 0.0085;
+							velY -= (canvas.height) * 0.0085;
 						
 					}
 					else if(joyDirX == "left" && joyDirY == "down" ){
 						
 							//velY += 6;
 							//velX -= 6;
-							velX -= (canvas.width) * 0.0065;
-							velY += (canvas.height) * 0.0065;
+							velX -= (canvas.width) * 0.0085;
+							velY += (canvas.height) * 0.0085;
 						
 					}
 					else if(joyDirY == "up" && joyDirX == "right"){
 						
 							//velY -= 6;
 							//velX += 6;
-							velX += (canvas.width) * 0.0065;
-							velY -= (canvas.height) * 0.0065;
+							velX += (canvas.width) * 0.0085;
+							velY -= (canvas.height) * 0.0085;
 						
 					}
 					else if(joyDirY == "down" && joyDirX == "right"){
 						
 							//velY += 6;
 							//velX += 6;
-							velX += (canvas.width) * 0.0065;
-							velY += (canvas.height) * 0.0065;
+							velX += (canvas.width) * 0.0085;
+							velY += (canvas.height) * 0.0085;
 						
 					}
 					else if(joyDirX == "left"){
 						
 							//velX -= 6;
-							velX -= (canvas.width) * 0.0065;
+							velX -= (canvas.width) * 0.0085;
 						
 					}
 					else if(joyDirX == "right"){
 						
 							//velX += 6;
-							velX += (canvas.width) * 0.0065;
+							velX += (canvas.width) * 0.0085;
 						
 					}
 					else if(joyDirY == "up"){
 						
 							//velY -= 6;
-							velY -= (canvas.height) * 0.0065;
+							velY -= (canvas.height) * 0.0085;
 						
 					}
 					else if(joyDirY == "down"){
 						
 							//velY += 6;
-							velY += (canvas.height) * 0.0065;
+							velY += (canvas.height) * 0.0085;
 						
 					}
 			
@@ -1123,8 +1123,8 @@ canvas1.height = canvas.height;
 						
 							//this.x -= 7;
 							//this.y -= 7;
-							this.x -= (canvas.width) * 0.017;
-							this.y -= (canvas.height) * 0.017;
+							this.x -= (canvas.width) * 0.02;
+							this.y -= (canvas.height) * 0.02;
 							
 						
 					}
@@ -1132,48 +1132,48 @@ canvas1.height = canvas.height;
 						
 							//this.y += 7;
 							//this.x -= 7;
-							this.x -= (canvas.width) * 0.017;
-							this.y += (canvas.height) * 0.017;
+							this.x -= (canvas.width) * 0.02;
+							this.y += (canvas.height) * 0.02;
 						
 					}
 					else if(this.directionX == "right" && this.directionY == "up"){
 						
 							//this.y -= 7;
 							//this.x += 7;
-							this.x += (canvas.width) * 0.017;
-							this.y -= (canvas.height) * 0.017;
+							this.x += (canvas.width) * 0.02;
+							this.y -= (canvas.height) * 0.02;
 						
 					}
 					else if(this.directionX == "right" && this.directionY == "down"){
 						
 							//this.y += 7;
 							//this.x += 7;
-							this.x += (canvas.width) * 0.017;
-							this.y += (canvas.height) * 0.017;
+							this.x += (canvas.width) * 0.02;
+							this.y += (canvas.height) * 0.02;
 						
 					}
 					else if(this.directionX == "left"){
 						
 							//this.x -= 7;
-							this.x -= (canvas.width) * 0.017;
+							this.x -= (canvas.width) * 0.02;
 						
 					}
 					else if(this.directionX == "right"){
 						
 							//this.x += 7;
-							this.x += (canvas.width) * 0.017;
+							this.x += (canvas.width) * 0.02;
 						
 					}
 					else if(this.directionY == "up"){
 						
 							//this.y -= 7;
-							this.y -= (canvas.height) * 0.017;
+							this.y -= (canvas.height) * 0.02;
 						
 					}
 					else if(this.directionY == "down"){
 						
 							//this.y += 7;
-							this.y += (canvas.height) * 0.017;
+							this.y += (canvas.height) * 0.02;
 						
 					}
 				 
@@ -1225,43 +1225,43 @@ canvas1.height = canvas.height;
 				 
 				 if(this.direction == 0){
 					 //this.x -= 1.7;
-					 this.x -= (canvas.width) * 0.0027;
+					 this.x -= (canvas.width) * 0.0037;
 				 }
 				 if(this.direction == 1){
 					 //this.x += 1.7;
-					 this.x += (canvas.width) * 0.0027;
+					 this.x += (canvas.width) * 0.0037;
 				 }
 				 if(this.direction == 2){
 					 //this.y -= 1.7;
-					 this.y -= (canvas.height) * 0.0027;
+					 this.y -= (canvas.height) * 0.0037;
 				 }
 				 if(this.direction == 3){
 					 //this.y += 1.7;
-					 this.y += (canvas.height) * 0.0027;
+					 this.y += (canvas.height) * 0.0037;
 				 }
 				 if(this.direction == 4){
 					 //this.y += 1.7;
 					 //this.x += 1.7;
-					 this.x += (canvas.width) * 0.0027;
-					 this.y += (canvas.height) * 0.0027;
+					 this.x += (canvas.width) * 0.0037;
+					 this.y += (canvas.height) * 0.0037;
 				 }
 				 if(this.direction == 5){
 					 //this.y -= 1.7;
 					 //this.x -= 1.7;
-					 this.x -= (canvas.width) * 0.0027;
-					 this.y -= (canvas.height) * 0.0027;
+					 this.x -= (canvas.width) * 0.0037;
+					 this.y -= (canvas.height) * 0.0037;
 				 }
 				 if(this.direction == 6){
 					 //this.y += 1.7;
 					 //this.x -= 1.7;
-					 this.x -= (canvas.width) * 0.0027;
-					 this.y += (canvas.height) * 0.0027;
+					 this.x -= (canvas.width) * 0.0037;
+					 this.y += (canvas.height) * 0.0037;
 				 }
 				 if(this.direction == 7){
 					 //this.y -= 1.7;
 					 //this.x += 1.7;
-					 this.x += (canvas.width) * 0.0027;
-					 this.y -= (canvas.height) * 0.0027;
+					 this.x += (canvas.width) * 0.0037;
+					 this.y -= (canvas.height) * 0.0037;
 				 }				 
 				 //when an enemy hits the wall, this will check the direction it was moving and make it move the revirse direction
 				if (this.direction == 1 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
@@ -1335,22 +1335,22 @@ canvas1.height = canvas.height;
 				 if(this.x < x){
 					 
 					 //this.x += 1.6;
-					 this.x += (canvas.width) * 0.0024;
+					 this.x += (canvas.width) * 0.0034;
 				 }
 				 if(this.x > x){
 					 
 					 //this.x -= 1.6;
-					 this.x -= (canvas.width) * 0.0024;
+					 this.x -= (canvas.width) * 0.0034;
 				 }
 				 if(this.y < y){
 					 
 					 //this.y += 1.6;
-					 this.y += (canvas.height) * 0.0024;
+					 this.y += (canvas.height) * 0.0034;
 				 }
 				 if(this.y > y){
 					 
 					 //this.y -= 1.6;
-					 this.y -= (canvas.height) * 0.0024;
+					 this.y -= (canvas.height) * 0.0034;
 				 }
 				 
 				 
@@ -1376,49 +1376,49 @@ canvas1.height = canvas.height;
 					 
 					 //this.x += 1;
 					 //this.y += 1;
-					 this.x += (canvas.width) * 0.002;
-					 this.y += (canvas.height) * 0.002;
+					 this.x += (canvas.width) * 0.003;
+					 this.y += (canvas.height) * 0.003;
 				 }
 				 if(this.x > x && this.y > y){
 					 
 					 //this.x -= 1;
 					 //this.y -= 1;
-					 this.x -= (canvas.width) * 0.002;
-					 this.y -= (canvas.height) * 0.002;
+					 this.x -= (canvas.width) * 0.003;
+					 this.y -= (canvas.height) * 0.003;
 				 }
 				 if(this.x > x && this.y < y){
 					 
 					 //this.x -= 1;
 					 //this.y += 1;
-					 this.x -= (canvas.width) * 0.002;
-					 this.y += (canvas.height) * 0.002;
+					 this.x -= (canvas.width) * 0.003;
+					 this.y += (canvas.height) * 0.003;
 				 }
 				 if(this.x > x && this.y < y){
 					 
 					 //this.x -= 1;
 					 //this.y += 1;
-					 this.x += (canvas.width) * 0.002;
-					 this.y -= (canvas.height) * 0.002;
+					 this.x += (canvas.width) * 0.003;
+					 this.y -= (canvas.height) * 0.003;
 				 }
 				 if(this.x < x){
 					 
 					 //this.x += 1.1;
-					 this.x += (canvas.width) * 0.0021;
+					 this.x += (canvas.width) * 0.0031;
 				 }
 				 if(this.y > y){
 					 
 					 //this.y -= 1.1;
-					 this.y -= (canvas.height) * 0.0021;
+					 this.y -= (canvas.height) * 0.0031;
 				 }
 				 if(this.x > x){
 					 
 					 //this.x -= 1.1;
-					 this.x -= (canvas.width) * 0.0021;
+					 this.x -= (canvas.width) * 0.0031;
 				 }
 				 if(this.y < y){
 					 
 					 //this.y += 1.1;
-					 this.y += (canvas.height) * 0.0021;
+					 this.y += (canvas.height) * 0.0031;
 				 } 
 				 		 
 			 }
