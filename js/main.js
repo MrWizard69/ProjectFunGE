@@ -2271,7 +2271,7 @@ canvas1.height = canvas.height;
 				
 					//velX *= friction - 2; //this will stop the player from moving
 					//velY *= friction - 2;
-					bulletPower += 1;
+					bulletPower += 2;
 					score += 10;
 					if(shootStickTouch == false){
 						
