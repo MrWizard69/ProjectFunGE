@@ -775,6 +775,8 @@ canvas1.height = canvas.height;
 			//the update function does two things, draws the characters and enemies and tracks their movement positions
 			
 			//this will track what keys are pressed and will update the players position
+
+			
 			
 			//this is for the arrow keys control
 
@@ -807,6 +809,13 @@ canvas1.height = canvas.height;
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
+
+			document.body.addEventListener("keydown", function (e) { // these make the keyboard do
+				keys[e.keyCode] = true;
+			});
+			document.body.addEventListener("keyup", function (e) {
+				keys[e.keyCode] = false;
+			});
 			
 			
 			//-----------------player movement with keyboard end --------------------------------------------//
@@ -891,56 +900,56 @@ canvas1.height = canvas.height;
 						
 							//velX -= 6;
 							//velY -= 6;
-							velX -= (canvas.width) * 0.015;
-							velY -= (canvas.height) * 0.015;
+							velX -= (canvas.width) * 0.016;
+							velY -= (canvas.height) * 0.016;
 						
 					}
 					else if(joyDirX == "left" && joyDirY == "down" ){
 						
 							//velY += 6;
 							//velX -= 6;
-							velX -= (canvas.width) * 0.015;
-							velY += (canvas.height) * 0.015;
+							velX -= (canvas.width) * 0.016;
+							velY += (canvas.height) * 0.016;
 						
 					}
 					else if(joyDirY == "up" && joyDirX == "right"){
 						
 							//velY -= 6;
 							//velX += 6;
-							velX += (canvas.width) * 0.015;
-							velY -= (canvas.height) * 0.015;
+							velX += (canvas.width) * 0.016;
+							velY -= (canvas.height) * 0.016;
 						
 					}
 					else if(joyDirY == "down" && joyDirX == "right"){
 						
 							//velY += 6;
 							//velX += 6;
-							velX += (canvas.width) * 0.015;
-							velY += (canvas.height) * 0.015;
+							velX += (canvas.width) * 0.016;
+							velY += (canvas.height) * 0.016;
 						
 					}
 					else if(joyDirX == "left"){
 						
 							//velX -= 6;
-							velX -= (canvas.width) * 0.015;
+							velX -= (canvas.width) * 0.016;
 						
 					}
 					else if(joyDirX == "right"){
 						
 							//velX += 6;
-							velX += (canvas.width) * 0.015;
+							velX += (canvas.width) * 0.016;
 						
 					}
 					else if(joyDirY == "up"){
 						
 							//velY -= 6;
-							velY -= (canvas.height) * 0.015;
+							velY -= (canvas.height) * 0.016;
 						
 					}
 					else if(joyDirY == "down"){
 						
 							//velY += 6;
-							velY += (canvas.height) * 0.015;
+							velY += (canvas.height) * 0.016;
 						
 					}
 			
@@ -1955,12 +1964,7 @@ canvas1.height = canvas.height;
 		
         
 		
-        document.body.addEventListener("keydown", function (e) { // these make the keyboard do
-            keys[e.keyCode] = true;
-        });
-        document.body.addEventListener("keyup", function (e) {
-            keys[e.keyCode] = false;
-        });
+       
 		
 			
 		
