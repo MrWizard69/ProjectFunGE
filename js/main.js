@@ -584,10 +584,10 @@ canvas1.height = canvas.height;
 		if(canvas.width >= 241){
 			
 			joyStickX = (window.innerWidth) * .92;
-			joyStickY = (window.innerHeight) * .60;	
+			joyStickY = (window.innerHeight) * .70;	
 			
 			shootStickX = (window.innerWidth) * .05;
-			shootStickY = (window.innerHeight) * 0.60;
+			shootStickY = (window.innerHeight) * 0.70;
 			
 			//$("#play").closest('.ui-btn').show();
 			
@@ -891,56 +891,56 @@ canvas1.height = canvas.height;
 						
 							//velX -= 6;
 							//velY -= 6;
-							velX -= (canvas.width) * 0.01;
-							velY -= (canvas.height) * 0.01;
+							velX -= (canvas.width) * 0.014;
+							velY -= (canvas.height) * 0.014;
 						
 					}
 					else if(joyDirX == "left" && joyDirY == "down" ){
 						
 							//velY += 6;
 							//velX -= 6;
-							velX -= (canvas.width) * 0.01;
-							velY += (canvas.height) * 0.01;
+							velX -= (canvas.width) * 0.014;
+							velY += (canvas.height) * 0.014;
 						
 					}
 					else if(joyDirY == "up" && joyDirX == "right"){
 						
 							//velY -= 6;
 							//velX += 6;
-							velX += (canvas.width) * 0.01;
-							velY -= (canvas.height) * 0.01;
+							velX += (canvas.width) * 0.014;
+							velY -= (canvas.height) * 0.014;
 						
 					}
 					else if(joyDirY == "down" && joyDirX == "right"){
 						
 							//velY += 6;
 							//velX += 6;
-							velX += (canvas.width) * 0.01;
-							velY += (canvas.height) * 0.01;
+							velX += (canvas.width) * 0.014;
+							velY += (canvas.height) * 0.014;
 						
 					}
 					else if(joyDirX == "left"){
 						
 							//velX -= 6;
-							velX -= (canvas.width) * 0.01;
+							velX -= (canvas.width) * 0.014;
 						
 					}
 					else if(joyDirX == "right"){
 						
 							//velX += 6;
-							velX += (canvas.width) * 0.01;
+							velX += (canvas.width) * 0.014;
 						
 					}
 					else if(joyDirY == "up"){
 						
 							//velY -= 6;
-							velY -= (canvas.height) * 0.01;
+							velY -= (canvas.height) * 0.014;
 						
 					}
 					else if(joyDirY == "down"){
 						
 							//velY += 6;
-							velY += (canvas.height) * 0.01;
+							velY += (canvas.height) * 0.014;
 						
 					}
 			
