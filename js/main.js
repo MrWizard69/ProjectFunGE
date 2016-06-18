@@ -12,6 +12,10 @@ var playersSizeW;
 var playerSizeH;
 var bulletSizeW;
 var bulletSizeH;
+var slowMoWatch = 0;
+var slowMotion = false;
+var slowMoDelay;
+
 
 $(document).ready(function () {
 	
@@ -233,6 +237,9 @@ canvas1.height = canvas.height;
 	
 	$("#restartBtn").click(function(){
 		
+		physicsLoop = 30;
+		slowMotion = false;
+		clearTimeout(slowMoDelay);
 		exitReload = 0;
 		score = 0;
 		lives = 3;
@@ -248,6 +255,7 @@ canvas1.height = canvas.height;
 		$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 		$("#restartBtn").closest('.ui-btn').hide();
 		$("#restartDiv").hide();
+		
 		
 	});
 	
@@ -400,8 +408,8 @@ canvas1.height = canvas.height;
 			Enemy1.y = Math.round(Math.random() * (canvas.height * .90));
 			Enemy1.direction = Math.round(Math.random() * 7);
 			
-			if (exitReload == 0 || !x < Enemy1.x + (playerSize * 4)  && !x + (playerSize * 4)  > Enemy1.x &&
-				!y < Enemy1.y + (playerSize * 4) && !y + (playerSize * 4) > Enemy1.y) {
+			if (exitReload == 0 || !x < Enemy1.x + (playerSize * 10)  && !x + (playerSize * 10)  > Enemy1.x &&
+				!y < Enemy1.y + (playerSize * 10) && !y + (playerSize * 10) > Enemy1.y) {
 					
 				RandomShipFleet.push(Enemy1);
 			
@@ -416,8 +424,8 @@ canvas1.height = canvas.height;
 			Enemy2.x = Math.round(Math.random() * (canvas.width * .90));
 			Enemy2.y = Math.round(Math.random() * (canvas.height * .90));
 			
-			if (exitReload == 0 || !x < Enemy2.x + (playerSize * 4)  && !x + (playerSize * 4)  > Enemy2.x &&
-				!y < Enemy2.y + (playerSize * 4) && !y + (playerSize * 4) > Enemy2.y) {
+			if (exitReload == 0 || !x < Enemy2.x + (playerSize * 10)  && !x + (playerSize * 10)  > Enemy2.x &&
+				!y < Enemy2.y + (playerSize * 10) && !y + (playerSize * 10) > Enemy2.y) {
 				
 				HunterFleet.push(Enemy2);
 			}
@@ -432,8 +440,8 @@ canvas1.height = canvas.height;
 			Enemy3.x = Math.round(Math.random() * (canvas.width * .90));
 			Enemy3.y = Math.round(Math.random() * (canvas.height * .90));
 			
-			if (exitReload == 0 || !x < Enemy3.x + (playerSize * 4)  && !x + (playerSize * 4)  > Enemy3.x &&
-				!y < Enemy3.y + (playerSize * 4) && !y + (playerSize * 4) > Enemy3.y) {
+			if (exitReload == 0 || !x < Enemy3.x + (playerSize * 10)  && !x + (playerSize * 10)  > Enemy3.x &&
+				!y < Enemy3.y + (playerSize * 10) && !y + (playerSize * 10) > Enemy3.y) {
 					
 				StalkerFleet.push(Enemy3);
 			}
@@ -783,7 +791,15 @@ canvas1.height = canvas.height;
             if (keys[38]) { // up arrow key
                 if (velY > -speed) {
                     //velY -= 6;
-					velY -= (canvas.height) * 0.01;
+
+					if(slowMotion == true){
+
+						velY -= (canvas.height) * 0.005;
+					}
+					else if(slowMotion == false){
+
+						velY -= (canvas.height) * 0.01;
+					}				
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
@@ -791,21 +807,45 @@ canvas1.height = canvas.height;
             if (keys[40]) { // down arrow key
                 if (velY < speed) {
                     //velY += 6;
-					velY += (canvas.height) * 0.01;
+
+					if(slowMotion == true){
+
+						velY += (canvas.height) * 0.005;
+					}
+					else if(slowMotion == false){
+
+						velY += (canvas.height) * 0.01;
+					}					
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
             if (keys[39]) { // right arrow key
                 if (velX < speed) {
                     //velX += 6;
-					velX += (canvas.width) * 0.01;
+
+					if(slowMotion == true){
+
+						velX += (canvas.width) * 0.005;
+					}
+					else if(slowMotion == false){
+
+						velX += (canvas.width) * 0.01;
+					}
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
             if (keys[37]) { // left arrow key
                 if (velX > -speed) {
                     //velX -= 6;
-					velX -= (canvas.width) * 0.01;
+
+					if(slowMotion == true){
+
+						velX -= (canvas.width) * 0.005;
+					}
+					else if(slowMotion == false){
+
+						velX -= (canvas.width) * 0.01;
+					}					
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
@@ -900,56 +940,124 @@ canvas1.height = canvas.height;
 						
 							//velX -= 6;
 							//velY -= 6;
-							velX -= (canvas.width) * 0.016;
-							velY -= (canvas.height) * 0.016;
+
+							if(slowMotion == true){
+
+								velX -= (canvas.width) * 0.006;
+								velY -= (canvas.height) * 0.006;
+					 		}
+					 		else if(slowMotion == false){
+
+						 		velX -= (canvas.width) * 0.016;
+								velY -= (canvas.height) * 0.016;
+					 		}
 						
 					}
 					else if(joyDirX == "left" && joyDirY == "down" ){
 						
 							//velY += 6;
 							//velX -= 6;
-							velX -= (canvas.width) * 0.016;
-							velY += (canvas.height) * 0.016;
+
+							if(slowMotion == true){
+
+								velX -= (canvas.width) * 0.006;
+								velY += (canvas.height) * 0.006;
+					 		}
+					 		else if(slowMotion == false){
+
+						 		velX -= (canvas.width) * 0.016;
+								velY += (canvas.height) * 0.016;
+					 		}
 						
 					}
 					else if(joyDirY == "up" && joyDirX == "right"){
 						
 							//velY -= 6;
 							//velX += 6;
-							velX += (canvas.width) * 0.016;
-							velY -= (canvas.height) * 0.016;
+
+							if(slowMotion == true){
+
+								velX += (canvas.width) * 0.006;
+								velY -= (canvas.height) * 0.006;
+					 		}
+					 		else if(slowMotion == false){
+
+						 		velX += (canvas.width) * 0.016;
+								velY -= (canvas.height) * 0.016;
+					 		}
 						
 					}
 					else if(joyDirY == "down" && joyDirX == "right"){
 						
 							//velY += 6;
 							//velX += 6;
-							velX += (canvas.width) * 0.016;
-							velY += (canvas.height) * 0.016;
+
+							if(slowMotion == true){
+
+								velX += (canvas.width) * 0.006;
+								velY += (canvas.height) * 0.006;
+					 		}
+					 		else if(slowMotion == false){
+
+						 		velX += (canvas.width) * 0.016;
+								velY += (canvas.height) * 0.016;
+					 		}
 						
 					}
 					else if(joyDirX == "left"){
 						
 							//velX -= 6;
-							velX -= (canvas.width) * 0.016;
+
+							if(slowMotion == true){
+
+								velX -= (canvas.width) * 0.006;
+					 		}
+					 		else if(slowMotion == false){
+
+						 		velX -= (canvas.width) * 0.016;
+					 		}		
 						
 					}
 					else if(joyDirX == "right"){
 						
 							//velX += 6;
-							velX += (canvas.width) * 0.016;
+
+							if(slowMotion == true){
+
+								velX += (canvas.width) * 0.006;
+					 		}
+					 		else if(slowMotion == false){
+
+						 		velX += (canvas.width) * 0.016;
+					 		}													
 						
 					}
 					else if(joyDirY == "up"){
 						
 							//velY -= 6;
-							velY -= (canvas.height) * 0.016;
+
+							if(slowMotion == true){
+
+								velY -= (canvas.height) * 0.006;
+					 		}
+					 		else if(slowMotion == false){
+
+						 		velY -= (canvas.height) * 0.016;
+					 		}									
 						
 					}
 					else if(joyDirY == "down"){
 						
 							//velY += 6;
-							velY += (canvas.height) * 0.016;
+
+							if(slowMotion == true){
+
+								velY += (canvas.height) * 0.006;
+					 		}
+					 		else if(slowMotion == false){
+
+						 		velY += (canvas.height) * 0.016;
+					 		}									
 						
 					}
 			
@@ -1093,6 +1201,7 @@ canvas1.height = canvas.height;
             // ctx.fill();
             // ctx.closePath();
 
+
 			$("canvas:nth-child(2)").hide();
             setTimeout(update, 30); //refresh the screen to update positions
 			
@@ -1132,58 +1241,126 @@ canvas1.height = canvas.height;
 						
 							//this.x -= 7;
 							//this.y -= 7;
-							this.x -= (canvas.width) * 0.027;
-							this.y -= (canvas.height) * 0.027;
-							
+
+							if(slowMotion == true){
+
+								this.x -= (canvas.width) * 0.009;
+								this.y -= (canvas.height) * 0.009;
+					 		}
+					 		else if(slowMotion == false){
+
+						 		this.x -= (canvas.width) * 0.027;
+								this.y -= (canvas.height) * 0.027;
+					 		}										
 						
 					}
 					else if(this.directionX == "left" && this.directionY == "down" ){
 						
 							//this.y += 7;
 							//this.x -= 7;
-							this.x -= (canvas.width) * 0.027;
-							this.y += (canvas.height) * 0.027;
+
+							if(slowMotion == true){
+
+								this.x -= (canvas.width) * 0.009;
+								this.y += (canvas.height) * 0.009;
+					 		}
+					 		else if(slowMotion == false){
+
+						 		this.x -= (canvas.width) * 0.027;
+								this.y += (canvas.height) * 0.027;
+					 		}							
 						
 					}
 					else if(this.directionX == "right" && this.directionY == "up"){
 						
 							//this.y -= 7;
 							//this.x += 7;
-							this.x += (canvas.width) * 0.027;
-							this.y -= (canvas.height) * 0.027;
+
+							if(slowMotion == true){
+
+								this.x += (canvas.width) * 0.009;
+								this.y -= (canvas.height) * 0.009;
+					 		}
+					 		else if(slowMotion == false){
+
+						 		this.x += (canvas.width) * 0.027;
+								this.y -= (canvas.height) * 0.027;
+					 		}
+
+							
 						
 					}
 					else if(this.directionX == "right" && this.directionY == "down"){
 						
 							//this.y += 7;
 							//this.x += 7;
-							this.x += (canvas.width) * 0.027;
-							this.y += (canvas.height) * 0.027;
+
+							if(slowMotion == true){
+
+								this.x += (canvas.width) * 0.009;
+								this.y += (canvas.height) * 0.009;
+					 		}
+					 		else if(slowMotion == false){
+
+						 		this.x += (canvas.width) * 0.027;
+								this.y += (canvas.height) * 0.027;
+					 		}							
 						
 					}
 					else if(this.directionX == "left"){
 						
 							//this.x -= 7;
-							this.x -= (canvas.width) * 0.027;
+
+							if(slowMotion == true){
+
+								this.x -= (canvas.width) * 0.009;
+					 		}
+					 		else if(slowMotion == false){
+
+						 		this.x -= (canvas.width) * 0.027;
+					 		}
 						
 					}
 					else if(this.directionX == "right"){
 						
 							//this.x += 7;
-							this.x += (canvas.width) * 0.027;
+
+							if(slowMotion == true){
+
+								this.x += (canvas.width) * 0.009;
+					 		}
+					 		else if(slowMotion == false){
+
+						 		this.x += (canvas.width) * 0.027;
+					 		}							
 						
 					}
 					else if(this.directionY == "up"){
 						
 							//this.y -= 7;
-							this.y -= (canvas.height) * 0.027;
+
+							if(slowMotion == true){
+
+								this.y -= (canvas.height) * 0.009;
+					 		}
+					 		else if(slowMotion == false){
+
+						 		this.y -= (canvas.height) * 0.027;
+					 		}						
 						
 					}
 					else if(this.directionY == "down"){
 						
 							//this.y += 7;
-							this.y += (canvas.height) * 0.027;
-						
+
+							if(slowMotion == true){
+
+								this.y += (canvas.height) * 0.009;
+					 		}
+					 		else if(slowMotion == false){
+
+						 		this.y += (canvas.height) * 0.027;
+					 		}						
 					}
 				 
 				 
@@ -1234,43 +1411,121 @@ canvas1.height = canvas.height;
 				 
 				 if(this.direction == 0){
 					 //this.x -= 1.7;
-					 this.x -= (canvas.width) * 0.0048;
+
+					if(slowMotion == true){
+
+						 this.x -= (canvas.width) * 0.0015;
+					 }
+					 else if(slowMotion == false){
+
+						 this.x -= (canvas.width) * 0.0048;
+					 } 
+
+					 
 				 }
 				 if(this.direction == 1){
 					 //this.x += 1.7;
-					 this.x += (canvas.width) * 0.0048;
+
+
+					if(slowMotion == true){
+
+						 this.x += (canvas.width) * 0.0015;
+					 }
+					 else if(slowMotion == false){
+
+						 this.x += (canvas.width) * 0.0048;
+					 }
+					 
 				 }
 				 if(this.direction == 2){
 					 //this.y -= 1.7;
-					 this.y -= (canvas.height) * 0.0048;
+
+
+					if(slowMotion == true){
+
+						 this.y -= (canvas.height) * 0.0015;
+					 }
+					 else if(slowMotion == false){
+
+						 this.y -= (canvas.height) * 0.0048;
+					 }
+				 
 				 }
 				 if(this.direction == 3){
 					 //this.y += 1.7;
-					 this.y += (canvas.height) * 0.0048;
+
+
+					if(slowMotion == true){
+
+						 this.y += (canvas.height) * 0.0015;
+					 }
+					 else if(slowMotion == false){
+
+						 this.y += (canvas.height) * 0.0048;
+					 }
+					 
 				 }
 				 if(this.direction == 4){
 					 //this.y += 1.7;
 					 //this.x += 1.7;
-					 this.x += (canvas.width) * 0.0048;
-					 this.y += (canvas.height) * 0.0048;
+
+					if(slowMotion == true){
+
+						this.x += (canvas.width) * 0.0015;
+					 	this.y += (canvas.height) * 0.0015;
+					 }
+					 else if(slowMotion == false){
+
+						this.x += (canvas.width) * 0.0048;
+					 	this.y += (canvas.height) * 0.0048;
+					 }
 				 }
 				 if(this.direction == 5){
 					 //this.y -= 1.7;
 					 //this.x -= 1.7;
-					 this.x -= (canvas.width) * 0.0048;
-					 this.y -= (canvas.height) * 0.0048;
+
+					if(slowMotion == true){
+
+						this.x -= (canvas.width) * 0.0015;
+					 	this.y -= (canvas.height) * 0.0015;
+					 }
+					 else if(slowMotion == false){
+
+						this.x -= (canvas.width) * 0.0048;
+					 	this.y -= (canvas.height) * 0.0048;
+					 }
+					
 				 }
 				 if(this.direction == 6){
 					 //this.y += 1.7;
 					 //this.x -= 1.7;
-					 this.x -= (canvas.width) * 0.0048;
-					 this.y += (canvas.height) * 0.0048;
+
+					if(slowMotion == true){
+
+						this.x -= (canvas.width) * 0.0015;
+					 	this.y += (canvas.height) * 0.0015;
+					 }
+					 else if(slowMotion == false){
+
+						this.x -= (canvas.width) * 0.0048;
+					 	this.y += (canvas.height) * 0.0048;
+					 }					 					 
 				 }
 				 if(this.direction == 7){
 					 //this.y -= 1.7;
 					 //this.x += 1.7;
-					 this.x += (canvas.width) * 0.0048;
-					 this.y -= (canvas.height) * 0.0048;
+
+					if(slowMotion == true){
+
+						this.x += (canvas.width) * 0.0015;
+					 	this.y -= (canvas.height) * 0.0015;
+					 }
+					 else if(slowMotion == false){
+
+						this.x += (canvas.width) * 0.0048;
+					 	this.y -= (canvas.height) * 0.0048;
+					 }					 
+
 				 }				 
 				 //when an enemy hits the wall, this will check the direction it was moving and make it move the revirse direction
 				if (this.direction == 1 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
@@ -1344,22 +1599,57 @@ canvas1.height = canvas.height;
 				 if(this.x < x){
 					 
 					 //this.x += 1.6;
-					 this.x += (canvas.width) * 0.0044;
+
+					 if(slowMotion == true){
+
+						 this.x += (canvas.width) * 0.0015;
+					 }
+					 else if(slowMotion == false){
+
+						 this.x += (canvas.width) * 0.0044;
+					 } 
+				 
 				 }
 				 if(this.x > x){
 					 
 					 //this.x -= 1.6;
-					 this.x -= (canvas.width) * 0.0044;
+
+					 if(slowMotion == true){
+
+						 this.x -= (canvas.width) * 0.0015;
+					 }
+					 else if(slowMotion == false){
+
+						 this.x -= (canvas.width) * 0.0044;
+					 } 
+					 
 				 }
 				 if(this.y < y){
 					 
 					 //this.y += 1.6;
-					 this.y += (canvas.height) * 0.0044;
+
+					 if(slowMotion == true){
+
+						 this.y += (canvas.height) * 0.0015;
+					 }
+					 else if(slowMotion == false){
+
+						 this.y += (canvas.height) * 0.0044;
+					 } 
+					 
 				 }
 				 if(this.y > y){
 					 
 					 //this.y -= 1.6;
-					 this.y -= (canvas.height) * 0.0044;
+
+					 if(slowMotion == true){
+
+						 this.y -= (canvas.height) * 0.0015;
+					 }
+					 else if(slowMotion == false){
+
+						 this.y -= (canvas.height) * 0.0044;
+					 } 
 				 }
 				 
 				 
@@ -1385,49 +1675,132 @@ canvas1.height = canvas.height;
 					 
 					 //this.x += 1;
 					 //this.y += 1;
-					 this.x += (canvas.width) * 0.0035;
-					 this.y += (canvas.height) * 0.0035;
+
+					if(slowMotion == true){
+
+						this.x += (canvas.width) * 0.0015;
+					 	this.y += (canvas.height) * 0.0015;
+					 }
+					 else if(slowMotion == false){
+
+						this.x += (canvas.width) * 0.0035;
+					 	this.y += (canvas.height) * 0.0035;
+					 } 
+					 
 				 }
 				 if(this.x > x && this.y > y){
 					 
 					 //this.x -= 1;
 					 //this.y -= 1;
-					 this.x -= (canvas.width) * 0.0035;
-					 this.y -= (canvas.height) * 0.0035;
+
+					if(slowMotion == true){
+
+						this.x -= (canvas.width) * 0.0015;
+					 	this.y -= (canvas.height) * 0.0015;
+					 }
+					 else if(slowMotion == false){
+
+						this.x -= (canvas.width) * 0.0035;
+					 	this.y -= (canvas.height) * 0.0035;
+					 } 
+
+					 
 				 }
 				 if(this.x > x && this.y < y){
 					 
 					 //this.x -= 1;
 					 //this.y += 1;
-					 this.x -= (canvas.width) * 0.0035;
-					 this.y += (canvas.height) * 0.0035;
+
+					if(slowMotion == true){
+
+						this.x -= (canvas.width) * 0.0015;
+					 	this.y += (canvas.height) * 0.0015;
+					 }
+					 else if(slowMotion == false){
+
+						this.x -= (canvas.width) * 0.0035;
+					 	this.y += (canvas.height) * 0.0035;
+					 } 
+
+					 
 				 }
 				 if(this.x > x && this.y < y){
 					 
 					 //this.x -= 1;
 					 //this.y += 1;
-					 this.x += (canvas.width) * 0.0035;
-					 this.y -= (canvas.height) * 0.0035;
+
+					 if(slowMotion == true){
+
+						this.x += (canvas.width) * 0.0015;
+					 	this.y -= (canvas.height) * 0.0015;
+					 }
+					 else if(slowMotion == false){
+
+						this.x += (canvas.width) * 0.0035;
+					 	this.y -= (canvas.height) * 0.0035;
+					 } 
+
+					 
 				 }
 				 if(this.x < x){
 					 
 					 //this.x += 1.1;
-					 this.x += (canvas.width) * 0.0031;
+
+					if(slowMotion == true){
+
+						this.x += (canvas.width) * 0.0011;
+					 }
+					 else if(slowMotion == false){
+
+						this.x += (canvas.width) * 0.0031;
+					 } 
+
+					 
 				 }
 				 if(this.y > y){
 					 
 					 //this.y -= 1.1;
-					 this.y -= (canvas.height) * 0.0031;
+
+					if(slowMotion == true){
+
+						this.y -= (canvas.height) * 0.0011;
+					 }
+					 else if(slowMotion == false){
+
+						this.y -= (canvas.height) * 0.0031;
+					 } 
+
+					 
 				 }
 				 if(this.x > x){
 					 
 					 //this.x -= 1.1;
-					 this.x -= (canvas.width) * 0.0031;
+
+					if(slowMotion == true){
+
+						this.x -= (canvas.width) * 0.0011;
+					 }
+					 else if(slowMotion == false){
+
+						this.x -= (canvas.width) * 0.0031;
+					 } 
+
+					 
 				 }
 				 if(this.y < y){
 					 
 					 //this.y += 1.1;
-					 this.y += (canvas.height) * 0.0031;
+
+					 if(slowMotion == true){
+
+						this.y += (canvas.height) * 0.0011;
+					 }
+					 else if(slowMotion == false){
+
+						this.y += (canvas.height) * 0.0031;
+					 } 
+
+					 
 				 } 
 				 		 
 			 }
@@ -1508,6 +1881,16 @@ canvas1.height = canvas.height;
 				
 				RandomShipFleet[i].draw(); //this will draw the enemies as they are created
 				RandomShipFleet[i].movement();//this will activate the enemies movement
+
+				if(slowMoWatch == 30 && slowMotion == false){
+
+					if (x < RandomShipFleet[i].x + (playerSize * 4)  && x + (playerSize * 4)  > RandomShipFleet[i].x &&
+					y < RandomShipFleet[i].y + (playerSize * 4) && y + (playerSize * 4) > RandomShipFleet[i].y) {
+
+						slowMo();
+						
+					}
+				}
 								
 				//this is a colision with the randomly spawning ai guys
 				if (x < RandomShipFleet[i].x + playerSize  && x + playerSize  > RandomShipFleet[i].x &&
@@ -1518,6 +1901,7 @@ canvas1.height = canvas.height;
 					velY *= friction - 2;
 					
 					lives -= 1;
+					slowMo();
 					
 					if(bulletPower > 0){
 						
@@ -1572,6 +1956,15 @@ canvas1.height = canvas.height;
 				
 				HunterFleet[i].draw(); //this will draw the enemies as they are created
 				HunterFleet[i].movement();//this will activate the enemies movement
+
+				if(slowMoWatch == 30 && slowMotion == false){
+
+					if (x < HunterFleet[i].x + (playerSize * 4)  && x + (playerSize * 4)  > HunterFleet[i].x &&
+					y < HunterFleet[i].y + (playerSize * 4) && y + (playerSize * 4) > HunterFleet[i].y) {
+
+						slowMo();
+					}
+				}
 								
 				//this is a colision with the randomly spawning ai guys
 				if (x < HunterFleet[i].x + playerSize  && x + playerSize  > HunterFleet[i].x &&
@@ -1581,6 +1974,7 @@ canvas1.height = canvas.height;
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
 					lives -= 1;
+					slowMo();
 					
 					if(bulletPower > 0){
 						
@@ -1639,6 +2033,16 @@ canvas1.height = canvas.height;
 				
 				StalkerFleet[i].draw(); //this will draw the enemies as they are created
 				StalkerFleet[i].movement();//this will activate the enemies movement
+
+				if(slowMoWatch == 30 && slowMotion == false){
+
+					if (x < StalkerFleet[i].x + (playerSize * 4)  && x + (playerSize * 4)  > StalkerFleet[i].x &&
+					y < StalkerFleet[i].y + (playerSize * 4) && y + (playerSize * 4) > StalkerFleet[i].y) {
+
+						slowMo();
+					}
+				}
+
 								
 				//this is a colision with the randomly spawning ai guys
 				if (x < StalkerFleet[i].x + playerSize  && x + playerSize  > StalkerFleet[i].x &&
@@ -1648,6 +2052,8 @@ canvas1.height = canvas.height;
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
 					lives -= 1;
+					slowMo();
+					
 					
 					if(bulletPower > 0){
 						
@@ -1960,6 +2366,33 @@ canvas1.height = canvas.height;
 			}, bulletSpeed);
 			
 		}
+
+		function slowMo(){
+
+			
+			slowMotion = true;
+
+			slowMoDelay = setTimeout(function() {
+				
+				slowMotion = false;
+
+			}, 6000);
+
+		
+			
+		}
+
+		function slowMoGenerator(){
+
+			setInterval(function(){
+
+				slowMoWatch = Math.round(Math.random() * 60);
+				//console.log(slowMoWatch);
+
+			}, 30);
+
+		}
+		slowMoGenerator();
 		
 		
         
