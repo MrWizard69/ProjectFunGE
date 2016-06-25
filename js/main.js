@@ -2635,7 +2635,8 @@ canvas1.height = canvas.height;
 				BlackBox[i].draw(); //this will draw the life black holes as they are created
 				BlackBox[i].hue = Math.floor((Math.random() * 120) + 1);
 				BlackBox[i].shade = Math.floor((Math.random() * 100) + 1);
-				BlackBox[i].brightness = Math.floor((Math.random() * 100) + 1); //TODO: need to make the player slow down or get sucked into the black hole too.
+				BlackBox[i].brightness = Math.floor((Math.random() * 100) + 1); //TODO: need to make the player slow down or get sucked into the black hole too. fix the red enemy from sticking 
+																				//away from the black hole
 
 
 				if(BlackBox[i].hp <= 3){
