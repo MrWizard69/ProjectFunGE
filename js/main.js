@@ -141,6 +141,7 @@ canvas1.height = canvas.height;
 	var HunterFleet = [];
 	var StalkerFleet = [];
 	var BlackBox = [];
+	var BHEnemys = [];
 	
 	var score = 0;
 	var lives = 3;
@@ -158,6 +159,7 @@ canvas1.height = canvas.height;
 	var Enemy2 = new Object();
 	var Enemy3 = new Object();
 	var Enemy4 = new Object();
+	var Enemy5 = new Object();
 	
 	var LifePup = new Object();
 	var BulletPup = new Object();
@@ -256,6 +258,7 @@ canvas1.height = canvas.height;
 		LifePowerPack = [];
 		BulletPowerPack = [];
 		BlackBox = [];
+		BHEnemys = [];
 		$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 		$("#restartBtn").closest('.ui-btn').hide();
 		$("#restartDiv").hide();
@@ -436,7 +439,7 @@ canvas1.height = canvas.height;
 				
 			
 			//console.log(entities);
-		}, 4500);	
+		}, 5000);	
 		
 		setInterval(function(){
 					
@@ -450,7 +453,7 @@ canvas1.height = canvas.height;
 				StalkerFleet.push(Enemy3);
 			}
 			//console.log(entities);
-		}, 8000);	
+		}, 9000);	
 		
 		
 		setInterval(function(){
@@ -492,8 +495,9 @@ canvas1.height = canvas.height;
 				BlackBox.push(Enemy4);
 			}
 			//console.log(Enemy4);
-		}, 30000);		
-
+		}, 25000);	
+			
+		
 		// Enemy4 = jQuery.extend(true, {}, BlackHole);
 		// 	Enemy4.x = Math.round(Math.random() * (canvas.width * .90));
 		// 	Enemy4.y = Math.round(Math.random() * (canvas.height * .90));
@@ -1393,8 +1397,8 @@ canvas1.height = canvas.height;
 
 				for(var i = 0; i < BlackBox.length; i++){
 
-					 if (this.x < BlackBox[i].x + (playerSize * 10)  && this.x + (playerSize * 10)  > BlackBox[i].x &&
-					 this.y < BlackBox[i].y + (playerSize * 10) && this.y + (playerSize * 10) > BlackBox[i].y) {
+					 if (this.x < BlackBox[i].x + (playerSize * 17)  && this.x + (playerSize * 17)  > BlackBox[i].x &&
+					 this.y < BlackBox[i].y + (playerSize * 17) && this.y + (playerSize * 17) > BlackBox[i].y) {
 
 						 //this will make direct the enemy move in the direction of the player at varying speeds and times
 				  if(this.x < BlackBox[i].x && this.y < BlackBox[i].y){
@@ -1750,8 +1754,8 @@ canvas1.height = canvas.height;
 				 
 				 for(var i = 0; i < BlackBox.length; i++){
 
-					 if (this.x < BlackBox[i].x + (playerSize * 10)  && this.x + (playerSize * 10)  > BlackBox[i].x &&
-					 this.y < BlackBox[i].y + (playerSize * 10) && this.y + (playerSize * 10) > BlackBox[i].y) {
+					 if (this.x < BlackBox[i].x + (playerSize * 17)  && this.x + (playerSize * 17)  > BlackBox[i].x &&
+					 this.y < BlackBox[i].y + (playerSize * 17) && this.y + (playerSize * 17) > BlackBox[i].y) {
 
 						 //this will make direct the enemy move in the direction of the player at varying speeds and times
 				  if(this.x < BlackBox[i].x && this.y < BlackBox[i].y){
@@ -1895,6 +1899,342 @@ canvas1.height = canvas.height;
 			 }
 			  
 		};
+
+		var BHjectile = {
+			hue: 90,
+			shade: Math.floor((Math.random() * 100) + 1),
+			brightness: Math.floor((Math.random() * 100) + 1),
+  			color: 'hsl(' + this.hue + ',' + this.shade + '%, ' + this.brightness + '%)',
+  			x: Math.round(Math.random() * (canvas.width * .90)),
+  			y: Math.round(Math.random() * (canvas.height * .90)),
+			direction: randomDirection = Math.round(Math.random() * 7),
+ 			draw: function() {
+				ctx.beginPath(); // this is the ai guy
+    			ctx.fillStyle = 'hsl(' + this.hue + ',' + this.shade + '%, ' + this.brightness + '%)';
+    			ctx.arc(this.x, this.y, playerSize, 0, Math.PI * 2);
+				ctx.fill();
+            	ctx.closePath();
+ 			 },
+			 movement: function(){
+				 
+				 //this will make direct the enemy to move in a random location
+				 
+				 if(this.direction == 0){
+					 //this.x -= 1.7;
+
+					if(slowMotion == true){
+
+						 this.x -= (canvas.width) * 0.0017;
+					 }
+					 else if(slowMotion == false){
+
+						 this.x -= (canvas.width) * 0.0055;
+					 } 
+
+					 
+				 }
+				 if(this.direction == 1){
+					 //this.x += 1.7;
+
+
+					if(slowMotion == true){
+
+						 this.x += (canvas.width) * 0.0017;
+					 }
+					 else if(slowMotion == false){
+
+						 this.x += (canvas.width) * 0.0055;
+					 }
+					 
+				 }
+				 if(this.direction == 2){
+					 //this.y -= 1.7;
+
+
+					if(slowMotion == true){
+
+						 this.y -= (canvas.height) * 0.0017;
+					 }
+					 else if(slowMotion == false){
+
+						 this.y -= (canvas.height) * 0.0055;
+					 }
+				 
+				 }
+				 if(this.direction == 3){
+					 //this.y += 1.7;
+
+
+					if(slowMotion == true){
+
+						 this.y += (canvas.height) * 0.0017;
+					 }
+					 else if(slowMotion == false){
+
+						 this.y += (canvas.height) * 0.0055;
+					 }
+					 
+				 }
+				 if(this.direction == 4){
+					 //this.y += 1.7;
+					 //this.x += 1.7;
+
+					if(slowMotion == true){
+
+						this.x += (canvas.width) * 0.0017;
+					 	this.y += (canvas.height) * 0.0017;
+					 }
+					 else if(slowMotion == false){
+
+						this.x += (canvas.width) * 0.0055;
+					 	this.y += (canvas.height) * 0.0055;
+					 }
+				 }
+				 if(this.direction == 5){
+					 //this.y -= 1.7;
+					 //this.x -= 1.7;
+
+					if(slowMotion == true){
+
+						this.x -= (canvas.width) * 0.0017;
+					 	this.y -= (canvas.height) * 0.0017;
+					 }
+					 else if(slowMotion == false){
+
+						this.x -= (canvas.width) * 0.0055;
+					 	this.y -= (canvas.height) * 0.0055;
+					 }
+					
+				 }
+				 if(this.direction == 6){
+					 //this.y += 1.7;
+					 //this.x -= 1.7;
+
+					if(slowMotion == true){
+
+						this.x -= (canvas.width) * 0.0017;
+					 	this.y += (canvas.height) * 0.0017;
+					 }
+					 else if(slowMotion == false){
+
+						this.x -= (canvas.width) * 0.0055;
+					 	this.y += (canvas.height) * 0.0055;
+					 }					 					 
+				 }
+				 if(this.direction == 7){
+					 //this.y -= 1.7;
+					 //this.x += 1.7;
+
+					if(slowMotion == true){
+
+						this.x += (canvas.width) * 0.0017;
+					 	this.y -= (canvas.height) * 0.0017;
+					 }
+					 else if(slowMotion == false){
+
+						this.x += (canvas.width) * 0.0055;
+					 	this.y -= (canvas.height) * 0.0055;
+					 }					 
+
+				 }				 
+				 //when an enemy hits the wall, this will check the direction it was moving and make it move the revirse direction
+				if (this.direction == 1 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
+                	this.x = canvas.width - playerSize;
+					this.direction = 0;
+            	}
+				else if (this.direction == 4 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
+                	this.x = canvas.width - playerSize;
+					this.direction = 6;
+            	}
+				else if (this.direction == 7 && this.x >= canvas.width - playerSize) { // colision with game boarders x-axis //original size 15, now playerSize is about 19.43999
+                	this.x = canvas.width - playerSize;
+					this.direction = 5;
+            	}
+				else if (this.direction == 0 && this.x < playerSize) {
+                	this.x = playerSize;
+					this.direction = 1;
+            	}
+				else if (this.direction == 5 && this.x < playerSize) {
+                	this.x = playerSize;
+					this.direction = 7;
+            	}
+				else if (this.direction == 6 && this.x < playerSize) {
+                	this.x = playerSize;
+					this.direction = 4;
+            	}
+				else if (this.direction == 3 && this.y > canvas.height - playerSize) { // colision with game boarders y-axis //original size 15, now playerSize is about 19.43999
+                	this.y = canvas.height - playerSize;
+					this.direction = 2;
+            	}
+				else if (this.direction == 4 && this.y > canvas.height - playerSize) { // colision with game boarders y-axis //original size 15, now playerSize is about 19.43999
+                	this.y = canvas.height - playerSize;
+					this.direction = 7;
+            	}
+				else if (this.direction == 6 && this.y > canvas.height - playerSize) { // colision with game boarders y-axis //original size 15, now playerSize is about 19.43999
+                	this.y = canvas.height - playerSize;
+					this.direction = 5;
+            	}    
+				else if (this.direction == 2 && this.y < playerSize) {
+                 	this.y = playerSize;
+				 	this.direction = 3;
+            	 }
+				 else if (this.direction == 5 && this.y < playerSize) {
+                 	this.y = playerSize;
+				 	this.direction = 6;
+            	 }
+				  else if (this.direction == 7 && this.y < playerSize) {
+                 	this.y = playerSize;
+				 	this.direction = 4;
+					
+            	 }
+				 
+				 for(var i = 0; i < BlackBox.length; i++){
+
+					 if (this.x < BlackBox[i].x + (playerSize * 17)  && this.x + (playerSize * 17)  > BlackBox[i].x &&
+					 this.y < BlackBox[i].y + (playerSize * 17) && this.y + (playerSize * 17) > BlackBox[i].y) {
+
+						 //this will make direct the enemy move in the direction of the player at varying speeds and times
+				  if(this.x < BlackBox[i].x && this.y < BlackBox[i].y){
+					 
+					 //this.x += 1;
+					 //this.y += 1;
+
+					if(slowMotion == true){
+
+						this.x += (canvas.width) * 0.0017;
+					 	this.y += (canvas.height) * 0.0017;
+					 }
+					 else if(slowMotion == false){
+
+						this.x += (canvas.width) * 0.0035;
+					 	this.y += (canvas.height) * 0.0035;
+					 } 
+					 
+				 }
+				 if(this.x > BlackBox[i].x && this.y > BlackBox[i].y){
+					 
+					 //this.x -= 1;
+					 //this.y -= 1;
+
+					if(slowMotion == true){
+
+						this.x -= (canvas.width) * 0.0017;
+					 	this.y -= (canvas.height) * 0.0017;
+					 }
+					 else if(slowMotion == false){
+
+						this.x -= (canvas.width) * 0.0035;
+					 	this.y -= (canvas.height) * 0.0035;
+					 } 
+
+					 
+				 }
+				 if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
+					 
+					 //this.x -= 1;
+					 //this.y += 1;
+
+					if(slowMotion == true){
+
+						this.x -= (canvas.width) * 0.0017;
+					 	this.y += (canvas.height) * 0.0017;
+					 }
+					 else if(slowMotion == false){
+
+						this.x -= (canvas.width) * 0.0035;
+					 	this.y += (canvas.height) * 0.0035;
+					 } 
+
+					 
+				 }
+				 if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
+					 
+					 //this.x -= 1;
+					 //this.y += 1;
+
+					 if(slowMotion == true){
+
+						this.x += (canvas.width) * 0.0017;
+					 	this.y -= (canvas.height) * 0.0017;
+					 }
+					 else if(slowMotion == false){
+
+						this.x += (canvas.width) * 0.0035;
+					 	this.y -= (canvas.height) * 0.0035;
+					 } 
+
+					 
+				 }
+				 if(this.x < BlackBox[i].x){
+					 
+					 //this.x += 1.1;
+
+					if(slowMotion == true){
+
+						this.x += (canvas.width) * 0.0011;
+					 }
+					 else if(slowMotion == false){
+
+						this.x += (canvas.width) * 0.0031;
+					 } 
+
+					 
+				 }
+				 if(this.y > BlackBox[i].y){
+					 
+					 //this.y -= 1.1;
+
+					if(slowMotion == true){
+
+						this.y -= (canvas.height) * 0.0011;
+					 }
+					 else if(slowMotion == false){
+
+						this.y -= (canvas.height) * 0.0031;
+					 } 
+
+					 
+				 }
+				 if(this.x > BlackBox[i].x){
+					 
+					 //this.x -= 1.1;
+
+					if(slowMotion == true){
+
+						this.x -= (canvas.width) * 0.0011;
+					 }
+					 else if(slowMotion == false){
+
+						this.x -= (canvas.width) * 0.0031;
+					 } 
+
+					 
+				 }
+				 if(this.y < BlackBox[i].y){
+					 
+					 //this.y += 1.1;
+
+					 if(slowMotion == true){
+
+						this.y += (canvas.height) * 0.0011;
+					 }
+					 else if(slowMotion == false){
+
+						this.y += (canvas.height) * 0.0031;
+					 } 
+
+					 
+				 } 
+				 
+
+					}
+
+
+				 }
+
+			 }
+			  
+		};
 		
 		var Hunter = {
   			color: "orange",
@@ -1912,8 +2252,8 @@ canvas1.height = canvas.height;
 
 				 	for(var i = 0; i < BlackBox.length; i++){
 
-					 if (this.x < BlackBox[i].x + (playerSize * 10)  && this.x + (playerSize * 10)  > BlackBox[i].x &&
-					 this.y < BlackBox[i].y + (playerSize * 10) && this.y + (playerSize * 10) > BlackBox[i].y) {
+					 if (this.x < BlackBox[i].x + (playerSize * 17)  && this.x + (playerSize * 17)  > BlackBox[i].x &&
+					 this.y < BlackBox[i].y + (playerSize * 17) && this.y + (playerSize * 17) > BlackBox[i].y) {
 
 						 //this will make direct the enemy move in the direction of the player at varying speeds and times
 				  if(this.x < BlackBox[i].x && this.y < BlackBox[i].y){
@@ -2265,10 +2605,10 @@ canvas1.height = canvas.height;
 
 				for(var i = 0; i < BlackBox.length; i++){
 
-					 if (this.x < BlackBox[i].x + (playerSize * 10)  && this.x + (playerSize * 10)  > BlackBox[i].x &&
-					 this.y < BlackBox[i].y + (playerSize * 10) && this.y + (playerSize * 10) > BlackBox[i].y) {
+					 if (this.x < BlackBox[i].x + (playerSize * 17)  && this.x + (playerSize * 17)  > BlackBox[i].x &&
+					 this.y < BlackBox[i].y + (playerSize * 17) && this.y + (playerSize * 17) > BlackBox[i].y) {
 
-						 //this will make direct the enemy move in the direction of the player at varying speeds and times
+						 //this will make direct the enemy move in the direction of the player at varying speeds and times//
 				  if(this.x < BlackBox[i].x && this.y < BlackBox[i].y){
 					 
 					 //this.x += 1;
@@ -2467,7 +2807,7 @@ canvas1.height = canvas.height;
   			y: Math.round(Math.random() * (canvas.height * .90)),
 			hue: 120,
 			size: playerSize * 2,
-			hp: 10,
+			hp: 15,
 			multiplier: 2,
 			shade: Math.floor((Math.random() * 100) + 1),
 			brightness: Math.floor((Math.random() * 100) + 1),
@@ -2779,17 +3119,111 @@ canvas1.height = canvas.height;
 				
 			}
 
+			for(var i = 0; i < BHEnemys.length; i++){
+
+				BHEnemys[i].draw();
+				BHEnemys[i].hue = Math.floor((Math.random() * 120) + 1);
+				BHEnemys[i].shade = Math.floor((Math.random() * 100) + 1);
+				BHEnemys[i].brightness = Math.floor((Math.random() * 100) + 1);	
+				BHEnemys[i].movement();//this will activate the enemies movement
+				
+
+
+				if(slowMoWatch == 30 && slowMotion == false){
+
+					if (x < BHEnemys[i].x + (playerSize * 4)  && x + (playerSize * 4)  > BHEnemys[i].x &&
+					y < BHEnemys[i].y + (playerSize * 4) && y + (playerSize * 4) > BHEnemys[i].y) {
+
+						slowMo();
+						
+					}
+				}
+								
+				//this is a colision with the randomly spawning ai guys
+				if (x < BHEnemys[i].x + playerSize  && x + playerSize  > BHEnemys[i].x &&
+				y < BHEnemys[i].y + playerSize && y + playerSize > BHEnemys[i].y) {
+					// The objects are touching
+				
+					velX *= friction - 2; //this will stop the player from moving
+					velY *= friction - 2;
+					
+					lives -= 1;
+					slowMo();
+					
+					if(bulletPower > 0){
+						
+						bulletPower -= 1;
+					}
+					else{
+						bulletPower = 0;
+					}
+					
+					if(shootStickTouch == false){
+						
+						$("#shootStick").trigger('touchend');
+					}
+					else{
+						$("#shootStick").trigger('touchend');
+						$("#shootStick").trigger('touchstart');
+					}
+					
+					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
+					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
+					
+					if(lives < 1){
+							
+							exitReload = 1;
+							lives = 0;
+							$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
+						}
+					
+					BHEnemys.splice(i, 1); //this will destroy the enemy on colision with the player
+				}
+				
+				if (BHEnemys[i].x > canvas.width - playerSize + 1) { // colision with game boarders x-axis playerSize is about 19.43999
+				
+					BHEnemys.splice(i, 1);
+            	} else if (BHEnemys[i].x < playerSize - 1) {
+				
+					BHEnemys.splice(i, 1);
+            	}
+			
+				if (BHEnemys[i].y > canvas.height - playerSize + 1) { // colision with game boarders y-axis playerSize is about 19.43999
+				
+					BHEnemys.splice(i, 1);
+            	} else if (BHEnemys[i].y < playerSize - 1) {
+				
+					BHEnemys.splice(i, 1);
+            	}
+
+				for(var b = 0; b < BlackBox.length; b++){
+
+					
+					if (BHEnemys[i].x < BlackBox[b].x + (playerSize * 3)  && BHEnemys[i].x + (playerSize * 3)  > BlackBox[b].x &&
+					 BHEnemys[i].y < BlackBox[b].y + (playerSize * 3) && BHEnemys[i].y + (playerSize * 3) > BlackBox[b].y) {
+
+						 fireworks.push( new Firework( canvas.width / 2, canvas.height, BlackBox[b].x, BlackBox[b].y ) );
+						 fireworks.push( new Firework( canvas.width / 2, canvas.height, BlackBox[b].x, BlackBox[b].y ) );
+						 BlackBox[b].hp -= 1;
+						 BHEnemys.splice(i, 1); //this will destroy the enemy
+
+					 }
+
+				}
+
+
+
+			}
+
 			//this will loop through the list of black holes
 			for(var i = 0; i < BlackBox.length; i++){
 				
 				BlackBox[i].draw(); //this will draw the life black holes as they are created
 				BlackBox[i].hue = Math.floor((Math.random() * 120) + 1);
 				BlackBox[i].shade = Math.floor((Math.random() * 100) + 1);
-				BlackBox[i].brightness = Math.floor((Math.random() * 100) + 1);	
+				BlackBox[i].brightness = Math.floor((Math.random() * 100) + 1);																								
 
-																							
-
-				if(BlackBox[i].hp < 4){
+				if(BlackBox[i].hp < 7){
 
 					var size = Math.floor(Math.random() * 2) + 1;
 
@@ -2811,6 +3245,7 @@ canvas1.height = canvas.height;
 					if(size == 1){
 						
 						BlackBox[i].size = playerSize;
+						fireworks.push( new Firework( canvas.width / 2, canvas.height, BlackBox[i].x, BlackBox[i].y ) );
 
 					}
 					else if(size == 2){
@@ -2829,7 +3264,6 @@ canvas1.height = canvas.height;
 					}
 
 				}
-				
 								
 				//this is a colision with the player and the black hole
 				if (x < BlackBox[i].x + (playerSize * 2)  && x + (playerSize * 2)  > BlackBox[i].x &&
@@ -2852,29 +3286,10 @@ canvas1.height = canvas.height;
 				}
 
 
-				if(BlackBox[i].hp < 1){
+			//when the player is flying close to the black hole
 
-					slowMo();
-					//superNova == true;
-					//BlackBox[i].size = playerSize * 4;
-					BlackBox[i].hp = 0;
-					BlackBox.splice(i, 1);
-
-					// setTimeout(function() { 					********* TODO: Need to figure out how to shrink the black hole when it explodes **********
-					// 	BlackBox[i].size = playerSize * 3;
-					// }, 1000);
-
-					
-
-				}				
-
-
-
-
-					//when the player is flying close to the black hole
-
-					 if (x < BlackBox[i].x + (playerSize * 10)  && x + (playerSize * 10)  > BlackBox[i].x &&
-					 y < BlackBox[i].y + (playerSize * 10) && y + (playerSize * 10) > BlackBox[i].y) {
+			if (x < BlackBox[i].x + (playerSize * 17)  && x + (playerSize * 17)  > BlackBox[i].x &&
+			y < BlackBox[i].y + (playerSize * 17) && y + (playerSize * 17) > BlackBox[i].y) {
 
 				//this will make make the player move towards the black hole
 
@@ -3008,13 +3423,76 @@ canvas1.height = canvas.height;
 					 } 
 
 					 
-				 } 
-				 
-
+				 }
 
 
 				}
 
+				 if(BlackBox[i].hp < 1){
+
+					slowMo();
+					var superNova = 4;
+					//superNova == true;
+					BlackBox[i].size = playerSize * 4;
+					BlackBox[i].hp = 0;
+					//BlackBox.splice(i, 1);
+					//clearTimeout(collapse);
+
+					//black hole collapse animation
+						if(superNova == 4){
+
+							BlackBox[i].size = playerSize * 4;
+							superNova = 3;
+
+								if(superNova == 3){
+
+									BlackBox[i].size = playerSize * 3;
+									superNova = 2;									
+
+										if(superNova == 2){
+
+											BlackBox[i].size = playerSize * 2;
+											superNova = 1;
+											
+												
+												if(superNova == 1){
+
+													//BlackBox[i].size = playerSize * 4;
+													BlackBox[i].size = playerSize;
+													
+													
+
+													for(var k = 0; k <= 14; k++){
+
+														Enemy5 = jQuery.extend(true, {}, BHjectile);
+														Enemy5.x = BlackBox[i].x;
+														Enemy5.y = BlackBox[i].y;
+														Enemy5.direction = Math.round(Math.random() * 7)
+														BHEnemys.push(Enemy5);
+
+													}
+
+													BlackBox.splice(i, 1);
+
+													// setTimeout(function() {
+
+														
+													// 	BlackBox.splice(i, 1);
+
+													// }, 700);
+													
+													
+													
+												}
+
+										}
+
+								}
+
+						}					
+
+				}
+				//end of animation
 
 			}
 			
@@ -3067,6 +3545,34 @@ canvas1.height = canvas.height;
 						$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 				
 						RandomShipFleet.splice(i, 1); //this will destroy the enemy on colision with the bullet
+						bulletClip.splice(j, 1);
+						
+					 }
+				}
+			
+			}
+
+			//this is what detects colisions for bullets and BHEnemys enemys
+			for(var j = 0; j < bulletClip.length; j++){
+			
+				//bulletClip[j].draw(); // this will add a cool blur to the bullet
+			
+				for(var i = 0; i < BHEnemys.length; i++){
+					
+					//RandomShipFleet[i].draw(); //this will add a cool blur to the enemys
+				
+					if (bulletClip[j].x < BHEnemys[i].x + (bulletSize * 3)  && bulletClip[j].x + (bulletSize * 3)  > BHEnemys[i].x &&
+					bulletClip[j].y < BHEnemys[i].y + (bulletSize * 3) && bulletClip[j].y + (bulletSize * 3) > BHEnemys[i].y) {
+						// The objects are touching
+						
+						score += 1;
+						//loop();
+						fireworks.push( new Firework( canvas.width / 2, canvas.height, BHEnemys[i].x, BHEnemys[i].y ) );
+
+						timerTick = 0;
+						$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
+				
+						BHEnemys.splice(i, 1); //this will destroy the enemy on colision with the bullet
 						bulletClip.splice(j, 1);
 						
 					 }
@@ -3141,7 +3647,7 @@ canvas1.height = canvas.height;
 					bulletClip[j].y < BlackBox[i].y + (bulletSize * 7) && bulletClip[j].y + (bulletSize * 7) > BlackBox[i].y) {
 						// The objects are touching
 						
-						BlackBox[i].hp -= 1
+						BlackBox[i].hp -= 1;
 						score += 1;
 						//loop();
 						fireworks.push( new Firework( canvas.width / 2, canvas.height, BlackBox[i].x, BlackBox[i].y ) );
@@ -3151,6 +3657,18 @@ canvas1.height = canvas.height;
 						$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 
 						bulletClip.splice(j, 1);
+
+						//BlackBox[i].size = playerSize * 3;
+						//clearTimeout(jump);
+
+						// var jump = setTimeout(function() {
+							
+						// 	BlackBox[i].size = playerSize * 2;
+						// 	//clearTimeout(jump);
+
+						// }, 100);
+						BlackBox[i].size = playerSize * 2;
+						//clearTimeout(jump);
 
 						// if(BlackBox[i].hp < 1){
 
