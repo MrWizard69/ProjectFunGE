@@ -415,8 +415,8 @@ canvas1.height = canvas.height;
 			Enemy1.y = Math.round(Math.random() * (canvas.height * .90));
 			Enemy1.direction = Math.round(Math.random() * 7);
 			
-			if (exitReload == 0 || !x < Enemy1.x + (playerSize * 10)  && !x + (playerSize * 10)  > Enemy1.x &&
-				!y < Enemy1.y + (playerSize * 10) && !y + (playerSize * 10) > Enemy1.y) {
+			if (exitReload == 0 || !x < Enemy1.x + (playerSize * 15)  && !x + (playerSize * 15)  > Enemy1.x &&
+				!y < Enemy1.y + (playerSize * 15) && !y + (playerSize * 15) > Enemy1.y) {
 					
 				RandomShipFleet.push(Enemy1);
 			
@@ -431,8 +431,8 @@ canvas1.height = canvas.height;
 			Enemy2.x = Math.round(Math.random() * (canvas.width * .90));
 			Enemy2.y = Math.round(Math.random() * (canvas.height * .90));
 			
-			if (exitReload == 0 || !x < Enemy2.x + (playerSize * 10)  && !x + (playerSize * 10)  > Enemy2.x &&
-				!y < Enemy2.y + (playerSize * 10) && !y + (playerSize * 10) > Enemy2.y) {
+			if (exitReload == 0 || !x < Enemy2.x + (playerSize * 15)  && !x + (playerSize * 15)  > Enemy2.x &&
+				!y < Enemy2.y + (playerSize * 15) && !y + (playerSize * 15) > Enemy2.y) {
 				
 				HunterFleet.push(Enemy2);
 			}
@@ -447,8 +447,8 @@ canvas1.height = canvas.height;
 			Enemy3.x = Math.round(Math.random() * (canvas.width * .90));
 			Enemy3.y = Math.round(Math.random() * (canvas.height * .90));
 			
-			if (exitReload == 0 || !x < Enemy3.x + (playerSize * 10)  && !x + (playerSize * 10)  > Enemy3.x &&
-				!y < Enemy3.y + (playerSize * 10) && !y + (playerSize * 10) > Enemy3.y) {
+			if (exitReload == 0 || !x < Enemy3.x + (playerSize * 15)  && !x + (playerSize * 15)  > Enemy3.x &&
+				!y < Enemy3.y + (playerSize * 15) && !y + (playerSize * 15) > Enemy3.y) {
 					
 				StalkerFleet.push(Enemy3);
 			}
@@ -489,8 +489,8 @@ canvas1.height = canvas.height;
 			Enemy4.x = Math.round(Math.random() * (canvas.width * .90));
 			Enemy4.y = Math.round(Math.random() * (canvas.height * .90));
 			
-			if (exitReload == 0 || !x < Enemy3.x + (playerSize * 10)  && !x + (playerSize * 10)  > Enemy3.x &&
-				!y < Enemy3.y + (playerSize * 10) && !y + (playerSize * 10) > Enemy3.y) {
+			if (exitReload == 0 || !x < Enemy3.x + (playerSize * 15)  && !x + (playerSize * 15)  > Enemy3.x &&
+				!y < Enemy3.y + (playerSize * 15) && !y + (playerSize * 15) > Enemy3.y) {
 					
 				BlackBox.push(Enemy4);
 			}
@@ -3300,8 +3300,8 @@ canvas1.height = canvas.height;
 
 					if(slowMotion == true){
 
-						x += (canvas.width) * 0.00010;
-					 	y += (canvas.height) * 0.00010;
+						x += (canvas.width) * 0.0010;
+					 	y += (canvas.height) * 0.0010;
 					 }
 					 else if(slowMotion == false){
 
@@ -3317,8 +3317,8 @@ canvas1.height = canvas.height;
 
 					if(slowMotion == true){
 
-						x -= (canvas.width) * 0.00010;
-					 	y -= (canvas.height) * 0.00010;
+						x -= (canvas.width) * 0.0010;
+					 	y -= (canvas.height) * 0.0010;
 					 }
 					 else if(slowMotion == false){
 
@@ -3335,8 +3335,8 @@ canvas1.height = canvas.height;
 
 					if(slowMotion == true){
 
-						x -= (canvas.width) * 0.00010;
-					 	y += (canvas.height) * 0.00010;
+						x -= (canvas.width) * 0.0010;
+					 	y += (canvas.height) * 0.0010;
 					 }
 					 else if(slowMotion == false){
 
@@ -3353,8 +3353,8 @@ canvas1.height = canvas.height;
 
 					 if(slowMotion == true){
 
-						x += (canvas.width) * 0.00010;
-					 	y -= (canvas.height) * 0.00010;
+						x += (canvas.width) * 0.0010;
+					 	y -= (canvas.height) * 0.0010;
 					 }
 					 else if(slowMotion == false){
 
@@ -3370,7 +3370,7 @@ canvas1.height = canvas.height;
 
 					if(slowMotion == true){
 
-						x += (canvas.width) * 0.00010;
+						x += (canvas.width) * 0.0010;
 					 }
 					 else if(slowMotion == false){
 
@@ -3385,7 +3385,7 @@ canvas1.height = canvas.height;
 
 					if(slowMotion == true){
 
-						y -= (canvas.height) * 0.00010;
+						y -= (canvas.height) * 0.0010;
 					 }
 					 else if(slowMotion == false){
 
@@ -3400,7 +3400,7 @@ canvas1.height = canvas.height;
 
 					if(slowMotion == true){
 
-						x -= (canvas.width) * 0.00010;
+						x -= (canvas.width) * 0.0010;
 					 }
 					 else if(slowMotion == false){
 
@@ -3415,7 +3415,7 @@ canvas1.height = canvas.height;
 
 					 if(slowMotion == true){
 
-						y += (canvas.height) * 0.00010;
+						y += (canvas.height) * 0.0010;
 					 }
 					 else if(slowMotion == false){
 
