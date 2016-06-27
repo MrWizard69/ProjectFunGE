@@ -3667,17 +3667,8 @@ canvas1.height = canvas.height;
 						// 	//clearTimeout(jump);
 
 						// }, 100);
+						BlackBox[i].size = playerSize;
 						BlackBox[i].size = playerSize * 2;
-						//clearTimeout(jump);
-
-						// if(BlackBox[i].hp < 1){
-
-						// 	score += 10;
-						// 	$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
-						// 	//BlackBox.splice(i, 1); //this will destroy the enemy on colision with the bullet
-							
-
-						// }
 
 					 }
 				}
