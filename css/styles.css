@@ -26,6 +26,7 @@
 	-webkit-transition: all 1s; 
 	-o-transition: all 1s; 
 	transition: all 1s ;  
+	margin-left: 3%;
 	/*--------------This is what activates GPU graphic rendering End------------------*/
 	
 }
@@ -33,7 +34,7 @@
 #canvas {
     border:1px solid #000;
 	border-radius: 5px;
-	margin-left: 11%;
+	margin-left: 13%;
 	margin-top: -0.6%;
 	/*background-color: #151B54;*/
 	background-color: #000;
@@ -160,7 +161,7 @@ html, body {
 	
 	margin-top: -21.8%;
 	width: 50%;
-	margin-left: 20%;
+	margin-left: 22%;
 }
 
 #restartDiv{
