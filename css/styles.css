@@ -31,6 +31,11 @@
 	
 }
 
+#container{
+
+	margin-left: 2%;
+}
+
 #canvas {
     border:1px solid #000;
 	border-radius: 5px;
