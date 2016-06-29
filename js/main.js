@@ -590,7 +590,7 @@ canvas1.height = canvas.height;
 		canvas.height = (window.innerHeight) * .80; //.80
 		
 		//console.log("Canvas Width " + canvas.width);
-		$("#result").html(canvas.width); //display the screen size/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//$("#result").html(canvas.width); //display the screen size/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		
 		
@@ -620,6 +620,8 @@ canvas1.height = canvas.height;
 		// 	joyStickY = (window.innerHeight) * .30;
 			
 		// }
+
+		
 		
 		if(canvas.width >= 241){
 			
@@ -628,8 +630,17 @@ canvas1.height = canvas.height;
 			
 			shootStickX = (window.innerWidth) * .05;
 			shootStickY = (window.innerHeight) * 0.70;
+
+			//console.log("one");
 			
 			//$("#play").closest('.ui-btn').show();
+
+			if(canvas.width > 450){
+
+				joyStickX = (window.innerWidth) * .96;
+				joyStickY = (window.innerHeight) * .70;
+				//console.log("Yo");	
+			}
 			
 		}
 		
@@ -643,7 +654,7 @@ canvas1.height = canvas.height;
 			
 		}
 		
-		 else if(canvas.width >= 399){
+		 else if(canvas.width >= 350){
 			
 		 	$("#play").closest('.ui-btn').show();
 			 $("#dwnload").closest('.ui-btn').hide();
