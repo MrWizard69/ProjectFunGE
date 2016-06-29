@@ -386,7 +386,10 @@ canvas1.height = canvas.height;
 		
 		$("#RG").closest('.ui-btn').show();
 		
-		//this makes the joystick
+		setTimeout(function() {
+			
+
+			//this makes the joystick
 		 joystick = new VirtualJoystick({
 				container: document.getElementById('container'),
 				mouseSupport: true,
@@ -406,6 +409,10 @@ canvas1.height = canvas.height;
                       baseY: shootStickY, // this size is only good for mobile not tablets
 				stickRadius: 25
 			});
+
+		}, 400);
+
+		
 			
 			
 		//this will create new enemies
