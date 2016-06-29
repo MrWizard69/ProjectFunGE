@@ -633,10 +633,10 @@ canvas1.height = canvas.height;
 		if(canvas.width >= 241){
 			
 			joyStickX = (window.innerWidth) * .92;
-			joyStickY = (window.innerHeight) * .70;	
+			joyStickY = (window.innerHeight) * .50;	
 			
 			shootStickX = (window.innerWidth) * .05;
-			shootStickY = (window.innerHeight) * 0.70;
+			shootStickY = (window.innerHeight) * 0.50;
 
 			//console.log("one");
 			
@@ -2847,6 +2847,7 @@ canvas1.height = canvas.height;
 				ctx.fillStyle = this.color;
 				ctx.strokeStyle = 'hsl(' + this.hue + ',' + this.shade + '%, ' + this.brightness + '%)';
 				ctx.beginPath(); // this is the ai guy
+				ctx.lineWidth = '5';
     			ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
 				ctx.closePath();
 				ctx.fill();
@@ -2924,6 +2925,7 @@ canvas1.height = canvas.height;
 					if(lives < 1){
 							
 							exitReload = 1;
+							slowMotion = false;
 							lives = 0;
 							$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 						}
@@ -2986,6 +2988,7 @@ canvas1.height = canvas.height;
 				
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
+					slowMotion = false;
 					lives -= 1;
 					slowMo();
 					
@@ -3080,6 +3083,7 @@ canvas1.height = canvas.height;
 				
 					velX *= friction - 2; //this will stop the player from moving
 					velY *= friction - 2;
+					slowMotion = false;
 					lives -= 1;
 					slowMo();
 					
