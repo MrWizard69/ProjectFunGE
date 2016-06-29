@@ -17,6 +17,7 @@ var slowMotion = false;
 var slowMoDelay;
 var x = 0;
 var y = 0;
+var ctx;
 
 
 $(document).ready(function () {
@@ -25,7 +26,7 @@ $(document).ready(function () {
 	// using its id.
 	
     var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext("2d");
+    ctx = canvas.getContext("2d");
 	
 	
 	window.requestAnimFrame = (function() {
@@ -1235,6 +1236,18 @@ canvas1.height = canvas.height;
 
 			$("canvas:nth-child(2)").hide();
             setTimeout(update, 30); //refresh the screen to update positions
+
+			if(slowMotion == true){
+
+				ctx.strokeStyle = 'blue';
+				ctx.lineWidth = '20';
+				ctx.strokeRect(0, 0, canvas.width, canvas.height);
+				
+			}
+			else if(slowMotion == false){
+
+				ctx.clearRect(0, 0, canvas.width, canvas.height); 
+			}
 			
 			//----------------------------------------------------------
 			draw();	//this draws all the enemies in the game area
@@ -1758,77 +1771,77 @@ canvas1.height = canvas.height;
 					 this.y < BlackBox[i].y + (playerSize * 17) && this.y + (playerSize * 17) > BlackBox[i].y) {
 
 						 //this will make direct the enemy move in the direction of the player at varying speeds and times
-				  if(this.x < BlackBox[i].x && this.y < BlackBox[i].y){
+				//   if(this.x < BlackBox[i].x && this.y < BlackBox[i].y){
 					 
-					 //this.x += 1;
-					 //this.y += 1;
+				// 	 //this.x += 1;
+				// 	 //this.y += 1;
 
-					if(slowMotion == true){
+				// 	if(slowMotion == true){
 
-						this.x += (canvas.width) * 0.0015;
-					 	this.y += (canvas.height) * 0.0015;
-					 }
-					 else if(slowMotion == false){
+				// 		this.x += (canvas.width) * 0.0015;
+				// 	 	this.y += (canvas.height) * 0.0015;
+				// 	 }
+				// 	 else if(slowMotion == false){
 
-						this.x += (canvas.width) * 0.0035;
-					 	this.y += (canvas.height) * 0.0035;
-					 } 
+				// 		this.x += (canvas.width) * 0.0035;
+				// 	 	this.y += (canvas.height) * 0.0035;
+				// 	 } 
 					 
-				 }
-				 if(this.x > BlackBox[i].x && this.y > BlackBox[i].y){
+				//  }
+				//  if(this.x > BlackBox[i].x && this.y > BlackBox[i].y){
 					 
-					 //this.x -= 1;
-					 //this.y -= 1;
+				// 	 //this.x -= 1;
+				// 	 //this.y -= 1;
 
-					if(slowMotion == true){
+				// 	if(slowMotion == true){
 
-						this.x -= (canvas.width) * 0.0015;
-					 	this.y -= (canvas.height) * 0.0015;
-					 }
-					 else if(slowMotion == false){
+				// 		this.x -= (canvas.width) * 0.0015;
+				// 	 	this.y -= (canvas.height) * 0.0015;
+				// 	 }
+				// 	 else if(slowMotion == false){
 
-						this.x -= (canvas.width) * 0.0035;
-					 	this.y -= (canvas.height) * 0.0035;
-					 } 
-
-					 
-				 }
-				 if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
-					 
-					 //this.x -= 1;
-					 //this.y += 1;
-
-					if(slowMotion == true){
-
-						this.x -= (canvas.width) * 0.0015;
-					 	this.y += (canvas.height) * 0.0015;
-					 }
-					 else if(slowMotion == false){
-
-						this.x -= (canvas.width) * 0.0035;
-					 	this.y += (canvas.height) * 0.0035;
-					 } 
+				// 		this.x -= (canvas.width) * 0.0035;
+				// 	 	this.y -= (canvas.height) * 0.0035;
+				// 	 } 
 
 					 
-				 }
-				 if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
+				//  }
+				//  if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
 					 
-					 //this.x -= 1;
-					 //this.y += 1;
+				// 	 //this.x -= 1;
+				// 	 //this.y += 1;
 
-					 if(slowMotion == true){
+				// 	if(slowMotion == true){
 
-						this.x += (canvas.width) * 0.0015;
-					 	this.y -= (canvas.height) * 0.0015;
-					 }
-					 else if(slowMotion == false){
+				// 		this.x -= (canvas.width) * 0.0015;
+				// 	 	this.y += (canvas.height) * 0.0015;
+				// 	 }
+				// 	 else if(slowMotion == false){
 
-						this.x += (canvas.width) * 0.0035;
-					 	this.y -= (canvas.height) * 0.0035;
-					 } 
+				// 		this.x -= (canvas.width) * 0.0035;
+				// 	 	this.y += (canvas.height) * 0.0035;
+				// 	 } 
 
 					 
-				 }
+				//  }
+				//  if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
+					 
+				// 	 //this.x -= 1;
+				// 	 //this.y += 1;
+
+				// 	 if(slowMotion == true){
+
+				// 		this.x += (canvas.width) * 0.0015;
+				// 	 	this.y -= (canvas.height) * 0.0015;
+				// 	 }
+				// 	 else if(slowMotion == false){
+
+				// 		this.x += (canvas.width) * 0.0035;
+				// 	 	this.y -= (canvas.height) * 0.0035;
+				// 	 } 
+
+					 
+				//  }
 				 if(this.x < BlackBox[i].x){
 					 
 					 //this.x += 1.1;
@@ -2094,77 +2107,77 @@ canvas1.height = canvas.height;
 					 this.y < BlackBox[i].y + (playerSize * 17) && this.y + (playerSize * 17) > BlackBox[i].y) {
 
 						 //this will make direct the enemy move in the direction of the player at varying speeds and times
-				  if(this.x < BlackBox[i].x && this.y < BlackBox[i].y){
+				//   if(this.x < BlackBox[i].x && this.y < BlackBox[i].y){
 					 
-					 //this.x += 1;
-					 //this.y += 1;
+				// 	 //this.x += 1;
+				// 	 //this.y += 1;
 
-					if(slowMotion == true){
+				// 	if(slowMotion == true){
 
-						this.x += (canvas.width) * 0.0017;
-					 	this.y += (canvas.height) * 0.0017;
-					 }
-					 else if(slowMotion == false){
+				// 		this.x += (canvas.width) * 0.0017;
+				// 	 	this.y += (canvas.height) * 0.0017;
+				// 	 }
+				// 	 else if(slowMotion == false){
 
-						this.x += (canvas.width) * 0.0035;
-					 	this.y += (canvas.height) * 0.0035;
-					 } 
+				// 		this.x += (canvas.width) * 0.0035;
+				// 	 	this.y += (canvas.height) * 0.0035;
+				// 	 } 
 					 
-				 }
-				 if(this.x > BlackBox[i].x && this.y > BlackBox[i].y){
+				//  }
+				//  if(this.x > BlackBox[i].x && this.y > BlackBox[i].y){
 					 
-					 //this.x -= 1;
-					 //this.y -= 1;
+				// 	 //this.x -= 1;
+				// 	 //this.y -= 1;
 
-					if(slowMotion == true){
+				// 	if(slowMotion == true){
 
-						this.x -= (canvas.width) * 0.0017;
-					 	this.y -= (canvas.height) * 0.0017;
-					 }
-					 else if(slowMotion == false){
+				// 		this.x -= (canvas.width) * 0.0017;
+				// 	 	this.y -= (canvas.height) * 0.0017;
+				// 	 }
+				// 	 else if(slowMotion == false){
 
-						this.x -= (canvas.width) * 0.0035;
-					 	this.y -= (canvas.height) * 0.0035;
-					 } 
-
-					 
-				 }
-				 if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
-					 
-					 //this.x -= 1;
-					 //this.y += 1;
-
-					if(slowMotion == true){
-
-						this.x -= (canvas.width) * 0.0017;
-					 	this.y += (canvas.height) * 0.0017;
-					 }
-					 else if(slowMotion == false){
-
-						this.x -= (canvas.width) * 0.0035;
-					 	this.y += (canvas.height) * 0.0035;
-					 } 
+				// 		this.x -= (canvas.width) * 0.0035;
+				// 	 	this.y -= (canvas.height) * 0.0035;
+				// 	 } 
 
 					 
-				 }
-				 if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
+				//  }
+				//  if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
 					 
-					 //this.x -= 1;
-					 //this.y += 1;
+				// 	 //this.x -= 1;
+				// 	 //this.y += 1;
 
-					 if(slowMotion == true){
+				// 	if(slowMotion == true){
 
-						this.x += (canvas.width) * 0.0017;
-					 	this.y -= (canvas.height) * 0.0017;
-					 }
-					 else if(slowMotion == false){
+				// 		this.x -= (canvas.width) * 0.0017;
+				// 	 	this.y += (canvas.height) * 0.0017;
+				// 	 }
+				// 	 else if(slowMotion == false){
 
-						this.x += (canvas.width) * 0.0035;
-					 	this.y -= (canvas.height) * 0.0035;
-					 } 
+				// 		this.x -= (canvas.width) * 0.0035;
+				// 	 	this.y += (canvas.height) * 0.0035;
+				// 	 } 
 
 					 
-				 }
+				//  }
+				//  if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
+					 
+				// 	 //this.x -= 1;
+				// 	 //this.y += 1;
+
+				// 	 if(slowMotion == true){
+
+				// 		this.x += (canvas.width) * 0.0017;
+				// 	 	this.y -= (canvas.height) * 0.0017;
+				// 	 }
+				// 	 else if(slowMotion == false){
+
+				// 		this.x += (canvas.width) * 0.0035;
+				// 	 	this.y -= (canvas.height) * 0.0035;
+				// 	 } 
+
+					 
+				//  }
 				 if(this.x < BlackBox[i].x){
 					 
 					 //this.x += 1.1;
@@ -2256,77 +2269,77 @@ canvas1.height = canvas.height;
 					 this.y < BlackBox[i].y + (playerSize * 17) && this.y + (playerSize * 17) > BlackBox[i].y) {
 
 						 //this will make direct the enemy move in the direction of the player at varying speeds and times
-				  if(this.x < BlackBox[i].x && this.y < BlackBox[i].y){
+				//   if(this.x < BlackBox[i].x && this.y < BlackBox[i].y){
 					 
-					 //this.x += 1;
-					 //this.y += 1;
+				// 	 //this.x += 1;
+				// 	 //this.y += 1;
 
-					if(slowMotion == true){
+				// 	if(slowMotion == true){
 
-						this.x += (canvas.width) * 0.0015;
-					 	this.y += (canvas.height) * 0.0015;
-					 }
-					 else if(slowMotion == false){
+				// 		this.x += (canvas.width) * 0.0015;
+				// 	 	this.y += (canvas.height) * 0.0015;
+				// 	 }
+				// 	 else if(slowMotion == false){
 
-						this.x += (canvas.width) * 0.0035;
-					 	this.y += (canvas.height) * 0.0035;
-					 } 
+				// 		this.x += (canvas.width) * 0.0035;
+				// 	 	this.y += (canvas.height) * 0.0035;
+				// 	 } 
 					 
-				 }
-				 if(this.x > BlackBox[i].x && this.y > BlackBox[i].y){
+				//  }
+				//  if(this.x > BlackBox[i].x && this.y > BlackBox[i].y){
 					 
-					 //this.x -= 1;
-					 //this.y -= 1;
+				// 	 //this.x -= 1;
+				// 	 //this.y -= 1;
 
-					if(slowMotion == true){
+				// 	if(slowMotion == true){
 
-						this.x -= (canvas.width) * 0.0015;
-					 	this.y -= (canvas.height) * 0.0015;
-					 }
-					 else if(slowMotion == false){
+				// 		this.x -= (canvas.width) * 0.0015;
+				// 	 	this.y -= (canvas.height) * 0.0015;
+				// 	 }
+				// 	 else if(slowMotion == false){
 
-						this.x -= (canvas.width) * 0.0035;
-					 	this.y -= (canvas.height) * 0.0035;
-					 } 
-
-					 
-				 }
-				 if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
-					 
-					 //this.x -= 1;
-					 //this.y += 1;
-
-					if(slowMotion == true){
-
-						this.x -= (canvas.width) * 0.0015;
-					 	this.y += (canvas.height) * 0.0015;
-					 }
-					 else if(slowMotion == false){
-
-						this.x -= (canvas.width) * 0.0035;
-					 	this.y += (canvas.height) * 0.0035;
-					 } 
+				// 		this.x -= (canvas.width) * 0.0035;
+				// 	 	this.y -= (canvas.height) * 0.0035;
+				// 	 } 
 
 					 
-				 }
-				 if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
+				//  }
+				//  if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
 					 
-					 //this.x -= 1;
-					 //this.y += 1;
+				// 	 //this.x -= 1;
+				// 	 //this.y += 1;
 
-					 if(slowMotion == true){
+				// 	if(slowMotion == true){
 
-						this.x += (canvas.width) * 0.0015;
-					 	this.y -= (canvas.height) * 0.0015;
-					 }
-					 else if(slowMotion == false){
+				// 		this.x -= (canvas.width) * 0.0015;
+				// 	 	this.y += (canvas.height) * 0.0015;
+				// 	 }
+				// 	 else if(slowMotion == false){
 
-						this.x += (canvas.width) * 0.0035;
-					 	this.y -= (canvas.height) * 0.0035;
-					 } 
+				// 		this.x -= (canvas.width) * 0.0035;
+				// 	 	this.y += (canvas.height) * 0.0035;
+				// 	 } 
 
 					 
-				 }
+				//  }
+				//  if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
+					 
+				// 	 //this.x -= 1;
+				// 	 //this.y += 1;
+
+				// 	 if(slowMotion == true){
+
+				// 		this.x += (canvas.width) * 0.0015;
+				// 	 	this.y -= (canvas.height) * 0.0015;
+				// 	 }
+				// 	 else if(slowMotion == false){
+
+				// 		this.x += (canvas.width) * 0.0035;
+				// 	 	this.y -= (canvas.height) * 0.0035;
+				// 	 } 
+
+					 
+				//  }
 				 if(this.x < BlackBox[i].x){
 					 
 					 //this.x += 1.1;
@@ -2609,77 +2622,77 @@ canvas1.height = canvas.height;
 					 this.y < BlackBox[i].y + (playerSize * 17) && this.y + (playerSize * 17) > BlackBox[i].y) {
 
 						 //this will make direct the enemy move in the direction of the player at varying speeds and times//
-				  if(this.x < BlackBox[i].x && this.y < BlackBox[i].y){
+				//   if(this.x < BlackBox[i].x && this.y < BlackBox[i].y){
 					 
-					 //this.x += 1;
-					 //this.y += 1;
+				// 	 //this.x += 1;
+				// 	 //this.y += 1;
 
-					if(slowMotion == true){
+				// 	if(slowMotion == true){
 
-						this.x += (canvas.width) * 0.0017;
-					 	this.y += (canvas.height) * 0.0017;
-					 }
-					 else if(slowMotion == false){
+				// 		this.x += (canvas.width) * 0.0017;
+				// 	 	this.y += (canvas.height) * 0.0017;
+				// 	 }
+				// 	 else if(slowMotion == false){
 
-						this.x += (canvas.width) * 0.0037;
-					 	this.y += (canvas.height) * 0.0037;
-					 } 
+				// 		this.x += (canvas.width) * 0.0037;
+				// 	 	this.y += (canvas.height) * 0.0037;
+				// 	 } 
 					 
-				 }
-				 if(this.x > BlackBox[i].x && this.y > BlackBox[i].y){
+				//  }
+				//  if(this.x > BlackBox[i].x && this.y > BlackBox[i].y){
 					 
-					 //this.x -= 1;
-					 //this.y -= 1;
+				// 	 //this.x -= 1;
+				// 	 //this.y -= 1;
 
-					if(slowMotion == true){
+				// 	if(slowMotion == true){
 
-						this.x -= (canvas.width) * 0.0017;
-					 	this.y -= (canvas.height) * 0.0017;
-					 }
-					 else if(slowMotion == false){
+				// 		this.x -= (canvas.width) * 0.0017;
+				// 	 	this.y -= (canvas.height) * 0.0017;
+				// 	 }
+				// 	 else if(slowMotion == false){
 
-						this.x -= (canvas.width) * 0.0037;
-					 	this.y -= (canvas.height) * 0.0037;
-					 } 
-
-					 
-				 }
-				 if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
-					 
-					 //this.x -= 1;
-					 //this.y += 1;
-
-					if(slowMotion == true){
-
-						this.x -= (canvas.width) * 0.0017;
-					 	this.y += (canvas.height) * 0.0017;
-					 }
-					 else if(slowMotion == false){
-
-						this.x -= (canvas.width) * 0.0037;
-					 	this.y += (canvas.height) * 0.0037;
-					 } 
+				// 		this.x -= (canvas.width) * 0.0037;
+				// 	 	this.y -= (canvas.height) * 0.0037;
+				// 	 } 
 
 					 
-				 }
-				 if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
+				//  }
+				//  if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
 					 
-					 //this.x -= 1;
-					 //this.y += 1;
+				// 	 //this.x -= 1;
+				// 	 //this.y += 1;
 
-					 if(slowMotion == true){
+				// 	if(slowMotion == true){
 
-						this.x += (canvas.width) * 0.0017;
-					 	this.y -= (canvas.height) * 0.0017;
-					 }
-					 else if(slowMotion == false){
+				// 		this.x -= (canvas.width) * 0.0017;
+				// 	 	this.y += (canvas.height) * 0.0017;
+				// 	 }
+				// 	 else if(slowMotion == false){
 
-						this.x += (canvas.width) * 0.0037;
-					 	this.y -= (canvas.height) * 0.0037;
-					 } 
+				// 		this.x -= (canvas.width) * 0.0037;
+				// 	 	this.y += (canvas.height) * 0.0037;
+				// 	 } 
 
 					 
-				 }
+				//  }
+				//  if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
+					 
+				// 	 //this.x -= 1;
+				// 	 //this.y += 1;
+
+				// 	 if(slowMotion == true){
+
+				// 		this.x += (canvas.width) * 0.0017;
+				// 	 	this.y -= (canvas.height) * 0.0017;
+				// 	 }
+				// 	 else if(slowMotion == false){
+
+				// 		this.x += (canvas.width) * 0.0037;
+				// 	 	this.y -= (canvas.height) * 0.0037;
+				// 	 } 
+
+					 
+				//  }
 				 if(this.x < BlackBox[i].x){
 					 
 					 //this.x += 1.1;
@@ -3245,7 +3258,7 @@ canvas1.height = canvas.height;
 					if(size == 1){
 						
 						BlackBox[i].size = playerSize;
-						fireworks.push( new Firework( canvas.width / 2, canvas.height, BlackBox[i].x, BlackBox[i].y ) );
+						fireworks.push( new WCFirework( canvas.width / 2, canvas.height, BlackBox[i].x, BlackBox[i].y ) );
 
 					}
 					else if(size == 2){
@@ -3688,7 +3701,7 @@ canvas1.height = canvas.height;
 				
 					//velX *= friction - 2; //this will stop the player from moving
 					//velY *= friction - 2;
-					lives += (Math.round( 0.5 * 10 ) / 10);
+					lives += 1;//(Math.round( 0.5 * 10 ) / 10);
 					score += 10;
 					//lives.toFixed(1);
 					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
