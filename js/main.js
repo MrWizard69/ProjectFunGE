@@ -635,12 +635,12 @@ canvas1.height = canvas.height;
 			
 			//$("#play").closest('.ui-btn').show();
 
-			if(canvas.width > 450){
+			// if(canvas.width > 450){
 
-				joyStickX = (window.innerWidth) * .96;
-				joyStickY = (window.innerHeight) * .70;
-				//console.log("Yo");	
-			}
+			// 	joyStickX = (window.innerWidth) * .96;
+			// 	joyStickY = (window.innerHeight) * .70;
+			// 	//console.log("Yo");	
+			// }
 			
 		}
 		

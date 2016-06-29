@@ -210,3 +210,12 @@ html, body {
 	}
 	
 }
+
+@media screen and (min-width: 450px) {
+
+	#container{
+
+	margin-left: 2%;
+	}
+
+}
