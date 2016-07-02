@@ -146,6 +146,7 @@ canvas1.height = canvas.height;
 	var StalkerFleet = [];
 	var BlackBox = [];
 	var BHEnemys = [];
+	var InfectedFleet = [];
 	
 	var score = 0;
 	var lives = 3;
@@ -164,6 +165,7 @@ canvas1.height = canvas.height;
 	var Enemy3 = new Object();
 	var Enemy4 = new Object();
 	var Enemy5 = new Object();
+	var Enemy6 = new Object();
 	
 	var LifePup = new Object();
 	var BulletPup = new Object();
@@ -263,6 +265,7 @@ canvas1.height = canvas.height;
 		BulletPowerPack = [];
 		BlackBox = [];
 		BHEnemys = [];
+		InfectedFleet = [];
 		$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 		$("#restartBtn").closest('.ui-btn').hide();
 		$("#restartDiv").hide();
@@ -292,7 +295,31 @@ canvas1.height = canvas.height;
 			//console.log("shoot stick");
 			
 			
-			if(bulletPower >= 5){
+			if(bulletPower >= 9){
+				
+				bulletSpeed = 100;
+				//console.log(bulletSpeed);
+				
+			}
+			if(bulletPower == 8){
+				
+				bulletSpeed = 125;
+				//console.log(bulletSpeed);
+				
+			}
+			if(bulletPower == 7){
+				
+				bulletSpeed = 150;
+				//console.log(bulletSpeed);
+				
+			}
+			if(bulletPower == 6){
+				
+				bulletSpeed = 175;
+				//console.log(bulletSpeed);
+				
+			}
+			if(bulletPower == 5){
 				
 				bulletSpeed = 200;
 				//console.log(bulletSpeed);
@@ -434,7 +461,7 @@ canvas1.height = canvas.height;
 			}
 			//$("#result").html(entities.length);
 			//console.log(entities);
-		}, 2000);
+		}, 1000);
 		
 		setInterval(function(){
 					
@@ -478,7 +505,7 @@ canvas1.height = canvas.height;
 				LifePowerPack.push(LifePup);
 			}
 			//console.log(entities);
-		}, 40000); //60000
+		}, 30000); //60000
 		
 		setInterval(function(){
 					
@@ -491,7 +518,7 @@ canvas1.height = canvas.height;
 				BulletPowerPack.push(BulletPup);
 			}
 			//console.log(entities);
-		}, 30000);	//30000	
+		}, 25000);	//30000	
 
 
 		setInterval(function(){
@@ -506,7 +533,22 @@ canvas1.height = canvas.height;
 				BlackBox.push(Enemy4);
 			}
 			//console.log(Enemy4);
-		}, 25000);	
+		}, 55000);	
+
+		setInterval(function(){
+					
+		    Enemy5 = jQuery.extend(true, {}, InfectedShip);
+			Enemy5.x = Math.round(Math.random() * (canvas.width * .90));
+			Enemy5.y = Math.round(Math.random() * (canvas.height * .90));
+			Enemy5.direction = Math.round(Math.random() * 7);
+			
+			if (exitReload == 0 || !x < Enemy3.x + (playerSize * 15)  && !x + (playerSize * 15)  > Enemy5.x &&
+				!y < Enemy5.y + (playerSize * 15) && !y + (playerSize * 15) > Enemy5.y) {
+					
+				InfectedFleet.push(Enemy5);
+			}
+			//console.log(Enemy5);
+		}, 30000);	
 			
 		
 		// Enemy4 = jQuery.extend(true, {}, BlackHole);
@@ -1866,6 +1908,220 @@ canvas1.height = canvas.height;
 			  
 		};
 
+		var InfectedShip = {
+  			color: "blue",
+  			x: Math.round(Math.random() * (canvas.width * .90)),
+  			y: Math.round(Math.random() * (canvas.height * .90)),
+			direction: randomDirection = Math.round(Math.random() * 7),
+			size: playerSize,
+			hp: 7,
+ 			draw: function() {
+				ctx.beginPath(); // this is the ai guy
+    			ctx.fillStyle = this.color;
+    			//ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+				ctx.rect(this.x,this.y,this.size,this.size);
+				ctx.fill();
+            	ctx.closePath();
+ 			 },
+			 movement: function(){
+				 
+				 for(var i = 0; i < BlackBox.length; i++){
+
+					 if (this.x < BlackBox[i].x + (playerSize * 20)  && this.x + (playerSize * 20)  > BlackBox[i].x &&
+					 this.y < BlackBox[i].y + (playerSize * 20) && this.y + (playerSize * 20) > BlackBox[i].y) {
+
+				 if(this.x < BlackBox[i].x){
+					 
+					 //this.x += 1.1;
+
+					if(slowMotion == true){
+
+						this.x += (canvas.width) * 0.0011;
+					 }
+					 else if(slowMotion == false){
+
+						this.x += (canvas.width) * 0.0031;
+					 } 
+
+					 
+				 }
+				 if(this.y > BlackBox[i].y){
+					 
+					 //this.y -= 1.1;
+
+					if(slowMotion == true){
+
+						this.y -= (canvas.height) * 0.0011;
+					 }
+					 else if(slowMotion == false){
+
+						this.y -= (canvas.height) * 0.0031;
+					 } 
+
+					 
+				 }
+				 if(this.x > BlackBox[i].x){
+					 
+					 //this.x -= 1.1;
+
+					if(slowMotion == true){
+
+						this.x -= (canvas.width) * 0.0011;
+					 }
+					 else if(slowMotion == false){
+
+						this.x -= (canvas.width) * 0.0031;
+					 } 
+
+					 
+				 }
+				 if(this.y < BlackBox[i].y){
+					 
+					 //this.y += 1.1;
+
+					 if(slowMotion == true){
+
+						this.y += (canvas.height) * 0.0011;
+					 }
+					 else if(slowMotion == false){
+
+						this.y += (canvas.height) * 0.0031;
+					 } 
+
+					 
+				 } 
+				 
+
+					}
+
+
+				 }
+
+				 for(var i = 0; i < RandomShipFleet.length; i++){
+
+				//this will make direct the enemy move in the direction of the player
+				 if(this.x < RandomShipFleet[i].x){
+					 
+					 //this.x += 1.6;
+
+					 if(slowMotion == true){
+
+						 this.x += (canvas.width) * 0.0010;
+					 }
+					 else if(slowMotion == false){
+
+						 this.x += (canvas.width) * 0.0024;
+					 } 
+				 
+				 }
+				 if(this.x > RandomShipFleet[i].x){
+					 
+					 //this.x -= 1.6;
+
+					 if(slowMotion == true){
+
+						 this.x -= (canvas.width) * 0.0010;
+					 }
+					 else if(slowMotion == false){
+
+						 this.x -= (canvas.width) * 0.0024;
+					 } 
+					 
+				 }
+				 if(this.y < RandomShipFleet[i].y){
+					 
+					 //this.y += 1.6;
+
+					 if(slowMotion == true){
+
+						 this.y += (canvas.height) * 0.0010;
+					 }
+					 else if(slowMotion == false){
+
+						 this.y += (canvas.height) * 0.0024;
+					 } 
+					 
+				 }
+				 if(this.y > RandomShipFleet[i].y){
+					 
+					 //this.y -= 1.6;
+
+					 if(slowMotion == true){
+
+						 this.y -= (canvas.height) * 0.0010;
+					 }
+					 else if(slowMotion == false){
+
+						 this.y -= (canvas.height) * 0.0024;
+					 } 
+				 }
+
+			}
+
+
+
+
+
+			if(this.x < x){
+					 
+					 //this.x += 1.6;
+
+					 if(slowMotion == true){
+
+						 this.x += (canvas.width) * 0.0010;
+					 }
+					 else if(slowMotion == false){
+
+						 this.x += (canvas.width) * 0.0024;
+					 } 
+				 
+				 }
+				 if(this.x > x){
+					 
+					 //this.x -= 1.6;
+
+					 if(slowMotion == true){
+
+						 this.x -= (canvas.width) * 0.0010;
+					 }
+					 else if(slowMotion == false){
+
+						 this.x -= (canvas.width) * 0.0024;
+					 } 
+					 
+				 }
+				 if(this.y < y){
+					 
+					 //this.y += 1.6;
+
+					 if(slowMotion == true){
+
+						 this.y += (canvas.height) * 0.0010;
+					 }
+					 else if(slowMotion == false){
+
+						 this.y += (canvas.height) * 0.0024;
+					 } 
+					 
+				 }
+				 if(this.y > y){
+					 
+					 //this.y -= 1.6;
+
+					 if(slowMotion == true){
+
+						 this.y -= (canvas.height) * 0.0010;
+					 }
+					 else if(slowMotion == false){
+
+						 this.y -= (canvas.height) * 0.0024;
+					 } 
+				 }
+			 }
+			  
+		};
+
+
 		var BHjectile = {
 			hue: 90,
 			shade: Math.floor((Math.random() * 100) + 1),
@@ -2806,6 +3062,34 @@ canvas1.height = canvas.height;
 				ctx.fill();
 				ctx.closePath();
 			}
+
+			// //this is what detects colisions for bullets and RandomShip enemys
+			// for(var j = 0; j < bulletClip.length; j++){
+			
+			// 	//bulletClip[j].draw(); // this will add a cool blur to the bullet
+			
+			// 	for(var i = 0; i < RandomShipFleet.length; i++){
+					
+			// 		//RandomShipFleet[i].draw(); //this will add a cool blur to the enemys
+				
+			// 		if (bulletClip[j].x < RandomShipFleet[i].x + (bulletSize * 3)  && bulletClip[j].x + (bulletSize * 3)  > RandomShipFleet[i].x &&
+			// 		bulletClip[j].y < RandomShipFleet[i].y + (bulletSize * 3) && bulletClip[j].y + (bulletSize * 3) > RandomShipFleet[i].y) {
+			// 			// The objects are touching
+						
+			// 			score += 1;
+			// 			//loop();
+			// 			fireworks.push( new Firework( canvas.width / 2, canvas.height, RandomShipFleet[i].x, RandomShipFleet[i].y ) );
+
+			// 			timerTick = 0;
+			// 			$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
+				
+			// 			RandomShipFleet.splice(i, 1); //this will destroy the enemy on colision with the bullet
+			// 			bulletClip.splice(j, 1);
+						
+			// 		 }
+			// 	}
+			
+			// }
 			
 															 						
 			//enemy.draw();
@@ -2894,6 +3178,215 @@ canvas1.height = canvas.height;
 						 fireworks.push( new Firework( canvas.width / 2, canvas.height, BlackBox[b].x, BlackBox[b].y ) );
 						 BlackBox[b].hp -= 1;
 						 RandomShipFleet.splice(i, 1); //this will destroy the enemy
+
+					 }
+
+				}
+				
+			}
+
+			//this will loop through the list of InfectedShip enemies
+			for(var i = 0; i < InfectedFleet.length; i++){
+				
+				InfectedFleet[i].draw(); //this will draw the enemies as they are created
+				InfectedFleet[i].movement();//this will activate the enemies movement
+
+
+				// if(slowMoWatch == 30 && slowMotion == false){
+
+				// 	if (x < InfectedFleet[i].x + (InfectedFleet[i].size  * 4)  && x + (InfectedFleet[i].size  * 4)  > InfectedFleet[i].x &&
+				// 	y < InfectedFleet[i].y + (InfectedFleet[i].size  * 4) && y + (InfectedFleet[i].size  * 4) > InfectedFleet[i].y) {
+
+				// 		slowMo();
+						
+				// 	}
+				// }
+
+				if(InfectedFleet[i].size >= (playerSize * 7)){
+
+					Enemy2 = jQuery.extend(true, {}, Hunter);
+					Enemy2.x = InfectedFleet[i].x + (InfectedFleet[i].size / 2);
+					Enemy2.y = InfectedFleet[i].y + (InfectedFleet[i].size / 2);
+
+					var launch = Math.floor((Math.random() * 70) + 1);
+
+					if(launch == 35){
+
+						HunterFleet.push(Enemy2);
+					}
+					
+
+				}
+
+				for(var j = 0; j < RandomShipFleet.length; j++){
+
+					//this is a colision with the randomly spawning ai guys
+					if (RandomShipFleet[j].x < InfectedFleet[i].x + InfectedFleet[i].size  && RandomShipFleet[j].x + (InfectedFleet[i].size / 4)  > InfectedFleet[i].x &&
+					RandomShipFleet[j].y < InfectedFleet[i].y + InfectedFleet[i].size && RandomShipFleet[j].y + (InfectedFleet[i].size / 4) > InfectedFleet[i].y) {
+
+						InfectedFleet[i].size += (playerSize / 2);
+						//InfectedFleet[i].direction = Math.round(Math.random() * 7) + 1;
+						InfectedFleet[i].hp += 2;
+						RandomShipFleet.splice(j, 1);
+
+					}
+
+				}
+
+				for(var j = 0; j < StalkerFleet.length; j++){
+
+					//this is a colision with the randomly spawning ai guys
+					if (StalkerFleet[j].x < InfectedFleet[i].x + InfectedFleet[i].size  && StalkerFleet[j].x + (InfectedFleet[i].size / 4)  > InfectedFleet[i].x &&
+					StalkerFleet[j].y < InfectedFleet[i].y + InfectedFleet[i].size && StalkerFleet[j].y + (InfectedFleet[i].size / 4) > InfectedFleet[i].y) {
+
+						InfectedFleet[i].size += playerSize;
+						//InfectedFleet[i].direction = Math.round(Math.random() * 7) + 1;
+						InfectedFleet[i].hp += 3;
+						StalkerFleet.splice(j, 1);
+
+					}
+
+				}
+
+				for(var j = 0; j < BHEnemys.length; j++){
+
+					//this is a colision with the randomly spawning ai guys
+					if (BHEnemys[j].x < InfectedFleet[i].x + InfectedFleet[i].size  && BHEnemys[j].x + (InfectedFleet[i].size / 4)  > InfectedFleet[i].x &&
+					BHEnemys[j].y < InfectedFleet[i].y + InfectedFleet[i].size && BHEnemys[j].y + (InfectedFleet[i].size / 4) > InfectedFleet[i].y) {
+
+						InfectedFleet[i].size += playerSize;
+						//InfectedFleet[i].direction = Math.round(Math.random() * 7) + 1;
+						InfectedFleet[i].hp += 4;
+						BHEnemys.splice(j, 1);
+
+					}
+
+				}
+
+				for(var j = 0; j < InfectedFleet.length; j++){
+
+					//this is a colision with the randomly spawning ai guys
+					if (InfectedFleet[j].x < InfectedFleet[i].x + InfectedFleet[i].size  && InfectedFleet[j].x + (InfectedFleet[i].size / 4)  > InfectedFleet[i].x &&
+					InfectedFleet[j].y < InfectedFleet[i].y + InfectedFleet[i].size && InfectedFleet[j].y + (InfectedFleet[i].size / 4) > InfectedFleet[i].y) {
+
+						if(InfectedFleet[i].size > InfectedFleet[j].size){
+
+							InfectedFleet[i].size += playerSize;
+							//InfectedFleet[i].direction = Math.round(Math.random() * 7) + 1;
+							InfectedFleet[i].hp += 4;
+							InfectedFleet.splice(j, 1);
+
+						}						
+
+					}
+
+				}
+
+				for(var k = 0; k < BulletPowerPack.length; k++){
+
+					//this is a colision with the randomly spawning ai guys
+					if (BulletPowerPack[k].x < InfectedFleet[i].x + InfectedFleet[i].size  && BulletPowerPack[k].x + (InfectedFleet[i].size / 4)  > InfectedFleet[i].x &&
+					BulletPowerPack[k].y < InfectedFleet[i].y + InfectedFleet[i].size && BulletPowerPack[k].y + (InfectedFleet[i].size / 4) > InfectedFleet[i].y) {
+
+							InfectedFleet[i].size += playerSize;
+							//InfectedFleet[i].direction = Math.round(Math.random() * 7) + 1;
+							InfectedFleet[i].hp += 4;
+							BulletPowerPack.splice(k, 1);					
+
+					}
+
+				}
+
+				for(var l = 0; l < LifePowerPack.length; l++){
+
+					//this is a colision with the randomly spawning ai guys
+					if (LifePowerPack[l].x < InfectedFleet[i].x + InfectedFleet[i].size  && LifePowerPack[l].x + (InfectedFleet[i].size / 4)  > InfectedFleet[i].x &&
+					LifePowerPack[l].y < InfectedFleet[i].y + InfectedFleet[i].size && LifePowerPack[l].y + (InfectedFleet[i].size / 4) > InfectedFleet[i].y) {
+
+							InfectedFleet[i].size += playerSize;
+							//InfectedFleet[i].direction = Math.round(Math.random() * 7) + 1;
+							InfectedFleet[i].hp += 4;
+							LifePowerPack.splice(l, 1);						
+
+					}
+
+				}
+
+								
+				//this is a colision with the randomly spawning ai guys
+				if (x < InfectedFleet[i].x + InfectedFleet[i].size  && x + (InfectedFleet[i].size / 4)  > InfectedFleet[i].x &&
+				y < InfectedFleet[i].y + InfectedFleet[i].size && y + (InfectedFleet[i].size / 4) > InfectedFleet[i].y) {
+					// The objects are touching
+				
+					velX *= friction - 2; //this will stop the player from moving
+					velY *= friction - 2;
+					
+					if(InfectedFleet[i].size >= (playerSize * 5)){
+
+						lives -= 6;
+
+					}
+					else{
+
+						lives -= 1;
+					} 
+					
+					slowMo();
+					
+					if(bulletPower > 0){
+						
+						bulletPower -= 1;
+					}
+					else{
+						bulletPower = 0;
+					}
+					
+					if(shootStickTouch == false){
+						
+						$("#shootStick").trigger('touchend');
+					}
+					else{
+						$("#shootStick").trigger('touchend');
+						$("#shootStick").trigger('touchstart');
+					}
+					
+					fireworks.push( new Firework( canvas.width / 2, canvas.height, x, y ) );
+					$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
+					
+					if(lives < 1){
+							
+							exitReload = 1;
+							slowMotion = false;
+							lives = 0;
+							$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
+						}
+					
+					InfectedFleet.splice(i, 1); //this will destroy the enemy on colision with the player
+				}
+				
+				
+
+				for(var b = 0; b < BlackBox.length; b++){
+
+					
+					if (InfectedFleet[i].x < BlackBox[b].x + ((InfectedFleet[i].size / 4) * 3)  && InfectedFleet[i].x + ((InfectedFleet[i].size / 4) * 3)  > BlackBox[b].x &&
+					 InfectedFleet[i].y < BlackBox[b].y + ((InfectedFleet[i].size / 4) * 3) && InfectedFleet[i].y + ((InfectedFleet[i].size / 4) * 3) > BlackBox[b].y) {
+
+						 fireworks.push( new Firework( canvas.width / 2, canvas.height, BlackBox[b].x, BlackBox[b].y ) );
+						 fireworks.push( new Firework( canvas.width / 2, canvas.height, BlackBox[b].x, BlackBox[b].y ) );
+						 BlackBox[b].hp -= 1;
+
+						 if(InfectedFleet[i].size > (playerSize * 5)){
+
+							BlackBox[b].hp -= 15;
+
+						}
+						else{
+
+							BlackBox[b].hp -= 10;
+						} 
+
+						 InfectedFleet.splice(i, 1); //this will destroy the enemy
 
 					 }
 
@@ -3519,6 +4012,44 @@ canvas1.height = canvas.height;
 						$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
 				
 						RandomShipFleet.splice(i, 1); //this will destroy the enemy on colision with the bullet
+						bulletClip.splice(j, 1);
+						
+					 }
+				}
+			
+			}
+
+			//this is what detects colisions for bullets and RandomShip enemys
+			for(var j = 0; j < bulletClip.length; j++){
+			
+				//bulletClip[j].draw(); // this will add a cool blur to the bullet
+			
+				for(var i = 0; i < InfectedFleet.length; i++){
+					
+					//RandomShipFleet[i].draw(); //this will add a cool blur to the enemys
+				
+					if (bulletClip[j].x < InfectedFleet[i].x + (InfectedFleet[i].size)  && bulletClip[j].x + (InfectedFleet[i].size / 4)  > InfectedFleet[i].x &&
+					bulletClip[j].y < InfectedFleet[i].y + (InfectedFleet[i].size) && bulletClip[j].y + (InfectedFleet[i].size / 4) > InfectedFleet[i].y) {
+						// The objects are touching
+						
+						score += 1;
+						InfectedFleet[i].hp -= 1;
+						//loop();
+						fireworks.push( new Firework( canvas.width / 2, canvas.height, (InfectedFleet[i].x + (InfectedFleet[i].size / 2) ), (InfectedFleet[i].y + (InfectedFleet[i].size / 2) ) ));
+
+						timerTick = 0;
+						$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
+
+						if(InfectedFleet[i].hp < 1){
+
+							InfectedFleet[i].size = playerSize;
+							fireworks.push( new Firework( canvas.width / 2, canvas.height, InfectedFleet[i].x, InfectedFleet[i].y ) );
+							fireworks.push( new Firework( canvas.width / 2, canvas.height, InfectedFleet[i].x, InfectedFleet[i].y ) );
+							InfectedFleet.splice(i, 1); //this will destroy the enemy on colision with the bullet
+
+						}
+
+						//InfectedFleet.splice(i, 1); //this will destroy the enemy on colision with the bullet
 						bulletClip.splice(j, 1);
 						
 					 }
