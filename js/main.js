@@ -18,6 +18,9 @@ var slowMoDelay;
 var x = 0;
 var y = 0;
 var ctx;
+var slowHue = 240;
+var slowShade = 100;
+var slowBrightness = 60;
 
 
 $(document).ready(function () {
@@ -1257,14 +1260,18 @@ canvas1.height = canvas.height;
 
 			if(slowMotion == true){
 
-				ctx.strokeStyle = 'blue';
+				ctx.strokeStyle = 'hsl(' + slowHue + ',' + slowShade + '%, ' + slowBrightness + '%)';
 				ctx.lineWidth = '20';
 				ctx.strokeRect(0, 0, canvas.width, canvas.height);
+
+				
 				
 			}
 			else if(slowMotion == false){
 
 				ctx.clearRect(0, 0, canvas.width, canvas.height); 
+
+				slowBrightness = 60;
 			}
 			
 			//----------------------------------------------------------
@@ -1788,78 +1795,6 @@ canvas1.height = canvas.height;
 					 if (this.x < BlackBox[i].x + (playerSize * 17)  && this.x + (playerSize * 17)  > BlackBox[i].x &&
 					 this.y < BlackBox[i].y + (playerSize * 17) && this.y + (playerSize * 17) > BlackBox[i].y) {
 
-						 //this will make direct the enemy move in the direction of the player at varying speeds and times
-				//   if(this.x < BlackBox[i].x && this.y < BlackBox[i].y){
-					 
-				// 	 //this.x += 1;
-				// 	 //this.y += 1;
-
-				// 	if(slowMotion == true){
-
-				// 		this.x += (canvas.width) * 0.0015;
-				// 	 	this.y += (canvas.height) * 0.0015;
-				// 	 }
-				// 	 else if(slowMotion == false){
-
-				// 		this.x += (canvas.width) * 0.0035;
-				// 	 	this.y += (canvas.height) * 0.0035;
-				// 	 } 
-					 
-				//  }
-				//  if(this.x > BlackBox[i].x && this.y > BlackBox[i].y){
-					 
-				// 	 //this.x -= 1;
-				// 	 //this.y -= 1;
-
-				// 	if(slowMotion == true){
-
-				// 		this.x -= (canvas.width) * 0.0015;
-				// 	 	this.y -= (canvas.height) * 0.0015;
-				// 	 }
-				// 	 else if(slowMotion == false){
-
-				// 		this.x -= (canvas.width) * 0.0035;
-				// 	 	this.y -= (canvas.height) * 0.0035;
-				// 	 } 
-
-					 
-				//  }
-				//  if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
-					 
-				// 	 //this.x -= 1;
-				// 	 //this.y += 1;
-
-				// 	if(slowMotion == true){
-
-				// 		this.x -= (canvas.width) * 0.0015;
-				// 	 	this.y += (canvas.height) * 0.0015;
-				// 	 }
-				// 	 else if(slowMotion == false){
-
-				// 		this.x -= (canvas.width) * 0.0035;
-				// 	 	this.y += (canvas.height) * 0.0035;
-				// 	 } 
-
-					 
-				//  }
-				//  if(this.x > BlackBox[i].x && this.y < BlackBox[i].y){
-					 
-				// 	 //this.x -= 1;
-				// 	 //this.y += 1;
-
-				// 	 if(slowMotion == true){
-
-				// 		this.x += (canvas.width) * 0.0015;
-				// 	 	this.y -= (canvas.height) * 0.0015;
-				// 	 }
-				// 	 else if(slowMotion == false){
-
-				// 		this.x += (canvas.width) * 0.0035;
-				// 	 	this.y -= (canvas.height) * 0.0035;
-				// 	 } 
-
-					 
-				//  }
 				 if(this.x < BlackBox[i].x){
 					 
 					 //this.x += 1.1;
@@ -1955,11 +1890,11 @@ canvas1.height = canvas.height;
 
 					if(slowMotion == true){
 
-						 this.x -= (canvas.width) * 0.0017;
+						 this.x -= (canvas.width) * 0.0020;
 					 }
 					 else if(slowMotion == false){
 
-						 this.x -= (canvas.width) * 0.0055;
+						 this.x -= (canvas.width) * 0.0060;
 					 } 
 
 					 
@@ -1970,11 +1905,11 @@ canvas1.height = canvas.height;
 
 					if(slowMotion == true){
 
-						 this.x += (canvas.width) * 0.0017;
+						 this.x += (canvas.width) * 0.0020;
 					 }
 					 else if(slowMotion == false){
 
-						 this.x += (canvas.width) * 0.0055;
+						 this.x += (canvas.width) * 0.0060;
 					 }
 					 
 				 }
@@ -1984,11 +1919,11 @@ canvas1.height = canvas.height;
 
 					if(slowMotion == true){
 
-						 this.y -= (canvas.height) * 0.0017;
+						 this.y -= (canvas.height) * 0.0020;
 					 }
 					 else if(slowMotion == false){
 
-						 this.y -= (canvas.height) * 0.0055;
+						 this.y -= (canvas.height) * 0.0060;
 					 }
 				 
 				 }
@@ -1998,11 +1933,11 @@ canvas1.height = canvas.height;
 
 					if(slowMotion == true){
 
-						 this.y += (canvas.height) * 0.0017;
+						 this.y += (canvas.height) * 0.0020;
 					 }
 					 else if(slowMotion == false){
 
-						 this.y += (canvas.height) * 0.0055;
+						 this.y += (canvas.height) * 0.0060;
 					 }
 					 
 				 }
@@ -2012,13 +1947,13 @@ canvas1.height = canvas.height;
 
 					if(slowMotion == true){
 
-						this.x += (canvas.width) * 0.0017;
-					 	this.y += (canvas.height) * 0.0017;
+						this.x += (canvas.width) * 0.0020;
+					 	this.y += (canvas.height) * 0.0020;
 					 }
 					 else if(slowMotion == false){
 
-						this.x += (canvas.width) * 0.0055;
-					 	this.y += (canvas.height) * 0.0055;
+						this.x += (canvas.width) * 0.0060;
+					 	this.y += (canvas.height) * 0.0060;
 					 }
 				 }
 				 if(this.direction == 5){
@@ -2027,13 +1962,13 @@ canvas1.height = canvas.height;
 
 					if(slowMotion == true){
 
-						this.x -= (canvas.width) * 0.0017;
-					 	this.y -= (canvas.height) * 0.0017;
+						this.x -= (canvas.width) * 0.0020;
+					 	this.y -= (canvas.height) * 0.0020;
 					 }
 					 else if(slowMotion == false){
 
-						this.x -= (canvas.width) * 0.0055;
-					 	this.y -= (canvas.height) * 0.0055;
+						this.x -= (canvas.width) * 0.0060;
+					 	this.y -= (canvas.height) * 0.0060;
 					 }
 					
 				 }
@@ -2043,13 +1978,13 @@ canvas1.height = canvas.height;
 
 					if(slowMotion == true){
 
-						this.x -= (canvas.width) * 0.0017;
-					 	this.y += (canvas.height) * 0.0017;
+						this.x -= (canvas.width) * 0.0020;
+					 	this.y += (canvas.height) * 0.0020;
 					 }
 					 else if(slowMotion == false){
 
-						this.x -= (canvas.width) * 0.0055;
-					 	this.y += (canvas.height) * 0.0055;
+						this.x -= (canvas.width) * 0.0060;
+					 	this.y += (canvas.height) * 0.0060;
 					 }					 					 
 				 }
 				 if(this.direction == 7){
@@ -2058,13 +1993,13 @@ canvas1.height = canvas.height;
 
 					if(slowMotion == true){
 
-						this.x += (canvas.width) * 0.0017;
-					 	this.y -= (canvas.height) * 0.0017;
+						this.x += (canvas.width) * 0.0020;
+					 	this.y -= (canvas.height) * 0.0020;
 					 }
 					 else if(slowMotion == false){
 
-						this.x += (canvas.width) * 0.0055;
-					 	this.y -= (canvas.height) * 0.0055;
+						this.x += (canvas.width) * 0.0060;
+					 	this.y -= (canvas.height) * 0.0060;
 					 }					 
 
 				 }				 
@@ -3871,13 +3806,85 @@ canvas1.height = canvas.height;
 			
 			slowMotion = true;
 
-			slowMoDelay = setTimeout(function() {
+				setTimeout(function() {
+
+					slowBrightness += 10; //value: 70
+					//console.log(slowBrightness);
+
+
+				}, 500);
+
+				setTimeout(function() {
+						
+					slowBrightness += 10; //value: 80
+					//console.log(slowBrightness);
+
+				}, 1000);
+
+				setTimeout(function() {
 				
-				slowMotion = false;
+					slowBrightness += 10; //value: 90
+					//console.log(slowBrightness);
 
-			}, 6000);
+				}, 1500);
 
-		
+				setTimeout(function() {
+						
+					slowBrightness -= 10; // value: 80;
+					//console.log(slowBrightness);
+
+				}, 2000);
+				setTimeout(function() {
+						
+					slowBrightness -= 10; //value: 70
+					//console.log(slowBrightness);
+
+				}, 2500);
+				setTimeout(function() {
+						
+					slowBrightness -= 10; //value: 60
+					//console.log(slowBrightness);
+
+				}, 3000);
+				setTimeout(function() {
+					
+					slowBrightness -= 10; //value: 50
+					//console.log(slowBrightness);
+
+				}, 3500);
+				setTimeout(function() {
+
+					slowBrightness -= 10; //value: 40;
+					//console.log(slowBrightness);
+
+				}, 4000);
+				setTimeout(function() {
+						
+					slowBrightness -= 10; //value: 30
+					//console.log(slowBrightness);
+
+				}, 4500);
+				setTimeout(function() {
+
+					slowBrightness += 10; //value: 40
+					//console.log(slowBrightness);
+
+				}, 5000);
+				setTimeout(function() {
+
+					slowBrightness += 10; //value: 50
+					//console.log(slowBrightness);
+
+				}, 5500);
+
+				slowMoDelay = setTimeout(function() {
+				
+					slowMotion = false;
+
+				}, 6000);
+
+				
+				//console.log(slowBrightness);		
 			
 		}
 
