@@ -3062,34 +3062,6 @@ canvas1.height = canvas.height;
 				ctx.fill();
 				ctx.closePath();
 			}
-
-			// //this is what detects colisions for bullets and RandomShip enemys
-			// for(var j = 0; j < bulletClip.length; j++){
-			
-			// 	//bulletClip[j].draw(); // this will add a cool blur to the bullet
-			
-			// 	for(var i = 0; i < RandomShipFleet.length; i++){
-					
-			// 		//RandomShipFleet[i].draw(); //this will add a cool blur to the enemys
-				
-			// 		if (bulletClip[j].x < RandomShipFleet[i].x + (bulletSize * 3)  && bulletClip[j].x + (bulletSize * 3)  > RandomShipFleet[i].x &&
-			// 		bulletClip[j].y < RandomShipFleet[i].y + (bulletSize * 3) && bulletClip[j].y + (bulletSize * 3) > RandomShipFleet[i].y) {
-			// 			// The objects are touching
-						
-			// 			score += 1;
-			// 			//loop();
-			// 			fireworks.push( new Firework( canvas.width / 2, canvas.height, RandomShipFleet[i].x, RandomShipFleet[i].y ) );
-
-			// 			timerTick = 0;
-			// 			$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
-				
-			// 			RandomShipFleet.splice(i, 1); //this will destroy the enemy on colision with the bullet
-			// 			bulletClip.splice(j, 1);
-						
-			// 		 }
-			// 	}
-			
-			// }
 			
 															 						
 			//enemy.draw();
