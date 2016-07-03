@@ -707,6 +707,7 @@ canvas1.height = canvas.height;
 			// $("#restartBtn").closest('.ui-btn').hide();
 			// $("#restartDiv").hide();
 			$("#rotWar").show();
+			$("#shootStick").hide();
 			
 		}
 		
@@ -714,6 +715,7 @@ canvas1.height = canvas.height;
 			
 		 	$("#play").closest('.ui-btn').show();
 			 $("#dwnload").closest('.ui-btn').hide();
+			 $("#shootStick").show();
 			 
 			 if(exitReload == 1){
 			 
