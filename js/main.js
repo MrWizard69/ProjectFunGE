@@ -567,6 +567,7 @@ canvas1.height = canvas.height;
 		
 		
 		$("#play").closest('.ui-btn').css("margin-top", "90%");
+		$("#play").closest('.ui-btn').hide();
 		$("h2").hide();
 		$("#score").show();
 
@@ -708,6 +709,7 @@ canvas1.height = canvas.height;
 			// $("#restartDiv").hide();
 			$("#rotWar").show();
 			$("#shootStick").hide();
+			$("#container").hide();
 			
 		}
 		
@@ -716,6 +718,7 @@ canvas1.height = canvas.height;
 		 	$("#play").closest('.ui-btn').show();
 			 $("#dwnload").closest('.ui-btn').hide();
 			 $("#shootStick").show();
+			 $("#container").show();
 			 
 			 if(exitReload == 1){
 			 
