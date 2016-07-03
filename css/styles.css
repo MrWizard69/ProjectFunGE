@@ -26,7 +26,7 @@
 	-webkit-transition: all 1s; 
 	-o-transition: all 1s; 
 	transition: all 1s ;  
-	margin-left: 2%;
+	/*margin-left: 2%;*/
 	/*margin-top: -13%;*/
 	/*--------------This is what activates GPU graphic rendering End------------------*/
 	
@@ -34,7 +34,7 @@
 
 #container{
 
-	margin-left: 1%;
+	/*margin-left: 1%;*/
 	/*margin-top: -13%;*/
 }
 
