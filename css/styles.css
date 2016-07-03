@@ -1,6 +1,7 @@
 .ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper{ /*.this is the jquery mobile wrapper over the body*/
 	
-	background-color: #6c6c6c;
+	/*background-color: #6c6c6c;*/
+	background-color: black;
 	text-shadow:0 0 0;
 	font-family: 'Droid Sans', sans-serif;
 	
@@ -79,14 +80,16 @@ canvas {
 h2{
 	text-align: center;
 	margin-top: -.1%;
-	color: black;
+	/*color: black;*/
+	color: white;
 	
 }
 
 h3{
 	text-align: center;
 	margin-top: -3%;
-	color: black;
+	/*color: black;*/
+	color: white;
 	/*margin-top: -3%;*/
 }
 

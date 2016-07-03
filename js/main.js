@@ -21,6 +21,9 @@ var ctx;
 var slowHue = 240;
 var slowShade = 100;
 var slowBrightness = 60;
+var borderHue = 50;
+var borderShade = 29;
+var borderBrightness = 61;
 
 
 $(document).ready(function () {
@@ -30,6 +33,7 @@ $(document).ready(function () {
 	
     var canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
+	
 	
 	
 	window.requestAnimFrame = (function() {
@@ -610,8 +614,8 @@ canvas1.height = canvas.height;
 	// Display custom canvas.
 	function redraw() {
 		//ctx.strokeStyle = 'blue';
-		ctx.lineWidth = '.1';
-		ctx.strokeRect(0, 0, window.innerWidth, window.innerHeight);
+		//ctx.lineWidth = '1';
+		//ctx.strokeRect(0, 0, window.innerWidth, window.innerHeight);
 		
 		//Resize character sizes
 		playersSizeW = canvas.width * .01;
@@ -1304,10 +1308,24 @@ canvas1.height = canvas.height;
             // ctx.arc(target.Ex, target.Ey, playerSize, 0, Math.PI * 2); // draws the ai. ai has hard coded position
             // ctx.fill();
             // ctx.closePath();
+			var flicker = Math.floor((Math.random() * 30) + 1);
+
+			if(flicker == 15){
+
+				borderBrightness = Math.floor((Math.random() * 60) + 30);
+
+			}
+			
+
+			ctx.strokeStyle = 'hsl(' + borderHue + ',' + borderShade + '%, ' + borderBrightness + '%)';
+			ctx.lineWidth = '5';
+			ctx.strokeRect(0, 0, canvas.width, canvas.height);
+
+				
 
 
 			$("canvas:nth-child(2)").hide();
-            setTimeout(update, 30); //refresh the screen to update positions
+            setTimeout(update, 30); //refresh the screen to update positions//
 
 			if(slowMotion == true){
 
@@ -1319,8 +1337,12 @@ canvas1.height = canvas.height;
 				
 			}
 			else if(slowMotion == false){
+				
+				
 
-				ctx.clearRect(0, 0, canvas.width, canvas.height); 
+				//ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+				
 
 				slowBrightness = 60;
 			}
