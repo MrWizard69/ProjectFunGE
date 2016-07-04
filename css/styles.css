@@ -83,6 +83,7 @@ h2{
 	/*color: black;*/
 	color: white;
 	
+	
 }
 
 h3{
@@ -202,6 +203,10 @@ html, body {
 	}
 	h2{
 		margin-top: 7%;
+	}
+
+	#canvas{
+		margin-top: -3%;
 	}
 
 }
