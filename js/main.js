@@ -1318,7 +1318,7 @@ canvas1.height = canvas.height;
 			
 
 			ctx.strokeStyle = 'hsl(' + borderHue + ',' + borderShade + '%, ' + borderBrightness + '%)';
-			ctx.lineWidth = '5';
+			ctx.lineWidth = '3';
 			ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
 				
@@ -3213,7 +3213,7 @@ canvas1.height = canvas.height;
 				// 	}
 				// }
 
-				if(InfectedFleet[i].size >= (playerSize * 5)){
+				if(InfectedFleet[i].size >= (playerSize * 4)){
 
 					bigLazer = jQuery.extend(true, {}, InfectedLazer);
 					bigLazer.x = InfectedFleet[i].x + (InfectedFleet[i].size / 2);
