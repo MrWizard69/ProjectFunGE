@@ -1319,7 +1319,7 @@ canvas1.height = canvas.height;
 			
 
 			ctx.strokeStyle = 'hsl(' + borderHue + ',' + borderShade + '%, ' + borderBrightness + '%)';
-			ctx.lineWidth = '1';
+			ctx.lineWidth = '5';
 			ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
 				
