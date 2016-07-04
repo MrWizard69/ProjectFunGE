@@ -89,11 +89,12 @@ canvas {
 #RotWarBox{
 
 	background-color: white;
-	width: 70%;
+	width: 75%;
 	position: absolute;
 	z-index: 1;
-	top: 40%;
-	left: 13%;
+	top: 30%;
+	left: 12%;
+	border-radius: 5px;
 
 }
 

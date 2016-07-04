@@ -208,11 +208,11 @@ canvas1.height = canvas.height;
 
 	$("#canvas").click(function(){
 
-		if(canvas.width <= 300){
+		//if(canvas.width <= 300){
 
 			$("#RotWarBox").show();
 
-		}
+		//}
 
 	});
 
