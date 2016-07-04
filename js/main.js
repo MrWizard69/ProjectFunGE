@@ -198,11 +198,27 @@ canvas1.height = canvas.height;
 	$("#score").hide();
 	$("#restartBtn").closest('.ui-btn').hide();
 	$("#restartDiv").hide();
+	$("#rotWarningBox").hide();
 	
 	$("#dwnload").click(function(){
 		
 		addtohome.show();
 		
+	});
+
+	$("#rotWarningBox").click(function(){
+
+		if(canvas.width <= 300){
+
+			$("#rotWarningBox").show();
+		}
+
+	});
+
+	$("#closeRotBtn").click(function(){
+
+		$("#rotWarningBox").hide();
+
 	});
 	
 	

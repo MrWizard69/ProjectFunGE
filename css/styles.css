@@ -77,13 +77,22 @@ canvas {
 	/*--------------This is what activates GPU graphic rendering End------------------*/
 }
 
-h2{
+#title{
 	text-align: center;
 	margin-top: -.1%;
 	/*color: black;*/
 	color: white;
 	
 	
+}
+
+#rotWarningBox{
+
+	background-color: white;
+
+	margin-top: -21.8%;
+	width: 50%;
+	margin-left: 22%;
 }
 
 h3{
