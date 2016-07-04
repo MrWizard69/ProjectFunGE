@@ -162,8 +162,7 @@ html, body {
 
 #rest{
 	
-	width: 17%;
-	
+	width: 16%;	
 	
 }
 
@@ -180,6 +179,7 @@ html, body {
 	margin-top: -21.8%;
 	width: 50%;
 	margin-left: 22%;
+
 	
 }
 
@@ -206,7 +206,7 @@ html, body {
 	}
 
 	#canvas{
-		margin-top: -2%;
+		margin-top: -3%;
 	}
 
 }
