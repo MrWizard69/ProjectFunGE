@@ -687,10 +687,10 @@ canvas1.height = canvas.height;
 		if(canvas.width >= 241){
 			
 			joyStickX = (window.innerWidth) * .93;
-			joyStickY = (window.innerHeight) * .45;	
+			joyStickY = (window.innerHeight) * .55;	
 			
 			shootStickX = (window.innerWidth) * .07;
-			shootStickY = (window.innerHeight) * 0.45;
+			shootStickY = (window.innerHeight) * 0.55;
 
 			//console.log("one");
 			
