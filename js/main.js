@@ -723,6 +723,7 @@ canvas1.height = canvas.height;
 			 $("#dwnload").closest('.ui-btn').hide();
 			 $("#shootStick").show();
 			 $("#container").show();
+			 $("#canvas").css("margin-top", "-1%");
 			 
 			 if(exitReload == 1){
 			 
@@ -1318,7 +1319,7 @@ canvas1.height = canvas.height;
 			
 
 			ctx.strokeStyle = 'hsl(' + borderHue + ',' + borderShade + '%, ' + borderBrightness + '%)';
-			ctx.lineWidth = '3';
+			ctx.lineWidth = '5';
 			ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
 				
