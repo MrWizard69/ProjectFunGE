@@ -208,7 +208,7 @@ canvas1.height = canvas.height;
 
 	$("#canvas").click(function(){
 
-		if(canvas.width <= 300){
+		if(canvas.width <= 300 && exitReload == 0){
 
 			$("#RotWarBox").show();
 
@@ -588,8 +588,8 @@ canvas1.height = canvas.height;
 		
 		
 		$("#play").closest('.ui-btn').css("margin-top", "90%");
-		$("#play").closest('.ui-btn').hide();
-		$("h2").hide();
+		$("#pDiv").hide();
+		$("#title").hide();
 		$("#score").show();
 
 	});
@@ -743,9 +743,9 @@ canvas1.height = canvas.height;
 			
 			 
 			 if(exitReload == 1){
-			 
+
 			 	$("#restartBtn").closest('.ui-btn').show();
-				 $("#restartDiv").show();
+				$("#restartDiv").show();
 			 }
 			 $("#rotWar").hide();
 			 //exitReload = 0;
