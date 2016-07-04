@@ -198,7 +198,7 @@ canvas1.height = canvas.height;
 	$("#score").hide();
 	$("#restartBtn").closest('.ui-btn').hide();
 	$("#restartDiv").hide();
-	$("#rotWarningBox").hide();
+	$("#RotWarBox").hide();
 	
 	$("#dwnload").click(function(){
 		
@@ -210,14 +210,15 @@ canvas1.height = canvas.height;
 
 		if(canvas.width <= 300){
 
-			$("#rotWarningBox").show();
+			$("#RotWarBox").show();
+
 		}
 
 	});
 
-	$("#closeRotBtn").click(function(){
+	$("#closeRotWar").click(function(){
 
-		$("#rotWarningBox").hide();
+		$("#RotWarBox").hide();
 
 	});
 	

@@ -79,21 +79,31 @@ canvas {
 
 #title{
 	text-align: center;
-	margin-top: -.1%;
+	/*margin-top: -.1%;*/
 	/*color: black;*/
 	color: white;
 	
 	
 }
 
-#rotWarningBox{
+#RotWarBox{
 
 	background-color: white;
-
-	margin-top: -51.8%;
 	width: 70%;
-	margin-left: 22%;
+	position: absolute;
+	z-index: 1;
+	top: 40%;
+	left: 13%;
+
 }
+
+#rotMessage{
+
+	text-align: center;
+	color: darkred;
+
+}
+
 
 h3{
 	text-align: center;
