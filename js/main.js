@@ -587,7 +587,8 @@ canvas1.height = canvas.height;
 		// 	}	
 		
 		
-		$("#play").closest('.ui-btn').css("margin-top", "90%");
+		//$("#play").closest('.ui-btn').css("margin-top", "90%");
+		$("#play").closest('.ui-btn').hide();
 		$("#pDiv").hide();
 		$("#title").hide();
 		$("#score").show();
@@ -725,6 +726,7 @@ canvas1.height = canvas.height;
 		if(canvas.width <= 300){
 			
 			$("#play").closest('.ui-btn').hide();
+			$("#pDiv").hide();
 			$("#dwnload").closest('.ui-btn').show();
 			// $("#restartBtn").closest('.ui-btn').hide();
 			// $("#restartDiv").hide();
@@ -733,10 +735,16 @@ canvas1.height = canvas.height;
 			$("#container").hide();
 			
 		}
-		
+		else if(canvas.width >= 350 && menu == false){
+
+			$("#play").closest('.ui-btn').hide();
+			$("#pDiv").hide();
+
+		}		
 		 else if(canvas.width >= 350){
 			
-		 	$("#play").closest('.ui-btn').show();
+		 	 $("#play").closest('.ui-btn').show();
+			 $("#pDiv").show();
 			 $("#dwnload").closest('.ui-btn').hide();
 			 $("#shootStick").show();
 			 $("#container").show();
@@ -745,6 +753,8 @@ canvas1.height = canvas.height;
 			 if(exitReload == 1){
 
 			 	//$("#restartBtn").closest('.ui-btn').show();
+				$("#play").closest('.ui-btn').hide();
+				$("#pDiv").hide();
 				$("#restartDiv").show();
 			 }
 			 $("#rotWar").hide();
