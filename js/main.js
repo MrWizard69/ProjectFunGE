@@ -196,7 +196,7 @@ canvas1.height = canvas.height;
 	});
 	
 	$("#score").hide();
-	$("#restartBtn").closest('.ui-btn').hide();
+	//$("#restartBtn").closest('.ui-btn').hide();
 	$("#restartDiv").hide();
 	$("#RotWarBox").hide();
 	
@@ -292,7 +292,7 @@ canvas1.height = canvas.height;
 		InfectedFleet = [];
 		LazerBattery = [];
 		$("#score").html("Score: " + score + " | Health: " + lives  + " | Bullet Power: " + bulletPower);
-		$("#restartBtn").closest('.ui-btn').hide();
+		//$("#restartBtn").closest('.ui-btn').hide();
 		$("#restartDiv").hide();
 		
 		
@@ -744,7 +744,7 @@ canvas1.height = canvas.height;
 			 
 			 if(exitReload == 1){
 
-			 	$("#restartBtn").closest('.ui-btn').show();
+			 	//$("#restartBtn").closest('.ui-btn').show();
 				$("#restartDiv").show();
 			 }
 			 $("#rotWar").hide();
@@ -4457,11 +4457,11 @@ canvas1.height = canvas.height;
 			
 			else{
 				
-				$("#pDiv").css("margin-top", "90%");
+				//$("#pDiv").css("margin-top", "90%");
 				x = canvas.width * 0.50;
 				y = canvas.height * 0.50;
 				menu = true;
-				$("#restartBtn").closest('.ui-btn').show();
+				//$("#restartBtn").closest('.ui-btn').show();
 				$("#restartDiv").show();
 				
 				
