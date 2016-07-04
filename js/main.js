@@ -206,7 +206,7 @@ canvas1.height = canvas.height;
 		
 	});
 
-	$("#rotWarningBox").click(function(){
+	$("#canvas").click(function(){
 
 		if(canvas.width <= 300){
 
