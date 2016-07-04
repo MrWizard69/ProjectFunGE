@@ -723,7 +723,7 @@ canvas1.height = canvas.height;
 			 $("#dwnload").closest('.ui-btn').hide();
 			 $("#shootStick").show();
 			 $("#container").show();
-			 $("#canvas").css("margin-top", "-1%");
+			
 			 
 			 if(exitReload == 1){
 			 
