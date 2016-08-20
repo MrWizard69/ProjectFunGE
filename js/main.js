@@ -918,15 +918,16 @@ canvas1.height = canvas.height;
 			
 			//the update function does two things, draws the characters and enemies and tracks their movement positions
 			
-			//this will track what keys are pressed and will update the players position
-
-			
+			//this will track what keys are pressed and will update the players position			
 			
 			//this is for the arrow keys control
 
-            if (keys[38]) { // up arrow key
+            if (keys[87]) { // up arrow key[38] w key[87]
                 if (velY > -speed) {
                     //velY -= 6;
+
+					//shootStickDirX = "";
+					//shootStickDirY = "up";
 
 					if(slowMotion == true){
 
@@ -935,14 +936,19 @@ canvas1.height = canvas.height;
 					else if(slowMotion == false){
 
 						velY -= (canvas.height) * 0.01;
-					}				
+					}					
+					
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
-            }
+				
+			}
 
-            if (keys[40]) { // down arrow key
+            if (keys[83]) { // down arrow key[40] s key[83]
                 if (velY < speed) {
                     //velY += 6;
+
+					//shootStickDirX = "";
+					//shootStickDirY = "down";
 
 					if(slowMotion == true){
 
@@ -951,13 +957,17 @@ canvas1.height = canvas.height;
 					else if(slowMotion == false){
 
 						velY += (canvas.height) * 0.01;
-					}					
+					}
+							
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
-            if (keys[39]) { // right arrow key
+            if (keys[68]) { // right arrow key[39] a key[68]
                 if (velX < speed) {
                     //velX += 6;
+
+					//shootStickDirX = "right";
+					//shootStickDirY = "";
 
 					if(slowMotion == true){
 
@@ -967,12 +977,16 @@ canvas1.height = canvas.height;
 
 						velX += (canvas.width) * 0.01;
 					}
+					
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
-            if (keys[37]) { // left arrow key
+            if (keys[65]) { // left arrow key[37] d key[65]
                 if (velX > -speed) {
                     //velX -= 6;
+
+					//shootStickDirX = "left";
+					//shootStickDirY = "";
 
 					if(slowMotion == true){
 
@@ -981,16 +995,150 @@ canvas1.height = canvas.height;
 					else if(slowMotion == false){
 
 						velX -= (canvas.width) * 0.01;
-					}					
+					}
+
+							
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
             }
+
+			if(keys[39] && keys[38]){ //right up
+
+				shootStickDirX = "right";
+				shootStickDirY = "up";
+
+                bullet = jQuery.extend(true, {}, PlayerBullet);
+				bullet.directionX = shootStickDirX;
+				bullet.directionY = shootStickDirY;
+				bullet.x = x;
+				bullet.y = y;
+				
+				bulletClip.push(bullet);
+			}
+
+			else if(keys[39] && keys[40]){ //right down
+
+				shootStickDirX = "right";
+				shootStickDirY = "down";
+
+                bullet = jQuery.extend(true, {}, PlayerBullet);
+				bullet.directionX = shootStickDirX;
+				bullet.directionY = shootStickDirY;
+				bullet.x = x;
+				bullet.y = y;
+				
+				bulletClip.push(bullet);
+			}
+
+			else if(keys[37] && keys[40]){ //left down
+
+				shootStickDirX = "left";
+				shootStickDirY = "down";
+
+                bullet = jQuery.extend(true, {}, PlayerBullet);
+				bullet.directionX = shootStickDirX;
+				bullet.directionY = shootStickDirY;
+				bullet.x = x;
+				bullet.y = y;
+				
+				bulletClip.push(bullet);
+			}
+
+			else if(keys[37] && keys[38]){ //left up
+
+				shootStickDirX = "left";
+				shootStickDirY = "up";
+
+                bullet = jQuery.extend(true, {}, PlayerBullet);
+				bullet.directionX = shootStickDirX;
+				bullet.directionY = shootStickDirY;
+				bullet.x = x;
+				bullet.y = y;
+				
+				bulletClip.push(bullet);
+			}
+
+			else if (keys[37]) { // left arrow key[37] d key[65]
+
+				shootStickDirX = "left";
+				shootStickDirY = "";
+
+                bullet = jQuery.extend(true, {}, PlayerBullet);
+				bullet.directionX = shootStickDirX;
+				bullet.directionY = shootStickDirY;
+				bullet.x = x;
+				bullet.y = y;
+				
+				bulletClip.push(bullet);
+            }
+			else if (keys[39]) { // right arrow key[39] a key[68]
+
+				shootStickDirX = "right";
+				shootStickDirY = "";
+
+                bullet = jQuery.extend(true, {}, PlayerBullet);
+				bullet.directionX = shootStickDirX;
+				bullet.directionY = shootStickDirY;
+				bullet.x = x;
+				bullet.y = y;
+				
+				bulletClip.push(bullet);
+            }
+			else if (keys[40]) { // down arrow key[40] s key[83]
+
+				shootStickDirX = "";
+				shootStickDirY = "down";
+
+                bullet = jQuery.extend(true, {}, PlayerBullet);
+				bullet.directionX = shootStickDirX;
+				bullet.directionY = shootStickDirY;
+				bullet.x = x;
+				bullet.y = y;
+				
+				bulletClip.push(bullet);
+            }
+			else if (keys[38]) { // up arrow key[38] w key[87]
+
+				shootStickDirX = "";
+				shootStickDirY = "up";
+
+                bullet = jQuery.extend(true, {}, PlayerBullet);
+				bullet.directionX = shootStickDirX;
+				bullet.directionY = shootStickDirY;
+				bullet.x = x;
+				bullet.y = y;
+				
+				bulletClip.push(bullet);
+            }
+
+			// if(keys[32]){
+
+			// 	bullet = jQuery.extend(true, {}, PlayerBullet);
+			// 	bullet.directionX = shootStickDirX;
+			// 	bullet.directionY = shootStickDirY;
+			// 	bullet.x = x;
+			// 	bullet.y = y;
+				
+			// 	//Enemy1.x = Math.round(Math.random() * (canvas.width * .95));
+			// 	//Enemy1.y = Math.round(Math.random() * (canvas.height * .95));
+			// 	//Enemy1.direction = Math.round(Math.random() * 7);
+			// 	bulletClip.push(bullet);
+			// }
+			// else{
+			// 	shootStickTouch = false;
+			// 	//console.log(shootStickTouch);					
+			// 	shootStickDirX = "";
+			// 	shootStickDirY = "";
+			// 	//clearInterval(bulletLoop);
+			// }
+
 
 			document.body.addEventListener("keydown", function (e) { // these make the keyboard do
 				keys[e.keyCode] = true;
 			});
 			document.body.addEventListener("keyup", function (e) {
 				keys[e.keyCode] = false;
+
 			});
 			
 			
