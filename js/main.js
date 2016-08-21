@@ -1002,9 +1002,7 @@ canvas1.height = canvas.height;
 							
 					//$("#result").html("X: " + x + " Y: " + y);
                 }
-            }
-
-			
+            }			
 
 			if(keys[39] && keys[38]){ //arrow keys right up
 
