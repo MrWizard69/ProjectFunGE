@@ -24,6 +24,7 @@ var slowBrightness = 60;
 var borderHue = 50;
 var borderShade = 29;
 var borderBrightness = 61;
+var KeyboardBulletDelay = 10;
 
 
 $(document).ready(function () {
@@ -280,6 +281,7 @@ canvas1.height = canvas.height;
 		lives = 3;
 		bulletSpeed = 0;
 		bulletPower = 0;
+		KeyboardBulletDelay = 10;
 		menu = false;
 		RandomShipFleet = [];
 		HunterFleet = [];
@@ -1002,60 +1004,578 @@ canvas1.height = canvas.height;
                 }
             }
 
-			if(keys[39] && keys[38]){ //right up
+			
+
+			if(keys[39] && keys[38]){ //arrow keys right up
 
 				shootStickDirX = "right";
 				shootStickDirY = "up";
 
-                bullet = jQuery.extend(true, {}, PlayerBullet);
-				bullet.directionX = shootStickDirX;
-				bullet.directionY = shootStickDirY;
-				bullet.x = x;
-				bullet.y = y;
-				
-				bulletClip.push(bullet);
+				if(bulletPower == 0 && KeyboardBulletDelay == 10){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 1 && KeyboardBulletDelay == 9){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 2 && KeyboardBulletDelay == 8){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 3 && KeyboardBulletDelay == 7){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 4 && KeyboardBulletDelay == 6){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 5 && KeyboardBulletDelay == 5){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 6 && KeyboardBulletDelay == 4){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 7 && KeyboardBulletDelay == 3){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 8 && KeyboardBulletDelay == 2){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower >= 9 && KeyboardBulletDelay == 1){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				KeyboardBulletDelay -= 1;
+
+				if(KeyboardBulletDelay <= 0){
+
+					if(bulletPower == 0){
+
+						KeyboardBulletDelay = 10;
+					}
+					else if(bulletPower == 1){
+
+						KeyboardBulletDelay = 9;
+					}
+					else if(bulletPower == 2){
+
+						KeyboardBulletDelay = 8;
+					}
+					else if(bulletPower == 3){
+
+						KeyboardBulletDelay = 7;
+					}
+					else if(bulletPower == 4){
+
+						KeyboardBulletDelay = 6;
+					}
+					else if(bulletPower == 5){
+
+						KeyboardBulletDelay = 5;
+					}
+					else if(bulletPower == 6){
+
+						KeyboardBulletDelay = 4;
+					}
+					else if(bulletPower == 7){
+
+						KeyboardBulletDelay = 3;
+					}
+					else if(bulletPower == 8){
+
+						KeyboardBulletDelay = 2;
+					}
+					else if(bulletPower >= 9){
+
+						KeyboardBulletDelay = 1;
+					}
+					
+				}
 			}
 
-			else if(keys[39] && keys[40]){ //right down
+			else if(keys[39] && keys[40]){ //arrow keys right down
 
 				shootStickDirX = "right";
 				shootStickDirY = "down";
 
-                bullet = jQuery.extend(true, {}, PlayerBullet);
-				bullet.directionX = shootStickDirX;
-				bullet.directionY = shootStickDirY;
-				bullet.x = x;
-				bullet.y = y;
-				
-				bulletClip.push(bullet);
+				if(bulletPower == 0 && KeyboardBulletDelay == 10){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 1 && KeyboardBulletDelay == 9){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 2 && KeyboardBulletDelay == 8){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 3 && KeyboardBulletDelay == 7){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 4 && KeyboardBulletDelay == 6){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 5 && KeyboardBulletDelay == 5){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 6 && KeyboardBulletDelay == 4){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 7 && KeyboardBulletDelay == 3){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 8 && KeyboardBulletDelay == 2){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower >= 9 && KeyboardBulletDelay == 1){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				KeyboardBulletDelay -= 1;
+
+				if(KeyboardBulletDelay <= 0){
+
+					if(bulletPower == 0){
+
+						KeyboardBulletDelay = 10;
+					}
+					else if(bulletPower == 1){
+
+						KeyboardBulletDelay = 9;
+					}
+					else if(bulletPower == 2){
+
+						KeyboardBulletDelay = 8;
+					}
+					else if(bulletPower == 3){
+
+						KeyboardBulletDelay = 7;
+					}
+					else if(bulletPower == 4){
+
+						KeyboardBulletDelay = 6;
+					}
+					else if(bulletPower == 5){
+
+						KeyboardBulletDelay = 5;
+					}
+					else if(bulletPower == 6){
+
+						KeyboardBulletDelay = 4;
+					}
+					else if(bulletPower == 7){
+
+						KeyboardBulletDelay = 3;
+					}
+					else if(bulletPower == 8){
+
+						KeyboardBulletDelay = 2;
+					}
+					else if(bulletPower >= 9){
+
+						KeyboardBulletDelay = 1;
+					}
+					
+				}
 			}
 
-			else if(keys[37] && keys[40]){ //left down
+			else if(keys[37] && keys[40]){ //arrow keys left down
 
 				shootStickDirX = "left";
 				shootStickDirY = "down";
+	
+				if(bulletPower == 0 && KeyboardBulletDelay == 10){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 1 && KeyboardBulletDelay == 9){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 2 && KeyboardBulletDelay == 8){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 3 && KeyboardBulletDelay == 7){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 4 && KeyboardBulletDelay == 6){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 5 && KeyboardBulletDelay == 5){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 6 && KeyboardBulletDelay == 4){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 7 && KeyboardBulletDelay == 3){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 8 && KeyboardBulletDelay == 2){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower >= 9 && KeyboardBulletDelay == 1){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				KeyboardBulletDelay -= 1;
 
-                bullet = jQuery.extend(true, {}, PlayerBullet);
-				bullet.directionX = shootStickDirX;
-				bullet.directionY = shootStickDirY;
-				bullet.x = x;
-				bullet.y = y;
-				
-				bulletClip.push(bullet);
+				if(KeyboardBulletDelay <= 0){
+
+					if(bulletPower == 0){
+
+						KeyboardBulletDelay = 10;
+					}
+					else if(bulletPower == 1){
+
+						KeyboardBulletDelay = 9;
+					}
+					else if(bulletPower == 2){
+
+						KeyboardBulletDelay = 8;
+					}
+					else if(bulletPower == 3){
+
+						KeyboardBulletDelay = 7;
+					}
+					else if(bulletPower == 4){
+
+						KeyboardBulletDelay = 6;
+					}
+					else if(bulletPower == 5){
+
+						KeyboardBulletDelay = 5;
+					}
+					else if(bulletPower == 6){
+
+						KeyboardBulletDelay = 4;
+					}
+					else if(bulletPower == 7){
+
+						KeyboardBulletDelay = 3;
+					}
+					else if(bulletPower == 8){
+
+						KeyboardBulletDelay = 2;
+					}
+					else if(bulletPower >= 9){
+
+						KeyboardBulletDelay = 1;
+					}
+					
+				}
 			}
 
-			else if(keys[37] && keys[38]){ //left up
+			else if(keys[37] && keys[38]){ //arrow keys left up
 
 				shootStickDirX = "left";
 				shootStickDirY = "up";
 
-                bullet = jQuery.extend(true, {}, PlayerBullet);
-				bullet.directionX = shootStickDirX;
-				bullet.directionY = shootStickDirY;
-				bullet.x = x;
-				bullet.y = y;
-				
-				bulletClip.push(bullet);
+				if(bulletPower == 0 && KeyboardBulletDelay == 10){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 1 && KeyboardBulletDelay == 9){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 2 && KeyboardBulletDelay == 8){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 3 && KeyboardBulletDelay == 7){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 4 && KeyboardBulletDelay == 6){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 5 && KeyboardBulletDelay == 5){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 6 && KeyboardBulletDelay == 4){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 7 && KeyboardBulletDelay == 3){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 8 && KeyboardBulletDelay == 2){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower >= 9 && KeyboardBulletDelay == 1){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				KeyboardBulletDelay -= 1;
+
+				if(KeyboardBulletDelay <= 0){
+
+					if(bulletPower == 0){
+
+						KeyboardBulletDelay = 10;
+					}
+					else if(bulletPower == 1){
+
+						KeyboardBulletDelay = 9;
+					}
+					else if(bulletPower == 2){
+
+						KeyboardBulletDelay = 8;
+					}
+					else if(bulletPower == 3){
+
+						KeyboardBulletDelay = 7;
+					}
+					else if(bulletPower == 4){
+
+						KeyboardBulletDelay = 6;
+					}
+					else if(bulletPower == 5){
+
+						KeyboardBulletDelay = 5;
+					}
+					else if(bulletPower == 6){
+
+						KeyboardBulletDelay = 4;
+					}
+					else if(bulletPower == 7){
+
+						KeyboardBulletDelay = 3;
+					}
+					else if(bulletPower == 8){
+
+						KeyboardBulletDelay = 2;
+					}
+					else if(bulletPower >= 9){
+
+						KeyboardBulletDelay = 1;
+					}
+					
+				}
 			}
 
 			else if (keys[37]) { // left arrow key[37] d key[65]
@@ -1063,74 +1583,570 @@ canvas1.height = canvas.height;
 				shootStickDirX = "left";
 				shootStickDirY = "";
 
-                bullet = jQuery.extend(true, {}, PlayerBullet);
-				bullet.directionX = shootStickDirX;
-				bullet.directionY = shootStickDirY;
-				bullet.x = x;
-				bullet.y = y;
-				
-				bulletClip.push(bullet);
+
+				if(bulletPower == 0 && KeyboardBulletDelay == 10){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 1 && KeyboardBulletDelay == 9){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 2 && KeyboardBulletDelay == 8){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 3 && KeyboardBulletDelay == 7){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 4 && KeyboardBulletDelay == 6){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 5 && KeyboardBulletDelay == 5){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 6 && KeyboardBulletDelay == 4){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 7 && KeyboardBulletDelay == 3){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 8 && KeyboardBulletDelay == 2){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower >= 9 && KeyboardBulletDelay == 1){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				KeyboardBulletDelay -= 1;
+
+				if(KeyboardBulletDelay <= 0){
+
+					if(bulletPower == 0){
+
+						KeyboardBulletDelay = 10;
+					}
+					else if(bulletPower == 1){
+
+						KeyboardBulletDelay = 9;
+					}
+					else if(bulletPower == 2){
+
+						KeyboardBulletDelay = 8;
+					}
+					else if(bulletPower == 3){
+
+						KeyboardBulletDelay = 7;
+					}
+					else if(bulletPower == 4){
+
+						KeyboardBulletDelay = 6;
+					}
+					else if(bulletPower == 5){
+
+						KeyboardBulletDelay = 5;
+					}
+					else if(bulletPower == 6){
+
+						KeyboardBulletDelay = 4;
+					}
+					else if(bulletPower == 7){
+
+						KeyboardBulletDelay = 3;
+					}
+					else if(bulletPower == 8){
+
+						KeyboardBulletDelay = 2;
+					}
+					else if(bulletPower >= 9){
+
+						KeyboardBulletDelay = 1;
+					}
+					
+				}
             }
 			else if (keys[39]) { // right arrow key[39] a key[68]
 
 				shootStickDirX = "right";
 				shootStickDirY = "";
 
-                bullet = jQuery.extend(true, {}, PlayerBullet);
-				bullet.directionX = shootStickDirX;
-				bullet.directionY = shootStickDirY;
-				bullet.x = x;
-				bullet.y = y;
-				
-				bulletClip.push(bullet);
+				if(bulletPower == 0 && KeyboardBulletDelay == 10){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 1 && KeyboardBulletDelay == 9){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 2 && KeyboardBulletDelay == 8){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 3 && KeyboardBulletDelay == 7){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 4 && KeyboardBulletDelay == 6){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 5 && KeyboardBulletDelay == 5){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 6 && KeyboardBulletDelay == 4){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 7 && KeyboardBulletDelay == 3){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 8 && KeyboardBulletDelay == 2){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower >= 9 && KeyboardBulletDelay == 1){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				KeyboardBulletDelay -= 1;
+
+				if(KeyboardBulletDelay <= 0){
+
+					if(bulletPower == 0){
+
+						KeyboardBulletDelay = 10;
+					}
+					else if(bulletPower == 1){
+
+						KeyboardBulletDelay = 9;
+					}
+					else if(bulletPower == 2){
+
+						KeyboardBulletDelay = 8;
+					}
+					else if(bulletPower == 3){
+
+						KeyboardBulletDelay = 7;
+					}
+					else if(bulletPower == 4){
+
+						KeyboardBulletDelay = 6;
+					}
+					else if(bulletPower == 5){
+
+						KeyboardBulletDelay = 5;
+					}
+					else if(bulletPower == 6){
+
+						KeyboardBulletDelay = 4;
+					}
+					else if(bulletPower == 7){
+
+						KeyboardBulletDelay = 3;
+					}
+					else if(bulletPower == 8){
+
+						KeyboardBulletDelay = 2;
+					}
+					else if(bulletPower >= 9){
+
+						KeyboardBulletDelay = 1;
+					}
+					
+				}
             }
 			else if (keys[40]) { // down arrow key[40] s key[83]
 
 				shootStickDirX = "";
 				shootStickDirY = "down";
 
-                bullet = jQuery.extend(true, {}, PlayerBullet);
-				bullet.directionX = shootStickDirX;
-				bullet.directionY = shootStickDirY;
-				bullet.x = x;
-				bullet.y = y;
-				
-				bulletClip.push(bullet);
+				if(bulletPower == 0 && KeyboardBulletDelay == 10){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 1 && KeyboardBulletDelay == 9){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 2 && KeyboardBulletDelay == 8){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 3 && KeyboardBulletDelay == 7){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 4 && KeyboardBulletDelay == 6){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 5 && KeyboardBulletDelay == 5){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 6 && KeyboardBulletDelay == 4){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 7 && KeyboardBulletDelay == 3){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 8 && KeyboardBulletDelay == 2){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower >= 9 && KeyboardBulletDelay == 1){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				KeyboardBulletDelay -= 1;
+
+				if(KeyboardBulletDelay <= 0){
+
+					if(bulletPower == 0){
+
+						KeyboardBulletDelay = 10;
+					}
+					else if(bulletPower == 1){
+
+						KeyboardBulletDelay = 9;
+					}
+					else if(bulletPower == 2){
+
+						KeyboardBulletDelay = 8;
+					}
+					else if(bulletPower == 3){
+
+						KeyboardBulletDelay = 7;
+					}
+					else if(bulletPower == 4){
+
+						KeyboardBulletDelay = 6;
+					}
+					else if(bulletPower == 5){
+
+						KeyboardBulletDelay = 5;
+					}
+					else if(bulletPower == 6){
+
+						KeyboardBulletDelay = 4;
+					}
+					else if(bulletPower == 7){
+
+						KeyboardBulletDelay = 3;
+					}
+					else if(bulletPower == 8){
+
+						KeyboardBulletDelay = 2;
+					}
+					else if(bulletPower >= 9){
+
+						KeyboardBulletDelay = 1;
+					}
+					
+				}
             }
 			else if (keys[38]) { // up arrow key[38] w key[87]
 
 				shootStickDirX = "";
 				shootStickDirY = "up";
 
-                bullet = jQuery.extend(true, {}, PlayerBullet);
-				bullet.directionX = shootStickDirX;
-				bullet.directionY = shootStickDirY;
-				bullet.x = x;
-				bullet.y = y;
-				
-				bulletClip.push(bullet);
+				if(bulletPower == 0 && KeyboardBulletDelay == 10){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 1 && KeyboardBulletDelay == 9){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 2 && KeyboardBulletDelay == 8){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 3 && KeyboardBulletDelay == 7){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 4 && KeyboardBulletDelay == 6){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 5 && KeyboardBulletDelay == 5){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 6 && KeyboardBulletDelay == 4){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 7 && KeyboardBulletDelay == 3){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower == 8 && KeyboardBulletDelay == 2){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				else if(bulletPower >= 9 && KeyboardBulletDelay == 1){
+					bullet = jQuery.extend(true, {}, PlayerBullet);
+					bullet.directionX = shootStickDirX;
+					bullet.directionY = shootStickDirY;
+					bullet.x = x;
+					bullet.y = y;
+					
+					bulletClip.push(bullet);
+				}
+				KeyboardBulletDelay -= 1;
+
+				if(KeyboardBulletDelay <= 0){
+
+					if(bulletPower == 0){
+
+						KeyboardBulletDelay = 10;
+					}
+					else if(bulletPower == 1){
+
+						KeyboardBulletDelay = 9;
+					}
+					else if(bulletPower == 2){
+
+						KeyboardBulletDelay = 8;
+					}
+					else if(bulletPower == 3){
+
+						KeyboardBulletDelay = 7;
+					}
+					else if(bulletPower == 4){
+
+						KeyboardBulletDelay = 6;
+					}
+					else if(bulletPower == 5){
+
+						KeyboardBulletDelay = 5;
+					}
+					else if(bulletPower == 6){
+
+						KeyboardBulletDelay = 4;
+					}
+					else if(bulletPower == 7){
+
+						KeyboardBulletDelay = 3;
+					}
+					else if(bulletPower == 8){
+
+						KeyboardBulletDelay = 2;
+					}
+					else if(bulletPower >= 9){
+
+						KeyboardBulletDelay = 1;
+					}
+					
+				}
             }
-
-			// if(keys[32]){
-
-			// 	bullet = jQuery.extend(true, {}, PlayerBullet);
-			// 	bullet.directionX = shootStickDirX;
-			// 	bullet.directionY = shootStickDirY;
-			// 	bullet.x = x;
-			// 	bullet.y = y;
-				
-			// 	//Enemy1.x = Math.round(Math.random() * (canvas.width * .95));
-			// 	//Enemy1.y = Math.round(Math.random() * (canvas.height * .95));
-			// 	//Enemy1.direction = Math.round(Math.random() * 7);
-			// 	bulletClip.push(bullet);
-			// }
-			// else{
-			// 	shootStickTouch = false;
-			// 	//console.log(shootStickTouch);					
-			// 	shootStickDirX = "";
-			// 	shootStickDirY = "";
-			// 	//clearInterval(bulletLoop);
-			// }
 
 
 			document.body.addEventListener("keydown", function (e) { // these make the keyboard do
