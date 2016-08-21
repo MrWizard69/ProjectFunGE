@@ -2146,7 +2146,6 @@ canvas1.height = canvas.height;
 				}
             }
 
-
 			document.body.addEventListener("keydown", function (e) { // these make the keyboard do
 				keys[e.keyCode] = true;
 			});
