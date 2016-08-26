@@ -331,7 +331,7 @@ canvas1.height = canvas.height;
 			//console.log("shoot stick");
 			
 			shootReady = true; //this checks the shootStick to see if the player knows what it does. First touch starts the game
-			$("#MoveStickInfo").css("margin-top","-13%");
+			$("#MoveStickInfo").css("margin-top","-14%");
 
 			$("#ShootStickInfo").hide();//hides the message
 			
@@ -767,8 +767,8 @@ canvas1.height = canvas.height;
 			$("#dwnload").closest('.ui-btn').show();
 			// $("#restartBtn").closest('.ui-btn').hide();
 			// $("#restartDiv").hide();
-			$("#ShootStickInfo").css("margin-top","-8.5%");
-			$("#MoveStickInfo").css("margin-top","-12%");
+			// $("#ShootStickInfo").css("margin-top","-8.5%");
+			// $("#MoveStickInfo").css("margin-top","-12%");
 			$("#rotWar").show();
 			$("#shootStick").hide();
 			$("#container").hide();
