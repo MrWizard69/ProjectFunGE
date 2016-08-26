@@ -187,6 +187,9 @@ canvas1.height = canvas.height;
 	var shootStickDirX = "";
 	var shootStickDirY = "";
 	var joyTouch = false;
+
+	var moveReady = false;
+	var shootReady = false;
 	
 	
 	var addtohome = addToHomescreen({
@@ -200,6 +203,9 @@ canvas1.height = canvas.height;
 	//$("#restartBtn").closest('.ui-btn').hide();
 	$("#restartDiv").hide();
 	$("#RotWarBox").hide();
+
+	$("#MoveStickInfo").hide();
+	$("#ShootStickInfo").hide();
 	
 	$("#dwnload").click(function(){
 		
@@ -314,6 +320,7 @@ canvas1.height = canvas.height;
 		$("#container").on("touchstart",function(){
 									
 			joyTouch = true; // the joystick was touched and now in the Update function it will be checking the direction of the joystick
+			moveReady = true;//this checks the joystick to see if the player knows what it does. First touch starts the game
 			
 		});
 
@@ -321,6 +328,7 @@ canvas1.height = canvas.height;
 			
 			//console.log("shoot stick");
 			
+			shootReady = true; //this checks the shootStick to see if the player knows what it does. First touch starts the game
 			
 			if(bulletPower >= 9){
 				
@@ -474,105 +482,125 @@ canvas1.height = canvas.height;
 			
 		//this will create new enemies
 		setInterval(function(){
+
+			if(moveReady == true && shootReady == true){
 					
-		    Enemy1 = jQuery.extend(true, {}, RandomShip);
-			Enemy1.x = Math.round(Math.random() * (canvas.width * .90));
-			Enemy1.y = Math.round(Math.random() * (canvas.height * .90));
-			Enemy1.direction = Math.round(Math.random() * 7);
-			
-			if (exitReload == 0 || x > Enemy1.x && x < Enemy1.x && //TODO: Figure out a way to get the enemys to ONLY spawn around the player
-				y > Enemy1.y && y < Enemy1.y + (playerSize * 15)) {
-					
-				RandomShipFleet.push(Enemy1);
-			
+				Enemy1 = jQuery.extend(true, {}, RandomShip);
+				Enemy1.x = Math.round(Math.random() * (canvas.width * .90));
+				Enemy1.y = Math.round(Math.random() * (canvas.height * .90));
+				Enemy1.direction = Math.round(Math.random() * 7);
+				
+				if (exitReload == 0 || x > Enemy1.x && x < Enemy1.x && //TODO: Figure out a way to get the enemys to ONLY spawn around the player
+					y > Enemy1.y && y < Enemy1.y + (playerSize * 15)) {
+						
+					RandomShipFleet.push(Enemy1);
+				
+				}
 			}
 			//$("#result").html(entities.length);
 			//console.log(entities);
 		}, 1100);
 		
 		setInterval(function(){
+
+			if(moveReady == true && shootReady == true){
 					
-		    Enemy2 = jQuery.extend(true, {}, Hunter);
-			Enemy2.x = Math.round(Math.random() * (canvas.width * .90));
-			Enemy2.y = Math.round(Math.random() * (canvas.height * .90));
-			
-			if (exitReload == 0 || !x < Enemy2.x + (playerSize * 15)  && !x + (playerSize * 15)  > Enemy2.x &&
-				!y < Enemy2.y + (playerSize * 15) && !y + (playerSize * 15) > Enemy2.y) {
+				Enemy2 = jQuery.extend(true, {}, Hunter);
+				Enemy2.x = Math.round(Math.random() * (canvas.width * .90));
+				Enemy2.y = Math.round(Math.random() * (canvas.height * .90));
 				
-				HunterFleet.push(Enemy2);
+				if (exitReload == 0 || !x < Enemy2.x + (playerSize * 15)  && !x + (playerSize * 15)  > Enemy2.x &&
+					!y < Enemy2.y + (playerSize * 15) && !y + (playerSize * 15) > Enemy2.y) {
+					
+					HunterFleet.push(Enemy2);
+				}
+				
 			}
-				
-			
 			//console.log(entities);
 		}, 5000);	
 		
 		setInterval(function(){
+
+			if(moveReady == true && shootReady == true){
 					
-		    Enemy3 = jQuery.extend(true, {}, Stalker);
-			Enemy3.x = Math.round(Math.random() * (canvas.width * .90));
-			Enemy3.y = Math.round(Math.random() * (canvas.height * .90));
-			
-			if (exitReload == 0 || !x < Enemy3.x + (playerSize * 15)  && !x + (playerSize * 15)  > Enemy3.x &&
-				!y < Enemy3.y + (playerSize * 15) && !y + (playerSize * 15) > Enemy3.y) {
-					
-				StalkerFleet.push(Enemy3);
+				Enemy3 = jQuery.extend(true, {}, Stalker);
+				Enemy3.x = Math.round(Math.random() * (canvas.width * .90));
+				Enemy3.y = Math.round(Math.random() * (canvas.height * .90));
+				
+				if (exitReload == 0 || !x < Enemy3.x + (playerSize * 15)  && !x + (playerSize * 15)  > Enemy3.x &&
+					!y < Enemy3.y + (playerSize * 15) && !y + (playerSize * 15) > Enemy3.y) {
+						
+					StalkerFleet.push(Enemy3);
+				}
 			}
 			//console.log(entities);
 		}, 9000);	
 		
 		
 		setInterval(function(){
+
+			if(moveReady == true && shootReady == true){
 					
-		    LifePup = jQuery.extend(true, {}, LifePowerUp);
-			LifePup.x = Math.round(Math.random() * (canvas.width * .90));
-			LifePup.y = Math.round(Math.random() * (canvas.height * .90));
-			
-			if(exitReload == 0){
-					
-				LifePowerPack.push(LifePup);
+				LifePup = jQuery.extend(true, {}, LifePowerUp);
+				LifePup.x = Math.round(Math.random() * (canvas.width * .90));
+				LifePup.y = Math.round(Math.random() * (canvas.height * .90));
+				
+				if(exitReload == 0){
+						
+					LifePowerPack.push(LifePup);
+				}
 			}
 			//console.log(entities);
 		}, 25000); //60000
 		
 		setInterval(function(){
+
+			if(moveReady == true && shootReady == true){
 					
-		    BulletPup = jQuery.extend(true, {}, BulletPowerUp);
-			BulletPup.x = Math.round(Math.random() * (canvas.width * .90));
-			BulletPup.y = Math.round(Math.random() * (canvas.height * .90));
-			
-			if(exitReload == 0){
-					
-				BulletPowerPack.push(BulletPup);
+				BulletPup = jQuery.extend(true, {}, BulletPowerUp);
+				BulletPup.x = Math.round(Math.random() * (canvas.width * .90));
+				BulletPup.y = Math.round(Math.random() * (canvas.height * .90));
+				
+				if(exitReload == 0){
+						
+					BulletPowerPack.push(BulletPup);
+				}
 			}
 			//console.log(entities);
 		}, 20000);	//30000	
 
 
 		setInterval(function(){
+
+			if(moveReady == true && shootReady == true){
 					
-		    Enemy4 = jQuery.extend(true, {}, BlackHole);
-			Enemy4.x = Math.round(Math.random() * (canvas.width * .90));
-			Enemy4.y = Math.round(Math.random() * (canvas.height * .90));
-			
-			if (exitReload == 0 || !x < Enemy3.x + (playerSize * 15)  && !x + (playerSize * 15)  > Enemy3.x &&
-				!y < Enemy3.y + (playerSize * 15) && !y + (playerSize * 15) > Enemy3.y) {
-					
-				BlackBox.push(Enemy4);
+				Enemy4 = jQuery.extend(true, {}, BlackHole);
+				Enemy4.x = Math.round(Math.random() * (canvas.width * .90));
+				Enemy4.y = Math.round(Math.random() * (canvas.height * .90));
+				
+				if (exitReload == 0 || !x < Enemy3.x + (playerSize * 15)  && !x + (playerSize * 15)  > Enemy3.x &&
+					!y < Enemy3.y + (playerSize * 15) && !y + (playerSize * 15) > Enemy3.y) {
+						
+					BlackBox.push(Enemy4);
+				}
 			}
 			//console.log(Enemy4);
 		}, 55000);	
 
 		setInterval(function(){
+
+			if(moveReady == true && shootReady == true){
 					
-		    Enemy5 = jQuery.extend(true, {}, InfectedShip);
-			Enemy5.x = Math.round(Math.random() * (canvas.width * .90));
-			Enemy5.y = Math.round(Math.random() * (canvas.height * .90));
-			Enemy5.direction = Math.round(Math.random() * 7);
-			
-			if (exitReload == 0 || !x < Enemy3.x + (playerSize * 15)  && !x + (playerSize * 15)  > Enemy5.x &&
-				!y < Enemy5.y + (playerSize * 15) && !y + (playerSize * 15) > Enemy5.y) {
-					
-				InfectedFleet.push(Enemy5);
+				Enemy5 = jQuery.extend(true, {}, InfectedShip);
+				Enemy5.x = Math.round(Math.random() * (canvas.width * .90));
+				Enemy5.y = Math.round(Math.random() * (canvas.height * .90));
+				Enemy5.direction = Math.round(Math.random() * 7);
+				
+				if (exitReload == 0 || !x < Enemy3.x + (playerSize * 15)  && !x + (playerSize * 15)  > Enemy5.x &&
+					!y < Enemy5.y + (playerSize * 15) && !y + (playerSize * 15) > Enemy5.y) {
+						
+					InfectedFleet.push(Enemy5);
+				}
 			}
 			//console.log(Enemy5);
 		}, 30000);	
@@ -594,6 +622,8 @@ canvas1.height = canvas.height;
 		$("#pDiv").hide();
 		$("#title").hide();
 		$("#score").show();
+		$("#MoveStickInfo").show();
+		$("#ShootStickInfo").show();
 
 	});
 	

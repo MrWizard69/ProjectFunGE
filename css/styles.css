@@ -216,6 +216,18 @@ html, body {
 	margin-top: -0.5%;
 }
 
+#MoveStickInfo{
+
+	margin-left: 85%;
+	margin-top: -10%;
+}
+
+#ShootStickInfo{
+
+	margin-right: 85%;
+	margin-top: -10%;	
+}
+
 @media screen and (max-width: 1000px) {
     #rest{
 	
