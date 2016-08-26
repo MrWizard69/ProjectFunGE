@@ -767,6 +767,7 @@ canvas1.height = canvas.height;
 			$("#dwnload").closest('.ui-btn').show();
 			// $("#restartBtn").closest('.ui-btn').hide();
 			// $("#restartDiv").hide();
+			$("#ShootStickInfo").css("margin-top","-4%");
 			$("#rotWar").show();
 			$("#shootStick").hide();
 			$("#container").hide();
