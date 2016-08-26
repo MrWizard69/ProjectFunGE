@@ -322,7 +322,7 @@ canvas1.height = canvas.height;
 			joyTouch = true; // the joystick was touched and now in the Update function it will be checking the direction of the joystick
 			moveReady = true;//this checks the joystick to see if the player knows what it does. First touch starts the game
 			$("#MoveStickInfo").hide();//hides the message
-			$("#ShootStickInfo").css("margin-top","-10.8%");
+			$("#ShootStickInfo").css("margin-top","-13.8%");
 			
 		});
 
@@ -331,7 +331,7 @@ canvas1.height = canvas.height;
 			//console.log("shoot stick");
 			
 			shootReady = true; //this checks the shootStick to see if the player knows what it does. First touch starts the game
-			$("#MoveStickInfo").css("margin-top","-10%");
+			$("#MoveStickInfo").css("margin-top","-13%");
 
 			$("#ShootStickInfo").hide();//hides the message
 			
